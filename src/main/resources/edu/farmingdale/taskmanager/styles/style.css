@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'Inknut Antiqua Regular';
+    src: url('../fonts/InknutAntiqua-Regular.ttf');
+}
+
+.bg{
+    -fx-background-color: #472C01;
+}
+.container{
+
+    -fx-background-image: url("../images/background_1024.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.logo-container{
+
+    -fx-background-color: linear-gradient(
+            from 0% 0% to 100% 0%,
+            #5D3A0174,  /* left: #5D3A01 at 45% opacity */
+            #8F590274,  /* middle: #8F5902 at 45% opacity */
+            #5D3A0174   /* right: #5D3A01 at 45% opacity */
+    );
+    -fx-border-color: transparent transparent #472C01 transparent;
+    -fx-border-width: 5;
+}
+
+.menu-label{
+    -fx-font-family: 'Inknut Antiqua Regular';
+    -fx-font-size: 16px;
+    -fx-text-fill: #472C01;
+
+}
