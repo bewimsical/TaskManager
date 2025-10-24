@@ -19,10 +19,9 @@ public class TaskManagerApplication extends Application {
         fstore = contxtFirebase.firebase();
         fauth = FirebaseAuth.getInstance();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(TaskManagerApplication.class.getResource("navbar-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(TaskManagerApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 1024);
         stage.setTitle("Hello!");
-        scene.getStylesheets().add(getClass().getResource("styles/style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
