@@ -11,13 +11,13 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 
-<StackPane fx:id="navContainer" maxHeight="1014.0" prefHeight="1014.0" prefWidth="102.0" styleClass="bg" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.NavbarController">
+<StackPane fx:id="navContainer" maxHeight="1014.0" maxWidth="102.0" minHeight="1014.0" minWidth="102.0" prefHeight="1014.0" prefWidth="102.0" styleClass="bg" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.NavbarController">
    <children>
-      <VBox fx:id="navVbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1004.0" prefWidth="92.0" styleClass="container" stylesheets="@styles/style.css">
+      <VBox fx:id="navVbox" maxHeight="880.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1004.0" prefWidth="92.0" styleClass="container" stylesheets="@styles/style.css">
          <children>
             <HBox fx:id="navLogoContainer" maxWidth="92.0" prefHeight="132.0" prefWidth="92.0" styleClass="logo-container">
                <children>
-                  <StackPane alignment="CENTER_LEFT" maxHeight="122.0" prefHeight="122.0" stylesheets="@styles/style.css">
+                  <StackPane alignment="CENTER_LEFT" maxHeight="132.0" minHeight="132.0" prefHeight="132.0" stylesheets="@styles/style.css">
                      <children>
                         <Circle fill="#e5b515" radius="36.0" stroke="TRANSPARENT" strokeType="INSIDE">
                            <StackPane.margin>
@@ -284,6 +284,6 @@
             </VBox>
          </children>
       </VBox>
-      <Rectangle fx:id="navBorder" arcHeight="10.0" arcWidth="10.0" fill="#1f93ff00" height="1014.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="102.0" />
+      <Rectangle fx:id="navBorder" arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="1014.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="102.0" />
    </children>
 </StackPane>

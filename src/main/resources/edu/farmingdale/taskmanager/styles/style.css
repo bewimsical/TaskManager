@@ -4,7 +4,12 @@
 }
 
 .bg{
-    -fx-background-color: #472C01;
+    -fx-background-color: #281902;
+    /*-fx-background-color: #472C01;*/
+}
+.bg2{
+    /*-fx-background-color: #281902;*/
+    -fx-background-color: #ffdddd;
 }
 .container{
 
@@ -30,4 +35,19 @@
     -fx-font-size: 16px;
     -fx-text-fill: #472C01;
 
+}
+
+.username{
+    -fx-font-family: 'Inknut Antiqua Regular';
+    -fx-font-size: 30px;
+    -fx-text-fill: #F8E5B2;
+}
+
+.button-label{
+    -fx-font-family: 'Inknut Antiqua Regular';
+    -fx-font-size: 24px;
+    -fx-text-fill: #FFF;
+}
+.button-label.active{
+    -fx-text-fill: #E5B515;
 }
