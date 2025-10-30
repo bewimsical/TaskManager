@@ -1,5 +1,6 @@
 package edu.farmingdale.taskmanager.Controllers;
 
+import edu.farmingdale.taskmanager.TaskManagerApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -58,10 +59,10 @@ public class NavbarController {
 
     private static void switchScene(Object source, String fxmlFile) {
         try {
-            Parent root = FXMLLoader.load(NavbarController.class.getResource(fxmlFile));
+            Parent root = FXMLLoader.load(TaskManagerApplication.class.getResource(fxmlFile));
             Stage stage = (Stage)((Node)source).getScene().getWindow();
             Scene scene = new Scene(root);
-            scene.getStylesheets().add(NavbarController.class.getResource("styles/style.css").toExternalForm());
+            scene.getStylesheets().add(TaskManagerApplication.class.getResource("styles/style.css").toExternalForm());
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -81,12 +82,12 @@ public class NavbarController {
 
     @FXML
     void goHome(MouseEvent event) {
-        switchScene(event.getSource(), "hello-view.fxml");
+        switchScene(event.getSource(), "profile-view.fxml");
     }
 
     @FXML
     void goParty(MouseEvent event) {
-
+        switchScene(event.getSource(), "party-view.fxml");
     }
 
     @FXML
