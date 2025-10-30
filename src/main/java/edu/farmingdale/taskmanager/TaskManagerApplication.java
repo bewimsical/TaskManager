@@ -70,6 +70,7 @@ public class TaskManagerApplication extends Application {
                 )
         );
         Scene scene = new Scene(wrapper, baseWidth, baseHeight);
+        scene.getStylesheets().add(getClass().getResource("styles/style.css").toExternalForm());
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
