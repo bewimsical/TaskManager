@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 
-<StackPane fx:id="navContainer" maxHeight="1014.0" maxWidth="102.0" minHeight="1014.0" minWidth="102.0" prefHeight="1014.0" prefWidth="102.0" styleClass="bg" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.NavbarController">
+<StackPane fx:id="navContainer" maxHeight="1014.0" maxWidth="102.0" minHeight="1014.0" minWidth="102.0" prefHeight="1014.0" prefWidth="102.0" styleClass="bg" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.NavbarController">
    <children>
       <VBox fx:id="navVbox" maxHeight="880.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1004.0" prefWidth="92.0" styleClass="container" stylesheets="@styles/style.css">
          <children>

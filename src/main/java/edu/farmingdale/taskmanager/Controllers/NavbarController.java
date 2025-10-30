@@ -1,4 +1,4 @@
-package edu.farmingdale.taskmanager;
+package edu.farmingdale.taskmanager.Controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

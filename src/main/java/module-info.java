@@ -16,4 +16,6 @@ module edu.farmingdale.taskmanager {
 
     opens edu.farmingdale.taskmanager to javafx.fxml;
     exports edu.farmingdale.taskmanager;
+    exports edu.farmingdale.taskmanager.Controllers;
+    opens edu.farmingdale.taskmanager.Controllers to javafx.fxml;
 }
