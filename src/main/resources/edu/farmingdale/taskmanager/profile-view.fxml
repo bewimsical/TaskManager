@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+
+<StackPane alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" styleClass="bg" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.ProfileController">
+   <children>
+      <fx:include source="navbar-view.fxml" />
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <StackPane.margin>
+            <Insets left="97.0" />
+         </StackPane.margin>
+         <children>
+            <VBox maxWidth="599.0" minWidth="599.0" prefHeight="1024.0" prefWidth="599.0">
+               <children>
+                  <StackPane>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                     <children>
+                        <HBox maxHeight="328.0" maxWidth="589.0" prefHeight="328.0" prefWidth="589.0" styleClass="container">
+                           <children>
+                              <StackPane alignment="CENTER_RIGHT" maxHeight="328.0" maxWidth="286.0" minHeight="328.0" minWidth="286.0" prefHeight="150.0" prefWidth="286.0">
+                                 <children>
+                                    <ImageView fx:id="profilePic" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/rogue_cat.PNG" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="46.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/Profile%20Border.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </StackPane>
+                              <VBox prefHeight="328.0" prefWidth="325.0">
+                                 <children>
+                                    <StackPane alignment="TOP_LEFT" prefHeight="150.0" prefWidth="200.0">
+                                       <VBox.margin>
+                                          <Insets top="39.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <Rectangle height="61.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="303.0">
+                                             <fill>
+                                                <LinearGradient endX="1.0">
+                                                   <stops>
+                                                      <Stop>
+                                                         <color>
+                                                            <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                         </color>
+                                                      </Stop>
+                                                      <Stop offset="0.006711409395973154">
+                                                         <color>
+                                                            <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                         </color>
+                                                      </Stop>
+                                                      <Stop offset="1.0">
+                                                         <color>
+                                                            <Color red="0.5199999809265137" green="0.3161599934101105" blue="0.010400000028312206" opacity="0.90439772605896" />
+                                                         </color>
+                                                      </Stop>
+                                                   </stops>
+                                                </LinearGradient>
+                                             </fill>
+                                          </Rectangle>
+                                          <Label fx:id="username" prefHeight="35.0" prefWidth="303.0" styleClass="username" text="HazelTheNut">
+                                             <padding>
+                                                <Insets left="5.0" top="-8.0" />
+                                             </padding></Label>
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="338.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="599.0" />
+                     </children>
+                  </StackPane>
+                  <StackPane>
+                     <children>
+                        <VBox maxHeight="328.0" maxWidth="589.0" prefHeight="328.0" prefWidth="589.0" styleClass="container">
+                           <children>
+                              <StackPane alignment="TOP_LEFT" prefHeight="54.0" prefWidth="589.0">
+                                 <children>
+                                    <Rectangle height="61.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="589.0">
+                                       <fill>
+                                          <LinearGradient endX="1.0">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="0.006711409395973154">
+                                                   <color>
+                                                      <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color red="0.5199999809265137" green="0.3161599934101105" blue="0.010400000028312206" opacity="0.90439772605896" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </LinearGradient>
+                                       </fill>
+                                    </Rectangle>
+                                    <Label fx:id="username1" alignment="CENTER" prefHeight="70.0" prefWidth="604.0" styleClass="username" text="Parties" textAlignment="CENTER">
+                                       <padding>
+                                          <Insets left="5.0" top="-8.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </StackPane>
+                           </children>
+                        </VBox>
+                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="338.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="599.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </StackPane>
+                  <StackPane>
+                     <children>
+                        <VBox maxHeight="328.0" maxWidth="589.0" prefHeight="328.0" prefWidth="589.0" styleClass="container">
+                           <children>
+                              <StackPane alignment="TOP_LEFT" prefHeight="55.0" prefWidth="589.0">
+                                 <children>
+                                    <Rectangle height="61.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="589.0">
+                                       <fill>
+                                          <LinearGradient endX="1.0">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="0.006711409395973154">
+                                                   <color>
+                                                      <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color red="0.5199999809265137" green="0.3161599934101105" blue="0.010400000028312206" opacity="0.90439772605896" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </LinearGradient>
+                                       </fill>
+                                    </Rectangle>
+                                    <Label fx:id="username11" alignment="CENTER" prefHeight="70.0" prefWidth="604.0" styleClass="username" text="Friends" textAlignment="CENTER">
+                                       <padding>
+                                          <Insets left="5.0" top="-8.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </StackPane>
+                           </children>
+                        </VBox>
+                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="338.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="599.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </StackPane>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </VBox>
+            <VBox maxWidth="739.0" minWidth="739.0" prefHeight="1024.0" prefWidth="739.0">
+               <children>
+                  <StackPane>
+                     <children>
+                        <HBox alignment="TOP_CENTER" maxHeight="103.0" maxWidth="734.0" prefHeight="103.0" prefWidth="734.0" styleClass="container">
+                           <children>
+                              <StackPane prefHeight="85.0" prefWidth="169.0">
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5d3a01" height="85.0" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="169.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f5902" height="75.0" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="159.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" height="65.0" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="149.0">
+                                       <fill>
+                                          <LinearGradient endX="1.0">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="0.006711409395973154">
+                                                   <color>
+                                                      <Color red="0.019607843831181526" green="0.21960784494876862" blue="0.10980392247438431" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="0.5004910787362907">
+                                                   <color>
+                                                      <Color red="0.03921568766236305" green="0.3450980484485626" blue="0.1764705926179886" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color red="0.019607843831181526" green="0.21960784494876862" blue="0.10980392247438431" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </LinearGradient>
+                                       </fill>
+                                    </Rectangle>
+                                    <Label alignment="CENTER" prefHeight="65.0" prefWidth="149.0" text="All">
+                                       <styleClass>
+                                          <String fx:value="button-label" />
+                                          <String fx:value="active" />
+                                       </styleClass>
+                                    </Label>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </StackPane>
+                              <StackPane prefHeight="85.0" prefWidth="169.0">
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5d3a01" height="85.0" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="169.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f5902" height="75.0" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="159.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" height="65.0" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="149.0">
+                                       <fill>
+                                          <LinearGradient endX="1.0">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="0.006711409395973154">
+                                                   <color>
+                                                      <Color red="0.019607843831181526" green="0.21960784494876862" blue="0.10980392247438431" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="0.5004910787362907">
+                                                   <color>
+                                                      <Color red="0.03921568766236305" green="0.3450980484485626" blue="0.1764705926179886" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color red="0.019607843831181526" green="0.21960784494876862" blue="0.10980392247438431" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </LinearGradient>
+                                       </fill>
+                                    </Rectangle>
+                                    <Label alignment="CENTER" prefHeight="65.0" prefWidth="149.0" styleClass="button-label" text="Rituals" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </StackPane>
+                              <StackPane prefHeight="85.0" prefWidth="169.0">
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5d3a01" height="85.0" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="169.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f5902" height="75.0" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="159.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" height="65.0" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="149.0">
+                                       <fill>
+                                          <LinearGradient endX="1.0">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="0.006711409395973154">
+                                                   <color>
+                                                      <Color red="0.019607843831181526" green="0.21960784494876862" blue="0.10980392247438431" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="0.5004910787362907">
+                                                   <color>
+                                                      <Color red="0.03921568766236305" green="0.3450980484485626" blue="0.1764705926179886" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color red="0.019607843831181526" green="0.21960784494876862" blue="0.10980392247438431" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </LinearGradient>
+                                       </fill>
+                                    </Rectangle>
+                                    <Label alignment="CENTER" prefHeight="65.0" prefWidth="149.0" styleClass="button-label" text="Quests" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </StackPane>
+                              <StackPane prefHeight="85.0" prefWidth="169.0">
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5d3a01" height="85.0" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="169.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f5902" height="75.0" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="159.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" height="65.0" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="149.0">
+                                       <fill>
+                                          <LinearGradient endX="1.0">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="0.006711409395973154">
+                                                   <color>
+                                                      <Color red="0.019607843831181526" green="0.21960784494876862" blue="0.10980392247438431" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="0.5004910787362907">
+                                                   <color>
+                                                      <Color red="0.03921568766236305" green="0.3450980484485626" blue="0.1764705926179886" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color red="0.019607843831181526" green="0.21960784494876862" blue="0.10980392247438431" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </LinearGradient>
+                                       </fill>
+                                    </Rectangle>
+                                    <Label alignment="CENTER" prefHeight="65.0" prefWidth="149.0" styleClass="button-label" text="Bosses" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </StackPane>
+                           </children>
+                        </HBox>
+                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="113.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="739.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </StackPane>
+                  <StackPane>
+                     <children>
+                        <VBox maxHeight="891.0" maxWidth="734.0" prefHeight="891.0" prefWidth="734.0" styleClass="container">
+                           <children>
+                              <StackPane alignment="TOP_LEFT" prefHeight="54.0" prefWidth="589.0">
+                                 <children>
+                                    <Rectangle height="61.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="734.0">
+                                       <fill>
+                                          <LinearGradient endX="1.0">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="0.006711409395973154">
+                                                   <color>
+                                                      <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color red="0.5199999809265137" green="0.3161599934101105" blue="0.010400000028312206" opacity="0.90439772605896" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </LinearGradient>
+                                       </fill>
+                                    </Rectangle>
+                                    <Label fx:id="username12" alignment="CENTER" prefHeight="70.0" prefWidth="734.0" styleClass="username" text="Statistics" textAlignment="CENTER">
+                                       <padding>
+                                          <Insets left="5.0" top="-8.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </StackPane>
+                           </children>
+                        </VBox>
+                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="901.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="739.0" />
+                     </children>
+                  </StackPane>
+               </children>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin></VBox>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets left="-5.0" />
+   </padding>
+</StackPane>
