@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
@@ -60,8 +61,11 @@ public class NavbarController {
     private static void switchScene(Object source, String fxmlFile) {
         try {
             Parent root = FXMLLoader.load(TaskManagerApplication.class.getResource(fxmlFile));
+            Pane wrapper = TaskManagerApplication.setup(root);
             Stage stage = (Stage)((Node)source).getScene().getWindow();
-            Scene scene = new Scene(root);
+            double oldWidth = ((Node)source).getScene().getWidth();
+            double oldHeight = ((Node)source).getScene().getHeight();
+            Scene scene = new Scene(wrapper, oldWidth, oldHeight);
             scene.getStylesheets().add(TaskManagerApplication.class.getResource("styles/style.css").toExternalForm());
             stage.setScene(scene);
             stage.show();
