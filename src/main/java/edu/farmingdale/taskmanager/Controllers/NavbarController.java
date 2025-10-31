@@ -96,7 +96,7 @@ public class NavbarController {
 
     @FXML
     void goQuests(MouseEvent event) {
-
+        switchScene(event.getSource(), "quest-view.fxml");
     }
 
     @FXML
