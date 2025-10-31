@@ -46,10 +46,25 @@
     -fx-font-size: 40px;
     -fx-text-fill: #472C01;
 }
+.boss-name{
+    -fx-font-family: 'Inknut Antiqua Regular';
+    -fx-font-size: 32px;
+    -fx-text-fill: #472C01;
+}
+.attacks-label{
+    -fx-font-family: 'Inknut Antiqua Regular';
+    -fx-font-size: 24px;
+    -fx-text-fill: #472C01;
+}
 
 .username{
     -fx-font-family: 'Inknut Antiqua Regular';
     -fx-font-size: 30px;
+    -fx-text-fill: #F8E5B2;
+}
+.boss-categories{
+    -fx-font-family: 'Inknut Antiqua Regular';
+    -fx-font-size: 24px;
     -fx-text-fill: #F8E5B2;
 }
 
@@ -71,4 +86,21 @@
     -fx-prompt-text-fill: #472C0150;
     -fx-font-family: 'Inknut Antiqua Regular';
     -fx-font-size: 20px;
+}
+
+.health-bar .track {
+    -fx-background-color: #000;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+}
+
+.health-bar .bar {
+    -fx-background-color: linear-gradient(
+            from 0% 0% to 0% 100%,
+            #610D0D,  /* left: #5D3A01 at 45% opacity */
+            #941414,  /* middle: #8F5902 at 45% opacity */
+            #610D0D  /* right: #5D3A01 at 45% opacity */
+    );
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
 }

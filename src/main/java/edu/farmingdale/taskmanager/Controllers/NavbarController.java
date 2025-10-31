@@ -81,7 +81,7 @@ public class NavbarController {
 
     @FXML
     void goBosses(MouseEvent event) {
-
+        switchScene(event.getSource(), "boss-view.fxml");
     }
 
     @FXML
