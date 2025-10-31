@@ -41,7 +41,7 @@
     -fx-font-size: 48px;
     -fx-text-fill: #472C01;
 }
-.party-title{
+.party-title, .streak-count{
     -fx-font-family: 'Inknut Antiqua Regular';
     -fx-font-size: 40px;
     -fx-text-fill: #472C01;
@@ -67,6 +67,11 @@
     -fx-font-size: 24px;
     -fx-text-fill: #F8E5B2;
 }
+.streak-label{
+    -fx-font-family: 'Inknut Antiqua Regular';
+    -fx-font-size: 16px;
+    -fx-text-fill: #472C01;
+}
 
 .button-label{
     -fx-font-family: 'Inknut Antiqua Regular';
@@ -88,8 +93,14 @@
     -fx-font-size: 20px;
 }
 
-.health-bar .track {
+.health-bar .track, .xp-bar .track {
     -fx-background-color: #000;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+}
+
+.xp-bar .track {
+    -fx-background-color: #472C01;
     -fx-background-radius: 0;
     -fx-background-insets: 0;
 }
@@ -97,10 +108,22 @@
 .health-bar .bar {
     -fx-background-color: linear-gradient(
             from 0% 0% to 0% 100%,
-            #610D0D,  /* left: #5D3A01 at 45% opacity */
-            #941414,  /* middle: #8F5902 at 45% opacity */
-            #610D0D  /* right: #5D3A01 at 45% opacity */
+            #610D0D,
+            #941414,
+            #610D0D
     );
     -fx-background-radius: 0;
     -fx-background-insets: 0;
+}
+
+.xp-bar .bar {
+    -fx-background-color: linear-gradient(
+            from 0% 0% to 0% 100%,
+            #E46F0F,
+            #B1560C,
+            #7E3D08,
+            #B1560C
+    );
+    -fx-background-radius: 0;
+    -fx-background-insets: 5;
 }

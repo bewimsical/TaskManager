@@ -101,7 +101,7 @@ public class NavbarController {
 
     @FXML
     void goRituals(MouseEvent event) {
-
+        switchScene(event.getSource(), "ritual-view.fxml");
     }
 
     @FXML

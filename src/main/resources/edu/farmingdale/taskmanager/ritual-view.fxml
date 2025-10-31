@@ -1,14 +1,369 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="edu.farmingdale.taskmanager.Controllers.RitualController"
-            prefHeight="400.0" prefWidth="600.0">
+<StackPane alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" styleClass="bg" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.RitualController">
+    <children>
+        <fx:include source="navbar-view.fxml" />
+        <VBox>
+            <StackPane.margin>
+                <Insets left="97.0" />
+            </StackPane.margin>
+            <children>
+                <StackPane>
+                    <VBox.margin>
+                        <Insets top="5.0" />
+                    </VBox.margin>
+                    <children>
+                        <HBox alignment="CENTER" maxHeight="63.0" maxWidth="1328.0" prefHeight="63.0" prefWidth="1328.0" styleClass="container">
+                            <children>
+                                <Label maxHeight="63.0" styleClass="page-title" text="Rituals">
+                                    <padding>
+                                        <Insets bottom="-31.5" top="-31.5" />
+                                    </padding></Label>
+                            </children>
+                        </HBox>
 
-</AnchorPane>
+                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="73.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="1338.0">
+                            <StackPane.margin>
+                                <Insets />
+                            </StackPane.margin>
+                        </Rectangle>
+                    </children>
+                </StackPane>
+                <StackPane>
+                    <children>
+                  <VBox maxHeight="357.0" maxWidth="1328.0" prefHeight="357.0" prefWidth="1328.0" styleClass="container">
+                     <children>
+                        <Label fx:id="date" alignment="CENTER" maxWidth="1328.0" prefWidth="1328.0" styleClass="party-title" text="Friday, October 11th ">
+                           <padding>
+                              <Insets bottom="-15.0" top="-15.0" />
+                           </padding>
+                        </Label>
+                                    <StackPane>
+                                        <children>
+                                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f5902" height="60.0" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="606.0" />
+                                            <ProgressBar maxHeight="50.0" maxWidth="596.0" prefHeight="50.0" prefWidth="596.0" progress="0.67" styleClass="xp-bar" fx:id="xpBar" />
+                                        </children>
+                                    </StackPane>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fx:id="streak1" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/ritualgem.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="streak2" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/retualgem-empty2.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <ImageView fx:id="streak3" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/retualgem-empty2.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <ImageView fx:id="streak4" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/retualgem-empty2.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <ImageView fx:id="streak5" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/retualgem-empty2.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <ImageView fx:id="streak6" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/retualgem-empty2.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <ImageView fx:id="streak7" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/retualgem-empty2.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                           <children>
+                              <StackPane maxHeight="98.0" maxWidth="155.0" prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#1f93ff00" height="98.0" mouseTransparent="true" stroke="#472c01" strokeType="INSIDE" strokeWidth="3.0" width="155.0" />
+                                    <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <Label styleClass="streak-label" text="Current Streak">
+                                             <padding>
+                                                <Insets bottom="-15.0" />
+                                             </padding>
+                                          </Label>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <ImageView fitHeight="53.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@images/ritualgem.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label fx:id="streakCount" styleClass="streak-count" text="120">
+                                                   <padding>
+                                                      <Insets bottom="-20.0" top="-30.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </StackPane>
+                              <StackPane maxHeight="98.0" maxWidth="155.0" prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#1f93ff00" height="98.0" mouseTransparent="true" stroke="#472c01" strokeType="INSIDE" strokeWidth="3.0" width="155.0" />
+                                    <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <Label styleClass="streak-label" text="Streak Bonus">
+                                             <padding>
+                                                <Insets bottom="-15.0" />
+                                             </padding>
+                                          </Label>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <Label styleClass="streak-count" text="x">
+                                                   <padding>
+                                                      <Insets bottom="-20.0" top="-30.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label fx:id="streakBonus" styleClass="streak-count" text="1.25">
+                                                   <padding>
+                                                      <Insets bottom="-20.0" top="-30.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="367.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="1338.0" />
+                    </children>
+                </StackPane>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <VBox maxWidth="446.0" minWidth="446.0" prefHeight="1024.0" prefWidth="446.0">
+                            <children>
+                                <StackPane>
+                                    <children>
+                                        <VBox maxHeight="564.0" maxWidth="436.0" prefHeight="564.0" prefWidth="436.0" styleClass="container">
+                                            <children>
+                                                  <StackPane alignment="TOP_LEFT" prefHeight="28.0" prefWidth="436.0">
+                                                      <children>
+                                                          <Rectangle height="61.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="436.0">
+                                                              <fill>
+                                                                  <LinearGradient endX="1.0">
+                                                                      <stops>
+                                                                          <Stop>
+                                                                              <color>
+                                                                                  <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                                              </color>
+                                                                          </Stop>
+                                                                          <Stop offset="0.006711409395973154">
+                                                                              <color>
+                                                                                  <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                                              </color>
+                                                                          </Stop>
+                                                                          <Stop offset="1.0">
+                                                                              <color>
+                                                                                  <Color red="0.5199999809265137" green="0.3161599934101105" blue="0.010400000028312206" opacity="0.90439772605896" />
+                                                                              </color>
+                                                                          </Stop>
+                                                                      </stops>
+                                                                  </LinearGradient>
+                                                              </fill>
+                                                          </Rectangle>
+                                                          <Label alignment="CENTER" prefHeight="40.0" prefWidth="436.0" styleClass="username" text="Morning" textAlignment="CENTER">
+                                                              <padding>
+                                                                  <Insets bottom="-8.0" left="10.0" top="-11.0" />
+                                                              </padding>
+                                                          </Label>
+                                                      </children>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                                  </StackPane>
+                                                  <VBox fx:id="morningContainer" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                                                      <VBox.margin>
+                                                          <Insets top="10.0" />
+                                                      </VBox.margin>
+                                                  </VBox>
+                                            </children>
+                                        </VBox>
+                                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="574.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="446.0" />
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                </StackPane>
+                            </children>
+                            <padding>
+                                <Insets left="5.0" />
+                            </padding>
+                        </VBox>
+                  <VBox maxWidth="446.0" minWidth="446.0" prefHeight="1024.0" prefWidth="446.0">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <children>
+                        <StackPane>
+                           <children>
+                              <VBox maxHeight="564.0" maxWidth="436.0" prefHeight="564.0" prefWidth="436.0" styleClass="container">
+                                 <children>
+                                    <StackPane alignment="TOP_LEFT" prefHeight="28.0" prefWidth="436.0">
+                                       <children>
+                                          <Rectangle height="61.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="436.0">
+                                             <fill>
+                                                <LinearGradient endX="1.0">
+                                                   <stops>
+                                                      <Stop>
+                                                         <color>
+                                                            <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                         </color>
+                                                      </Stop>
+                                                      <Stop offset="0.006711409395973154">
+                                                         <color>
+                                                            <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                         </color>
+                                                      </Stop>
+                                                      <Stop offset="1.0">
+                                                         <color>
+                                                            <Color red="0.5199999809265137" green="0.3161599934101105" blue="0.010400000028312206" opacity="0.90439772605896" />
+                                                         </color>
+                                                      </Stop>
+                                                   </stops>
+                                                </LinearGradient>
+                                             </fill>
+                                          </Rectangle>
+                                          <Label alignment="CENTER" prefHeight="40.0" prefWidth="436.0" styleClass="username" text="Midday" textAlignment="CENTER">
+                                             <padding>
+                                                <Insets bottom="-8.0" left="10.0" top="-11.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </StackPane>
+                                    <VBox fx:id="middayContainer" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                              <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="574.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="446.0" />
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </StackPane>
+                     </children>
+                  </VBox>
+                  <VBox maxWidth="446.0" minWidth="446.0" prefHeight="1024.0" prefWidth="446.0">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <children>
+                        <StackPane>
+                           <children>
+                              <VBox maxHeight="564.0" maxWidth="436.0" prefHeight="564.0" prefWidth="436.0" styleClass="container">
+                                 <children>
+                                    <StackPane alignment="TOP_LEFT" prefHeight="28.0" prefWidth="436.0">
+                                       <children>
+                                          <Rectangle height="61.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="436.0">
+                                             <fill>
+                                                <LinearGradient endX="1.0">
+                                                   <stops>
+                                                      <Stop>
+                                                         <color>
+                                                            <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                         </color>
+                                                      </Stop>
+                                                      <Stop offset="0.006711409395973154">
+                                                         <color>
+                                                            <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                         </color>
+                                                      </Stop>
+                                                      <Stop offset="1.0">
+                                                         <color>
+                                                            <Color red="0.5199999809265137" green="0.3161599934101105" blue="0.010400000028312206" opacity="0.90439772605896" />
+                                                         </color>
+                                                      </Stop>
+                                                   </stops>
+                                                </LinearGradient>
+                                             </fill>
+                                          </Rectangle>
+                                          <Label alignment="CENTER" prefHeight="40.0" prefWidth="436.0" styleClass="username" text="Evening" textAlignment="CENTER">
+                                             <padding>
+                                                <Insets bottom="-8.0" left="10.0" top="-11.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </StackPane>
+                                    <VBox fx:id="eveningContainer" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                              <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="574.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="446.0" />
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </StackPane>
+                     </children>
+                  </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+    <padding>
+        <Insets left="-5.0" />
+    </padding>
+</StackPane>

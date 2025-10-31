@@ -6,7 +6,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Rectangle;
 
 public class QuestController {
 
@@ -26,7 +25,7 @@ public class QuestController {
     private Label failedButton;
 
     @FXML
-    private Rectangle mainContainer;
+    private VBox mainContainer;
 
     @FXML
     private VBox miniBossesContainer1;
@@ -51,4 +50,3 @@ public class QuestController {
     }
 
 }
-
