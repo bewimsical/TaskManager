@@ -6,13 +6,9 @@ import java.util.function.Consumer;
 
 public class BossCard extends ChoreCard<Boss>{
 
-    private Consumer<Boss> onClick;
     public BossCard(Boss data,  Consumer<Boss> onClick) {
-        super(data);
+        super(data, onClick);
         this.name = data.name();
         this.xp = data.xp();
-        this.onClick = onClick;
-
-        root.setOnMouseClicked(e -> onClick.accept(data));
     }
 }

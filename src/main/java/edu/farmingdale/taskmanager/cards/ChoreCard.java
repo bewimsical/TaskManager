@@ -1,5 +1,6 @@
 package edu.farmingdale.taskmanager.cards;
 
+import edu.farmingdale.taskmanager.Boss;
 import edu.farmingdale.taskmanager.TaskManagerApplication;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
@@ -8,13 +9,18 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
+import java.util.function.Consumer;
+
 public abstract class ChoreCard<T> extends ImageCard{
     protected T data;
     protected String name;
     protected String xp;
+    protected Consumer<T> onClick;
 
-    public ChoreCard(T data) {
+    public ChoreCard(T data,  Consumer<T> onClick) {
         super(data);
+        this.onClick = onClick;
+        root.setOnMouseClicked(e -> onClick.accept(data));
     }
 
     @Override
