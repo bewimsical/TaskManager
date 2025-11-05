@@ -85,11 +85,17 @@
                                     </StackPane>
                                     <AnchorPane prefHeight="57.0" prefWidth="303.0">
                                        <children>
-                                          <StackPane layoutX="15.0" prefHeight="65.0" prefWidth="228.0">
+                                          <StackPane alignment="TOP_LEFT" layoutX="15.0" prefHeight="65.0" prefWidth="228.0" fx:id="xpBarContainer">
                                              <children>
                                                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f5902" height="38.0" stroke="BLACK" strokeType="INSIDE" width="228.0" />
-                                                <ProgressBar prefHeight="30.0" prefWidth="220.0" progress="0.4" styleClass="profile-xp-bar" fx:id="xpBar" />
+                                                <ProgressBar prefHeight="30.0" prefWidth="220.0" progress="0.4" styleClass="profile-xp-bar" fx:id="xpBar">
+                                                   <StackPane.margin>
+                                                      <Insets left="4.0" top="4.0" />
+                                                   </StackPane.margin></ProgressBar>
                                              </children>
+                                             <padding>
+                                                <Insets top="13.5" />
+                                             </padding>
                                           </StackPane>
                                           <StackPane layoutX="230.0" prefHeight="42.0" prefWidth="48.0">
                                              <children>
