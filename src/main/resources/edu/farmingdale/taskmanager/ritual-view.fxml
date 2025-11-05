@@ -44,17 +44,20 @@
                 </StackPane>
                 <StackPane>
                     <children>
-                  <VBox maxHeight="357.0" maxWidth="1328.0" prefHeight="357.0" prefWidth="1328.0" styleClass="container">
+                  <VBox alignment="TOP_CENTER" maxHeight="357.0" maxWidth="1328.0" prefHeight="357.0" prefWidth="1328.0" styleClass="container">
                      <children>
                         <Label fx:id="date" alignment="CENTER" maxWidth="1328.0" prefWidth="1328.0" styleClass="party-title" text="Friday, October 11th ">
                            <padding>
                               <Insets bottom="-15.0" top="-15.0" />
                            </padding>
                         </Label>
-                                    <StackPane>
+                                    <StackPane alignment="TOP_LEFT" maxWidth="606.0" fx:id="xpBarContainer">
                                         <children>
                                             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f5902" height="60.0" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="606.0" />
-                                            <ProgressBar maxHeight="50.0" maxWidth="596.0" prefHeight="50.0" prefWidth="596.0" progress="0.67" styleClass="xp-bar" fx:id="xpBar" />
+                                            <ProgressBar maxHeight="50.0" maxWidth="596.0" prefHeight="50.0" prefWidth="596.0" progress="0.67" styleClass="xp-bar" fx:id="xpBar">
+                                 <StackPane.margin>
+                                    <Insets left="5.0" top="5.0" />
+                                 </StackPane.margin></ProgressBar>
                                         </children>
                                     </StackPane>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
