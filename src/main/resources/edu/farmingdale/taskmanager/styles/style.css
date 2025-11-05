@@ -57,6 +57,12 @@
     -fx-text-fill: #472C01;
 }
 
+.profile-xp-values{
+    -fx-font-family: 'Inknut Antiqua Regular';
+    -fx-font-size: 25px;
+    -fx-text-fill: #472C01;
+}
+
 .username{
     -fx-font-family: 'Inknut Antiqua Regular';
     -fx-font-size: 30px;
@@ -66,6 +72,13 @@
     -fx-font-family: 'Inknut Antiqua Regular';
     -fx-font-size: 24px;
     -fx-text-fill: #F8E5B2;
+}
+.profile-level{
+    -fx-font-family: 'Inknut Antiqua Regular';
+    -fx-font-size: 24px;
+    -fx-text-fill: #FFF;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 4, 0, 0, 2);
+
 }
 .streak-label{
     -fx-font-family: 'Inknut Antiqua Regular';
@@ -110,7 +123,7 @@
     -fx-background-insets: 0;
 }
 
-.xp-bar .track {
+.xp-bar .track, .profile-xp-bar .track {
     -fx-background-color: #472C01;
     -fx-background-radius: 0;
     -fx-background-insets: 0;
@@ -127,7 +140,7 @@
     -fx-background-insets: 0;
 }
 
-.xp-bar .bar {
+.xp-bar .bar, .profile-xp-bar .bar {
     -fx-background-color: linear-gradient(
             from 0% 0% to 0% 100%,
             #E46F0F,
@@ -137,4 +150,11 @@
     );
     -fx-background-radius: 0;
     -fx-background-insets: 5;
+}
+
+.xp-bar .bar{
+    -fx-background-insets: 5;
+}
+.profile-xp-bar .bar {
+    -fx-background-insets: 3;
 }
