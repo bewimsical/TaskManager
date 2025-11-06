@@ -219,7 +219,7 @@
                                                                       </LinearGradient>
                                                                   </fill>
                                                               </Rectangle>
-                                                              <Label prefHeight="40.0" prefWidth="436.0" styleClass="bossRecord-categories" text="Bosses" textAlignment="CENTER">
+                                                              <Label prefHeight="40.0" prefWidth="436.0" styleClass="boss-categories" text="Bosses" textAlignment="CENTER">
                                                                   <padding>
                                                                       <Insets bottom="-8.0" left="10.0" top="-11.0" />
                                                                   </padding>
@@ -260,7 +260,7 @@
                                                       </LinearGradient>
                                                    </fill>
                                                 </Rectangle>
-                                                <Label prefHeight="40.0" prefWidth="436.0" styleClass="bossRecord-categories" text="Mini Bosses" textAlignment="CENTER">
+                                                <Label prefHeight="40.0" prefWidth="436.0" styleClass="boss-categories" text="Mini Bosses" textAlignment="CENTER">
                                                    <padding>
                                                       <Insets bottom="-8.0" left="10.0" top="-11.0" />
                                                    </padding>
@@ -301,7 +301,7 @@
                                                       </LinearGradient>
                                                    </fill>
                                                 </Rectangle>
-                                                <Label prefHeight="40.0" prefWidth="436.0" styleClass="bossRecord-categories" text="Custom Boss" textAlignment="CENTER">
+                                                <Label prefHeight="40.0" prefWidth="436.0" styleClass="boss-categories" text="Custom Boss" textAlignment="CENTER">
                                                    <padding>
                                                       <Insets bottom="-8.0" left="10.0" top="-11.0" />
                                                    </padding>
@@ -341,7 +341,7 @@
                                     <children>
                                         <VBox alignment="TOP_CENTER" maxHeight="836.0" maxWidth="882.0" prefHeight="836.0" prefWidth="882.0" styleClass="container">
                                             <children>
-                                                <Label fx:id="bossName" alignment="CENTER" prefHeight="41.0" prefWidth="882.0" styleClass="bossRecord-name" text="Boss Name" textAlignment="CENTER">
+                                                <Label fx:id="bossName" alignment="CENTER" prefHeight="41.0" prefWidth="882.0" styleClass="boss-name" text="Boss Name" textAlignment="CENTER">
                                                     <padding>
                                                         <Insets bottom="-15.0" left="5.0" top="-15.0" />
                                                     </padding>
