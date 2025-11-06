@@ -14,6 +14,8 @@ public class User {
     private List<String> parties;
     private List<String> friends;
 
+    private String profileUrl;
+
 
     public User() {
     }
@@ -102,5 +104,16 @@ public class User {
 
     public void setFriends(List<String> friends) {
         this.friends = friends;
+    }
+
+
+
+
+    public String getProfileUrl() {
+        return profileUrl;
+    }
+
+    public void setProfileUrl(String profileUrl) {
+        this.profileUrl = profileUrl;
     }
 }
