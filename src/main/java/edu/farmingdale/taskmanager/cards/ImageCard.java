@@ -2,10 +2,10 @@ package edu.farmingdale.taskmanager.cards;
 
 import javafx.scene.layout.StackPane;
 
-public abstract class ImageCard extends Card{
+public abstract class ImageCard<T> extends Card<T>{
     protected StackPane root;
 
-    public ImageCard(Object data) {
+    public ImageCard(T data) {
         super(data);
         root = new StackPane();
     }

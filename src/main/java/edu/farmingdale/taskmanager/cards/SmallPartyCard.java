@@ -9,7 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
-public class SmallPartyCard extends ImageCard{
+public class SmallPartyCard extends ImageCard<Party>{
 
     String name;
     String type;
