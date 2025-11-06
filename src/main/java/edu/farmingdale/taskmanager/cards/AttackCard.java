@@ -4,11 +4,12 @@ import edu.farmingdale.taskmanager.Boss;
 
 import java.util.function.Consumer;
 
-public class BossCard extends ChoreCard<Boss>{
+public class AttackCard extends SmallChoreCard<Boss>{
 
-    public BossCard(Boss data,  Consumer<ChoreCard<Boss>> onClick) {
+    public AttackCard(Boss data,  Consumer<ChoreCard<Boss>> onClick) {
         super(data, onClick);
         this.name = data.name();
         this.xp = data.xp();
     }
+
 }

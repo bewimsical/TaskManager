@@ -1,7 +1,9 @@
 package edu.farmingdale.taskmanager.Controllers;
 
 import edu.farmingdale.taskmanager.Boss;
+import edu.farmingdale.taskmanager.cards.AttackCard;
 import edu.farmingdale.taskmanager.cards.BossCard;
+import edu.farmingdale.taskmanager.cards.ChoreCard;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -50,6 +52,8 @@ public class BossController implements Initializable {
 
     private Label[] buttons;
 
+    private double health;
+
 
 
     @Override
@@ -62,19 +66,43 @@ public class BossController implements Initializable {
         BossCard card = new BossCard(boss1, this::handleBossCardClick);
         BossCard card2 = new BossCard(boss2,  this::handleBossCardClick);
 
-        Pane cardview = card.createView();
+        bossesContainer.getChildren().addAll(card.createView(), card2.createView());
 
-        bossesContainer.getChildren().addAll(cardview, card2.createView());
+        Boss attack1 = new Boss("Attack!", "300", false);
+        Boss Attack2 = new Boss("Attack TWO!", "500", false);
+        Boss attack3 = new Boss("Attack THREE!", "300", false);
+        Boss Attack4 = new Boss("Attack FOUR!", "500", false);
+        AttackCard card3 = new AttackCard(attack1, this::handleAttackCardClick);
+        AttackCard card4 = new AttackCard(Attack2,  this::handleAttackCardClick);
+        AttackCard card5 = new AttackCard(attack1, this::handleAttackCardClick);
+        AttackCard card6 = new AttackCard(Attack2,  this::handleAttackCardClick);
+
+        attacksContainer.getChildren().addAll(card3.createView(), card4.createView(), card5.createView(), card6.createView());
+
+        health = 1600;
+        healthBar.setProgress(1);
+    }
+
+    private void handleBossCardClick(ChoreCard<Boss> clickedBoss){
+        Boss boss = clickedBoss.getData();
+        bossName.setText(boss.name());
+
 
     }
 
-    private void handleBossCardClick(Boss clickedBoss){
-        bossName.setText(clickedBoss.name());
-    }
+    private void handleAttackCardClick(ChoreCard<Boss> clickedBoss){
+        clickedBoss.redraw();
+        Boss boss = clickedBoss.getData();
+        double damage = Double.parseDouble(boss.xp());
+        double next = Math.max(healthBar.getProgress() - (damage/health), 0);
+        healthBar.setProgress(next);
 
-    private void setActiveButton(Label button){
-
-
+        System.out.printf("""
+                Health: %f
+                Damage: %f
+                Next: %f
+                Progress Bar: %f
+                """, health, damage, next, healthBar.getProgress());
 
     }
 
