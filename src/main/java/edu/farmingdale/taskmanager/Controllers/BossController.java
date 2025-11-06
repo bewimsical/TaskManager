@@ -1,6 +1,7 @@
 package edu.farmingdale.taskmanager.Controllers;
 
 import edu.farmingdale.taskmanager.BossRecord;
+import edu.farmingdale.taskmanager.Models.Bosses;
 import edu.farmingdale.taskmanager.cards.AttackCard;
 import edu.farmingdale.taskmanager.cards.BossCard;
 import edu.farmingdale.taskmanager.cards.ChoreCard;
@@ -59,39 +60,29 @@ public class BossController implements Initializable {
 
         buttons = new Label[]{bountiesButton, vanquishedButton, failedButton};
 
-        BossRecord bossRecord1 = new BossRecord("Monster!", "300", false);
-        BossRecord bossRecord2 = new BossRecord("Monster TWO!", "500", false);
-        BossCard card = new BossCard(bossRecord1, this::handleBossCardClick);
-        BossCard card2 = new BossCard(bossRecord2,  this::handleBossCardClick);
 
-        bossesContainer.getChildren().addAll(card.createView(), card2.createView());
+        //loop through boss list here
+        bossesContainer.getChildren().addAll();
 
-        BossRecord attack1 = new BossRecord("Attack!", "300", false);
-        BossRecord Attack2 = new BossRecord("Attack TWO!", "500", false);
-        BossRecord attack3 = new BossRecord("Attack THREE!", "300", false);
-        BossRecord Attack4 = new BossRecord("Attack FOUR!", "500", false);
-        AttackCard card3 = new AttackCard(attack1, this::handleAttackCardClick);
-        AttackCard card4 = new AttackCard(Attack2,  this::handleAttackCardClick);
-        AttackCard card5 = new AttackCard(attack1, this::handleAttackCardClick);
-        AttackCard card6 = new AttackCard(Attack2,  this::handleAttackCardClick);
 
-        attacksContainer.getChildren().addAll(card3.createView(), card4.createView(), card5.createView(), card6.createView());
+        //loop through attack list here
+        attacksContainer.getChildren().addAll();
 
         health = 1600;
         healthBar.setProgress(1);
     }
 
-    private void handleBossCardClick(ChoreCard<BossRecord> clickedBoss){
-        BossRecord bossRecord = clickedBoss.getData();
-        bossName.setText(bossRecord.name());
+    private void handleBossCardClick(ChoreCard<Bosses> clickedBoss){
+        Bosses boss = clickedBoss.getData();
+        bossName.setText(boss.getName());
 
 
     }
 
-    private void handleAttackCardClick(ChoreCard<BossRecord> clickedBoss){
+    private void handleAttackCardClick(ChoreCard<Bosses> clickedBoss){
         clickedBoss.redraw();
-        BossRecord bossRecord = clickedBoss.getData();
-        double damage = Double.parseDouble(bossRecord.xp());
+        Bosses boss = clickedBoss.getData();
+        double damage = boss.getXp();
         double next = Math.max(healthBar.getProgress() - (damage/health), 0);
         healthBar.setProgress(next);
 

@@ -13,7 +13,7 @@ import java.util.function.Consumer;
 public abstract class ChoreCard<T> extends ImageCard<T>{
     protected T data;
     protected String name;
-    protected String xp;
+    protected int xp;
     protected Consumer<ChoreCard<T>> onClick;
     protected Image image;
     ImageView imageview;

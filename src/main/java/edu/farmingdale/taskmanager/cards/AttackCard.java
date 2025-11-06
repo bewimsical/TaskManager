@@ -1,15 +1,16 @@
 package edu.farmingdale.taskmanager.cards;
 
 import edu.farmingdale.taskmanager.BossRecord;
+import edu.farmingdale.taskmanager.Models.Bosses;
 
 import java.util.function.Consumer;
 
-public class AttackCard extends SmallChoreCard<BossRecord>{
+public class AttackCard extends SmallChoreCard<Bosses>{
 
-    public AttackCard(BossRecord data, Consumer<ChoreCard<BossRecord>> onClick) {
+    public AttackCard(Bosses data, Consumer<ChoreCard<Bosses>> onClick) {
         super(data, onClick);
-        this.name = data.name();
-        this.xp = data.xp();
+        this.name = data.getName();
+        this.xp = data.getXp();
     }
 
 }
