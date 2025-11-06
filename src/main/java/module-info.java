@@ -12,8 +12,6 @@ module edu.farmingdale.taskmanager {
     requires google.cloud.core;
     requires com.google.api.apicommon;
     requires javafx.graphics;
-    requires edu.farmingdale.taskmanager;
-
 
     opens edu.farmingdale.taskmanager to javafx.fxml;
     exports edu.farmingdale.taskmanager;
