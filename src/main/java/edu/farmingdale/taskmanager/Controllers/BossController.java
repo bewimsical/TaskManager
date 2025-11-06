@@ -1,6 +1,6 @@
 package edu.farmingdale.taskmanager.Controllers;
 
-import edu.farmingdale.taskmanager.Boss;
+import edu.farmingdale.taskmanager.BossRecord;
 import edu.farmingdale.taskmanager.cards.AttackCard;
 import edu.farmingdale.taskmanager.cards.BossCard;
 import edu.farmingdale.taskmanager.cards.ChoreCard;
@@ -11,8 +11,6 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
@@ -61,17 +59,17 @@ public class BossController implements Initializable {
 
         buttons = new Label[]{bountiesButton, vanquishedButton, failedButton};
 
-        Boss boss1 = new Boss("Monster!", "300", false);
-        Boss boss2 = new Boss("Monster TWO!", "500", false);
-        BossCard card = new BossCard(boss1, this::handleBossCardClick);
-        BossCard card2 = new BossCard(boss2,  this::handleBossCardClick);
+        BossRecord bossRecord1 = new BossRecord("Monster!", "300", false);
+        BossRecord bossRecord2 = new BossRecord("Monster TWO!", "500", false);
+        BossCard card = new BossCard(bossRecord1, this::handleBossCardClick);
+        BossCard card2 = new BossCard(bossRecord2,  this::handleBossCardClick);
 
         bossesContainer.getChildren().addAll(card.createView(), card2.createView());
 
-        Boss attack1 = new Boss("Attack!", "300", false);
-        Boss Attack2 = new Boss("Attack TWO!", "500", false);
-        Boss attack3 = new Boss("Attack THREE!", "300", false);
-        Boss Attack4 = new Boss("Attack FOUR!", "500", false);
+        BossRecord attack1 = new BossRecord("Attack!", "300", false);
+        BossRecord Attack2 = new BossRecord("Attack TWO!", "500", false);
+        BossRecord attack3 = new BossRecord("Attack THREE!", "300", false);
+        BossRecord Attack4 = new BossRecord("Attack FOUR!", "500", false);
         AttackCard card3 = new AttackCard(attack1, this::handleAttackCardClick);
         AttackCard card4 = new AttackCard(Attack2,  this::handleAttackCardClick);
         AttackCard card5 = new AttackCard(attack1, this::handleAttackCardClick);
@@ -83,17 +81,17 @@ public class BossController implements Initializable {
         healthBar.setProgress(1);
     }
 
-    private void handleBossCardClick(ChoreCard<Boss> clickedBoss){
-        Boss boss = clickedBoss.getData();
-        bossName.setText(boss.name());
+    private void handleBossCardClick(ChoreCard<BossRecord> clickedBoss){
+        BossRecord bossRecord = clickedBoss.getData();
+        bossName.setText(bossRecord.name());
 
 
     }
 
-    private void handleAttackCardClick(ChoreCard<Boss> clickedBoss){
+    private void handleAttackCardClick(ChoreCard<BossRecord> clickedBoss){
         clickedBoss.redraw();
-        Boss boss = clickedBoss.getData();
-        double damage = Double.parseDouble(boss.xp());
+        BossRecord bossRecord = clickedBoss.getData();
+        double damage = Double.parseDouble(bossRecord.xp());
         double next = Math.max(healthBar.getProgress() - (damage/health), 0);
         healthBar.setProgress(next);
 

@@ -1,6 +1,5 @@
 package edu.farmingdale.taskmanager.cards;
 
-import edu.farmingdale.taskmanager.Boss;
 import edu.farmingdale.taskmanager.TaskManagerApplication;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
