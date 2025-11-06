@@ -97,6 +97,11 @@
     -fx-font-size: 20px;
     -fx-text-fill: #472C01;
 }
+.small-party-card-name{
+    -fx-font-family: 'Inknut Antiqua Regular';
+    -fx-font-size: 24px;
+    -fx-text-fill: #472C01;
+}
 .chore-card-xp{
     -fx-font-family: 'Inknut Antiqua Regular';
     -fx-font-size: 16px;
@@ -158,3 +163,52 @@
 .profile-xp-bar .bar {
     -fx-background-insets: 3;
 }
+
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+/* Narrow vertical scrollbar */
+.scroll-pane .scroll-bar:vertical {
+    -fx-pref-width: 8px;
+    -fx-background-color: transparent;
+}
+
+/* Scrollbar track */
+.scroll-pane .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+
+/* Scrollbar thumb */
+.scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: rgba(134, 83, 2, 0.3);
+    -fx-background-insets: 2;
+    -fx-background-radius: 4;
+}
+
+.scroll-pane .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: rgba(134, 83, 2, 0.6);
+}
+
+.scroll-pane .scroll-bar:vertical .thumb:pressed {
+    -fx-background-color: #472C01;
+}
+
+/* Trick to hide the arrow buttons completely */
+.scroll-pane .scroll-bar .increment-button,
+.scroll-pane .scroll-bar .decrement-button {
+    -fx-pref-height: 0 !important;
+    -fx-max-height: 0 !important;
+    -fx-min-height: 0 !important;
+    -fx-padding: 0 !important;
+    -fx-shape: "";
+    -fx-background-color: transparent;
+    -fx-opacity: 0;
+}
+
+

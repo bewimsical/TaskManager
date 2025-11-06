@@ -48,18 +48,15 @@ public class BossController implements Initializable {
     @FXML
     private Label vanquishedButton;
 
-    @FXML
-    void createCustomBoss(MouseEvent event) {
+    private Label[] buttons;
 
-    }
 
-    @FXML
-    void toggleActive(MouseEvent event) {
-
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
+
+        buttons = new Label[]{bountiesButton, vanquishedButton, failedButton};
+
         Boss boss1 = new Boss("Monster!", "300", false);
         Boss boss2 = new Boss("Monster TWO!", "500", false);
         BossCard card = new BossCard(boss1, this::handleBossCardClick);
@@ -73,6 +70,26 @@ public class BossController implements Initializable {
 
     private void handleBossCardClick(Boss clickedBoss){
         bossName.setText(clickedBoss.name());
+    }
+
+    private void setActiveButton(Label button){
+
+
+
+    }
+
+    @FXML
+    void createCustomBoss(MouseEvent event) {
+
+    }
+
+    @FXML
+    void toggleActive(MouseEvent e) {
+        for(Label label:buttons){
+            label.getStyleClass().remove("active");
+        }
+        Label button = (Label) e.getSource();
+        button.getStyleClass().add("active");
     }
 
 }
