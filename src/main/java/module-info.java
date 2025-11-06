@@ -12,10 +12,13 @@ module edu.farmingdale.taskmanager {
     requires google.cloud.core;
     requires com.google.api.apicommon;
     requires javafx.graphics;
+    requires edu.farmingdale.taskmanager;
 
 
     opens edu.farmingdale.taskmanager to javafx.fxml;
     exports edu.farmingdale.taskmanager;
     exports edu.farmingdale.taskmanager.Controllers;
     opens edu.farmingdale.taskmanager.Controllers to javafx.fxml;
+    exports edu.farmingdale.taskmanager.cards;
+    opens edu.farmingdale.taskmanager.cards to javafx.fxml;
 }
