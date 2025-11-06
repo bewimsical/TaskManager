@@ -1,9 +1,6 @@
 package edu.farmingdale.taskmanager.Controllers;
 
-import edu.farmingdale.taskmanager.BossRecord;
 import edu.farmingdale.taskmanager.Models.Bosses;
-import edu.farmingdale.taskmanager.cards.AttackCard;
-import edu.farmingdale.taskmanager.cards.BossCard;
 import edu.farmingdale.taskmanager.cards.ChoreCard;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

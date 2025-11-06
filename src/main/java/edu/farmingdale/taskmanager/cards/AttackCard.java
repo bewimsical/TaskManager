@@ -1,6 +1,5 @@
 package edu.farmingdale.taskmanager.cards;
 
-import edu.farmingdale.taskmanager.BossRecord;
 import edu.farmingdale.taskmanager.Models.Bosses;
 
 import java.util.function.Consumer;
