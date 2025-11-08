@@ -22,6 +22,16 @@ public class User {
     private String profileUrl;
     private int level;
 
+    private User(UserBuilder userBuilder) {
+        this.username = userBuilder.username;
+        this.password = userBuilder.password;
+        this.email = userBuilder.email;
+        this.age = userBuilder.age;
+        this.adult = userBuilder.adult;
+        this.streak = userBuilder.streak;
+        this.xpBonus = userBuilder.xpBonus;
+        this.parties = userBuilder.parties;
+        this.friends = userBuilder.friends;
     public User() {
     }
     public User(String username, String password, String email, int age, boolean adult, int streak, double xpBonus, List<String> parties, List<String> friends, String profileUrl, int level) {
@@ -89,7 +99,6 @@ public class User {
         this.streak = streak;
     }
 
-
     public double getXpBonus() {
         return xpBonus;
     }
@@ -114,6 +123,69 @@ public class User {
         this.friends = friends;
     }
 
+    public static class UserBuilder {
+        private String username;
+        private String password;
+        private String email;
+        private int age;
+        private boolean adult;
+        private int streak;
+        private double xpBonus;
+        private List<String> parties;
+        private List<String> friends;
+
+        public UserBuilder() {
+
+        }
+
+        public UserBuilder username(String username) {
+            this.username = username;
+            return this;
+        }
+
+        public UserBuilder password(String password) {
+            this.password = password;
+            return this;
+        }
+
+        public UserBuilder email(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public UserBuilder age(int age) {
+            this.age = age;
+            return this;
+        }
+
+        public UserBuilder adult(boolean adult) {
+            this.adult = adult;
+            return this;
+        }
+
+        public UserBuilder streak(int streak) {
+            this.streak = streak;
+            return this;
+        }
+
+        public UserBuilder xpBonus(double xpBonus) {
+            this.xpBonus = xpBonus;
+            return this;
+        }
+
+        public UserBuilder parties(List<String> parties) {
+            this.parties = parties;
+            return this;
+        }
+
+        public UserBuilder friends(List<String> friends) {
+            this.friends = friends;
+            return this;
+        }
+
+        public User build() {
+            return new User(this);
+        }
 
 
 
