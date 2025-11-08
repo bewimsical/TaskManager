@@ -1,7 +1,9 @@
 package edu.farmingdale.taskmanager.Models;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class User {
     private String username;
@@ -14,13 +16,15 @@ public class User {
     private List<String> parties;
     private List<String> friends;
 
+    private Map<String, LinkedList<Bosses>> bosses;
+    private int vanquishedBossCount;
+    private int completedQuestCount;
     private String profileUrl;
-
+    private int level;
 
     public User() {
     }
-
-    public User(String username, String password, String email, int age, boolean adult, int streak, double xpBonus, List<String> parties, List<String> friends) {
+    public User(String username, String password, String email, int age, boolean adult, int streak, double xpBonus, List<String> parties, List<String> friends, String profileUrl, int level) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -30,6 +34,10 @@ public class User {
         this.xpBonus = xpBonus;
         this.parties = parties;
         this.friends = friends;
+
+
+        this.profileUrl = profileUrl;
+        this.level = level;
     }
 
 
@@ -115,5 +123,37 @@ public class User {
 
     public void setProfileUrl(String profileUrl) {
         this.profileUrl = profileUrl;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public Map<String, LinkedList<Bosses>> getBosses() {
+        return bosses;
+    }
+
+    public void setBosses(Map<String, LinkedList<Bosses>> bosses) {
+        this.bosses = bosses;
+    }
+
+    public int getVanquishedBossCount() {
+        return vanquishedBossCount;
+    }
+
+    public void setVanquishedBossCount(int vanquishedBossCount) {
+        this.vanquishedBossCount = vanquishedBossCount;
+    }
+
+    public int getCompletedQuestCount() {
+        return completedQuestCount;
+    }
+
+    public void setCompletedQuestCount(int completedQuestCount) {
+        this.completedQuestCount = completedQuestCount;
     }
 }

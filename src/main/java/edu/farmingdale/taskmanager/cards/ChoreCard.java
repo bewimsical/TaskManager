@@ -2,6 +2,7 @@ package edu.farmingdale.taskmanager.cards;
 
 import edu.farmingdale.taskmanager.TaskManagerApplication;
 import javafx.geometry.Insets;
+import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -23,6 +24,7 @@ public abstract class ChoreCard<T> extends ImageCard<T>{
         image = new Image(TaskManagerApplication.class.getResource("images/chore card.png").toExternalForm());
         imageview = new ImageView();
         this.onClick = onClick;
+        root.setCursor(Cursor.HAND);
         root.setOnMouseClicked(e -> onClick.accept(this));
     }
 

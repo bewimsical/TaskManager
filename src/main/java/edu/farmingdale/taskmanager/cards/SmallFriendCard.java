@@ -12,11 +12,11 @@ import javafx.scene.layout.VBox;
 
 public class SmallFriendCard extends ImageCard<User> {
 
-    String name;
+    String username;
 
     public SmallFriendCard(User data) {
         super(data);
-        this.name = data.getUsername();
+        this.username = data.getUsername();
     }
 
     @Override
@@ -34,7 +34,7 @@ public class SmallFriendCard extends ImageCard<User> {
         imageview.setFitWidth(183);
         imageview.setImage(image);
 
-        Label name = new Label(this.name);
+        Label name = new Label(this.username);
         name.getStyleClass().add("small-friend-card-name");
         name.setPadding(new Insets(8, 0, 10, 0));
 
