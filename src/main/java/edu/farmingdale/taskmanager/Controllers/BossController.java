@@ -1,5 +1,7 @@
 package edu.farmingdale.taskmanager.Controllers;
 
+import edu.farmingdale.taskmanager.BossFactory;
+import edu.farmingdale.taskmanager.FirestoreClient;
 import edu.farmingdale.taskmanager.Models.Bosses;
 import edu.farmingdale.taskmanager.cards.ChoreCard;
 import javafx.fxml.FXML;
@@ -67,6 +69,10 @@ public class BossController implements Initializable {
 
         health = 1600;
         healthBar.setProgress(1);
+
+        Bosses boss = BossFactory.generate("4");
+
+        FirestoreClient.setDocument(boss, "bosses", "boss4" );
     }
 
     private void handleBossCardClick(ChoreCard<Bosses> clickedBoss){
