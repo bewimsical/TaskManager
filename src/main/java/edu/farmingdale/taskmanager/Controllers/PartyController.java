@@ -41,7 +41,7 @@ public class PartyController implements Initializable {
 
         friendContainer.getChildren().addAll(card.createView(), card2.createView());
 
-        Party party1 = new Party("Party", "guild", "2", "2", "2");
+        Party party1 = new Party("Party", "Guild", "2", "2", "2");
 
         LargePartyCard pc = new LargePartyCard(party1);
 

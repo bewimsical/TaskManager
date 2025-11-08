@@ -107,7 +107,11 @@
     -fx-font-size: 32px;
     -fx-text-fill: #F8E5B2;
 }
-
+.large-party-card-name{
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+}
 .button-label.active{
     -fx-text-fill: #E5B515;
 }

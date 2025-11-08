@@ -27,7 +27,7 @@ public class SmallPartyCard extends ImageCard<Party>{
     @Override
     public Pane createView() {
         Image image;
-        if (type.equals("guild")) {
+        if (type.equals("guild") || type.equals("Guild")) {
             image = new Image(TaskManagerApplication.class.getResource("images/party card - guild.png").toExternalForm());
         } else {
             image = new Image(TaskManagerApplication.class.getResource("images/party card - alliance.png").toExternalForm());
