@@ -24,9 +24,22 @@ public class TaskManagerApplication extends Application {
         fstore = contxtFirebase.firebase();
         fauth = FirebaseAuth.getInstance();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(TaskManagerApplication.class.getResource("profile-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(TaskManagerApplication.class.getResource("party-view.fxml"));
         Parent root = fxmlLoader.load();
 
+        double baseWidth = 1440;
+        double baseHeight = 1024;
+
+        Pane wrapper = setup(root);
+        Scene scene = new Scene(wrapper, baseWidth, baseHeight);
+        scene.getStylesheets().add(getClass().getResource("styles/style.css").toExternalForm());
+        stage.setTitle("Hello!");
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    public static Pane setup(Parent root){
         // base dimensions
         double baseWidth = 1440;
         double baseHeight = 1024;
@@ -38,19 +51,19 @@ public class TaskManagerApplication extends Application {
         // Bind scale based on window size, maintaining aspect ratio
         DoubleBinding scaleBinding = Bindings.createDoubleBinding(() ->
                         Math.min(wrapper.getWidth() / baseWidth, wrapper.getHeight() / baseHeight),
-                        wrapper.widthProperty(),
-                        wrapper.heightProperty()
-                );
+                wrapper.widthProperty(),
+                wrapper.heightProperty()
+        );
         scaledGroup.scaleXProperty().bind(scaleBinding);
         scaledGroup.scaleYProperty().bind(scaleBinding);
 
         // Center content
         scaledGroup.layoutXProperty().bind(
                 Bindings.createDoubleBinding(() -> {
-                        double scale = scaledGroup.getScaleX();
-                        double scaledWidth = baseWidth * scale;
-                        double x = (wrapper.getWidth() - scaledWidth) / 2;
-                        return ((scaledWidth - baseWidth)/2) + x;
+                            double scale = scaledGroup.getScaleX();
+                            double scaledWidth = baseWidth * scale;
+                            double x = (wrapper.getWidth() - scaledWidth) / 2;
+                            return ((scaledWidth - baseWidth)/2) + x;
                         },
                         wrapper.widthProperty(),
                         wrapper.heightProperty(),
@@ -69,11 +82,7 @@ public class TaskManagerApplication extends Application {
                         scaleBinding
                 )
         );
-        Scene scene = new Scene(wrapper, baseWidth, baseHeight);
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
-        stage.show();
-
+        return wrapper;
     }
 
     public static void main(String[] args) {
