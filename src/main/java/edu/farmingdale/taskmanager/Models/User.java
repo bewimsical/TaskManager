@@ -1,18 +1,17 @@
 package edu.farmingdale.taskmanager.Models;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private final String username;
-    private final String password;
-    private final String email;
-    private final int age;
-    private final boolean adult;
-    private final int streak;
-    private final double xpBonus;
-    private final List<String> parties;
-    private final List<String> friends;
+    private String username;
+    private String password;
+    private String email;
+    private int age;
+    private boolean adult;
+    private int streak;
+    private double xpBonus;
+    private List<String> parties;
+    private List<String> friends;
 
 
     private User(UserBuilder userBuilder) {
@@ -32,40 +31,76 @@ public class User {
         return username;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public int getAge() {
         return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public boolean isAdult() {
         return adult;
     }
 
+    public void setAdult(boolean adult) {
+        this.adult = adult;
+    }
+
     public int getStreak() {
         return streak;
+    }
+
+    public void setStreak(int streak) {
+        this.streak = streak;
     }
 
     public double getXpBonus() {
         return xpBonus;
     }
 
+    public void setXpBonus(double xpBonus) {
+        this.xpBonus = xpBonus;
+    }
+
     public List<String> getParties() {
         return parties;
+    }
+
+    public void setParties(List<String> parties) {
+        this.parties = parties;
     }
 
     public List<String> getFriends() {
         return friends;
     }
 
+    public void setFriends(List<String> friends) {
+        this.friends = friends;
+    }
+
     public static class UserBuilder {
-        private final String username;
+        private String username;
         private String password;
         private String email;
         private int age;
@@ -75,8 +110,13 @@ public class User {
         private List<String> parties;
         private List<String> friends;
 
-        public UserBuilder(String username) {
+        public UserBuilder() {
+
+        }
+
+        public UserBuilder username(String username) {
             this.username = username;
+            return this;
         }
 
         public UserBuilder password(String password) {
