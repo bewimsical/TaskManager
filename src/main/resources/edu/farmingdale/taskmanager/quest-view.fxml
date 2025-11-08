@@ -388,12 +388,11 @@
                                                 </Label>
                                                 <StackPane prefHeight="150.0" prefWidth="200.0">
                                                     <children>
-                                                        <ImageView fx:id="questImageView" fitHeight="377.0" fitWidth="813.0" pickOnBounds="true" preserveRatio="true" />
-                                                        <ImageView fitHeight="377.0" fitWidth="813.0" layoutX="234.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                        <ImageView fx:id="questImageView" fitHeight="377.0" fitWidth="813.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@images/Frame%20-%20quest.png" />
-                                             </image>
-                                                        </ImageView>
+                                                <Image url="@images/MapBG.PNG" />
+                                             </image></ImageView>
+                                                        <ImageView fitHeight="377.0" fitWidth="813.0" layoutX="234.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
                                                     </children>
                                                     <VBox.margin>
                                                         <Insets top="15.0" />

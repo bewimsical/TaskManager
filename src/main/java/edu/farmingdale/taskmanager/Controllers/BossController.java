@@ -1,6 +1,11 @@
 package edu.farmingdale.taskmanager.Controllers;
 
+import edu.farmingdale.taskmanager.BossFactory;
+import edu.farmingdale.taskmanager.FirestoreClient;
+import edu.farmingdale.taskmanager.Models.Bosses;
+import edu.farmingdale.taskmanager.cards.ChoreCard;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
@@ -8,7 +13,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 
-public class BossController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class BossController implements Initializable {
 
     @FXML
     private FlowPane attacksContainer;
@@ -40,14 +48,68 @@ public class BossController {
     @FXML
     private Label vanquishedButton;
 
+    private Label[] buttons;
+
+    private double health;
+
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources){
+
+        buttons = new Label[]{bountiesButton, vanquishedButton, failedButton};
+
+
+        //loop through boss list here
+        bossesContainer.getChildren().addAll();
+
+
+        //loop through attack list here
+        attacksContainer.getChildren().addAll();
+
+        health = 1600;
+        healthBar.setProgress(1);
+
+        Bosses boss = BossFactory.generate("4");
+
+        FirestoreClient.setDocument(boss, "bosses", "boss4" );
+    }
+
+    private void handleBossCardClick(ChoreCard<Bosses> clickedBoss){
+        Bosses boss = clickedBoss.getData();
+        bossName.setText(boss.getName());
+
+
+    }
+
+    private void handleAttackCardClick(ChoreCard<Bosses> clickedBoss){
+        clickedBoss.redraw();
+        Bosses boss = clickedBoss.getData();
+        double damage = boss.getXp();
+        double next = Math.max(healthBar.getProgress() - (damage/health), 0);
+        healthBar.setProgress(next);
+
+        System.out.printf("""
+                Health: %f
+                Damage: %f
+                Next: %f
+                Progress Bar: %f
+                """, health, damage, next, healthBar.getProgress());
+
+    }
+
     @FXML
     void createCustomBoss(MouseEvent event) {
 
     }
 
     @FXML
-    void toggleActive(MouseEvent event) {
-
+    void toggleActive(MouseEvent e) {
+        for(Label label:buttons){
+            label.getStyleClass().remove("active");
+        }
+        Label button = (Label) e.getSource();
+        button.getStyleClass().add("active");
     }
 
 }
