@@ -181,7 +181,7 @@
                               </StackPane>
                               <ScrollPane hbarPolicy="NEVER" maxHeight="238.0" maxWidth="589.0" prefHeight="238.0" prefWidth="589.0">
                                  <content>
-                                    <VBox fx:id="partyCardContainer" maxWidth="587.0" prefHeight="300.0" prefWidth="586.0" spacing="10.0" />
+                                    <VBox fx:id="partyCardContainer" maxWidth="587.0" prefHeight="230.0" prefWidth="586.0" spacing="10.0" />
                                  </content>
                               </ScrollPane>
                            </children>
