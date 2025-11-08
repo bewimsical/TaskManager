@@ -3,6 +3,11 @@
     src: url('../fonts/InknutAntiqua-Regular.ttf');
 }
 
+.root{
+    -fx-font-family: 'Inknut Antiqua Regular';
+    -fx-text-fill: #472C01;
+}
+
 .bg{
     -fx-background-color: #281902;
     /*-fx-background-color: #472C01;*/
@@ -31,88 +36,78 @@
 }
 
 .menu-label{
-    -fx-font-family: 'Inknut Antiqua Regular';
     -fx-font-size: 16px;
     -fx-text-fill: #472C01;
 
 }
 .page-title{
-    -fx-font-family: 'Inknut Antiqua Regular';
     -fx-font-size: 48px;
     -fx-text-fill: #472C01;
 }
 .party-title, .streak-count{
-    -fx-font-family: 'Inknut Antiqua Regular';
     -fx-font-size: 40px;
     -fx-text-fill: #472C01;
 }
 .boss-name{
-    -fx-font-family: 'Inknut Antiqua Regular';
     -fx-font-size: 32px;
     -fx-text-fill: #472C01;
 }
 .attacks-label{
-    -fx-font-family: 'Inknut Antiqua Regular';
     -fx-font-size: 24px;
     -fx-text-fill: #472C01;
 }
 
 .profile-xp-values{
-    -fx-font-family: 'Inknut Antiqua Regular';
     -fx-font-size: 25px;
     -fx-text-fill: #472C01;
 }
 
 .username{
-    -fx-font-family: 'Inknut Antiqua Regular';
     -fx-font-size: 30px;
     -fx-text-fill: #F8E5B2;
 }
 .boss-categories{
-    -fx-font-family: 'Inknut Antiqua Regular';
     -fx-font-size: 24px;
     -fx-text-fill: #F8E5B2;
 }
 .profile-level{
-    -fx-font-family: 'Inknut Antiqua Regular';
     -fx-font-size: 24px;
     -fx-text-fill: #FFF;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 4, 0, 0, 2);
 
 }
 .streak-label{
-    -fx-font-family: 'Inknut Antiqua Regular';
     -fx-font-size: 16px;
     -fx-text-fill: #472C01;
 }
 
 .button-label{
-    -fx-font-family: 'Inknut Antiqua Regular';
     -fx-font-size: 24px;
     -fx-text-fill: #FFF;
 }
 
 .chore-card-name{
-    -fx-font-family: 'Inknut Antiqua Regular';
     -fx-font-size: 20px;
     -fx-text-fill: #472C01;
 }
-.small-party-card-name{
-    -fx-font-family: 'Inknut Antiqua Regular';
+.small-party-card-name, .large-friend-card-info{
     -fx-font-size: 24px;
     -fx-text-fill: #472C01;
 }
 .chore-card-xp{
-    -fx-font-family: 'Inknut Antiqua Regular';
     -fx-font-size: 16px;
-    -fx-text-fill: #472C01;
+
 }
 
 .small-friend-card-name{
-    -fx-font-family: 'Inknut Antiqua Regular';
     -fx-font-size: 16px;
     -fx-text-fill: #F8E5B2;
 }
+.large-friend-card-name{
+    -fx-font-size: 32px;
+    -fx-text-fill: #F8E5B2;
+}
+
 .button-label.active{
     -fx-text-fill: #E5B515;
 }

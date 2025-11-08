@@ -24,7 +24,7 @@ public class TaskManagerApplication extends Application {
         fstore = contxtFirebase.firebase();
         fauth = FirebaseAuth.getInstance();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(TaskManagerApplication.class.getResource("boss-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(TaskManagerApplication.class.getResource("party-view.fxml"));
         Parent root = fxmlLoader.load();
 
         double baseWidth = 1440;
