@@ -13,6 +13,7 @@ module edu.farmingdale.taskmanager {
     requires com.google.api.apicommon;
     requires javafx.graphics;
 
+
     opens edu.farmingdale.taskmanager to javafx.fxml;
     exports edu.farmingdale.taskmanager;
     exports edu.farmingdale.taskmanager.Controllers;

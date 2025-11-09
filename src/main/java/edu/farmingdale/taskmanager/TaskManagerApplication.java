@@ -5,6 +5,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import edu.farmingdale.taskmanager.Models.Bosses;
 import edu.farmingdale.taskmanager.Models.User;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.DoubleBinding;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,7 @@ import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -55,7 +57,7 @@ public class TaskManagerApplication extends Application {
 
 
 
-        FXMLLoader fxmlLoader = new FXMLLoader(TaskManagerApplication.class.getResource("party-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(TaskManagerApplication.class.getResource("profile-view.fxml"));
         Parent root = fxmlLoader.load();
 
         double baseWidth = 1440;
@@ -64,7 +66,7 @@ public class TaskManagerApplication extends Application {
         Pane wrapper = setup(root);
         Scene scene = new Scene(wrapper, baseWidth, baseHeight);
         scene.getStylesheets().add(getClass().getResource("styles/style.css").toExternalForm());
-        stage.setTitle("Hello!");
+        stage.setTitle("Chore Quest");
         stage.setScene(scene);
         stage.show();
 
@@ -116,7 +118,4 @@ public class TaskManagerApplication extends Application {
         return wrapper;
     }
 
-    public static void main(String[] args) {
-        launch();
-    }
 }

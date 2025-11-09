@@ -5,6 +5,7 @@ import edu.farmingdale.taskmanager.FirestoreClient;
 import edu.farmingdale.taskmanager.Models.Bosses;
 import edu.farmingdale.taskmanager.Models.User;
 import edu.farmingdale.taskmanager.Session;
+import edu.farmingdale.taskmanager.TaskManagerApplication;
 import edu.farmingdale.taskmanager.cards.AttackCard;
 import edu.farmingdale.taskmanager.cards.BossCard;
 import edu.farmingdale.taskmanager.cards.ChoreCard;
@@ -12,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
@@ -70,13 +72,6 @@ public class BossController implements Initializable {
 
         buttons = new Label[]{bountiesButton, vanquishedButton, failedButton};
 
-
-        //loop through boss list here
-
-
-
-
-
         health = 1200;
         healthBar.setProgress(1);
 
@@ -87,6 +82,11 @@ public class BossController implements Initializable {
             bossesContainer.getChildren().add(c.createView());
 
         }
+        Bosses currentBoss = bosses.get("Bounties").getFirst();
+
+        bossName.setText(currentBoss.getName());
+        Image image = new Image(TaskManagerApplication.class.getResource("images/"+currentBoss.getDirtyImageUrl()).toExternalForm());
+        bossImageView.setImage(image);
 
         Bosses b1 = BossFactory.generate("Attack1");
         Bosses b2 =BossFactory.generate("Attack2");
