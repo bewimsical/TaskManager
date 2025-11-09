@@ -21,6 +21,7 @@ public class User {
     private int completedQuestCount;
     private String profileUrl;
     private int level;
+    private int xp;
 
 
     public User() {
@@ -36,6 +37,12 @@ public class User {
         this.xpBonus = userBuilder.xpBonus;
         this.parties = userBuilder.parties;
         this.friends = userBuilder.friends;
+        this.bosses = userBuilder.bosses;
+        this.vanquishedBossCount = userBuilder.vanquishedBossCount;
+        this.completedQuestCount = userBuilder.completedQuestCount;
+        this.profileUrl = userBuilder.profileUrl;
+        this.level = userBuilder.level;
+        this.xp = userBuilder.xp;
 
     }
 
@@ -151,6 +158,14 @@ public class User {
         this.completedQuestCount = completedQuestCount;
     }
 
+    public int getXp() {
+        return xp;
+    }
+
+    public void setXp(int xp) {
+        this.xp = xp;
+    }
+
 
     public static class UserBuilder {
         private String username;
@@ -162,6 +177,13 @@ public class User {
         private double xpBonus;
         private List<String> parties;
         private List<String> friends;
+
+        private Map<String, LinkedList<Bosses>> bosses;
+        private int vanquishedBossCount;
+        private int completedQuestCount;
+        private String profileUrl;
+        private int level;
+        private int xp;
 
         public UserBuilder() {
 
@@ -211,6 +233,36 @@ public class User {
             this.friends = friends;
             return this;
         }
+
+
+        public UserBuilder bosses(Map<String, LinkedList<Bosses>> bosses) {
+            this.bosses = bosses;
+            return this;
+        }
+
+        public UserBuilder vanquishedBossCount(int vanquishedBossCount) {
+            this.vanquishedBossCount = vanquishedBossCount;
+            return this;
+        }
+
+        public UserBuilder completedQuestCount(int completedQuestCount) {
+            this.completedQuestCount = completedQuestCount;
+            return this;
+        }
+
+        public UserBuilder profileUrl(String profileUrl) {
+            this.profileUrl = profileUrl;
+            return this;
+        }
+        public UserBuilder level(int level) {
+            this.level = level;
+            return this;
+        }
+        public UserBuilder xp(int xp) {
+            this.xp = xp;
+            return this;
+        }
+
 
         public User build() {
             return new User(this);
