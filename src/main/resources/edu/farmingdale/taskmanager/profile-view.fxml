@@ -4,8 +4,12 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -47,7 +51,7 @@
                               </StackPane>
                               <VBox prefHeight="328.0" prefWidth="325.0">
                                  <children>
-                                    <StackPane alignment="TOP_LEFT" prefHeight="150.0" prefWidth="200.0">
+                                    <StackPane alignment="TOP_LEFT" prefHeight="39.0" prefWidth="303.0">
                                        <VBox.margin>
                                           <Insets top="39.0" />
                                        </VBox.margin>
@@ -81,6 +85,54 @@
                                              </padding></Label>
                                        </children>
                                     </StackPane>
+                                    <AnchorPane prefHeight="57.0" prefWidth="303.0">
+                                       <children>
+                                          <StackPane alignment="TOP_LEFT" layoutX="15.0" prefHeight="65.0" prefWidth="228.0" fx:id="xpBarContainer">
+                                             <children>
+                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f5902" height="38.0" stroke="BLACK" strokeType="INSIDE" width="228.0" />
+                                                <ProgressBar prefHeight="30.0" prefWidth="220.0" progress="0.4" styleClass="profile-xp-bar" fx:id="xpBar">
+                                                   <StackPane.margin>
+                                                      <Insets left="4.0" top="4.0" />
+                                                   </StackPane.margin></ProgressBar>
+                                             </children>
+                                             <padding>
+                                                <Insets top="13.5" />
+                                             </padding>
+                                          </StackPane>
+                                          <StackPane layoutX="230.0" prefHeight="42.0" prefWidth="48.0">
+                                             <children>
+                                                <ImageView fitHeight="62.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@images/xp.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label fx:id="levelLabel" styleClass="profile-level" text="150" />
+                                             </children>
+                                          </StackPane>
+                                       </children>
+                                    </AnchorPane>
+                                    <HBox alignment="CENTER">
+                                       <children>
+                                          <Label fx:id="currentXp" styleClass="profile-xp-values" text="0">
+                                             <padding>
+                                                <Insets bottom="-20.0" top="-20.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label styleClass="profile-xp-values" text="/">
+                                             <padding>
+                                                <Insets bottom="-20.0" top="-20.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label fx:id="levelXp" styleClass="profile-xp-values" text="1000">
+                                             <padding>
+                                                <Insets bottom="-20.0" top="-20.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="-10.0" />
+                                       </VBox.margin>
+                                    </HBox>
                                  </children>
                               </VBox>
                            </children>
@@ -117,7 +169,7 @@
                                           </LinearGradient>
                                        </fill>
                                     </Rectangle>
-                                    <Label fx:id="username1" alignment="CENTER" prefHeight="70.0" prefWidth="604.0" styleClass="username" text="Parties" textAlignment="CENTER">
+                                    <Label alignment="CENTER" prefHeight="70.0" prefWidth="604.0" styleClass="username" text="Parties" textAlignment="CENTER">
                                        <padding>
                                           <Insets left="5.0" top="-8.0" />
                                        </padding>
@@ -127,6 +179,11 @@
                                     <Insets top="10.0" />
                                  </VBox.margin>
                               </StackPane>
+                              <ScrollPane hbarPolicy="NEVER" maxHeight="238.0" maxWidth="589.0" prefHeight="238.0" prefWidth="589.0">
+                                 <content>
+                                    <VBox fx:id="partyCardContainer" maxWidth="587.0" prefHeight="300.0" prefWidth="586.0" spacing="10.0" />
+                                 </content>
+                              </ScrollPane>
                            </children>
                         </VBox>
                         <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="338.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="599.0" />
@@ -164,7 +221,7 @@
                                           </LinearGradient>
                                        </fill>
                                     </Rectangle>
-                                    <Label fx:id="username11" alignment="CENTER" prefHeight="70.0" prefWidth="604.0" styleClass="username" text="Friends" textAlignment="CENTER">
+                                    <Label alignment="CENTER" prefHeight="70.0" prefWidth="604.0" styleClass="username" text="Friends" textAlignment="CENTER">
                                        <padding>
                                           <Insets left="5.0" top="-8.0" />
                                        </padding>
@@ -174,6 +231,11 @@
                                     <Insets top="10.0" />
                                  </VBox.margin>
                               </StackPane>
+                              <ScrollPane hbarPolicy="NEVER" maxHeight="238.0" maxWidth="589.0" prefHeight="238.0" prefWidth="589.0">
+                                 <content>
+                                    <FlowPane fx:id="friendCardContainer" hgap="10.0" maxWidth="586.0" prefHeight="230.0" prefWidth="586.0" prefWrapLength="586.0" vgap="10.0" />
+                                 </content>
+                              </ScrollPane>
                            </children>
                         </VBox>
                         <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="338.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="599.0" />
@@ -193,11 +255,11 @@
                      <children>
                         <HBox alignment="TOP_CENTER" maxHeight="103.0" maxWidth="734.0" prefHeight="103.0" prefWidth="734.0" styleClass="container">
                            <children>
-                              <StackPane prefHeight="85.0" prefWidth="169.0">
+                              <StackPane onMouseClicked="#showAll" prefHeight="43.0" prefWidth="169.0">
                                  <children>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5d3a01" height="85.0" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="169.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f5902" height="75.0" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="159.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" height="65.0" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="149.0">
+                                    <Rectangle fx:id="allButton" arcHeight="5.0" arcWidth="5.0" fill="#5d3a01" height="85.0" onMouseClicked="#showAll" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="169.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f5902" height="75.0" mouseTransparent="true" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="159.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" height="65.0" mouseTransparent="true" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="149.0">
                                        <fill>
                                           <LinearGradient endX="1.0">
                                              <stops>
@@ -225,7 +287,7 @@
                                           </LinearGradient>
                                        </fill>
                                     </Rectangle>
-                                    <Label alignment="CENTER" prefHeight="65.0" prefWidth="149.0" text="All">
+                                    <Label fx:id="allLabel" alignment="CENTER" mouseTransparent="true" prefHeight="65.0" prefWidth="149.0" text="All">
                                        <styleClass>
                                           <String fx:value="button-label" />
                                           <String fx:value="active" />
@@ -239,7 +301,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </StackPane>
-                              <StackPane prefHeight="85.0" prefWidth="169.0">
+                              <StackPane onMouseClicked="#showRituals" prefHeight="85.0" prefWidth="169.0">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5d3a01" height="85.0" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="169.0" />
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f5902" height="75.0" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="159.0" />
@@ -271,7 +333,7 @@
                                           </LinearGradient>
                                        </fill>
                                     </Rectangle>
-                                    <Label alignment="CENTER" prefHeight="65.0" prefWidth="149.0" styleClass="button-label" text="Rituals" />
+                                    <Label fx:id="ritualsLabel" alignment="CENTER" prefHeight="65.0" prefWidth="149.0" styleClass="button-label" text="Rituals" />
                                  </children>
                                  <padding>
                                     <Insets left="10.0" />
@@ -280,7 +342,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </StackPane>
-                              <StackPane prefHeight="85.0" prefWidth="169.0">
+                              <StackPane fx:id="questsButton" onMouseClicked="#showQuests" prefHeight="85.0" prefWidth="169.0">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5d3a01" height="85.0" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="169.0" />
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f5902" height="75.0" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="159.0" />
@@ -312,7 +374,7 @@
                                           </LinearGradient>
                                        </fill>
                                     </Rectangle>
-                                    <Label alignment="CENTER" prefHeight="65.0" prefWidth="149.0" styleClass="button-label" text="Quests" />
+                                    <Label fx:id="questsLabel" alignment="CENTER" prefHeight="65.0" prefWidth="149.0" styleClass="button-label" text="Quests" />
                                  </children>
                                  <padding>
                                     <Insets left="10.0" />
@@ -321,7 +383,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </StackPane>
-                              <StackPane prefHeight="85.0" prefWidth="169.0">
+                              <StackPane fx:id="bossesButton" onMouseClicked="#showBosses" prefHeight="85.0" prefWidth="169.0">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5d3a01" height="85.0" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="169.0" />
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f5902" height="75.0" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="159.0" />
@@ -353,7 +415,7 @@
                                           </LinearGradient>
                                        </fill>
                                     </Rectangle>
-                                    <Label alignment="CENTER" prefHeight="65.0" prefWidth="149.0" styleClass="button-label" text="Bosses" />
+                                    <Label fx:id="bossesLabel" alignment="CENTER" prefHeight="65.0" prefWidth="149.0" styleClass="button-label" text="Bosses" />
                                  </children>
                                  <padding>
                                     <Insets left="10.0" />
@@ -399,7 +461,7 @@
                                           </LinearGradient>
                                        </fill>
                                     </Rectangle>
-                                    <Label fx:id="username12" alignment="CENTER" prefHeight="70.0" prefWidth="734.0" styleClass="username" text="Statistics" textAlignment="CENTER">
+                                    <Label alignment="CENTER" prefHeight="70.0" prefWidth="734.0" styleClass="username" text="Statistics" textAlignment="CENTER">
                                        <padding>
                                           <Insets left="5.0" top="-8.0" />
                                        </padding>
@@ -411,7 +473,7 @@
                               </StackPane>
                            </children>
                         </VBox>
-                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="901.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="739.0" />
+                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="901.0" mouseTransparent="true" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="739.0" />
                      </children>
                   </StackPane>
                </children>

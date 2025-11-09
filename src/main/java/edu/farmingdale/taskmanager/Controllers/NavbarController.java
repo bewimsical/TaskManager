@@ -1,5 +1,6 @@
 package edu.farmingdale.taskmanager.Controllers;
 
+import edu.farmingdale.taskmanager.TaskManagerApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -8,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
@@ -58,10 +60,13 @@ public class NavbarController {
 
     private static void switchScene(Object source, String fxmlFile) {
         try {
-            Parent root = FXMLLoader.load(NavbarController.class.getResource(fxmlFile));
+            Parent root = FXMLLoader.load(TaskManagerApplication.class.getResource(fxmlFile));
+            Pane wrapper = TaskManagerApplication.setup(root);
             Stage stage = (Stage)((Node)source).getScene().getWindow();
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add(NavbarController.class.getResource("styles/style.css").toExternalForm());
+            double oldWidth = ((Node)source).getScene().getWidth();
+            double oldHeight = ((Node)source).getScene().getHeight();
+            Scene scene = new Scene(wrapper, oldWidth, oldHeight);
+            scene.getStylesheets().add(TaskManagerApplication.class.getResource("styles/style.css").toExternalForm());
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -76,27 +81,27 @@ public class NavbarController {
 
     @FXML
     void goBosses(MouseEvent event) {
-
+        switchScene(event.getSource(), "boss-view.fxml");
     }
 
     @FXML
     void goHome(MouseEvent event) {
-        switchScene(event.getSource(), "hello-view.fxml");
+        switchScene(event.getSource(), "profile-view.fxml");
     }
 
     @FXML
     void goParty(MouseEvent event) {
-
+        switchScene(event.getSource(), "party-view.fxml");
     }
 
     @FXML
     void goQuests(MouseEvent event) {
-
+        switchScene(event.getSource(), "quest-view.fxml");
     }
 
     @FXML
     void goRituals(MouseEvent event) {
-
+        switchScene(event.getSource(), "ritual-view.fxml");
     }
 
     @FXML
