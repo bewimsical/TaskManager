@@ -79,7 +79,7 @@
                                                 </LinearGradient>
                                              </fill>
                                           </Rectangle>
-                                          <Label fx:id="username" prefHeight="35.0" prefWidth="303.0" styleClass="username" text="HazelTheNut">
+                                          <Label fx:id="username" prefHeight="35.0" prefWidth="303.0" styleClass="username" text="Username">
                                              <padding>
                                                 <Insets left="5.0" top="-8.0" />
                                              </padding></Label>
@@ -181,7 +181,7 @@
                               </StackPane>
                               <ScrollPane hbarPolicy="NEVER" maxHeight="238.0" maxWidth="589.0" prefHeight="238.0" prefWidth="589.0">
                                  <content>
-                                    <VBox fx:id="partyCardContainer" maxWidth="587.0" prefHeight="300.0" prefWidth="586.0" spacing="10.0" />
+                                    <VBox fx:id="partyCardContainer" maxWidth="587.0" prefHeight="230.0" prefWidth="586.0" spacing="10.0" />
                                  </content>
                               </ScrollPane>
                            </children>

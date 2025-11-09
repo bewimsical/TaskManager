@@ -2,6 +2,7 @@ package edu.farmingdale.taskmanager.Controllers;
 
 import edu.farmingdale.taskmanager.Models.User;
 import edu.farmingdale.taskmanager.Party;
+import edu.farmingdale.taskmanager.Session;
 import edu.farmingdale.taskmanager.cards.SmallFriendCard;
 import edu.farmingdale.taskmanager.cards.SmallPartyCard;
 import javafx.fxml.FXML;
@@ -76,6 +77,8 @@ public class ProfileController implements Initializable {
 
     private Label[] buttons;
 
+    User current = Session.getInstance().getUser();
+
     @Override
     public void initialize(URL location, ResourceBundle resources){
         buttons = new Label[]{allLabel, ritualsLabel, questsLabel, bossesLabel};
@@ -122,6 +125,11 @@ public class ProfileController implements Initializable {
 
 
             friendCardContainer.getChildren().add(f.createView());
+
+        username.setText(current.getUsername());
+        levelLabel.setText(String.valueOf(current.getLevel()));
+        currentXp.setText(String.valueOf(current.getXp()));
+
 
 
         }

@@ -21,6 +21,11 @@ public class User {
     private int completedQuestCount;
     private String profileUrl;
     private int level;
+    private int xp;
+
+
+    public User() {
+    }
 
     private User(UserBuilder userBuilder) {
         this.username = userBuilder.username;
@@ -32,22 +37,13 @@ public class User {
         this.xpBonus = userBuilder.xpBonus;
         this.parties = userBuilder.parties;
         this.friends = userBuilder.friends;
-    public User() {
-    }
-    public User(String username, String password, String email, int age, boolean adult, int streak, double xpBonus, List<String> parties, List<String> friends, String profileUrl, int level) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.age = age;
-        this.adult = adult;
-        this.streak = streak;
-        this.xpBonus = xpBonus;
-        this.parties = parties;
-        this.friends = friends;
+        this.bosses = userBuilder.bosses;
+        this.vanquishedBossCount = userBuilder.vanquishedBossCount;
+        this.completedQuestCount = userBuilder.completedQuestCount;
+        this.profileUrl = userBuilder.profileUrl;
+        this.level = userBuilder.level;
+        this.xp = userBuilder.xp;
 
-
-        this.profileUrl = profileUrl;
-        this.level = level;
     }
 
 
@@ -122,6 +118,54 @@ public class User {
     public void setFriends(List<String> friends) {
         this.friends = friends;
     }
+    public String getProfileUrl() {
+        return profileUrl;
+    }
+
+    public void setProfileUrl(String profileUrl) {
+        this.profileUrl = profileUrl;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public Map<String, LinkedList<Bosses>> getBosses() {
+        return bosses;
+    }
+
+    public void setBosses(Map<String, LinkedList<Bosses>> bosses) {
+        this.bosses = bosses;
+    }
+
+    public int getVanquishedBossCount() {
+        return vanquishedBossCount;
+    }
+
+    public void setVanquishedBossCount(int vanquishedBossCount) {
+        this.vanquishedBossCount = vanquishedBossCount;
+    }
+
+    public int getCompletedQuestCount() {
+        return completedQuestCount;
+    }
+
+    public void setCompletedQuestCount(int completedQuestCount) {
+        this.completedQuestCount = completedQuestCount;
+    }
+
+    public int getXp() {
+        return xp;
+    }
+
+    public void setXp(int xp) {
+        this.xp = xp;
+    }
+
 
     public static class UserBuilder {
         private String username;
@@ -133,6 +177,13 @@ public class User {
         private double xpBonus;
         private List<String> parties;
         private List<String> friends;
+
+        private Map<String, LinkedList<Bosses>> bosses;
+        private int vanquishedBossCount;
+        private int completedQuestCount;
+        private String profileUrl;
+        private int level;
+        private int xp;
 
         public UserBuilder() {
 
@@ -183,49 +234,40 @@ public class User {
             return this;
         }
 
+
+        public UserBuilder bosses(Map<String, LinkedList<Bosses>> bosses) {
+            this.bosses = bosses;
+            return this;
+        }
+
+        public UserBuilder vanquishedBossCount(int vanquishedBossCount) {
+            this.vanquishedBossCount = vanquishedBossCount;
+            return this;
+        }
+
+        public UserBuilder completedQuestCount(int completedQuestCount) {
+            this.completedQuestCount = completedQuestCount;
+            return this;
+        }
+
+        public UserBuilder profileUrl(String profileUrl) {
+            this.profileUrl = profileUrl;
+            return this;
+        }
+        public UserBuilder level(int level) {
+            this.level = level;
+            return this;
+        }
+        public UserBuilder xp(int xp) {
+            this.xp = xp;
+            return this;
+        }
+
+
         public User build() {
             return new User(this);
         }
 
 
-
-    public String getProfileUrl() {
-        return profileUrl;
-    }
-
-    public void setProfileUrl(String profileUrl) {
-        this.profileUrl = profileUrl;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
-    public Map<String, LinkedList<Bosses>> getBosses() {
-        return bosses;
-    }
-
-    public void setBosses(Map<String, LinkedList<Bosses>> bosses) {
-        this.bosses = bosses;
-    }
-
-    public int getVanquishedBossCount() {
-        return vanquishedBossCount;
-    }
-
-    public void setVanquishedBossCount(int vanquishedBossCount) {
-        this.vanquishedBossCount = vanquishedBossCount;
-    }
-
-    public int getCompletedQuestCount() {
-        return completedQuestCount;
-    }
-
-    public void setCompletedQuestCount(int completedQuestCount) {
-        this.completedQuestCount = completedQuestCount;
     }
 }
