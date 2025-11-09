@@ -1,82 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.image.ImageView?> <StackPane alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" styleClass="bg" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.SettingsController">
-    <children>
-        <fx:include source="navbar-view.fxml" />
+<?import javafx.scene.layout.StackPane?>
 
-        <VBox>
-            <StackPane.margin>
-                <Insets left="97.0" />
-            </StackPane.margin>
-            <children>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="edu.farmingdale.taskmanager.Controllers.SettingsController"
+            prefWidth="900" prefHeight="600">
 
-                <StackPane>
-                    <VBox.margin>
-                        <Insets top="5.0" />
-                    </VBox.margin>
-                    <children>
-                        <HBox alignment="CENTER" maxHeight="63.0" maxWidth="1328.0" prefHeight="63.0" prefWidth="1328.0" styleClass="container">
-                            <children>
-                                <Label maxHeight="63.0" styleClass="page-title" text="Settings">
-                                    <padding>
-                                        <Insets bottom="-31.5" top="-31.5" />
-                                    </padding>
-                                </Label>
-                            </children>
-                        </HBox>
-                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="73.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="1338.0" />
-                    </children>
-                </StackPane>
+    <left>
+        <VBox spacing="15" style="-fx-background-color: #E1C699;" prefWidth="220" alignment="TOP_CENTER">
+            <padding><Insets top="25" left="10" right="10" bottom="10"/></padding>
 
-                <VBox alignment="CENTER" maxWidth="1338.0" prefHeight="941.0" prefWidth="1338.0">
-                    <children>
-                        <StackPane>
-                            <children>
-                                <VBox maxHeight="931.0" prefHeight="931.0" styleClass="container">
-                                    <children>
-
-                                        <GridPane alignment="TOP_CENTER" hgap="50.0" vgap="40.0">
-                                            <VBox.margin>
-                                                <Insets top="80.0" bottom="80.0" />
-                                            </VBox.margin>
-
-                                            <Button fx:id="profileButton" onAction="#handleProfileClick" styleClass="settings-tab-button" text="Profile" GridPane.rowIndex="0" GridPane.columnIndex="0" />
-                                            <Button fx:id="gameSettingsButton" onAction="#handleGameSettingsClick" styleClass="settings-tab-button" text="Game Settings" GridPane.rowIndex="0" GridPane.columnIndex="1" />
-                                            <Button fx:id="soundSettingsButton" onAction="#handleSoundSettingsClick" styleClass="settings-tab-button" text="Sound Settings" GridPane.rowIndex="0" GridPane.columnIndex="2" />
-
-                                            <Button fx:id="accountSecurityButton" onAction="#handleAccountSecurityClick" styleClass="settings-tab-button" text="Account Security" GridPane.rowIndex="1" GridPane.columnIndex="0" />
-                                            <Button fx:id="parentalControlsButton" onAction="#handleParentalControlsClick" styleClass="settings-tab-button" text="Parental Controls" GridPane.rowIndex="1" GridPane.columnIndex="1" />
-                                            <Button fx:id="deactivateAccountButton" onAction="#handleDeactivateAccountClick" styleClass="settings-tab-button-red" text="Deactivate Account" GridPane.rowIndex="1" GridPane.columnIndex="2" />
-
-                                            <Button fx:id="logoutButton" onAction="#handleLogoutClick" styleClass="settings-tab-button" text="Logout" GridPane.rowIndex="2" GridPane.columnIndex="1" />
-
-                                        </GridPane>
-
-                                        <StackPane fx:id="contentPane" VBox.vgrow="ALWAYS">
-                                        </StackPane>
-
-                                    </children>
-                                </VBox>
-
-                                <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="941.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="1338.0" />
-                            </children>
-                        </StackPane>
-                    </children>
-                    <VBox.margin>
-                        <Insets top="5.0" />
-                    </VBox.margin>
-                </VBox>
-            </children>
+            <Label text="⚔️ Back to Main Page" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+            <Button text="Profile" fx:id="profileBtn" onAction="#openProfile"/>
+            <Button text="Game Settings" fx:id="gameBtn" onAction="#openGameSettings"/>
+            <Button text="Sound Settings" fx:id="soundBtn" onAction="#openSoundSettings"/>
+            <Button text="Account Security" fx:id="securityBtn" onAction="#openSecurity"/>
+            <Button text="Deactivate Account" fx:id="deactivateBtn" onAction="#openDeactivate"/>
+            <Button text="Parental Controls" fx:id="parentalBtn" onAction="#openParental"/>
+            <Button text="Logout" fx:id="logoutBtn" onAction="#logout"/>
         </VBox>
-    </children>
-</StackPane>
+    </left>
+
+    <center>
+        <StackPane fx:id="contentArea" style="-fx-background-color: #CBB186;">
+            <Label text="Select a setting to view details" style="-fx-font-size: 18; -fx-text-fill: #3B2E1D;"/>
+        </StackPane>
+    </center>
+
+</BorderPane>
+

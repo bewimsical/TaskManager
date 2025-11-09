@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'Inknut Antiqua Regular';
+    src: url('fonts/InknutAntiqua-Regular.ttf');
+}
+
+.bg {
+    -fx-background-color: #D2B48C;
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+.tool-bar{
+    -fx-background-color: #3C2E2A;
+    -fx-padding: 10;
+}
+.tool-bar:hover{
+    -fx-background-color: #3C2E2A;
+    -fx-background-radius: 5;
+}
+.nav-panel{
+    -fx-background-color: #3C2E2A;
+    -fx-padding: 15;
+    -fx-spacing:15;
+}
+.content-panel{
+    -fx-background-color: #5D433A;
+    -fx-padding: 20;
+    -fx-border-color: #A0836F;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-width: 2;
+}
+.label{
+    -fx-text-fill: #EEDDCC;
+    -fx-font-family: 'Inknut Antiqua Regular';
+}
+.settings-tab-button {
+    -fx-background-color: #2C3E50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-padding: 8 16 8 16;
+}
+
+.settings-tab-button:hover {
+    -fx-background-color: #34495E;
+}
+
+.settings-tab-button-red {
+}
+
+.settings-card {
+}

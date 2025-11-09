@@ -1,26 +1,58 @@
 package edu.farmingdale.taskmanager.Controllers;
 
-import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.layout.StackPane;
+import java.io.IOException;
 
 public class SettingsController {
-    public void handleProfileClick(ActionEvent event) {
+
+    @FXML
+    private StackPane contentArea;
+
+    private void loadPage(String fxmlFile) {
+        try {
+            Node node = FXMLLoader.load(getClass().getResource("/edu/farmingdale/taskmanager/" + fxmlFile));
+            contentArea.getChildren().setAll(node);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void handleSoundSettingsClick(ActionEvent actionEvent) {
+    @FXML
+    private void openProfile() {
+        loadPage("profile-view.fxml");
     }
 
-    public void handleParentalControlsClick(ActionEvent actionEvent) {
+    @FXML
+    private void openGameSettings() {
+        loadPage("game-view.fxml");
     }
 
-    public void handleLogoutClick(ActionEvent actionEvent) {
+    @FXML
+    private void openSoundSettings() {
+        loadPage("sound-view.fxml");
     }
 
-    public void handleGameSettingsClick(ActionEvent actionEvent) {
+    @FXML
+    private void openSecurity() {
+        loadPage("security-view.fxml");
     }
 
-    public void handleAccountSecurityClick(ActionEvent actionEvent) {
+    @FXML
+    private void openDeactivate() {
+        loadPage("deactivate-view.fxml");
     }
 
-    public void handleDeactivateAccountClick(ActionEvent actionEvent) {
+    @FXML
+    private void openParental() {
+        loadPage("parental-view.fxml");
+    }
+
+    @FXML
+    private void logout() {
+        System.out.println("Logging out...");
+
     }
 }

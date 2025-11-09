@@ -113,6 +113,14 @@ public class NavbarController {
     void logout(MouseEvent event) {
 
     }
+    @FXML
+    private void handleSettingsClick() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/farmingdale/taskmanager/views/settings-view.fxml"));
+        Parent settingsRoot = loader.load();
+
+
+    }
+
 
 }
 
