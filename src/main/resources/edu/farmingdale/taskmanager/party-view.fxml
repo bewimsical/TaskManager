@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -47,7 +48,7 @@
                                   <children>
                                       <VBox maxHeight="601.0" maxWidth="436.0" prefHeight="601.0" prefWidth="436.0" styleClass="container">
                                           <children>
-                                              <StackPane alignment="TOP_LEFT" prefHeight="601.0" prefWidth="436.0">
+                                              <StackPane alignment="TOP_LEFT" onMouseClicked="#displayFriends" prefHeight="18.0" prefWidth="436.0">
                                                   <children>
                                                       <Rectangle height="61.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="436.0">
                                                           <fill>
@@ -72,7 +73,7 @@
                                                               </LinearGradient>
                                                           </fill>
                                                       </Rectangle>
-                                                      <Label fx:id="username1" alignment="CENTER" prefHeight="70.0" prefWidth="436.0" styleClass="username" text="All Friends" textAlignment="CENTER">
+                                                      <Label alignment="CENTER" prefHeight="70.0" prefWidth="436.0" styleClass="username" text="All Friends" textAlignment="CENTER">
                                                           <padding>
                                                               <Insets left="5.0" top="-8.0" />
                                                           </padding>
@@ -82,6 +83,14 @@
                                                       <Insets top="10.0" />
                                                   </VBox.margin>
                                               </StackPane>
+                                    <ScrollPane hbarPolicy="NEVER" prefHeight="523.0" prefWidth="436.0">
+                                       <content>
+                                          <VBox fx:id="partyContainer" prefHeight="200.0" prefWidth="100.0">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding></VBox>
+                                       </content>
+                                    </ScrollPane>
                                           </children>
                                       </VBox>
                                       <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="611.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="446.0" />
@@ -119,7 +128,7 @@
                                                 </LinearGradient>
                                              </fill>
                                           </Rectangle>
-                                          <Label fx:id="username11" alignment="CENTER" prefHeight="70.0" prefWidth="436.0" styleClass="username" text="Find Friends" textAlignment="CENTER">
+                                          <Label alignment="CENTER" prefHeight="70.0" prefWidth="436.0" styleClass="username" text="Find Friends" textAlignment="CENTER">
                                              <padding>
                                                 <Insets left="5.0" top="-8.0" />
                                              </padding>
@@ -137,6 +146,11 @@
                                           <Insets left="45.0" />
                                        </padding>
                                     </TextField>
+                                    <ScrollPane hbarPolicy="NEVER">
+                                       <content>
+                                          <VBox fx:id="searchContainer" prefHeight="200.0" prefWidth="100.0" />
+                                       </content>
+                                    </ScrollPane>
                                  </children>
                               </VBox>
                               <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="330.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="446.0" />
@@ -153,11 +167,20 @@
                                   <children>
                                       <VBox maxHeight="931.0" maxWidth="882.0" prefHeight="931.0" prefWidth="882.0" styleClass="container">
                                           <children>
-                                                <Label fx:id="username12" alignment="CENTER" prefHeight="70.0" prefWidth="882.0" styleClass="party-title" text="Party Name" textAlignment="CENTER">
+                                                <Label alignment="CENTER" prefHeight="70.0" prefWidth="882.0" styleClass="party-title" text="Party Name" textAlignment="CENTER">
                                                     <padding>
                                                         <Insets bottom="-15.0" left="5.0" top="-15.0" />
                                                     </padding>
                                                 </Label>
+                                    <ScrollPane hbarPolicy="NEVER" prefHeight="860.0" prefWidth="882.0">
+                                       <content>
+                                          <VBox fx:id="friendContainer" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </VBox>
+                                       </content>
+                                    </ScrollPane>
                                           </children>
                                       </VBox>
                                       <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="941.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="892.0" />

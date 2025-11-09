@@ -19,4 +19,8 @@ module edu.farmingdale.taskmanager {
     exports edu.farmingdale.taskmanager;
     exports edu.farmingdale.taskmanager.Controllers;
     opens edu.farmingdale.taskmanager.Controllers to javafx.fxml;
+    exports edu.farmingdale.taskmanager.cards;
+    opens edu.farmingdale.taskmanager.cards to javafx.fxml;
+    exports edu.farmingdale.taskmanager.Models;
+    opens edu.farmingdale.taskmanager.Models to google.cloud.firestore;
 }
