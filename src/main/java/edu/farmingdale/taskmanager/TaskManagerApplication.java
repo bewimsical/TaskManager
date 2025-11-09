@@ -2,6 +2,8 @@ package edu.farmingdale.taskmanager;
 
 import com.google.cloud.firestore.Firestore;
 import com.google.firebase.auth.FirebaseAuth;
+import edu.farmingdale.taskmanager.Models.Bosses;
+import edu.farmingdale.taskmanager.Models.User;
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.DoubleBinding;
@@ -13,6 +15,9 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
 
 public class TaskManagerApplication extends Application {
     public static Firestore fstore;
@@ -23,6 +28,32 @@ public class TaskManagerApplication extends Application {
     public void start(Stage stage) throws IOException {
         fstore = contxtFirebase.firebase();
         fauth = FirebaseAuth.getInstance();
+
+
+        //test user "login"
+
+
+        Map<String, LinkedList<Bosses>> bosses = new HashMap<>();
+        bosses.put("Bounties", new LinkedList<>());
+        bosses.put("Vanquished", new LinkedList<>());
+
+        bosses.get("Bounties").add(BossFactory.generate("boss1"));
+        bosses.get("Bounties").add(BossFactory.generate("boss2"));
+        bosses.get("Vanquished").add(BossFactory.generate("boss3"));
+
+
+        User hazelTheNut = new User.UserBuilder()
+                .username("HazelTheNut")
+                .bosses(bosses)
+                .level(7)
+                .xp(75)
+                .build();
+        //Add a user to the database
+        //FirestoreClient.setDocument(hazelTheNut, "user", "user1");
+        //get user from the database and set the session
+        FirestoreClient.getUser("user", "user1");
+
+
 
         FXMLLoader fxmlLoader = new FXMLLoader(TaskManagerApplication.class.getResource("party-view.fxml"));
         Parent root = fxmlLoader.load();

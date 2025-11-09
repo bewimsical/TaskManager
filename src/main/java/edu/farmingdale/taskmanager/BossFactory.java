@@ -10,9 +10,9 @@ public class BossFactory {
 
     }
 
-    public static Bosses generate(String num){
+    public static Bosses generate(String name){
         Bosses boss = new Bosses();
-        boss.setName("Boss"+num);
+        boss.setName(name);
         boss.setAttacks("x");
         boss.setXp(300);
         boss.setTotalHealth(650);
