@@ -3,6 +3,7 @@ package edu.farmingdale.taskmanager;
 import edu.farmingdale.taskmanager.Models.Bosses;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class BossFactory {
 
@@ -11,9 +12,10 @@ public class BossFactory {
     }
 
     public static Bosses generate(String name){
+        String bossId = UUID.randomUUID().toString();
         Bosses boss = new Bosses();
         boss.setName(name);
-        boss.setAttacks("x");
+        boss.setId(bossId);
         boss.setXp(300);
         boss.setTotalHealth(650);
         boss.setCurrentHealth(650);

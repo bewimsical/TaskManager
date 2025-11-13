@@ -3,7 +3,7 @@ package edu.farmingdale.taskmanager.Models;
 import java.util.List;
 
 public class Bosses {
-    private String attacks;
+    private String id;
     private String name;
     private int xp;
     private double totalHealth;
@@ -17,7 +17,7 @@ public class Bosses {
 
     private Bosses(BossesBuilder bossesBuilder) {
         this.name = bossesBuilder.name;
-        this.attacks = bossesBuilder.attacks;
+        this.id = bossesBuilder.id;
         this.xp = bossesBuilder.xp;
         this.totalHealth = bossesBuilder.totalHealth;
         this.currentHealth = bossesBuilder.currentHealth;
@@ -35,12 +35,12 @@ public class Bosses {
         this.name = name;
     }
 
-    public String getAttacks() {
-        return attacks;
+    public String getId() {
+        return id;
     }
 
-    public void setAttacks(String attacks) {
-        this.attacks = attacks;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public int getXp() {
@@ -109,7 +109,7 @@ public class Bosses {
 
     public static class BossesBuilder {
         private String name;
-        private String attacks;
+        private String id;
         private int xp;
         private double totalHealth;
         private double currentHealth;
@@ -126,8 +126,8 @@ public class Bosses {
             return this;
         }
 
-        public BossesBuilder attacks(String attacks) {
-            this.attacks = attacks;
+        public BossesBuilder id(String id) {
+            this.id = id;
             return this;
         }
 

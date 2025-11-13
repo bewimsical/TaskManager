@@ -75,18 +75,18 @@ public class BossController implements Initializable {
         health = 1200;
         healthBar.setProgress(1);
 
-        bosses = current.getBosses();
-
-        for (Bosses b:bosses.get("Bounties")){
-            BossCard c = new BossCard(b, this::handleBossCardClick);
-            bossesContainer.getChildren().add(c.createView());
-
-        }
-        Bosses currentBoss = bosses.get("Bounties").getFirst();
-
-        bossName.setText(currentBoss.getName());
-        Image image = new Image(TaskManagerApplication.class.getResource("images/"+currentBoss.getDirtyImageUrl()).toExternalForm());
-        bossImageView.setImage(image);
+//        bosses = current.getBosses();
+//
+//        for (Bosses b:bosses.get("Bounties")){
+//            BossCard c = new BossCard(b, this::handleBossCardClick);
+//            bossesContainer.getChildren().add(c.createView());
+//
+//        }
+//        Bosses currentBoss = bosses.get("Bounties").getFirst();
+//
+//        bossName.setText(currentBoss.getName());
+//        Image image = new Image(TaskManagerApplication.class.getResource("images/"+currentBoss.getDirtyImageUrl()).toExternalForm());
+//        bossImageView.setImage(image);
 
         Bosses b1 = BossFactory.generate("Attack1");
         Bosses b2 =BossFactory.generate("Attack2");

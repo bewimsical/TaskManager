@@ -1,6 +1,9 @@
 package edu.farmingdale.taskmanager;
 
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.auth.FirebaseAuth;
 import edu.farmingdale.taskmanager.Models.Bosses;
 import edu.farmingdale.taskmanager.Models.User;
@@ -17,9 +20,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.*;
 
 public class TaskManagerApplication extends Application {
     public static Firestore fstore;
@@ -34,24 +35,39 @@ public class TaskManagerApplication extends Application {
 
         //test user "login"
         //create the user
-//        Map<String, LinkedList<Bosses>> bosses = new HashMap<>();
-//        bosses.put("Bounties", new LinkedList<>());
-//        bosses.put("Vanquished", new LinkedList<>());
+        //Map<String, LinkedList<Bosses>> bosses = new HashMap<>();
+//        List<Bosses> bosses = new ArrayList<>();
 //
-//        bosses.get("Bounties").add(BossFactory.generate("boss1"));
-//        bosses.get("Bounties").add(BossFactory.generate("boss2"));
-//        bosses.get("Vanquished").add(BossFactory.generate("boss3"));
+//        bosses.add(BossFactory.generate("boss1"));
+//        bosses.add(BossFactory.generate("boss2"));
+//        bosses.add(BossFactory.generate("boss3"));
 //
 //
 //        User hazelTheNut = new User.UserBuilder()
 //                .username("HazelTheNut")
-//                .bosses(bosses)
 //                .level(7)
 //                .xp(75)
 //                .build();
-
-        //Add a user to the database
-        //FirestoreClient.setDocument(hazelTheNut, "user", "user1");
+//
+//        //Add a user to the database
+//        FirestoreClient.setDocument(hazelTheNut, "users", "user1");
+//
+//        //add bosses subcollection
+//        for (Bosses boss: bosses) {
+//            DocumentReference docRef = TaskManagerApplication.fstore.collection("users")
+//                    .document("user1")
+//                    .collection("bosss")
+//                    .document(boss.getId());
+//            ApiFuture<WriteResult> result = docRef.set(boss);
+//
+//            result.addListener(() -> {
+//                try {
+//                    System.out.println("user" + "successfully updated at: " + result.get().getUpdateTime());
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }, Runnable::run);
+//        }
 
         //get user from the database and set the session
         FirestoreClient.getUser("user", "user1");

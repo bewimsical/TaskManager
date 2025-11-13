@@ -1,11 +1,10 @@
 package edu.farmingdale.taskmanager;
 
 import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.DocumentReference;
-import com.google.cloud.firestore.DocumentSnapshot;
-import com.google.cloud.firestore.WriteResult;
+import com.google.cloud.firestore.*;
 import edu.farmingdale.taskmanager.Models.User;
 
+import java.util.Collection;
 import java.util.concurrent.ExecutionException;
 
 public class FirestoreClient {
@@ -25,8 +24,9 @@ public class FirestoreClient {
         }, Runnable::run);
     }
 
-    public static User getUser(String collection, String id){
+    public static void getUser(String collection, String id){
         DocumentReference docRef = TaskManagerApplication.fstore.collection(collection).document(id);
+        CollectionReference bossRef = TaskManagerApplication.fstore.collection(collection).document(id).collection("bosss");
         ApiFuture<DocumentSnapshot> future = docRef.get();
         try {
             DocumentSnapshot document = future.get();
@@ -34,15 +34,25 @@ public class FirestoreClient {
                 User user = document.toObject(User.class);
                 Session.getInstance().setUser(user);
                 System.out.printf("User %s Successfully logged in!", user.getUsername());
-                return user;
             }
 
 
         } catch (InterruptedException | ExecutionException e) {
             System.out.println("No such document!");
-            return null;
         }
-        return null;
+        //Update this for bosses
+        try {
+            DocumentSnapshot document = future.get();
+            if (document.exists()){
+                User user = document.toObject(User.class);
+                Session.getInstance().setUser(user);
+                System.out.printf("User %s Successfully logged in!", user.getUsername());
+            }
+
+
+        } catch (InterruptedException | ExecutionException e) {
+            System.out.println("No such document!");
+        }
     }
 
 
