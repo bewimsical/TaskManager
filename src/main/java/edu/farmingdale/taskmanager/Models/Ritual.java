@@ -94,6 +94,7 @@ public class Ritual {
             return this;
         }
 
+
     }
 
 
