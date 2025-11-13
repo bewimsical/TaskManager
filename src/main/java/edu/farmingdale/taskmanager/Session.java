@@ -1,11 +1,18 @@
 package edu.farmingdale.taskmanager;
 
+import edu.farmingdale.taskmanager.Models.Bosses;
 import edu.farmingdale.taskmanager.Models.User;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 public class Session {
     private static Session instance;
     private User currentUser;
-
+    private List<String> parties;
+    private List<String> friends;
+    private Map<String, LinkedList<Bosses>> bosses;
 
     private Session() {
         //private constructor to enforce singleton
@@ -17,17 +24,6 @@ public class Session {
         }
         return instance;
     }
-
-    private static Long currentUserId;
-
-    public static void setCurrentUserId(Long userId) {
-        currentUserId = userId;
-    }
-
-    public static Long getCurrentUserId() {
-        return currentUserId;
-    }
-
 
     public void setUser(User user) {
         this.currentUser = user;
@@ -43,4 +39,11 @@ public class Session {
     }
 
 
+    public Map<String, LinkedList<Bosses>> getBosses() {
+        return bosses;
+    }
+
+    public void setBosses(Map<String, LinkedList<Bosses>> bosses) {
+        this.bosses = bosses;
+    }
 }
