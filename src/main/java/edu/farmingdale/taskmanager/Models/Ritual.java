@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Ritual {
     public enum TimeOfDay {
-        MORNING, MIDDAY, EVENING
+        Morning, Midday, Evening
     }
 
     private LocalDate date;
@@ -14,12 +14,13 @@ public class Ritual {
     private Map<TimeOfDay, List<Chore>> chores;
 
 
-    public Ritual(LocalDate date, double xp, LocalDate dateRecorded, Map<TimeOfDay, List<Chore>> chores) {
-        this.date = date;
-        this.xp = xp;
-        this.dateRecorded = dateRecorded;
-        this.chores = chores;
+    public Ritual(RitualBuilder ritualBuilder) {
+        this.date = ritualBuilder.date;
+        this.xp = ritualBuilder.xp;
+        this.dateRecorded = ritualBuilder.dateRecorded;
+        this.chores = ritualBuilder.chores;
     }
+
 
     public LocalDate getDate() {
         return date;
@@ -45,11 +46,7 @@ public class Ritual {
         this.dateRecorded = dateRecorded;
     }
 
-    public List<Chore> getChores(TimeOfDay timeOfDay) {
-        return chores.getOrDefault(timeOfDay, Collections.emptyList());
-    }
-
-    public Map<TimeOfDay, List<Chore>> getAllChores() {
+    public Map<TimeOfDay, List<Chore>> getChores() {
         return chores;
     }
 
@@ -57,45 +54,40 @@ public class Ritual {
         this.chores = chores;
     }
 
-    public void addChore(TimeOfDay timeOfDay, Chore chore) {
-        chores.computeIfAbsent(timeOfDay, t -> new ArrayList<>()).add(chore);
-    }
 
-    public void resetAllChores() {
-        for (List<Chore> timedChores : chores.values()) {
-            for (Chore chore : timedChores) {
-                chore.reset();
-            }
-        }
-    }
 
-    public static class ChoreBuilder {
-        private final Map<TimeOfDay, List<Chore>> chores = new EnumMap<>(TimeOfDay.class);
+    public static class RitualBuilder {
+        private Map<TimeOfDay, List<Chore>> chores = new EnumMap<>(TimeOfDay.class);
         private LocalDate date;
         private double xp;
         private LocalDate dateRecorded;
 
-        public ChoreBuilder() {
+        public RitualBuilder() {
 
         }
 
-        public ChoreBuilder date(LocalDate date) {
+        public RitualBuilder date(LocalDate date) {
             this.date = date;
             return this;
         }
 
-        public ChoreBuilder xp(double xp) {
+        public RitualBuilder xp(double xp) {
             this.xp = xp;
             return this;
         }
 
-        public ChoreBuilder dateRecorded(LocalDate dateRecorded) {
+        public RitualBuilder dateRecorded(LocalDate dateRecorded) {
             this.dateRecorded = dateRecorded;
             return this;
         }
 
+        public RitualBuilder chores(Map<TimeOfDay, List<Chore>> chores) {
+            this.chores = chores;
+            return this;
+        }
 
+        public Ritual build() {
+            return new Ritual(this);
+        }
     }
-
-
 }

@@ -1,21 +1,31 @@
 package edu.farmingdale.taskmanager.Models;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
+import java.util.List;
 
 public class Chore {
     private String name;
-    private String description;
     private String choreXP;
-    private LocalTime time;
+    private List<String> rooms;
+    private LocalDateTime completedTime;
+    private double frequency;
     private boolean completed;
+    private List<String> timeOfDay;
 
 
-    public Chore(String name, String description, String choreXP, LocalTime time, boolean completed) {
+    public Chore() {
+
+    }
+
+    public Chore(String name, String choreXP, List<String> rooms, LocalDateTime completedTime, double frequency, boolean completed, List<String> timeOfDay) {
         this.name = name;
-        this.description = description;
         this.choreXP = choreXP;
-        this.time = time;
+        this.rooms = rooms;
+        this.completedTime = completedTime;
+        this.frequency = frequency;
         this.completed = completed;
+        this.timeOfDay = timeOfDay;
+
     }
 
 
@@ -27,14 +37,6 @@ public class Chore {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getChoreXP() {
         return choreXP;
     }
@@ -43,39 +45,43 @@ public class Chore {
         this.choreXP = choreXP;
     }
 
-    public LocalTime getTime() {
-        return time;
+    public List<String> getRooms() {
+        return rooms;
     }
 
-    public void setTime(LocalTime time) {
-        this.time = time;
+    public void setRooms(List<String> rooms) {
+        this.rooms = rooms;
+    }
+
+    public LocalDateTime getCompletedTime() {
+        return completedTime;
+    }
+
+    public void setCompletedTime(LocalDateTime completedTime) {
+        this.completedTime = completedTime;
+    }
+
+    public double getFrequency() {
+        return frequency;
+    }
+
+    public void setFrequency(double frequency) {
+        this.frequency = frequency;
     }
 
     public boolean isCompleted() {
         return completed;
     }
 
-    public void markCompleted() {
-        this.completed = true;
-    }
-
-    public void reset() {
-        this.completed = false;
-    }
-
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
 
+    public List<String> getTimeOfDay() {
+        return timeOfDay;
+    }
 
-    @Override
-    public String toString() {
-        return "Chore{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", choreXP='" + choreXP + '\'' +
-                ", time=" + time +
-                ", completed=" + completed +
-                '}';
+    public void setTimeOfDay(List<String> timeOfDay) {
+        this.timeOfDay = timeOfDay;
     }
 }
