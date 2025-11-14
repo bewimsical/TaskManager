@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class Chore {
+
+
+    private String id;
     private String name;
     private String choreXP;
     private List<String> rooms;
@@ -17,7 +20,8 @@ public class Chore {
 
     }
 
-    public Chore(String name, String choreXP, List<String> rooms, LocalDateTime completedTime, double frequency, boolean completed, List<String> timeOfDay) {
+    public Chore(String id, String name, String choreXP, List<String> rooms, LocalDateTime completedTime, double frequency, boolean completed, List<String> timeOfDay) {
+        this.id = id;
         this.name = name;
         this.choreXP = choreXP;
         this.rooms = rooms;
@@ -83,5 +87,13 @@ public class Chore {
 
     public void setTimeOfDay(List<String> timeOfDay) {
         this.timeOfDay = timeOfDay;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

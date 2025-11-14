@@ -3,6 +3,7 @@ package edu.farmingdale.taskmanager;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import edu.farmingdale.taskmanager.Models.Bosses;
+import edu.farmingdale.taskmanager.Models.Chore;
 import edu.farmingdale.taskmanager.Models.User;
 
 import java.util.*;
@@ -14,28 +15,20 @@ public class FirestoreClient {
 
     public static <T> void setDocument(T object, String collection, String id){
         DocumentReference docRef = TaskManagerApplication.fstore.collection(collection).document(id);
-
-
-        ApiFuture<WriteResult> result = docRef.set(object);
-
-        result.addListener(() -> {
-            try {
-                System.out.println(collection + "successfully updated at: " + result.get().getUpdateTime());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }, Runnable::run);
+        setDocumentHelper(object, docRef);
     }
 
     public static <T> void setDocument(T object, String collection, String docId, String subCollection, String subDocId){
         DocumentReference docRef = TaskManagerApplication.fstore.collection(collection).document(docId).collection(subCollection).document(subDocId);
+        setDocumentHelper(object, docRef);
+    }
 
-
+    private static <T> void setDocumentHelper(T object,DocumentReference docRef ){
         ApiFuture<WriteResult> result = docRef.set(object);
 
         result.addListener(() -> {
             try {
-                System.out.println(collection + "successfully updated at: " + result.get().getUpdateTime());
+                System.out.println("successfully updated at: " + result.get().getUpdateTime());
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -45,8 +38,10 @@ public class FirestoreClient {
     public static void getUser(String collection, String id){
         DocumentReference docRef = TaskManagerApplication.fstore.collection(collection).document(id);
         CollectionReference bossRef = TaskManagerApplication.fstore.collection(collection).document(id).collection("bosss");
+        CollectionReference choreRef = TaskManagerApplication.fstore.collection(collection).document(id).collection("chores");
         ApiFuture<DocumentSnapshot> future = docRef.get();
         ApiFuture<QuerySnapshot> futureBoss = bossRef.get();
+        ApiFuture<QuerySnapshot> futureChore = choreRef.get();
 
         try {
             DocumentSnapshot document = future.get();
@@ -55,8 +50,6 @@ public class FirestoreClient {
                 Session.getInstance().setUser(user);
                 System.out.printf("User %s Successfully logged in!", user.getUsername());
             }
-
-
         } catch (InterruptedException | ExecutionException e) {
             System.out.println("No such document!");
         }
@@ -72,7 +65,8 @@ public class FirestoreClient {
                     Bosses boss = document.toObject(Bosses.class);
                     if (boss.isBounties()){
                         bosses.get("Bounties").add(boss);
-                    } else if (boss.isVanquished()) {
+                    }
+                    if (boss.isVanquished()) {
                         bosses.get("Vanquished").add(boss);
                     }
                 }
@@ -80,8 +74,23 @@ public class FirestoreClient {
 
                 System.out.println("bosses succssfully added to Session!");
             }
+        } catch (InterruptedException | ExecutionException e) {
+            System.out.println("No such document!");
+        }
+        try {
+            List<QueryDocumentSnapshot> documents = futureChore.get().getDocuments();
+            List<Chore> chores = new ArrayList<>();
 
+            if (!documents.isEmpty()){
+                System.out.println("Reading chores from the database");
+                for(QueryDocumentSnapshot document: documents){
+                    Chore chore = document.toObject(Chore.class);
+                    chores.add(chore);
+                }
+                Session.getInstance().setChores(chores);
 
+                System.out.println("Chores succssfully added to Session!");
+            }
         } catch (InterruptedException | ExecutionException e) {
             System.out.println("No such document!");
         }

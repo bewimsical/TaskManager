@@ -1,18 +1,21 @@
 package edu.farmingdale.taskmanager;
 
 import edu.farmingdale.taskmanager.Models.Bosses;
+import edu.farmingdale.taskmanager.Models.Chore;
 import edu.farmingdale.taskmanager.Models.User;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Session {
     private static Session instance;
     private User currentUser;
-    private List<String> parties;
-    private List<String> friends;
     private Map<String, List<Bosses>> bosses;
+    private List<Chore> chores;
+    private Set<String> assignedChoreIds;
+
 
     private Session() {
         //private constructor to enforce singleton
@@ -45,5 +48,13 @@ public class Session {
 
     public void setBosses(Map<String, List<Bosses>> bosses) {
         this.bosses = bosses;
+    }
+
+    public List<Chore> getChores() {
+        return chores;
+    }
+
+    public void setChores(List<Chore> chores) {
+        this.chores = chores;
     }
 }

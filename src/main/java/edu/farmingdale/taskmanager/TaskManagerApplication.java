@@ -1,11 +1,10 @@
 package edu.farmingdale.taskmanager;
 
 import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.DocumentReference;
-import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.WriteResult;
+import com.google.cloud.firestore.*;
 import com.google.firebase.auth.FirebaseAuth;
 import edu.farmingdale.taskmanager.Models.Bosses;
+import edu.farmingdale.taskmanager.Models.Chore;
 import edu.farmingdale.taskmanager.Models.User;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -21,6 +20,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
 
 public class TaskManagerApplication extends Application {
     public static Firestore fstore;
@@ -67,6 +67,30 @@ public class TaskManagerApplication extends Application {
 //                    e.printStackTrace();
 //                }
 //            }, Runnable::run);
+//        }
+
+//        // add chores subcollection
+//        CollectionReference choreRef = TaskManagerApplication.fstore.collection("chores");
+//        ApiFuture<QuerySnapshot> futureChores = choreRef.get();
+//        try {
+//            List<QueryDocumentSnapshot> documents = futureChores.get().getDocuments();
+//            if (!documents.isEmpty()){
+//                System.out.println("Reading chores from the database");
+//                for(QueryDocumentSnapshot document: documents){
+//                    Chore chore = document.toObject(Chore.class);
+//                    String uuid = UUID.randomUUID().toString();
+//                    chore.setId(uuid);
+//
+//                    FirestoreClient.setDocument(chore, "users", "user1","chores", uuid);
+//                }
+//
+//
+//                System.out.println("bosses succssfully added to Session!");
+//            }
+//
+//
+//        } catch (InterruptedException | ExecutionException e) {
+//            System.out.println("No such document!");
 //        }
 
         //get user from the database and set the session
