@@ -7,12 +7,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.StackPane?>
 
+
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="edu.farmingdale.taskmanager.Controllers.SettingsController"
+            stylesheets="@styles/style.css"
             prefWidth="900" prefHeight="600">
 
     <left>
-        <VBox spacing="15" style="-fx-background-color: #E1C699;" prefWidth="220" alignment="TOP_CENTER">
+        <VBox spacing="40" style="-fx-background-color: #E1C699;" prefWidth="220" alignment="TOP_CENTER" styleClass="bg">
             <padding><Insets top="25" left="10" right="10" bottom="10"/></padding>
 
             <Label text="⚔️ Back to Main Page" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
@@ -33,4 +35,6 @@
     </center>
 
 </BorderPane>
+
+
 

@@ -3,11 +3,19 @@ package edu.farmingdale.taskmanager.Controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import java.io.IOException;
 
 public class SettingsController {
 
+    public Button logoutBtn;
+    public Button parentalBtn;
+    public Button soundBtn;
+    public Button gameBtn;
+    public Button deactivateBtn;
+    public Button securityBtn;
+    public Button profileBtn;
     @FXML
     private StackPane contentArea;
 
