@@ -25,6 +25,7 @@ public class SettingsController {
             contentArea.getChildren().setAll(node);
         } catch (IOException e) {
             e.printStackTrace();
+
         }
     }
 
