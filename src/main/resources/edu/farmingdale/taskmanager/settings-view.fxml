@@ -1,40 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-
-<BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="edu.farmingdale.taskmanager.Controllers.SettingsController"
-            stylesheets="@styles/style.css"
-            prefWidth="900" prefHeight="600">
+<BorderPane prefHeight="600" prefWidth="900" stylesheets="@styles/style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="edu.farmingdale.taskmanager.Controllers.SettingsController">
 
     <left>
-        <VBox spacing="40" style="-fx-background-color: #E1C699;" prefWidth="220" alignment="TOP_CENTER" styleClass="bg">
-            <padding><Insets top="25" left="10" right="10" bottom="10"/></padding>
+        <VBox alignment="TOP_CENTER" prefWidth="220" spacing="40" styleClass="container">
+            <padding><Insets bottom="10" left="10" right="10" top="25" /></padding>
 
-            <Label text="⚔️ Back to Main Page" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
-            <Button text="Profile" fx:id="profileBtn" onAction="#openProfile"/>
-            <Button text="Game Settings" fx:id="gameBtn" onAction="#openGameSettings"/>
-            <Button text="Sound Settings" fx:id="soundBtn" onAction="#openSoundSettings"/>
-            <Button text="Account Security" fx:id="securityBtn" onAction="#openSecurity"/>
-            <Button text="Deactivate Account" fx:id="deactivateBtn" onAction="#openDeactivate"/>
-            <Button text="Parental Controls" fx:id="parentalBtn" onAction="#openParental"/>
-            <Button text="Logout" fx:id="logoutBtn" onAction="#logout"/>
+            <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="⚔️ Back to Main Page" />
+            <Button fx:id="profileBtn" onAction="#openProfile" text="Profile" />
+            <Button fx:id="gameBtn" onAction="#openGameSettings" text="Game Settings" />
+            <Button fx:id="soundBtn" onAction="#openSoundSettings" text="Sound Settings" />
+            <Button fx:id="securityBtn" onAction="#openSecurity" text="Account Security" />
+            <Button fx:id="deactivateBtn" onAction="#openDeactivate" text="Deactivate Account" />
+            <Button fx:id="parentalBtn" onAction="#openParental" text="Parental Controls" />
+            <Button fx:id="logoutBtn" onAction="#logout" text="Logout" />
         </VBox>
     </left>
 
     <center>
-        <StackPane fx:id="contentArea" style="-fx-background-color: #CBB186;">
-            <Label text="Select a setting to view details" style="-fx-font-size: 18; -fx-text-fill: #3B2E1D;"/>
+        <StackPane fx:id="contentArea" style="-fx-background-color: #CBB186;" styleClass="container">
+            <Label style="-fx-font-size: 18; -fx-text-fill: #3B2E1D;" text="Select a setting to view details" />
         </StackPane>
     </center>
 
 </BorderPane>
-
-
-
