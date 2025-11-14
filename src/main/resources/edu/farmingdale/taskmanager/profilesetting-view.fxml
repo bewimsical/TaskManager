@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="edu.farmingdale.taskmanager.Controllers.SoundSettingsController"
-            stylesheets="styles/style.css"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.ProfileSettingsController">
+    <Label layoutX="233.0" layoutY="17.0" styleClass="menu-label" text="Profile Settings" />
+
+    <HBox spacing="10" />
+
+    <HBox spacing="10" />
+
+    <Button layoutX="232.0" layoutY="272.0" onAction="#saveProfile" text="Save Changes" />
+    <Label fx:id="statusLabel" style="-fx-text-fill: lightgreen;" />
+     <TextField fx:id="emailField" layoutX="189.0" layoutY="206.0" />
+     <TextField fx:id="usernameField" layoutX="189.0" layoutY="120.0" />
+     <Label layoutX="189.0" layoutY="172.0" text="Username:" />
+     <Label layoutX="189.0" layoutY="86.0" text="Email:" />
+
+
 
 </AnchorPane>

@@ -30,7 +30,7 @@ public class SettingsController {
 
     @FXML
     private void openProfile() {
-        loadPage("profile-view.fxml");
+        loadPage("profilesetting-view.fxml");
     }
 
     @FXML
