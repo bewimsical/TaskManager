@@ -70,7 +70,7 @@ public class TaskManagerApplication extends Application {
 //        }
 
         //get user from the database and set the session
-        FirestoreClient.getUser("user", "user1");
+        FirestoreClient.getUser("users", "user1");
 
         FXMLLoader fxmlLoader = new FXMLLoader(TaskManagerApplication.class.getResource("profile-view.fxml"));
         Parent root = fxmlLoader.load();

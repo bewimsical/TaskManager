@@ -20,10 +20,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class BossController implements Initializable {
 
@@ -63,7 +60,7 @@ public class BossController implements Initializable {
 
     User current = Session.getInstance().getUser();
 
-    Map<String, LinkedList<Bosses>> bosses;
+    Map<String, List<Bosses>> bosses = Session.getInstance().getBosses();
 
 
 
@@ -75,18 +72,18 @@ public class BossController implements Initializable {
         health = 1200;
         healthBar.setProgress(1);
 
-//        bosses = current.getBosses();
-//
-//        for (Bosses b:bosses.get("Bounties")){
-//            BossCard c = new BossCard(b, this::handleBossCardClick);
-//            bossesContainer.getChildren().add(c.createView());
-//
-//        }
-//        Bosses currentBoss = bosses.get("Bounties").getFirst();
-//
-//        bossName.setText(currentBoss.getName());
-//        Image image = new Image(TaskManagerApplication.class.getResource("images/"+currentBoss.getDirtyImageUrl()).toExternalForm());
-//        bossImageView.setImage(image);
+
+
+        for (Bosses b:bosses.get("Bounties")){
+            BossCard c = new BossCard(b, this::handleBossCardClick);
+            bossesContainer.getChildren().add(c.createView());
+
+        }
+        Bosses currentBoss = bosses.get("Bounties").get(0);
+
+        bossName.setText(currentBoss.getName());
+        Image image = new Image(TaskManagerApplication.class.getResource("images/"+currentBoss.getDirtyImageUrl()).toExternalForm());
+        bossImageView.setImage(image);
 
         Bosses b1 = BossFactory.generate("Attack1");
         Bosses b2 =BossFactory.generate("Attack2");

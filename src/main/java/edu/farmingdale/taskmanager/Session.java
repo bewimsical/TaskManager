@@ -12,7 +12,7 @@ public class Session {
     private User currentUser;
     private List<String> parties;
     private List<String> friends;
-    private Map<String, LinkedList<Bosses>> bosses;
+    private Map<String, List<Bosses>> bosses;
 
     private Session() {
         //private constructor to enforce singleton
@@ -39,11 +39,11 @@ public class Session {
     }
 
 
-    public Map<String, LinkedList<Bosses>> getBosses() {
+    public Map<String, List<Bosses>> getBosses() {
         return bosses;
     }
 
-    public void setBosses(Map<String, LinkedList<Bosses>> bosses) {
+    public void setBosses(Map<String, List<Bosses>> bosses) {
         this.bosses = bosses;
     }
 }
