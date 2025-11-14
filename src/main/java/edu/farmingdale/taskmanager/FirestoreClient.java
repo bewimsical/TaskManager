@@ -46,7 +46,7 @@ public class FirestoreClient {
             if (document.exists()){
                 User user = document.toObject(User.class);
                 Session.getInstance().setUser(user);
-                System.out.printf("User %s Successfully logged in!", user.getUsername());
+                System.out.println("bosses succssfully added to Session!");
             }
 
 
