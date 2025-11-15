@@ -2,7 +2,7 @@ package edu.farmingdale.taskmanager;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
-import edu.farmingdale.taskmanager.Models.Bosses;
+import edu.farmingdale.taskmanager.Models.Boss;
 import edu.farmingdale.taskmanager.Models.Chore;
 import edu.farmingdale.taskmanager.Models.User;
 
@@ -56,13 +56,13 @@ public class FirestoreClient {
         //Update this for bosses
         try {
             List<QueryDocumentSnapshot> documents = futureBoss.get().getDocuments();
-            Map<String, List<Bosses>> bosses = new HashMap<>();
+            Map<String, List<Boss>> bosses = new HashMap<>();
             bosses.put("Bounties", new ArrayList<>());
             bosses.put("Vanquished", new ArrayList<>());
             if (!documents.isEmpty()){
                 System.out.println("Reading bosses from the database");
                 for(QueryDocumentSnapshot document: documents){
-                    Bosses boss = document.toObject(Bosses.class);
+                    Boss boss = document.toObject(Boss.class);
                     if (boss.isBounties()){
                         bosses.get("Bounties").add(boss);
                     }

@@ -1,13 +1,8 @@
 package edu.farmingdale.taskmanager;
 
-import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import com.google.firebase.auth.FirebaseAuth;
-import edu.farmingdale.taskmanager.Models.Bosses;
-import edu.farmingdale.taskmanager.Models.Chore;
-import edu.farmingdale.taskmanager.Models.User;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.DoubleBinding;
 import javafx.fxml.FXMLLoader;
@@ -15,12 +10,9 @@ import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.*;
-import java.util.concurrent.ExecutionException;
 
 public class TaskManagerApplication extends Application {
     public static Firestore fstore;

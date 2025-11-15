@@ -1,18 +1,18 @@
 package edu.farmingdale.taskmanager;
 
-import edu.farmingdale.taskmanager.Models.Bosses;
+import edu.farmingdale.taskmanager.Models.Boss;
 import edu.farmingdale.taskmanager.Models.Chore;
 import edu.farmingdale.taskmanager.Models.User;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Session {
     private static Session instance;
     private User currentUser;
-    private Map<String, List<Bosses>> bosses;
+    private Map<String, List<Boss>> bosses;
     private List<Chore> chores;
     private Set<String> assignedChoreIds;
 
@@ -28,6 +28,11 @@ public class Session {
         return instance;
     }
 
+    public void clearSession() {
+        currentUser = null;
+        instance = null;
+    }
+
     public void setUser(User user) {
         this.currentUser = user;
     }
@@ -36,17 +41,11 @@ public class Session {
         return this.currentUser;
     }
 
-    public void clearSession() {
-        currentUser = null;
-        instance = null;
-    }
-
-
-    public Map<String, List<Bosses>> getBosses() {
+    public Map<String, List<Boss>> getBosses() {
         return bosses;
     }
 
-    public void setBosses(Map<String, List<Bosses>> bosses) {
+    public void setBosses(Map<String, List<Boss>> bosses) {
         this.bosses = bosses;
     }
 
@@ -56,5 +55,19 @@ public class Session {
 
     public void setChores(List<Chore> chores) {
         this.chores = chores;
+    }
+
+    public List<Chore> getAvailableChores() {
+        return chores.stream()
+                .filter(c -> !assignedChoreIds.contains(c.getId()))
+                .collect(Collectors.toList());
+    }
+
+    public Set<String> getAssignedChoreIds() {
+        return assignedChoreIds;
+    }
+
+    public void setAssignedChoreIds(Set<String> assignedChoreIds) {
+        this.assignedChoreIds = assignedChoreIds;
     }
 }

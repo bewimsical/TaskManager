@@ -2,7 +2,7 @@ package edu.farmingdale.taskmanager.Models;
 
 import java.util.List;
 
-public class Bosses {
+public class Boss {
     private String id;
     private String name;
     private int xp;
@@ -13,9 +13,9 @@ public class Bosses {
     private boolean vanquished;
     private String dirtyImageUrl;
     private String cleanImageUrl;
-    public Bosses() {}
+    public Boss() {}
 
-    private Bosses(BossesBuilder bossesBuilder) {
+    private Boss(BossesBuilder bossesBuilder) {
         this.name = bossesBuilder.name;
         this.id = bossesBuilder.id;
         this.xp = bossesBuilder.xp;
@@ -161,8 +161,8 @@ public class Bosses {
             return this;
         }
 
-        public Bosses build() {
-            return new Bosses(this);
+        public Boss build() {
+            return new Boss(this);
         }
 
 

@@ -1,19 +1,24 @@
 package edu.farmingdale.taskmanager;
 
-import edu.farmingdale.taskmanager.Models.Bosses;
+import edu.farmingdale.taskmanager.Models.Boss;
+import edu.farmingdale.taskmanager.Models.Chore;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class BossFactory {
+    List<Chore> available = Session.getInstance().getAvailableChores();
+
 
    private BossFactory() {
 
     }
 
-    public static Bosses generate(String name){
+    public static Boss generate(String name){
         String bossId = UUID.randomUUID().toString();
-        Bosses boss = new Bosses();
+
+        Boss boss = new Boss();
         boss.setName(name);
         boss.setId(bossId);
         boss.setXp(300);

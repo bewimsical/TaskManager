@@ -1,8 +1,7 @@
 package edu.farmingdale.taskmanager.Controllers;
 
 import edu.farmingdale.taskmanager.BossFactory;
-import edu.farmingdale.taskmanager.FirestoreClient;
-import edu.farmingdale.taskmanager.Models.Bosses;
+import edu.farmingdale.taskmanager.Models.Boss;
 import edu.farmingdale.taskmanager.Models.User;
 import edu.farmingdale.taskmanager.Session;
 import edu.farmingdale.taskmanager.TaskManagerApplication;
@@ -60,7 +59,7 @@ public class BossController implements Initializable {
 
     User current = Session.getInstance().getUser();
 
-    Map<String, List<Bosses>> bosses = Session.getInstance().getBosses();
+    Map<String, List<Boss>> bosses = Session.getInstance().getBosses();
 
 
 
@@ -74,21 +73,21 @@ public class BossController implements Initializable {
 
 
 
-        for (Bosses b:bosses.get("Bounties")){
+        for (Boss b:bosses.get("Bounties")){
             BossCard c = new BossCard(b, this::handleBossCardClick);
             bossesContainer.getChildren().add(c.createView());
 
         }
-        Bosses currentBoss = bosses.get("Bounties").get(0);
+        Boss currentBoss = bosses.get("Bounties").get(0);
 
         bossName.setText(currentBoss.getName());
         Image image = new Image(TaskManagerApplication.class.getResource("images/"+currentBoss.getDirtyImageUrl()).toExternalForm());
         bossImageView.setImage(image);
 
-        Bosses b1 = BossFactory.generate("Attack1");
-        Bosses b2 =BossFactory.generate("Attack2");
-        Bosses b3 =BossFactory.generate("Attack3");
-        Bosses b4 =BossFactory.generate("Attack4");
+        Boss b1 = BossFactory.generate("Attack1");
+        Boss b2 =BossFactory.generate("Attack2");
+        Boss b3 =BossFactory.generate("Attack3");
+        Boss b4 =BossFactory.generate("Attack4");
         AttackCard c1 = new AttackCard(b1, this::handleAttackCardClick);
         AttackCard c2 = new AttackCard(b2, this::handleAttackCardClick);
         AttackCard c3 = new AttackCard(b3, this::handleAttackCardClick);
@@ -99,8 +98,8 @@ public class BossController implements Initializable {
 
     }
 
-    private void handleBossCardClick(ChoreCard<Bosses> clickedBoss){
-        Bosses boss = clickedBoss.getData();
+    private void handleBossCardClick(ChoreCard<Boss> clickedBoss){
+        Boss boss = clickedBoss.getData();
         bossName.setText(boss.getName());
 
 
@@ -109,9 +108,9 @@ public class BossController implements Initializable {
 
     }
 
-    private void handleAttackCardClick(ChoreCard<Bosses> clickedBoss){
+    private void handleAttackCardClick(ChoreCard<Boss> clickedBoss){
         clickedBoss.redraw();
-        Bosses boss = clickedBoss.getData();
+        Boss boss = clickedBoss.getData();
         double damage = boss.getXp();
         double next = Math.max(healthBar.getProgress() - (damage/health), 0);
         healthBar.setProgress(next);
@@ -140,7 +139,7 @@ public class BossController implements Initializable {
 
         bossesContainer.getChildren().clear();
 
-        for (Bosses b:bosses.get(button.getText())){
+        for (Boss b:bosses.get(button.getText())){
             BossCard c = new BossCard(b, this::handleBossCardClick);
             bossesContainer.getChildren().add(c.createView());
 

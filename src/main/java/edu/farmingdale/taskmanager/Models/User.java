@@ -1,6 +1,5 @@
 package edu.farmingdale.taskmanager.Models;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -150,7 +149,7 @@ public class User {
         private List<String> parties;
         private List<String> friends;
 
-        private Map<String, LinkedList<Bosses>> bosses;
+        private Map<String, LinkedList<Boss>> bosses;
         private int vanquishedBossCount;
         private int completedQuestCount;
         private String profileUrl;
@@ -207,7 +206,7 @@ public class User {
         }
 
 
-        public UserBuilder bosses(Map<String, LinkedList<Bosses>> bosses) {
+        public UserBuilder bosses(Map<String, LinkedList<Boss>> bosses) {
             this.bosses = bosses;
             return this;
         }
