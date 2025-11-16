@@ -4,6 +4,7 @@ import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import edu.farmingdale.taskmanager.Models.Boss;
 import edu.farmingdale.taskmanager.Models.Chore;
+import edu.farmingdale.taskmanager.Models.Ritual;
 import edu.farmingdale.taskmanager.Models.User;
 
 import java.util.*;
@@ -48,12 +49,13 @@ public class FirestoreClient {
             if (document.exists()){
                 User user = document.toObject(User.class);
                 Session.getInstance().setUser(user);
-                System.out.printf("User %s Successfully logged in!", user.getUsername());
+                System.out.printf("User %s Successfully logged in!\n", user.getUsername());
             }
         } catch (InterruptedException | ExecutionException e) {
             System.out.println("No such document!");
         }
         //Update this for bosses
+        System.out.println("Trying to load bosses");
         try {
             List<QueryDocumentSnapshot> documents = futureBoss.get().getDocuments();
             Map<String, List<Boss>> bosses = new HashMap<>();
@@ -77,6 +79,7 @@ public class FirestoreClient {
         } catch (InterruptedException | ExecutionException e) {
             System.out.println("No such document!");
         }
+        System.out.println("Trying to load chores");
         try {
             List<QueryDocumentSnapshot> documents = futureChore.get().getDocuments();
             List<Chore> chores = new ArrayList<>();
@@ -94,6 +97,23 @@ public class FirestoreClient {
         } catch (InterruptedException | ExecutionException e) {
             System.out.println("No such document!");
         }
+        //Fix this later
+        Map<String, List<Ritual>> rituals = new HashMap<>();
+        rituals.put("Morning", new ArrayList<>());
+        rituals.put("Midday", new ArrayList<>());
+        rituals.put("Evening", new ArrayList<>());
+
+        Session.getInstance().setRituals(rituals);
+
+        //Fix this later
+        Session.getInstance().setAssignedChoreIds(new HashSet<>());
+
+
+
+    }
+
+    private static void getBosses(){
+
     }
 
 

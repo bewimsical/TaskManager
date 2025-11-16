@@ -1,32 +1,33 @@
 package edu.farmingdale.taskmanager.Models;
 
-import java.time.LocalDate;
-import java.util.*;
-
 public class Ritual {
     public enum TimeOfDay {
         Morning, Midday, Evening
     }
 
-    private LocalDate date;
+    private String date;
     private double xp;
-    private LocalDate dateRecorded;
-    private Map<TimeOfDay, List<Chore>> chores;
+    private String dateRecorded;
+    private TimeOfDay timeOfDay;
+    private Chore chore;
+
+
 
 
     public Ritual(RitualBuilder ritualBuilder) {
         this.date = ritualBuilder.date;
         this.xp = ritualBuilder.xp;
         this.dateRecorded = ritualBuilder.dateRecorded;
-        this.chores = ritualBuilder.chores;
+        this.chore = ritualBuilder.chores;
+        this.timeOfDay = ritualBuilder.timeOfDay;
     }
 
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -38,35 +39,44 @@ public class Ritual {
         this.xp = xp;
     }
 
-    public LocalDate getDateRecorded() {
+    public String getDateRecorded() {
         return dateRecorded;
     }
 
-    public void setDateRecorded(LocalDate dateRecorded) {
+    public void setDateRecorded(String dateRecorded) {
         this.dateRecorded = dateRecorded;
     }
 
-    public Map<TimeOfDay, List<Chore>> getChores() {
-        return chores;
+    public Chore getChore() {
+        return chore;
     }
 
-    public void setChores(Map<TimeOfDay, List<Chore>> chores) {
-        this.chores = chores;
+    public void setChore(Chore chore) {
+        this.chore = chore;
+    }
+
+    public TimeOfDay getTimeOfDay() {
+        return timeOfDay;
+    }
+
+    public void setTimeOfDay(TimeOfDay timeOfDay) {
+        this.timeOfDay = timeOfDay;
     }
 
 
 
     public static class RitualBuilder {
-        private Map<TimeOfDay, List<Chore>> chores = new EnumMap<>(TimeOfDay.class);
-        private LocalDate date;
+        private Chore chores;
+        private String date;
         private double xp;
-        private LocalDate dateRecorded;
+        private String dateRecorded;
+        private TimeOfDay timeOfDay;
 
         public RitualBuilder() {
 
         }
 
-        public RitualBuilder date(LocalDate date) {
+        public RitualBuilder date(String date) {
             this.date = date;
             return this;
         }
@@ -76,13 +86,18 @@ public class Ritual {
             return this;
         }
 
-        public RitualBuilder dateRecorded(LocalDate dateRecorded) {
+        public RitualBuilder dateRecorded(String dateRecorded) {
             this.dateRecorded = dateRecorded;
             return this;
         }
 
-        public RitualBuilder chores(Map<TimeOfDay, List<Chore>> chores) {
+        public RitualBuilder chores(Chore chores) {
             this.chores = chores;
+            return this;
+        }
+
+        public RitualBuilder timeOfDay(TimeOfDay timeOfDay){
+            this.timeOfDay = timeOfDay;
             return this;
         }
 

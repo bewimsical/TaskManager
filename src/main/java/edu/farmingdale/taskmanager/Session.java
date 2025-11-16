@@ -2,6 +2,7 @@ package edu.farmingdale.taskmanager;
 
 import edu.farmingdale.taskmanager.Models.Boss;
 import edu.farmingdale.taskmanager.Models.Chore;
+import edu.farmingdale.taskmanager.Models.Ritual;
 import edu.farmingdale.taskmanager.Models.User;
 
 import java.util.List;
@@ -13,6 +14,7 @@ public class Session {
     private static Session instance;
     private User currentUser;
     private Map<String, List<Boss>> bosses;
+    private Map<String, List<Ritual>> rituals;
     private List<Chore> chores;
     private Set<String> assignedChoreIds;
 
@@ -58,7 +60,13 @@ public class Session {
     }
 
     public List<Chore> getAvailableChores() {
+        List<Chore> ritualChores = rituals.values().stream()
+                .flatMap(List::stream)
+                .map(Ritual::getChore)
+                .toList();
+
         return chores.stream()
+                .filter(c -> !ritualChores.contains(c))
                 .filter(c -> !assignedChoreIds.contains(c.getId()))
                 .collect(Collectors.toList());
     }
@@ -69,5 +77,13 @@ public class Session {
 
     public void setAssignedChoreIds(Set<String> assignedChoreIds) {
         this.assignedChoreIds = assignedChoreIds;
+    }
+
+    public Map<String, List<Ritual>> getRituals() {
+        return rituals;
+    }
+
+    public void setRituals(Map<String, List<Ritual>> rituals) {
+        this.rituals = rituals;
     }
 }

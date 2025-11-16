@@ -8,11 +8,13 @@ public class Boss {
     private int xp;
     private double totalHealth;
     private double currentHealth;
-    private List<String> chores;
+    private List<Chore> chores;
     private boolean bounties;
     private boolean vanquished;
     private String dirtyImageUrl;
     private String cleanImageUrl;
+    private String dateAdded;
+    private String dateDefeated;
     public Boss() {}
 
     private Boss(BossesBuilder bossesBuilder) {
@@ -24,6 +26,11 @@ public class Boss {
         this.chores = bossesBuilder.chores;
         this.bounties = bossesBuilder.bounties;
         this.vanquished = bossesBuilder.vanquished;
+        this.dateAdded = bossesBuilder.dateAdded;
+        this.dateDefeated = bossesBuilder.dateDefeated;
+        this.dirtyImageUrl = bossesBuilder.dirtyImageUrl;
+        this.cleanImageUrl = bossesBuilder.cleanImageUrl;
+
     }
 
 
@@ -67,11 +74,11 @@ public class Boss {
         this.currentHealth = currentHealth;
     }
 
-    public List<String> getChores() {
+    public List<Chore> getChores() {
         return chores;
     }
 
-    public void setChores(List<String> chores) {
+    public void setChores(List<Chore> chores) {
         this.chores = chores;
     }
 
@@ -107,15 +114,35 @@ public class Boss {
         this.cleanImageUrl = cleanImageUrl;
     }
 
+    public String getDateAdded() {
+        return dateAdded;
+    }
+
+    public void setDateAdded(String dateAdded) {
+        this.dateAdded = dateAdded;
+    }
+
+    public String getDateDefeated() {
+        return dateDefeated;
+    }
+
+    public void setDateDefeated(String dateDefeated) {
+        this.dateDefeated = dateDefeated;
+    }
+
     public static class BossesBuilder {
         private String name;
         private String id;
         private int xp;
-        private double totalHealth;
-        private double currentHealth;
-        private List<String> chores;
+        private int totalHealth;
+        private int currentHealth;
+        private List<Chore> chores;
         private boolean bounties;
         private boolean vanquished;
+        private String dateAdded;
+        private String dateDefeated;
+        private String dirtyImageUrl;
+        private String cleanImageUrl;
 
         public BossesBuilder() {
 
@@ -136,17 +163,17 @@ public class Boss {
             return this;
         }
 
-        public BossesBuilder totalHealth(double totalHealth) {
+        public BossesBuilder totalHealth(int totalHealth) {
             this.totalHealth = totalHealth;
             return this;
         }
 
-        public BossesBuilder currentHealth(double currentHealth) {
+        public BossesBuilder currentHealth(int currentHealth) {
             this.currentHealth = currentHealth;
             return this;
         }
 
-        public BossesBuilder chores(List<String> chores) {
+        public BossesBuilder chores(List<Chore> chores) {
             this.chores = chores;
             return this;
         }
@@ -158,6 +185,25 @@ public class Boss {
 
         public BossesBuilder vanquished(boolean vanquished) {
             this.vanquished = vanquished;
+            return this;
+        }
+        public BossesBuilder dateAdded(String dateAdded) {
+            this.dateAdded = dateAdded;
+            return this;
+        }
+
+        public BossesBuilder dateDefeated(String dateDefeated) {
+            this.dateDefeated = dateDefeated;
+            return this;
+        }
+
+        public BossesBuilder dirtyImageUrl(String dirtyImageUrl) {
+            this.dirtyImageUrl = dirtyImageUrl;
+            return this;
+        }
+
+        public BossesBuilder cleanImageUrl(String cleanImageUrl) {
+            this.cleanImageUrl = cleanImageUrl;
             return this;
         }
 
