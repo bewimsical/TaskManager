@@ -10,6 +10,11 @@ public class AttackCard extends SmallChoreCard<Chore>{
         super(data, onClick);
         this.name = data.getName();
         this.xp = data.getChoreXP();
+        if(data.isCompleted()){
+            setCompletedImage();
+        }else{
+            setNotCompletedImage();
+        }
     }
 
 }

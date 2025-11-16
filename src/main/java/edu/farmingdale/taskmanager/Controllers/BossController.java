@@ -63,6 +63,8 @@ public class BossController implements Initializable {
 
     Boss currentBoss;
 
+    BossCard currentBossCard;
+
 
 
     @Override
@@ -78,12 +80,20 @@ public class BossController implements Initializable {
             for (Boss b:bosses.get("Bounties")){
                 BossCard c = new BossCard(b, this::handleBossCardClick);
                 bossesContainer.getChildren().add(c.createView());
+                if (currentBossCard == null){
+                    currentBossCard = c;
+                }
 
             }
             currentBoss = bosses.get("Bounties").get(0);
 
             bossName.setText(currentBoss.getName());
-            Image image = new Image(TaskManagerApplication.class.getResource("images/monsters/" + currentBoss.getDirtyImageUrl()).toExternalForm());
+            Image image;
+            if (currentBoss.isVanquished()){
+                image = new Image(TaskManagerApplication.class.getResource("images/monsters/" + currentBoss.getCleanImageUrl()).toExternalForm());
+            }else {
+                image = new Image(TaskManagerApplication.class.getResource("images/monsters/" + currentBoss.getDirtyImageUrl()).toExternalForm());
+            }
             bossImageView.setImage(image);
             health = currentBoss.getCurrentHealth();
 
@@ -110,6 +120,7 @@ public class BossController implements Initializable {
     }
 
     private void handleBossCardClick(ChoreCard<Boss> clickedBoss){
+        currentBossCard = (BossCard) clickedBoss;
         currentBoss = clickedBoss.getData();
         bossName.setText(currentBoss.getName());
         health = currentBoss.getCurrentHealth();
@@ -119,7 +130,12 @@ public class BossController implements Initializable {
             AttackCard ac = new AttackCard(c, this::handleAttackCardClick);
             attacksContainer.getChildren().add(ac.createView());
         }
-        Image image = new Image(TaskManagerApplication.class.getResource("images/monsters/" + currentBoss.getDirtyImageUrl()).toExternalForm());
+        Image image;
+        if (currentBoss.isVanquished()){
+            image = new Image(TaskManagerApplication.class.getResource("images/monsters/" + currentBoss.getCleanImageUrl()).toExternalForm());
+        }else {
+            image = new Image(TaskManagerApplication.class.getResource("images/monsters/" + currentBoss.getDirtyImageUrl()).toExternalForm());
+        }
         bossImageView.setImage(image);
 
 
@@ -131,10 +147,22 @@ public class BossController implements Initializable {
     private void handleAttackCardClick(ChoreCard<Chore> clickedBoss){
         clickedBoss.redraw();
         Chore chore = clickedBoss.getData();
+        chore.setCompleted(true);
         double damage = chore.getChoreXP();
         currentBoss.setCurrentHealth(currentBoss.getCurrentHealth()-chore.getChoreXP());
         double next = Math.max(healthBar.getProgress() - (damage/health), 0);
         healthBar.setProgress(next);
+
+        boolean bossDefeated = currentBoss.getChores().stream()
+                        .allMatch(Chore::isCompleted);
+
+        if (bossDefeated){
+            currentBoss.setVanquished(true);
+            bosses.get("Vanquished").add(currentBoss);
+            currentBossCard.redraw();
+            Image image = new Image(TaskManagerApplication.class.getResource("images/monsters/" + currentBoss.getCleanImageUrl()).toExternalForm());
+            bossImageView.setImage(image);
+        }
 
 
         System.out.printf("""

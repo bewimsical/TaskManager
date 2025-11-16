@@ -10,5 +10,10 @@ public class BossCard extends ChoreCard<Boss>{
         super(data, onClick);
         this.name = data.getName();
         this.xp = data.getXp();
+        if(data.isVanquished()){
+            setCompletedImage();
+        }else{
+            setNotCompletedImage();
+        }
     }
 }
