@@ -18,6 +18,23 @@ public class SoundSettingsController {
 
     @FXML private CheckBox muteMusic;
     @FXML private CheckBox muteEffects;
+    @FXML private Label statusLabel;
+
+    @FXML public void initialize (){
+        masterSlider.valueProperty().addListener((obs, oldVal, newVal) ->
+                masterValue.setText(String.valueOf(newVal.intValue())));
+
+        musicSlider.valueProperty().addListener((obs, oldVal, newVal) ->
+                masterValue.setText(String.valueOf(newVal.intValue())));
+
+        effectsSlider.valueProperty().addListener((obs, oldVal, newVal) ->
+                masterValue.setText(String.valueOf(newVal.intValue())));
+
+
+
+
+
+    }
 
 
     }
