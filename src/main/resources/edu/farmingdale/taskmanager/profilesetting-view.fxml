@@ -4,18 +4,18 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.ProfileSettingsController">
-    <Label layoutX="233.0" layoutY="17.0" styleClass="menu-label" text="Profile Settings" />
+    <Label layoutX="380.0" layoutY="17.0" styleClass="menu-label" text="Profile Settings" textFill="#6f4818" />
 
     <HBox spacing="10" />
 
     <HBox spacing="10" />
 
-    <Button layoutX="232.0" layoutY="272.0" onAction="#saveProfile" text="Save Changes" />
+    <Button layoutX="391.0" layoutY="432.0" onAction="#saveProfile" text="Save Changes" textFill="#5b4317" />
     <Label fx:id="statusLabel" style="-fx-text-fill: lightgreen;" />
-     <TextField fx:id="emailField" layoutX="189.0" layoutY="206.0" />
-     <TextField fx:id="usernameField" layoutX="189.0" layoutY="120.0" />
-     <Label layoutX="189.0" layoutY="172.0" text="Username:" />
-     <Label layoutX="189.0" layoutY="86.0" text="Email:" />
+     <TextField fx:id="emailField" layoutX="349.0" layoutY="342.0" />
+     <TextField fx:id="usernameField" layoutX="349.0" layoutY="244.0" />
+     <Label layoutX="349.0" layoutY="300.0" prefHeight="43.0" prefWidth="105.0" text="Username:" textFill="#5b3a17" />
+     <Label layoutX="349.0" layoutY="210.0" text="Email:" textFill="#654b21" />
 
 
 
