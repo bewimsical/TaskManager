@@ -8,21 +8,23 @@
 <BorderPane prefHeight="600" prefWidth="900" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.SettingsController">
 
     <left>
-        <VBox alignment="TOP_CENTER" prefWidth="220" spacing="30" styleClass="container">
+        <VBox alignment="BASELINE_CENTER" prefWidth="220" spacing="30" styleClass="container">
             <padding><Insets bottom="10" left="10" right="10" top="25" /></padding>
 
-            <Label prefHeight="34.0" prefWidth="188.0" style="-fx-font-weight: Extra-Bold; -fx-font-size: 16;" styleClass="menu-label" text="⚔️ Back to Main Page" textFill="#6b350e">
-            <font>
-               <Font name="System Bold" size="13.0" />
-            </font></Label>
-            <Button fx:id="profileBtn" onAction="#openProfile" text="Profile" textFill="#72490b" />
-            <Button fx:id="gameBtn" onAction="#openGameSettings" text="Game Settings" textFill="#72490b" />
-            <Button fx:id="soundBtn" onAction="#openSoundSettings" text="Sound Settings" textFill="#72490b" />
-            <Button fx:id="securityBtn" onAction="#openSecurity" text="Account Security" textFill="#72490b" />
-            <Button fx:id="deactivateBtn" onAction="#openDeactivate" text="Deactivate Account" textFill="#72490b" />
-            <Button fx:id="parentalBtn" onAction="#openParental" text="Parental Controls" textFill="#72490b" />
-            <Button fx:id="logoutBtn" onAction="#logout" text="Logout" textFill="#72490b" />
+            <Label prefHeight="34.0" prefWidth="188.0" style="-fx-font-weight: bold; -fx-font-size: 16;" styleClass="menu-label" text="⚔️ Back to Main Page" textFill="#6b350e">
+                <font>
+                    <Font name="System Bold" size="13.0" />
+                </font>
+                <VBox.margin><Insets bottom="20" /></VBox.margin> </Label>
+            <Button fx:id="profileBtn" maxWidth="-Infinity" onAction="#openProfile" prefHeight="40" text="Profile" textFill="#72490b" />
+            <Button fx:id="gameBtn" maxWidth="-Infinity" onAction="#openGameSettings" prefHeight="40" text="Game Settings" textFill="#72490b" />
+            <Button fx:id="soundBtn" maxWidth="-Infinity" onAction="#openSoundSettings" prefHeight="40" text="Sound Settings" textFill="#72490b" />
+            <Button fx:id="securityBtn" maxWidth="-Infinity" onAction="#openSecurity" prefHeight="40" text="Account Security" textFill="#72490b" />
+            <Button fx:id="deactivateBtn" maxWidth="-Infinity" onAction="#openDeactivate" prefHeight="40" text="Deactivate Account" textFill="#72490b" />
+            <Button fx:id="parentalBtn" maxWidth="-Infinity" onAction="#openParental" prefHeight="40" text="Parental Controls" textFill="#72490b" />
+            <Button fx:id="logoutBtn" maxWidth="-Infinity" onAction="#logout" prefHeight="40" text="Logout" textFill="#72490b" />
         </VBox>
+
     </left>
 
     <center>
