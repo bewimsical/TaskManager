@@ -4,6 +4,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.*?>
 
-<AnchorPane >
+<AnchorPane
+    stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="edu.farmingdale.taskmanager.Controllers.SoundSettingsController">
+
+    <VBox spacing="20" alignment="TOP_CENTER" layoutX="100" layoutY="30">
+
+    </VBox>
+
+
+
 
 </AnchorPane>
