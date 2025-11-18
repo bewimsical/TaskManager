@@ -17,11 +17,13 @@ public abstract class ChoreCard<T> extends ImageCard<T>{
     protected int xp;
     protected Consumer<ChoreCard<T>> onClick;
     protected Image image;
-    ImageView imageview;
+    protected ImageView imageview;
+    protected boolean completed;
 
     public ChoreCard(T data,  Consumer<ChoreCard<T>> onClick) {
         super(data);
-        image = new Image(TaskManagerApplication.class.getResource("images/chore card.png").toExternalForm());
+        //image = new Image(TaskManagerApplication.class.getResource("images/chore card.png").toExternalForm());
+
         imageview = new ImageView();
         this.onClick = onClick;
         root.setCursor(Cursor.HAND);
@@ -61,6 +63,10 @@ public abstract class ChoreCard<T> extends ImageCard<T>{
 
     protected void setCompletedImage(){
         image =  new Image(TaskManagerApplication.class.getResource("images/chore card - complete.png").toExternalForm());
+    }
+
+    protected void setNotCompletedImage(){
+        image = new Image(TaskManagerApplication.class.getResource("images/chore card.png").toExternalForm());
     }
 
 

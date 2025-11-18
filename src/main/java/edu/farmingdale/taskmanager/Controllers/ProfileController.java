@@ -125,10 +125,11 @@ public class ProfileController implements Initializable {
 
 
             friendCardContainer.getChildren().add(f.createView());
-
-        username.setText(current.getUsername());
-        levelLabel.setText(String.valueOf(current.getLevel()));
-        currentXp.setText(String.valueOf(current.getXp()));
+        if (current != null) {
+            username.setText(current.getUsername());
+            levelLabel.setText(String.valueOf(current.getLevel()));
+            currentXp.setText(String.valueOf(current.getXp()));
+        }
 
 
 
