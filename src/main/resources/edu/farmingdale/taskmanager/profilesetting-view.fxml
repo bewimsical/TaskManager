@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.ProfileSettingsController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.ProfileSettingsController">
     <Label layoutX="233.0" layoutY="17.0" styleClass="menu-label" text="Profile Settings" />
 
     <HBox spacing="10" />

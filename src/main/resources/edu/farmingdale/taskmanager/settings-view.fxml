@@ -3,6 +3,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <BorderPane prefHeight="600" prefWidth="900" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.SettingsController">
 
@@ -10,7 +11,10 @@
         <VBox alignment="TOP_CENTER" prefWidth="220" spacing="30" styleClass="container">
             <padding><Insets bottom="10" left="10" right="10" top="25" /></padding>
 
-            <Label style="-fx-font-weight: bold; -fx-font-size: 14;" styleClass="menu-label" text="⚔️ Back to Main Page" textFill="#6b350e" />
+            <Label prefHeight="34.0" prefWidth="188.0" style="-fx-font-weight: Extra-Bold; -fx-font-size: 16;" styleClass="menu-label" text="⚔️ Back to Main Page" textFill="#6b350e">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font></Label>
             <Button fx:id="profileBtn" onAction="#openProfile" text="Profile" textFill="#72490b" />
             <Button fx:id="gameBtn" onAction="#openGameSettings" text="Game Settings" textFill="#72490b" />
             <Button fx:id="soundBtn" onAction="#openSoundSettings" text="Sound Settings" textFill="#72490b" />
@@ -23,7 +27,7 @@
 
     <center>
         <StackPane fx:id="contentArea" style="-fx-background-color: #CBB186;" styleClass="container">
-            <Label style="-fx-font-size: 18; -fx-text-fill: #3B2E1D;" text="Select a setting to view details" />
+            <Label style="-fx-font-size: 18; -fx-text-fill: #3B2E1D;" text="Select a Setting to View Details" />
         </StackPane>
     </center>
 
