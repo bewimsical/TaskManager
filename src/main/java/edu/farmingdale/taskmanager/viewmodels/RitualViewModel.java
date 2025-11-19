@@ -1,5 +1,9 @@
 package edu.farmingdale.taskmanager.viewmodels;
 
+import edu.farmingdale.taskmanager.Models.Chore;
+import edu.farmingdale.taskmanager.Models.Ritual;
+import edu.farmingdale.taskmanager.Models.User;
+import edu.farmingdale.taskmanager.Repositories.FirebaseRitualRepository;
 import edu.farmingdale.taskmanager.Session;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -7,13 +11,17 @@ import javafx.beans.property.StringProperty;
 import java.time.LocalDate;
 import java.time.format.TextStyle;
 import java.util.Locale;
+import java.util.UUID;
 
 public class RitualViewModel {
 
+    private final FirebaseRitualRepository ritualRepo = new FirebaseRitualRepository();
     private final StringProperty date = new SimpleStringProperty();
 
+    private final User user;
     public RitualViewModel() {
         Session session = Session.getInstance();
+        user = session.getUser();
         date.set(formatDate(LocalDate.now()));
 
 
@@ -43,5 +51,17 @@ public class RitualViewModel {
             case 3: return day + "rd";
             default: return day + "th";
         }
+    }
+
+    public void createRitual(Chore chore, String time){
+        String ritualId = UUID.randomUUID().toString();
+
+        Ritual ritual = new Ritual.RitualBuilder()
+                .id(ritualId)
+                .chores(chore)
+                .timeOfDay(Ritual.TimeOfDay.valueOf(time))
+                .xp(100)
+                .build();
+        ritualRepo.setRitual(ritual, user);
     }
 }

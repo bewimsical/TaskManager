@@ -141,7 +141,9 @@ public class RitualController implements Initializable {
 
             // After popup is closed, get the selected chore
             Chore selectedChore = arc.getSelectedChore();
-            System.out.println(selectedChore.getName());
+            if (selectedChore != null){
+                vm.createRitual(selectedChore, timeOfDay);
+            }
 
 
         } catch (IOException e) {
