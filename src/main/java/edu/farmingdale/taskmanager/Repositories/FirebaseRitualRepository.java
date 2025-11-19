@@ -54,6 +54,8 @@ public class FirebaseRitualRepository {
     }
 
     public void setRitual(Ritual ritual, User user){
+        System.out.println("User id "+user.getId() );
+        System.out.println("Ritual id " + ritual.getId());
         DocumentReference docRef = TaskManagerApplication.fstore.collection("users").document(user.getId()).collection("rituals").document(ritual.getId());
         ApiFuture<WriteResult> result = docRef.set(ritual);
 

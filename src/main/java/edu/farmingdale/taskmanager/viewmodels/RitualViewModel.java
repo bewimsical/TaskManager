@@ -7,24 +7,39 @@ import edu.farmingdale.taskmanager.Repositories.FirebaseRitualRepository;
 import edu.farmingdale.taskmanager.Session;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableListBase;
 
 import java.time.LocalDate;
 import java.time.format.TextStyle;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.UUID;
 
 public class RitualViewModel {
 
     private final FirebaseRitualRepository ritualRepo = new FirebaseRitualRepository();
     private final StringProperty date = new SimpleStringProperty();
+    private final ObservableList<Ritual> morningRituals = new ObservableListBase<Ritual>() {
+        @Override
+        public Ritual get(int index) {
+            return null;
+        }
 
+        @Override
+        public int size() {
+            return 0;
+        }
+    };
+
+    private final Map<String, List<Ritual>> rituals;
     private final User user;
     public RitualViewModel() {
         Session session = Session.getInstance();
         user = session.getUser();
+        rituals = session.getRituals();
         date.set(formatDate(LocalDate.now()));
-
-
     }
 
     public StringProperty dateProperty(){
