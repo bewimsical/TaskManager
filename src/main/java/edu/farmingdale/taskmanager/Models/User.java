@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 public class User {
+    private String id;
     private String username;
     private String password;
     private String email;
@@ -23,6 +24,7 @@ public class User {
     }
 
     private User(UserBuilder userBuilder) {
+        this.id = userBuilder.id;
         this.username = userBuilder.username;
         this.password = userBuilder.password;
         this.email = userBuilder.email;
@@ -137,8 +139,17 @@ public class User {
         this.xp = xp;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
 
     public static class UserBuilder {
+        private String id;
         private String username;
         private String password;
         private String email;
@@ -146,10 +157,7 @@ public class User {
         private boolean adult;
         private int streak;
         private double xpBonus;
-        private List<String> parties;
         private List<String> friends;
-
-        private Map<String, LinkedList<Boss>> bosses;
         private int vanquishedBossCount;
         private int completedQuestCount;
         private String profileUrl;
@@ -158,6 +166,11 @@ public class User {
 
         public UserBuilder() {
 
+        }
+
+        public UserBuilder id(String id) {
+            this.id = id;
+            return this;
         }
 
         public UserBuilder username(String username) {
@@ -195,21 +208,11 @@ public class User {
             return this;
         }
 
-        public UserBuilder parties(List<String> parties) {
-            this.parties = parties;
-            return this;
-        }
-
         public UserBuilder friends(List<String> friends) {
             this.friends = friends;
             return this;
         }
 
-
-        public UserBuilder bosses(Map<String, LinkedList<Boss>> bosses) {
-            this.bosses = bosses;
-            return this;
-        }
 
         public UserBuilder vanquishedBossCount(int vanquishedBossCount) {
             this.vanquishedBossCount = vanquishedBossCount;

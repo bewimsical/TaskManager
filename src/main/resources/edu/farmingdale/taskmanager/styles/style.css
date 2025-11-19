@@ -179,34 +179,42 @@
 }
 
 /* Narrow vertical scrollbar */
-.scroll-pane .scroll-bar:vertical {
+.scroll-pane .scroll-bar:vertical,
+.combo-box .scroll-bar:vertical {
     -fx-pref-width: 8px;
     -fx-background-color: transparent;
 }
 
 /* Scrollbar track */
-.scroll-pane .scroll-bar:vertical .track {
+.scroll-pane .scroll-bar:vertical .track,
+.combo-box .scroll-bar:vertical {
     -fx-background-color: transparent;
 }
 
 /* Scrollbar thumb */
-.scroll-pane .scroll-bar:vertical .thumb {
+.scroll-pane .scroll-bar:vertical .thumb,
+.combo-box .scroll-bar:vertical .thumb {
     -fx-background-color: rgba(134, 83, 2, 0.3);
     -fx-background-insets: 2;
     -fx-background-radius: 4;
 }
 
-.scroll-pane .scroll-bar:vertical .thumb:hover {
+.scroll-pane .scroll-bar:vertical .thumb:hover,
+.combo-box .scroll-bar:vertical .thumb:hover {
     -fx-background-color: rgba(134, 83, 2, 0.6);
 }
 
-.scroll-pane .scroll-bar:vertical .thumb:pressed {
+.scroll-pane .scroll-bar:vertical .thumb:pressed,
+.combo-box .scroll-bar:vertical .thumb:pressed{
     -fx-background-color: #472C01;
 }
 
 /* Trick to hide the arrow buttons completely */
 .scroll-pane .scroll-bar .increment-button,
-.scroll-pane .scroll-bar .decrement-button {
+.scroll-pane .scroll-bar .decrement-button,
+.combo-box .scroll-bar .increment-button,
+.combo-box .scroll-bar .decrement-button
+{
     -fx-pref-height: 0 !important;
     -fx-max-height: 0 !important;
     -fx-min-height: 0 !important;
@@ -214,6 +222,79 @@
     -fx-shape: "";
     -fx-background-color: transparent;
     -fx-opacity: 0;
+}
+
+/* Main combo box */
+.combo-box {
+    -fx-background-color: #5D3A0150;  /* semi-transparent dark brown */
+    -fx-font-family: "Inknut Antiqua Regular";           /* your custom font */
+    -fx-font-size: 24px;
+    -fx-text-fill: #472C01;                      /* light text */
+    -fx-border-color: #472C01;                   /* subtle border */
+    -fx-border-width: 2;
+    -fx-border-radius: 5;                         /* small rounding */
+    -fx-background-radius: 5;
+    -fx-padding: -10 8 -10 8;
+}
+
+.combo-box:focused{
+
+}
+
+.combo-box .arrow-button .arrow {
+    -fx-shape: "";       /* remove the default arrow shape */
+    -fx-background-color: transparent;
+}
+
+/* Arrow button */
+.combo-box .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-image: url('../images/arrow-down.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.combo-box .list-view {
+    -fx-background-color: #C1A677;
+}
+
+/* Dropdown items */
+.combo-box .list-cell {
+    -fx-background-color: transparent;
+    /*-fx-background-color: #5D3A0175;*/
+    -fx-text-fill: #472C01;
+    -fx-font-family: 'Inknut Antiqua Regular';
+    -fx-font-size: 20px;
+}
+
+.ritual-item-label{
+    -fx-text-fill: #472C01;
+    -fx-font-size: 20px;
+}
+
+.ritual-item-label:hover{
+    -fx-text-fill: #F8E5B2;
+    -fx-font-size: 20px;
+}
+
+/* Hover effect */
+.combo-box .list-cell:hover {
+    -fx-background-color: #5D3A0175;
+    -fx-text-fill: #F8E5B2;
+    -fx-font-size: 20px;
+}
+
+/* Selected item */
+.combo-box .list-cell:filled:selected,
+.combo-box .list-cell:filled:selected:hover {
+    /*-fx-background-color: #5D3A0190;*/
+    -fx-background-color: transparent;
+    -fx-text-fill: #472C01;
+}
+
+/* Dropdown popup corners */
+.combo-box-popup {
+    -fx-background-radius: 2;
 }
 
 
