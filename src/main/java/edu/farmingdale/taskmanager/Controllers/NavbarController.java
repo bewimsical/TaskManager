@@ -106,6 +106,7 @@ public class NavbarController {
 
     @FXML
     void goSettings(MouseEvent event) {
+        switchScene(event.getSource(), "settings-view.fxml");
 
     }
 

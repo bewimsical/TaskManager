@@ -10,7 +10,7 @@
         <VBox alignment="TOP_CENTER" prefWidth="220" spacing="30" styleClass="container">
             <padding><Insets bottom="10" left="10" right="10" top="25" /></padding>
 
-            <Label style="-fx-font-weight: 20; -fx-font-size: 14;" styleClass="menu-label" text="⚔️ Back to Main Page" textFill="#6b350e" />
+            <Label style="-fx-font-weight: bold; -fx-font-size: 14;" styleClass="menu-label" text="⚔️ Back to Main Page" textFill="#6b350e" />
          <VBox alignment="CENTER" prefWidth="200.0" spacing="30.0">
             <children>
                   <Button fx:id="profileBtn" onAction="#openProfile" text="Profile" textFill="#72490b" />
