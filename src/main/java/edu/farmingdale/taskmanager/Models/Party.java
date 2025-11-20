@@ -1,5 +1,5 @@
 package edu.farmingdale.taskmanager.Models;
 
-public class Parties {
+public class Party {
 
 }
