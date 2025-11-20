@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.image.Image?>
@@ -220,6 +221,21 @@
                                                                   <Insets bottom="-8.0" left="10.0" top="-11.0" />
                                                               </padding>
                                                           </Label>
+                                          <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <ImageView fx:id="addMorning" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#AddMorningRitual" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@images/add.png" />
+                                                   </image>
+                                                   <HBox.margin>
+                                                      <Insets right="15.0" />
+                                                   </HBox.margin>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </ImageView>
+                                             </children>
+                                          </HBox>
                                                       </children>
                                        <VBox.margin>
                                           <Insets top="10.0" />
@@ -282,6 +298,21 @@
                                                 <Insets bottom="-8.0" left="10.0" top="-11.0" />
                                              </padding>
                                           </Label>
+                                          <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <ImageView fx:id="addMidday" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#addMiddayRitual" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@images/add.png" />
+                                                   </image>
+                                                   <HBox.margin>
+                                                      <Insets right="15.0" />
+                                                   </HBox.margin>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </ImageView>
+                                             </children>
+                                          </HBox>
                                        </children>
                                        <VBox.margin>
                                           <Insets top="10.0" />
@@ -341,6 +372,21 @@
                                                 <Insets bottom="-8.0" left="10.0" top="-11.0" />
                                              </padding>
                                           </Label>
+                                          <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <ImageView fx:id="addEvening" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#addEveningRitual" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@images/add.png" />
+                                                   </image>
+                                                   <HBox.margin>
+                                                      <Insets right="15.0" />
+                                                   </HBox.margin>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </ImageView>
+                                             </children>
+                                          </HBox>
                                        </children>
                                        <VBox.margin>
                                           <Insets top="10.0" />
