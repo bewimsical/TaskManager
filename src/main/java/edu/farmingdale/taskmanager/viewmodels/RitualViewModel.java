@@ -67,7 +67,6 @@ public class RitualViewModel {
 
     public void createRitual(Chore chore, String time){
         String ritualId = UUID.randomUUID().toString();
-
         Ritual ritual = new Ritual.RitualBuilder()
                 .id(ritualId)
                 .chores(chore)
@@ -86,11 +85,9 @@ public class RitualViewModel {
     public ObservableList<Ritual> getMorningRituals() {
         return morningRituals;
     }
-
     public ObservableList<Ritual> getMiddayRituals() {
         return middayRituals;
     }
-
     public ObservableList<Ritual> getEveningRituals() {
         return eveningRituals;
     }
