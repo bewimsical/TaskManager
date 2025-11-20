@@ -1,8 +1,12 @@
 package edu.farmingdale.taskmanager.Controllers;
 
 import edu.farmingdale.taskmanager.Models.Chore;
+import edu.farmingdale.taskmanager.Models.Ritual;
 import edu.farmingdale.taskmanager.TaskManagerApplication;
+import edu.farmingdale.taskmanager.cards.RitualCard;
 import edu.farmingdale.taskmanager.viewmodels.RitualViewModel;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -99,7 +103,29 @@ public class RitualController implements Initializable {
 
         date.textProperty().bind(vm.dateProperty());
 
+        System.out.println("morning ritual length: "+vm.getMorningRituals().toArray().length);
+        System.out.println("Morning map length: "+ vm.getRituals().get("Morning").size());
+        System.out.println("Midday map length: "+ vm.getRituals().get("Midday").size());
+        System.out.println("Evening map length: "+ vm.getRituals().get("Evening").size());
 
+        setUpLists(vm.getMorningRituals(), morningContainer);
+        setUpLists(vm.getMiddayRituals(), middayContainer);
+        setUpLists(vm.getEveningRituals(), eveningContainer);
+
+        System.out.println("morning container length "+morningContainer.getChildren().size());
+
+
+    }
+
+    private void setUpLists(ObservableList<Ritual> list, VBox container){
+        // reactively render lists:
+        list.addListener((ListChangeListener<Ritual>) change -> {
+            container.getChildren().clear();
+            for (Ritual r : list) {
+               RitualCard card = new RitualCard(r, vm::completeChore);
+                container.getChildren().add(card.createView());
+            }
+        });
     }
 
 

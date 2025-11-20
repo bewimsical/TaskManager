@@ -6,6 +6,8 @@ import edu.farmingdale.taskmanager.Models.Boss;
 import edu.farmingdale.taskmanager.Models.Chore;
 import edu.farmingdale.taskmanager.Models.Ritual;
 import edu.farmingdale.taskmanager.Models.User;
+import edu.farmingdale.taskmanager.Repositories.FirebaseRitualRepository;
+import edu.farmingdale.taskmanager.exceptions.ResourceNotFoundException;
 
 import java.util.*;
 import java.util.concurrent.ExecutionException;
@@ -98,12 +100,16 @@ public class FirestoreClient {
             System.out.println("No such document!");
         }
         //Fix this later
-        Map<String, List<Ritual>> rituals = new HashMap<>();
-        rituals.put("Morning", new ArrayList<>());
-        rituals.put("Midday", new ArrayList<>());
-        rituals.put("Evening", new ArrayList<>());
+        FirebaseRitualRepository ritualRepository = new FirebaseRitualRepository();
+        Map<String, List<Ritual>> rituals = null;
+        try {
+            rituals = ritualRepository.getRituals(Session.getInstance().getUser());
+            Session.getInstance().setRituals(rituals);
+        } catch (ResourceNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
 
-        Session.getInstance().setRituals(rituals);
+
 
         //Fix this later
         Session.getInstance().setAssignedChoreIds(new HashSet<>());

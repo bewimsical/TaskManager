@@ -12,9 +12,10 @@ public class Ritual {
     private String date;
     private double xp;
     private String dateRecorded;
-    private TimeOfDay timeOfDay;
+    private String timeOfDay;
     private Chore chore;
 
+    public Ritual(){}
     public Ritual(RitualBuilder ritualBuilder) {
         this.id = ritualBuilder.id;
         this.isCompleted = ritualBuilder.isCompleted;
@@ -57,11 +58,11 @@ public class Ritual {
         this.chore = chore;
     }
 
-    public TimeOfDay getTimeOfDay() {
+    public String getTimeOfDay() {
         return timeOfDay;
     }
 
-    public void setTimeOfDay(TimeOfDay timeOfDay) {
+    public void setTimeOfDay(String timeOfDay) {
         this.timeOfDay = timeOfDay;
     }
 
@@ -90,7 +91,7 @@ public class Ritual {
         private String date;
         private double xp;
         private String dateRecorded;
-        private TimeOfDay timeOfDay;
+        private String timeOfDay;
 
         public RitualBuilder() {
 
@@ -116,7 +117,7 @@ public class Ritual {
             return this;
         }
 
-        public RitualBuilder timeOfDay(TimeOfDay timeOfDay){
+        public RitualBuilder timeOfDay(String timeOfDay){
             this.timeOfDay = timeOfDay;
             return this;
         }

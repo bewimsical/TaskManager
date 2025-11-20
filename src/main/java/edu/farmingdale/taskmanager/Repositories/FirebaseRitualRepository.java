@@ -2,10 +2,8 @@ package edu.farmingdale.taskmanager.Repositories;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
-import edu.farmingdale.taskmanager.Models.Boss;
 import edu.farmingdale.taskmanager.Models.Ritual;
 import edu.farmingdale.taskmanager.Models.User;
-import edu.farmingdale.taskmanager.Session;
 import edu.farmingdale.taskmanager.TaskManagerApplication;
 import edu.farmingdale.taskmanager.exceptions.ResourceNotFoundException;
 
@@ -36,9 +34,11 @@ public class FirebaseRitualRepository {
             System.out.println("Reading bosses from the database");
             for(QueryDocumentSnapshot document: documents){
                 Ritual ritual = document.toObject(Ritual.class);
-                LocalDate ritualDate = LocalDate.parse(ritual.getDateRecorded());
-                if (!today.equals(ritualDate)){
-                    ritual.setCompleted(false);
+                if (ritual.getDateRecorded() != null) {
+                    LocalDate ritualDate = LocalDate.parse(ritual.getDateRecorded());
+                    if (!today.equals(ritualDate)) {
+                        ritual.setCompleted(false);
+                    }
                 }
                 rituals.get(ritual.getTimeOfDay().toString()).add(ritual);
 

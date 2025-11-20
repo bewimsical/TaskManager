@@ -5,10 +5,11 @@ import edu.farmingdale.taskmanager.Models.Ritual;
 import edu.farmingdale.taskmanager.Models.User;
 import edu.farmingdale.taskmanager.Repositories.FirebaseRitualRepository;
 import edu.farmingdale.taskmanager.Session;
+import edu.farmingdale.taskmanager.cards.ChoreCard;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 
 import java.time.LocalDate;
 import java.time.format.TextStyle;
@@ -21,17 +22,9 @@ public class RitualViewModel {
 
     private final FirebaseRitualRepository ritualRepo = new FirebaseRitualRepository();
     private final StringProperty date = new SimpleStringProperty();
-    private final ObservableList<Ritual> morningRituals = new ObservableListBase<Ritual>() {
-        @Override
-        public Ritual get(int index) {
-            return null;
-        }
-
-        @Override
-        public int size() {
-            return 0;
-        }
-    };
+    private final ObservableList<Ritual> morningRituals = FXCollections.observableArrayList();
+    private final ObservableList<Ritual> middayRituals = FXCollections.observableArrayList();
+    private final ObservableList<Ritual> eveningRituals = FXCollections.observableArrayList();
 
     private final Map<String, List<Ritual>> rituals;
     private final User user;
@@ -39,6 +32,10 @@ public class RitualViewModel {
         Session session = Session.getInstance();
         user = session.getUser();
         rituals = session.getRituals();
+        morningRituals.addAll(rituals.get("Morning"));
+        middayRituals.addAll(rituals.get("Midday"));
+        eveningRituals.addAll(rituals.get("Evening"));
+
         date.set(formatDate(LocalDate.now()));
     }
 
@@ -74,9 +71,40 @@ public class RitualViewModel {
         Ritual ritual = new Ritual.RitualBuilder()
                 .id(ritualId)
                 .chores(chore)
-                .timeOfDay(Ritual.TimeOfDay.valueOf(time))
+                .timeOfDay(time)
                 .xp(100)
                 .build();
         ritualRepo.setRitual(ritual, user);
+        //add ritual to list
+        switch (ritual.getTimeOfDay().toString()){
+            case "Morning" -> morningRituals.add(ritual);
+            case "Midday" -> middayRituals.add((ritual));
+            case "Evening" -> eveningRituals.add((ritual));
+        }
+    }
+
+    public ObservableList<Ritual> getMorningRituals() {
+        return morningRituals;
+    }
+
+    public ObservableList<Ritual> getMiddayRituals() {
+        return middayRituals;
+    }
+
+    public ObservableList<Ritual> getEveningRituals() {
+        return eveningRituals;
+    }
+
+    public void completeChore(ChoreCard choreCard){
+        Ritual ritual = (Ritual) choreCard.getData();
+        ritual.setCompleted(true);
+        //move xp bar
+        //check all chores
+        choreCard.redraw();
+
+    }
+
+    public Map<String, List<Ritual>> getRituals() {
+        return rituals;
     }
 }
