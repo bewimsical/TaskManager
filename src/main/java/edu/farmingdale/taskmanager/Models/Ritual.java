@@ -1,27 +1,30 @@
 package edu.farmingdale.taskmanager.Models;
 
 public class Ritual {
+
+
     public enum TimeOfDay {
         Morning, Midday, Evening
     }
 
+    private String id;
+    private boolean isCompleted;
     private String date;
     private double xp;
     private String dateRecorded;
-    private TimeOfDay timeOfDay;
+    private String timeOfDay;
     private Chore chore;
 
-
-
-
+    public Ritual(){}
     public Ritual(RitualBuilder ritualBuilder) {
+        this.id = ritualBuilder.id;
+        this.isCompleted = ritualBuilder.isCompleted;
         this.date = ritualBuilder.date;
         this.xp = ritualBuilder.xp;
         this.dateRecorded = ritualBuilder.dateRecorded;
-        this.chore = ritualBuilder.chores;
+        this.chore = ritualBuilder.chore;
         this.timeOfDay = ritualBuilder.timeOfDay;
     }
-
 
     public String getDate() {
         return date;
@@ -55,22 +58,40 @@ public class Ritual {
         this.chore = chore;
     }
 
-    public TimeOfDay getTimeOfDay() {
+    public String getTimeOfDay() {
         return timeOfDay;
     }
 
-    public void setTimeOfDay(TimeOfDay timeOfDay) {
+    public void setTimeOfDay(String timeOfDay) {
         this.timeOfDay = timeOfDay;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public boolean isCompleted() {
+        return isCompleted;
+    }
+
+    public void setCompleted(boolean completed) {
+        isCompleted = completed;
     }
 
 
 
     public static class RitualBuilder {
-        private Chore chores;
+        private String id;
+        private boolean isCompleted;
+        private Chore chore;
         private String date;
         private double xp;
         private String dateRecorded;
-        private TimeOfDay timeOfDay;
+        private String timeOfDay;
 
         public RitualBuilder() {
 
@@ -92,12 +113,22 @@ public class Ritual {
         }
 
         public RitualBuilder chores(Chore chores) {
-            this.chores = chores;
+            this.chore = chores;
             return this;
         }
 
-        public RitualBuilder timeOfDay(TimeOfDay timeOfDay){
+        public RitualBuilder timeOfDay(String timeOfDay){
             this.timeOfDay = timeOfDay;
+            return this;
+        }
+
+        public RitualBuilder id(String id) {
+            this.id = id;
+            return this;
+        }
+
+        public RitualBuilder isCompleted(boolean completed){
+            this.isCompleted = completed;
             return this;
         }
 
