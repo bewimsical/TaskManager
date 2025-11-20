@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="edu.farmingdale.taskmanager.Controllers.SettingsController"
-            prefHeight="400.0" prefWidth="600.0">
+<BorderPane prefHeight="1024" prefWidth="1440" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.SettingsController">
 
-</AnchorPane>
+    <left>
+        <VBox alignment="TOP_CENTER" prefWidth="220" spacing="30" styleClass="container">
+            <padding><Insets bottom="10" left="10" right="10" top="25" /></padding>
+
+            <Label style="-fx-font-weight: bold; -fx-font-size: 14;" styleClass="menu-label" text="⚔️ Back to Main Page" textFill="#6b350e" />
+         <VBox alignment="CENTER" prefWidth="200.0" spacing="30.0">
+            <children>
+                  <Button fx:id="profileBtn" onAction="#openProfile" text="Profile" textFill="#72490b" />
+                  <Button fx:id="gameBtn" onAction="#openGameSettings" text="Game Settings" textFill="#72490b" />
+                  <Button fx:id="soundBtn" onAction="#openSoundSettings" text="Sound Settings" textFill="#72490b" />
+                  <Button fx:id="securityBtn" onAction="#openSecurity" text="Account Security" textFill="#72490b" />
+                  <Button fx:id="deactivateBtn" onAction="#openDeactivate" text="Deactivate Account" textFill="#72490b" />
+                  <Button fx:id="parentalBtn" onAction="#openParental" text="Parental Controls" textFill="#72490b" />
+                  <Button fx:id="logoutBtn" onAction="#logout" text="Logout" textFill="#72490b" />
+
+
+            </children>
+         </VBox>
+        </VBox>
+    </left>
+
+    <center>
+        <StackPane fx:id="contentArea" style="-fx-background-color: #CBB186;" styleClass="container">
+            <Label style="-fx-font-size: 18; -fx-text-fill: #3B2E1D;" text="Select a setting to view details" />
+        </StackPane>
+    </center>
+
+
+</BorderPane>
