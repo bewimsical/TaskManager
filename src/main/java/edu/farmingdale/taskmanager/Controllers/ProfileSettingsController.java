@@ -27,10 +27,25 @@ public class ProfileSettingsController {
         }
     }
 
-        @FXML
-        private void saveProfile() {
-            String username = usernameField.getText();
-            String email = emailField.getText();
+    @FXML
+    private void saveProfile() {
+
+        if (currentUser == null) return;
+        String newUsername = usernameField.getText();
+        String newEmail = emailField.getText();
+        currentUser.setUsername(newUsername);
+        currentUser.setEmail(newEmail);
+
+        //Referencing Firestore
+        TaskManagerApplication.fstore.collection("users").document("user1").update("username", newUsername, "email", newEmail)
+                .addListener(() -> {
+                    statusLabel.setText("Profile updated successfully!");
+                    System.out.println("Profile updated!");
+                }, Runnable::run);
+
+        //update session
+        Session.getInstance().getUser().setUsername(newUsername);
+        Session.getInstance().getUser().setEmail(newEmail);
 
             System.out.println("Saving profile:");
             System.out.println("Username: " + username);
