@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.ProfileSettingsController">
+    <Label layoutX="380.0" layoutY="17.0" styleClass="menu-label" text="Profile Settings" textFill="#6f4818" />
+
+    <HBox spacing="10" />
+
+    <HBox spacing="10" />
+
+    <Button layoutX="391.0" layoutY="432.0" onAction="#saveProfile" text="Save Changes" textFill="#5b4317" />
+    <Label fx:id="statusLabel" style="-fx-text-fill: lightgreen;" />
+     <TextField fx:id="emailField" layoutX="349.0" layoutY="342.0" />
+     <TextField fx:id="usernameField" layoutX="349.0" layoutY="244.0" />
+     <Label layoutX="349.0" layoutY="201.0" prefHeight="43.0" prefWidth="105.0" text="Username:" textFill="#5b3a17" />
+     <Label layoutX="349.0" layoutY="308.0" text="Email:" textFill="#654b21" />
+
+
+
+</AnchorPane>
