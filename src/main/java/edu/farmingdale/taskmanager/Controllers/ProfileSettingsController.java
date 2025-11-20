@@ -1,8 +1,13 @@
 package edu.farmingdale.taskmanager.Controllers;
 
+import com.google.cloud.firestore.DocumentReference;
+import edu.farmingdale.taskmanager.TaskManagerApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import edu.farmingdale.taskmanager.Session;
+import edu.farmingdale.taskmanager.Models.User;
+
 
 
 public class ProfileSettingsController {
@@ -47,12 +52,10 @@ public class ProfileSettingsController {
         Session.getInstance().getUser().setUsername(newUsername);
         Session.getInstance().getUser().setEmail(newEmail);
 
-            System.out.println("Saving profile:");
-            System.out.println("Username: " + username);
-            System.out.println("Email: " + email);
 
-            statusLabel.setText("Saved!");
-        }
     }
+
+    }
+
 
 
