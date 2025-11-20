@@ -7,16 +7,25 @@ import javafx.scene.control.TextField;
 
 public class ProfileSettingsController {
 
-        @FXML private TextField usernameField;
-        @FXML private TextField emailField;
-        @FXML private Label statusLabel;
+    @FXML
+    private TextField usernameField;
+    @FXML
+    private TextField emailField;
+    @FXML
+    private Label statusLabel;
 
-        @FXML
-        public void initialize() {
-            // Load saved values (temporary example)
-            usernameField.setText("PlayerOne");
-            emailField.setText("player@example.com");
+    private User currentUser;
+
+    @FXML
+    public void initialize() {
+        // Loading user from session
+        currentUser = Session.getInstance().getUser();
+
+        if (currentUser != null) {
+            usernameField.setText(currentUser.getUsername());
+            emailField.setText(currentUser.getEmail());
         }
+    }
 
         @FXML
         private void saveProfile() {
