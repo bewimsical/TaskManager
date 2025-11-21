@@ -5,38 +5,68 @@ import edu.farmingdale.taskmanager.Models.Ritual;
 import edu.farmingdale.taskmanager.Models.User;
 import edu.farmingdale.taskmanager.Repositories.FirebaseRitualRepository;
 import edu.farmingdale.taskmanager.Session;
+import edu.farmingdale.taskmanager.TaskManagerApplication;
 import edu.farmingdale.taskmanager.cards.ChoreCard;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.image.Image;
+import org.checkerframework.checker.units.qual.C;
 
 import java.time.LocalDate;
 import java.time.format.TextStyle;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 public class RitualViewModel {
 
     private final FirebaseRitualRepository ritualRepo = new FirebaseRitualRepository();
     private final StringProperty date = new SimpleStringProperty();
+    private final StringProperty streak = new SimpleStringProperty();
+    private final StringProperty xpBonus = new SimpleStringProperty();
+    private final DoubleProperty xpPercent = new SimpleDoubleProperty();
     private final ObservableList<Ritual> morningRituals = FXCollections.observableArrayList();
     private final ObservableList<Ritual> middayRituals = FXCollections.observableArrayList();
     private final ObservableList<Ritual> eveningRituals = FXCollections.observableArrayList();
 
+    private final Map<String, ObjectProperty<Image>> dayImages = new HashMap<>();
+    private final Image doneImage  = new Image(TaskManagerApplication.class.getResource("images/ritualgem.png").toExternalForm());
+    private final Image emptyImage = new Image(TaskManagerApplication.class.getResource("images/retualgem-empty2.png").toExternalForm());
+
     private final Map<String, List<Ritual>> rituals;
+    private final Map<String, Boolean> weekStreak;
     private final User user;
     public RitualViewModel() {
         Session session = Session.getInstance();
         user = session.getUser();
         rituals = session.getRituals();
+        weekStreak = user.getWeekStreak();
+
+        for (int i = 1; i <= 7; i++) {
+            ObjectProperty<Image> property = new SimpleObjectProperty<>();
+            dayImages.put(String.valueOf(i), property);
+        }
+
+
+        date.set(formatDate(LocalDate.now()));
+    }
+
+    public ObjectProperty<Image> imageProperty(String day) {
+        return dayImages.get(day);
+    }
+
+    public void updateDay(String day) {
+        boolean value = weekStreak.getOrDefault(day, false);
+        dayImages.get(day).set(value ? doneImage : emptyImage);
+    }
+
+    public void setUpViews(){
         morningRituals.addAll(rituals.get("Morning"));
         middayRituals.addAll(rituals.get("Midday"));
         eveningRituals.addAll(rituals.get("Evening"));
 
-        date.set(formatDate(LocalDate.now()));
+        for (int i = 1; i <= 7; i++) {
+            updateDay(String.valueOf(i));
+        }
     }
 
     public StringProperty dateProperty(){
@@ -96,12 +126,27 @@ public class RitualViewModel {
         Ritual ritual = (Ritual) choreCard.getData();
         ritual.setCompleted(true);
         //move xp bar
+
         //check all chores
+        boolean dayComplete = rituals.values().stream()
+                        .flatMap(List::stream)
+                        .allMatch(Ritual::isCompleted);
+        if (dayComplete){
+            //update database
+            String day = String.valueOf(LocalDate.now().getDayOfWeek().getValue());
+            weekStreak.put(day, true);
+            updateDay(day);
+        }
+
         choreCard.redraw();
 
     }
 
     public Map<String, List<Ritual>> getRituals() {
         return rituals;
+    }
+
+    public Map<String, Boolean> getWeekStreak() {
+        return weekStreak;
     }
 }

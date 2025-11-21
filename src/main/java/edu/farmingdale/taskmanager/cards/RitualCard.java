@@ -8,7 +8,7 @@ public class RitualCard extends ChoreCard<Ritual>{
     public RitualCard(Ritual data, Consumer<ChoreCard<Ritual>> onClick) {
         super(data, onClick);
         this.name = data.getChore().getName();
-        this.xp = data.getChore().getChoreXP();
+        this.xp = data.getXp();
         if(data.isCompleted()){
             setCompletedImage();
         }else{

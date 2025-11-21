@@ -13,6 +13,7 @@ module edu.farmingdale.taskmanager {
     requires com.google.api.apicommon;
     requires javafx.graphics;
     requires javafx.base;
+    requires org.checkerframework.checker.qual;
 
 
     opens edu.farmingdale.taskmanager to javafx.fxml;

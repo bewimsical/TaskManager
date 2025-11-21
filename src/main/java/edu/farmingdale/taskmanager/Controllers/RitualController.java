@@ -102,19 +102,29 @@ public class RitualController implements Initializable {
         StackPane.setMargin(shine, new Insets(12, 0, 0, 10));
 
         date.textProperty().bind(vm.dateProperty());
-
-        System.out.println("morning ritual length: "+vm.getMorningRituals().toArray().length);
-        System.out.println("Morning map length: "+ vm.getRituals().get("Morning").size());
-        System.out.println("Midday map length: "+ vm.getRituals().get("Midday").size());
-        System.out.println("Evening map length: "+ vm.getRituals().get("Evening").size());
+        //bind streak
+        //bind streak bonus
+        //bind progress bar
 
         setUpLists(vm.getMorningRituals(), morningContainer);
         setUpLists(vm.getMiddayRituals(), middayContainer);
         setUpLists(vm.getEveningRituals(), eveningContainer);
 
-        System.out.println("morning container length "+morningContainer.getChildren().size());
+        bind(streak1, "1");
+        bind(streak2, "2");
+        bind(streak3, "3");
+        bind(streak4, "4");
+        bind(streak5, "5");
+        bind(streak6, "6");
+        bind(streak7, "7");
 
+        vm.setUpViews();
+    }
 
+    private void bind(ImageView img, String day) {
+        vm.imageProperty(day).addListener((o, oldImg, newImg) -> {
+            img.setImage(newImg);
+        });
     }
 
     private void setUpLists(ObservableList<Ritual> list, VBox container){
