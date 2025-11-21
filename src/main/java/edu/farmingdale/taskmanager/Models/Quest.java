@@ -3,6 +3,7 @@ package edu.farmingdale.taskmanager.Models;
 import java.util.List;
 
 public class Quest {
+    String id;
     String name;
     boolean isActive;
     boolean isCompleted;
@@ -12,7 +13,8 @@ public class Quest {
     List<String> chores;
 
 
-    public Quest(String name, boolean isActive, boolean isCompleted, double xp, double totalCompleted, double totalActive, List<String> chores) {
+    public Quest(String id, String name, boolean isActive, boolean isCompleted, double xp, double totalCompleted, double totalActive, List<String> chores) {
+        this.id = id;
         this.name = name;
         this.isActive = isActive;
         this.isCompleted = isCompleted;
@@ -22,6 +24,14 @@ public class Quest {
         this.chores = chores;
     }
 
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
