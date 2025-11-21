@@ -42,7 +42,7 @@ public class ProfileSettingsController {
         currentUser.setEmail(newEmail);
 
         //Referencing Firestore
-        TaskManagerApplication.fstore.collection("users").document("user1").update("username", newUsername, "email", newEmail)
+        TaskManagerApplication.fstore.collection("users").document(Session.getInstance().getUser().getId()).update("username", newUsername, "email", newEmail)
                 .addListener(() -> {
                     statusLabel.setText("Profile updated successfully!");
                     System.out.println("Profile updated!");
