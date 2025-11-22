@@ -20,39 +20,46 @@ import java.util.*;
 
 public class RitualViewModel {
     //TODO - add functionality to remove rituals.
+
+    //connect to firebase
     private final FirebaseRitualRepository ritualRepo = new FirebaseRitualRepository();
     private final FirebaseUserRepository userRepo = new FirebaseUserRepository();
 
+    //set up property bindings
     private final StringProperty date = new SimpleStringProperty();
     private final StringProperty streak = new SimpleStringProperty();
     private final StringProperty xpBonus = new SimpleStringProperty();
     private final DoubleProperty xpPercent = new SimpleDoubleProperty();
-
     private final ObservableList<Ritual> morningRituals = FXCollections.observableArrayList();
     private final ObservableList<Ritual> middayRituals = FXCollections.observableArrayList();
     private final ObservableList<Ritual> eveningRituals = FXCollections.observableArrayList();
-
     private final Map<String, ObjectProperty<Image>> dayImages = new HashMap<>();
+
+    //set up card images
     private final Image doneImage  = new Image(TaskManagerApplication.class.getResource("images/ritualgem.png").toExternalForm());
     private final Image emptyImage = new Image(TaskManagerApplication.class.getResource("images/retualgem-empty2.png").toExternalForm());
 
+    //store data from database
     private final Map<String, List<Ritual>> rituals;
     private final Map<String, Boolean> weekStreak;
-    private int totalXP;
-    private int completedXP;
     private final User user;
 
+    private int totalXP;
+    private int completedXP;
+
     public RitualViewModel() {
+        //get data from session
         Session session = Session.getInstance();
         user = session.getUser();
         rituals = session.getRituals();
         weekStreak = user.getWeekStreak();
 
+        //add keys to day images map
         for (int i = 1; i <= 7; i++) {
             ObjectProperty<Image> property = new SimpleObjectProperty<>();
             dayImages.put(String.valueOf(i), property);
-
         }
+        //set values for properties
         date.set(formatDate(LocalDate.now()));
         streak.set(String.valueOf(user.getStreak()));
         xpBonus.set(String.valueOf(user.getXpBonus()));
@@ -72,15 +79,7 @@ public class RitualViewModel {
 
     }
 
-    public ObjectProperty<Image> imageProperty(String day) {
-        return dayImages.get(day);
-    }
-
-    public void updateDay(String day) {
-        boolean value = weekStreak.getOrDefault(day, false);
-        dayImages.get(day).set(value ? doneImage : emptyImage);
-    }
-
+    //Make bindings work on start - need to make change to see change?
     public void setUpViews(){
         morningRituals.addAll(rituals.get("Morning"));
         middayRituals.addAll(rituals.get("Midday"));
@@ -89,6 +88,11 @@ public class RitualViewModel {
         for (int i = 1; i <= 7; i++) {
             updateDay(String.valueOf(i));
         }
+    }
+
+    //getters for properties
+    public ObjectProperty<Image> imageProperty(String day) {
+        return dayImages.get(day);
     }
 
     public StringProperty dateProperty(){
@@ -107,7 +111,32 @@ public class RitualViewModel {
         return xpPercent;
     }
 
+    public ObservableList<Ritual> getMorningRituals() {
+        return morningRituals;
+    }
 
+    public ObservableList<Ritual> getMiddayRituals() {
+        return middayRituals;
+    }
+
+    public ObservableList<Ritual> getEveningRituals() {
+        return eveningRituals;
+    }
+
+    public Map<String, List<Ritual>> getRituals() {
+        return rituals;
+    }
+
+    public Map<String, Boolean> getWeekStreak() {
+        return weekStreak;
+    }
+
+
+    //date helper methods
+    public void updateDay(String day) {
+        boolean value = weekStreak.getOrDefault(day, false);
+        dayImages.get(day).set(value ? doneImage : emptyImage);
+    }
 
     private String formatDate(LocalDate date){
         String weekday = date.getDayOfWeek()
@@ -131,7 +160,10 @@ public class RitualViewModel {
         }
     }
 
+    //logic for creating a ritual
     public void createRitual(Chore chore, String time){
+        //check if chores are laready completed today. if so undo c
+
         String ritualId = UUID.randomUUID().toString();
         Ritual ritual = new Ritual.RitualBuilder()
                 .id(ritualId)
@@ -160,16 +192,7 @@ public class RitualViewModel {
         //add ritual to map
     }
 
-    public ObservableList<Ritual> getMorningRituals() {
-        return morningRituals;
-    }
-    public ObservableList<Ritual> getMiddayRituals() {
-        return middayRituals;
-    }
-    public ObservableList<Ritual> getEveningRituals() {
-        return eveningRituals;
-    }
-
+    //logic for completing a ritual
     public void completeChore(ChoreCard choreCard){
         Ritual ritual = (Ritual) choreCard.getData();
         ritual.setCompleted(true);
@@ -185,6 +208,8 @@ public class RitualViewModel {
         boolean dayComplete = rituals.values().stream()
                         .flatMap(List::stream)
                         .allMatch(Ritual::isCompleted);
+
+        //TODO consider extracting this to a method
         if (dayComplete){
             //update database
             String day = String.valueOf(LocalDate.now().getDayOfWeek().getValue());
@@ -207,11 +232,5 @@ public class RitualViewModel {
 
     }
 
-    public Map<String, List<Ritual>> getRituals() {
-        return rituals;
-    }
 
-    public Map<String, Boolean> getWeekStreak() {
-        return weekStreak;
-    }
 }

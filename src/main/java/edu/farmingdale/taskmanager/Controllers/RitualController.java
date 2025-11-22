@@ -94,25 +94,24 @@ public class RitualController implements Initializable {
                 new Stop(0.5, Color.rgb(255, 255, 255, 1.0)),
                 new Stop(1, Color.web("#73737300"))
         ));
-
         shine.widthProperty().bind(xpBar.widthProperty().multiply(xpBar.progressProperty()).subtract(10));
-
         xpBarContainer.getChildren().add(shine);
-
         StackPane.setMargin(shine, new Insets(12, 0, 0, 10));
 
+        //bind date
         date.textProperty().bind(vm.dateProperty());
-        streakCount.textProperty().bind(vm.streakProperty());
-        streakBonus.textProperty().bind(vm.xpBonusProperty());
-        xpBar.progressProperty().bind(vm.getXpPercentProperty());
         //bind streak
+        streakCount.textProperty().bind(vm.streakProperty());
         //bind streak bonus
+        streakBonus.textProperty().bind(vm.xpBonusProperty());
         //bind progress bar
-
+        xpBar.progressProperty().bind(vm.getXpPercentProperty());
+        //bind lists
         setUpLists(vm.getMorningRituals(), morningContainer);
         setUpLists(vm.getMiddayRituals(), middayContainer);
         setUpLists(vm.getEveningRituals(), eveningContainer);
-
+        //bind streak diamonds
+        //update this to work with sunday start or monday start
         bind(streak1, "1");
         bind(streak2, "2");
         bind(streak3, "3");
@@ -121,15 +120,18 @@ public class RitualController implements Initializable {
         bind(streak6, "6");
         bind(streak7, "7");
 
+        //call method to make bindings work
         vm.setUpViews();
     }
 
+    //rename this method
+    //bind imageview to vm
     private void bind(ImageView img, String day) {
         vm.imageProperty(day).addListener((o, oldImg, newImg) -> {
             img.setImage(newImg);
         });
     }
-
+    //
     private void setUpLists(ObservableList<Ritual> list, VBox container){
         // reactively render lists:
         list.addListener((ListChangeListener<Ritual>) change -> {
@@ -141,7 +143,8 @@ public class RitualController implements Initializable {
         });
     }
 
-
+    //this is not the best example of MVVM Pattern...
+    //creates popup to add a ritual
     @FXML
     void AddMorningRitual(MouseEvent event) {
         addRitual("Morning", event);
