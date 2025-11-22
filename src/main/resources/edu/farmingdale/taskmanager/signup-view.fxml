@@ -11,5 +11,6 @@
             <Rectangle2D />
          </viewport>
       </ImageView>
+      <Pane prefHeight="1000.0" prefWidth="800.0" />
    </children>
 </StackPane>
