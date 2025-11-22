@@ -3,6 +3,7 @@ package edu.farmingdale.taskmanager.Controllers;
 import edu.farmingdale.taskmanager.Models.Chore;
 import edu.farmingdale.taskmanager.Models.Ritual;
 import edu.farmingdale.taskmanager.TaskManagerApplication;
+import edu.farmingdale.taskmanager.cards.ChoreCard;
 import edu.farmingdale.taskmanager.cards.RitualCard;
 import edu.farmingdale.taskmanager.viewmodels.RitualViewModel;
 import javafx.collections.ListChangeListener;
@@ -11,12 +12,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -24,6 +28,7 @@ import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -77,6 +82,9 @@ public class RitualController implements Initializable {
 
     @FXML
     private StackPane xpBarContainer;
+
+    @FXML
+    private StackPane root;
 
     private final RitualViewModel vm = new RitualViewModel();
 
@@ -138,6 +146,7 @@ public class RitualController implements Initializable {
             container.getChildren().clear();
             for (Ritual r : list) {
                RitualCard card = new RitualCard(r, vm::completeChore);
+                card.setOnXClick(c -> handleXClick(c));
                 container.getChildren().add(card.createView());
             }
         });
@@ -169,12 +178,12 @@ public class RitualController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(TaskManagerApplication.class.getResource("add-ritual-view.fxml"));
         Scene popUpScene = null;
         try {
-            popUpScene = new Scene(fxmlLoader.load(), 500,574);
+            popUpScene = new Scene(fxmlLoader.load(), 500,310);
             popUpScene.getStylesheets().add(TaskManagerApplication.class.getResource("styles/style.css").toExternalForm());
             popUp.setScene(popUpScene);
             popUp.setTitle("Add Ritual");
             popUp.setX(primaryStage.getX() + ((primaryStage.getWidth() - 500)/2 ));
-            popUp.setY(primaryStage.getY() + ((primaryStage.getHeight() - 574)/2 ));
+            popUp.setY(primaryStage.getY() + ((primaryStage.getHeight() - 310)/2 ));
             //popUp.show();
             AddRitualController arc = fxmlLoader.getController();
             arc.setTimeOfDay(timeOfDay);
@@ -192,6 +201,73 @@ public class RitualController implements Initializable {
             System.out.println(e.getMessage());
         }
 
+    }
+    //possibly move to popup service or viewmodel
+    private void handleXClick(ChoreCard<Ritual> c){
+        RitualCard card = (RitualCard) c;
+        Rectangle overlay = new Rectangle();
+        overlay.setWidth(root.getWidth());
+        overlay.setHeight(root.getHeight());
+        overlay.setFill(Color.rgb(255, 255, 255, .45));
+        overlay.setOnMouseClicked(e -> e.consume()); // block clicks behind
+
+
+        Rectangle border = new Rectangle();
+        border.setWidth(500);
+        border.setHeight(300);
+        border.setFill(Color.rgb(255, 255, 255, .0));
+        border.setStroke(Color.web("#281902"));
+        border.setArcHeight(20);
+        border.setArcWidth(20);
+        border.setStrokeWidth(10);
+        border.setMouseTransparent(true); // block clicks behind
+
+        // --- Popup panel ---
+        VBox popup = new VBox(30);
+        popup.setAlignment(Pos.CENTER);
+        popup.setMaxSize(500, 300);
+        popup.getStyleClass().addAll("delete-ritual", "container");
+
+
+        Label message = new Label("Are you sure you want to delete this ritual?");
+        message.setWrapText(true);
+        message.setMaxWidth(450);
+        message.setTextAlignment(TextAlignment.CENTER);
+        message.setAlignment(Pos.CENTER);
+        message.setPadding(new Insets(-20, 0,-20, 0));
+        message.setLineSpacing(-20); // reduces extra vertical spacing between lines
+
+        message.getStyleClass().add("delete-ritual-message");
+
+        HBox buttons = new HBox(10);
+        buttons.setAlignment(Pos.CENTER);
+
+        Button yesBtn = new Button("Yes");
+        yesBtn.getStyleClass().add("delete-ritual-button");
+        yesBtn.setPrefWidth(100);
+        Button noBtn = new Button("No");
+        noBtn.getStyleClass().add("delete-ritual-button");
+        noBtn.setPrefWidth(100);
+
+        buttons.getChildren().addAll(yesBtn, noBtn);
+        popup.getChildren().addAll(message, buttons);
+
+        StackPane.setAlignment(popup, Pos.CENTER);
+
+        StackPane popupContainer = new StackPane(popup, border);
+
+        // Add overlay + popup to root
+        root.getChildren().addAll(overlay, popupContainer);
+
+        // --- Button behavior ---
+        yesBtn.setOnAction(e -> {
+            vm.deleteRitual(card.getData());     // your delete logic
+            root.getChildren().removeAll(overlay, popupContainer);
+        });
+
+        noBtn.setOnAction(e -> {
+            root.getChildren().removeAll(overlay, popupContainer);
+        });
     }
 
 }

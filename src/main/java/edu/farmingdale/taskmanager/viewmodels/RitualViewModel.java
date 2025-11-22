@@ -162,7 +162,22 @@ public class RitualViewModel {
 
     //logic for creating a ritual
     public void createRitual(Chore chore, String time){
-        //check if chores are laready completed today. if so undo c
+        //check if chores are already completed today. if so undo c
+        if (allChoresComplete()){
+            String day = String.valueOf(LocalDate.now().getDayOfWeek().getValue());
+            weekStreak.put(day, false);
+            updateDay(day);
+            user.setStreak(user.getStreak()-1);
+            //TODO how much xp bonus do we earn???
+            user.setXpBonus(user.getXpBonus()-0.25);
+            int xpGained = (int)((totalXP*user.getXpBonus()) - totalXP);
+            user.setXp(user.getXp()-xpGained);
+            //update view
+            streak.set(String.valueOf(user.getStreak()));
+            xpBonus.set(String.valueOf(user.getXpBonus()));
+            //update database
+            userRepo.updateUser(user);
+        }
 
         String ritualId = UUID.randomUUID().toString();
         Ritual ritual = new Ritual.RitualBuilder()
@@ -195,41 +210,106 @@ public class RitualViewModel {
     //logic for completing a ritual
     public void completeChore(ChoreCard choreCard){
         Ritual ritual = (Ritual) choreCard.getData();
-        ritual.setCompleted(true);
-        ritual.setDateRecorded(LocalDate.now().toString());
-        ritual.getChore().setCompletedTime(LocalDate.now().toString());
-        ritualRepo.updateRitual(ritual, user);
+        if (!ritual.isCompleted()) {
+            ritual.setCompleted(true);
+            ritual.setDateRecorded(LocalDate.now().toString());
+            ritual.getChore().setCompletedTime(LocalDate.now().toString());
+            ritualRepo.updateRitual(ritual, user);
 
-        //move xp bar
-        completedXP += ritual.getXp();
-        user.setXp(user.getXp() + ritual.getXp());
-        xpPercent.set((double)completedXP/totalXP);
-        //check all chores
-        boolean dayComplete = rituals.values().stream()
-                        .flatMap(List::stream)
-                        .allMatch(Ritual::isCompleted);
+            //move xp bar
+            completedXP += ritual.getXp();
+            user.setXp(user.getXp() + ritual.getXp());
+            xpPercent.set((double) completedXP / totalXP);
+            //check all chores
+            boolean dayComplete = rituals.values().stream()
+                    .flatMap(List::stream)
+                    .allMatch(Ritual::isCompleted);
 
-        //TODO consider extracting this to a method
-        if (dayComplete){
+            //TODO consider extracting this to a method
+            if (dayComplete) {
+                //update database
+                String day = String.valueOf(LocalDate.now().getDayOfWeek().getValue());
+                weekStreak.put(day, true);
+                updateDay(day);
+                int xpGained = (int) (totalXP * user.getXpBonus());
+                user.setXp(user.getXp() + xpGained);
+                user.setStreak(user.getStreak() + 1);
+                //TODO how much xp bonus do we earn???
+                user.setXpBonus(getStreakMultiplier(user.getStreak()));
+
+                //update view
+                streak.set(String.valueOf(user.getStreak()));
+                xpBonus.set(String.valueOf(user.getXpBonus()));
+                //update database
+            }
+            userRepo.updateUser(user);
+
+            choreCard.redraw();
+        }
+    }
+
+    private boolean allChoresComplete(){
+        return rituals.values().stream()
+                .flatMap(List::stream)
+                .allMatch(Ritual::isCompleted);
+    }
+
+    private double getStreakMultiplier(int streak) {
+        double growth = 1 + (0.08 * streak);        // strong linear growth
+        double curve = 1 + Math.log1p(streak) * 0.15; // gentle scaling bump
+        double mult = (growth + curve) / 2;         // blend them for smoothness
+        mult = Math.round(mult * 100.0) / 100.0;
+        return Math.min(mult, 2.5);                 // hard cap
+    }
+
+    public void deleteRitual(Ritual ritual){
+        System.out.println("Deleting ritual");
+        ritualRepo.deleteRitual(ritual, user, ()-> onRitualDeleted(ritual));
+
+    }
+
+    private void onRitualDeleted(Ritual ritual){
+        //remove the card
+        boolean dayCompleBefore = allChoresComplete();
+        switch (ritual.getTimeOfDay().toString()){
+            case "Morning" -> {
+                morningRituals.remove(ritual);
+                rituals.get("Morning").remove(ritual);
+            }
+            case "Midday" -> {
+                middayRituals.remove((ritual));
+                rituals.get("Midday").remove(ritual);
+            }
+            case "Evening" -> {
+                eveningRituals.remove((ritual));
+                rituals.get("Evening").remove(ritual);
+            }
+        }
+        //update the total xp
+        totalXP -= ritual.getXp();
+        if (ritual.isCompleted()){
+            completedXP -= ritual.getXp();
+        }
+        xpPercent.set((double) completedXP / totalXP);
+        //check for completed and then possibly do the completed things
+        boolean dayComplete = allChoresComplete();
+        if (dayComplete && !dayCompleBefore) {
             //update database
             String day = String.valueOf(LocalDate.now().getDayOfWeek().getValue());
             weekStreak.put(day, true);
             updateDay(day);
-            user.setStreak(user.getStreak()+1);
+            int xpGained = (int) (totalXP * user.getXpBonus());
+            user.setXp(user.getXp() + xpGained);
+            user.setStreak(user.getStreak() + 1);
             //TODO how much xp bonus do we earn???
-            user.setXpBonus(user.getXpBonus()+0.25);
-            int xpGained = (int)((totalXP*user.getXpBonus()) - totalXP);
-            user.setXp(user.getXp()+xpGained);
+            user.setXpBonus(getStreakMultiplier(user.getStreak()));
+
             //update view
             streak.set(String.valueOf(user.getStreak()));
             xpBonus.set(String.valueOf(user.getXpBonus()));
             //update database
-            userRepo.updateUser(user);
-
         }
-
-        choreCard.redraw();
-
+        userRepo.updateUser(user);
     }
 
 

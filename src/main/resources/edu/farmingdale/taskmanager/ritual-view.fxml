@@ -14,7 +14,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 
-<StackPane alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" styleClass="bg" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.RitualController">
+<StackPane fx:id="root" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" styleClass="bg" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.RitualController">
     <children>
         <fx:include source="navbar-view.fxml" />
         <VBox>
@@ -122,7 +122,28 @@
                            <children>
                               <StackPane maxHeight="98.0" maxWidth="155.0" prefHeight="150.0" prefWidth="200.0">
                                  <children>
-                                    <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#1f93ff00" height="98.0" mouseTransparent="true" stroke="#472c01" strokeType="INSIDE" strokeWidth="3.0" width="155.0" />
+                                    <Rectangle arcHeight="10.0" arcWidth="10.0" height="98.0" mouseTransparent="true" stroke="#472c01" strokeType="INSIDE" strokeWidth="3.0" width="155.0">
+                                       <fill>
+                                          <LinearGradient endX="1.0">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color red="0.3607843220233917" green="0.2235294133424759" blue="0.007843137718737125" opacity="0.44999998807907104" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="0.48780487804878053">
+                                                   <color>
+                                                      <Color red="0.5600000023841858" green="0.34962666034698486" blue="0.01119999960064888" opacity="0.44999998807907104" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color red="0.36000001430511475" green="0.22032000124454498" blue="0.01080000028014183" opacity="0.44999998807907104" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </LinearGradient>
+                                       </fill></Rectangle>
                                     <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                                        <children>
                                           <Label styleClass="streak-label" text="Current Streak">
@@ -150,7 +171,28 @@
                               </StackPane>
                               <StackPane maxHeight="98.0" maxWidth="155.0" prefHeight="150.0" prefWidth="200.0">
                                  <children>
-                                    <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#1f93ff00" height="98.0" mouseTransparent="true" stroke="#472c01" strokeType="INSIDE" strokeWidth="3.0" width="155.0" />
+                                    <Rectangle arcHeight="10.0" arcWidth="10.0" height="98.0" mouseTransparent="true" stroke="#472c01" strokeType="INSIDE" strokeWidth="3.0" width="155.0">
+                                       <fill>
+                                          <LinearGradient endX="1.0">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color red="0.36000001430511475" green="0.22032000124454498" blue="0.01080000028014183" opacity="0.44999998807907104" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="0.5030487804878049">
+                                                   <color>
+                                                      <Color red="0.5600000023841858" green="0.34962666034698486" blue="0.01119999960064888" opacity="0.44999998807907104" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color red="0.36000001430511475" green="0.22032000124454498" blue="0.01080000028014183" opacity="0.44999998807907104" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </LinearGradient>
+                                       </fill></Rectangle>
                                     <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                                        <children>
                                           <Label styleClass="streak-label" text="Streak Bonus">

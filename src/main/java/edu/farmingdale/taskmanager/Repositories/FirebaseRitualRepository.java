@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
 
 public class FirebaseRitualRepository {
 
@@ -79,5 +80,24 @@ public class FirebaseRitualRepository {
                 e.printStackTrace();
             }
         }, Runnable::run);
+    }
+
+    public void deleteRitual(Ritual ritual, User user, Runnable onSuccess){
+        DocumentReference docRef = TaskManagerApplication.fstore.collection("users").document(user.getId()).collection("rituals").document(ritual.getId());
+        ApiFuture<WriteResult> future = docRef.delete();
+
+        future.addListener(() -> {
+            try {
+                WriteResult result = future.get();
+                System.out.println("Ritual successfully deleted at: " + result.getUpdateTime());
+
+                // Run the callback on the JavaFX Application Thread
+                if (onSuccess != null) {
+                    javafx.application.Platform.runLater(onSuccess);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }, java.util.concurrent.Executors.newSingleThreadExecutor());
     }
 }
