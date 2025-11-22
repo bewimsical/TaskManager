@@ -10,7 +10,7 @@ public class Ritual {
     private String id;
     private boolean isCompleted;
     private String date;
-    private double xp;
+    private int xp;
     private String dateRecorded;
     private String timeOfDay;
     private Chore chore;
@@ -34,11 +34,11 @@ public class Ritual {
         this.date = date;
     }
 
-    public double getXp() {
+    public int getXp() {
         return xp;
     }
 
-    public void setXp(double xp) {
+    public void setXp(int xp) {
         this.xp = xp;
     }
 
@@ -89,7 +89,7 @@ public class Ritual {
         private boolean isCompleted;
         private Chore chore;
         private String date;
-        private double xp;
+        private int xp;
         private String dateRecorded;
         private String timeOfDay;
 
@@ -102,7 +102,7 @@ public class Ritual {
             return this;
         }
 
-        public RitualBuilder xp(double xp) {
+        public RitualBuilder xp(int xp) {
             this.xp = xp;
             return this;
         }

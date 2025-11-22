@@ -1,9 +1,8 @@
 package edu.farmingdale.taskmanager.Repositories;
 
 import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.DocumentReference;
-import com.google.cloud.firestore.DocumentSnapshot;
-import com.google.cloud.firestore.QuerySnapshot;
+import com.google.cloud.firestore.*;
+import edu.farmingdale.taskmanager.Models.Ritual;
 import edu.farmingdale.taskmanager.Models.User;
 import edu.farmingdale.taskmanager.Session;
 import edu.farmingdale.taskmanager.TaskManagerApplication;
@@ -49,6 +48,32 @@ public class FirebaseUserRepository {
             throw new ResourceNotFoundException("User not found with username: " + username);
         }
         throw new ResourceNotFoundException("User not found with username: " + username);
+    }
+
+    public void setUser(User user){
+        DocumentReference docRef = TaskManagerApplication.fstore.collection("users").document(user.getId());
+        ApiFuture<WriteResult> result = docRef.set(user);
+
+        result.addListener(() -> {
+            try {
+                System.out.println("successfully updated at: " + result.get().getUpdateTime());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }, Runnable::run);
+    }
+
+    public void updateUser(User user){
+        DocumentReference docRef = TaskManagerApplication.fstore.collection("users").document(user.getId());
+        ApiFuture<WriteResult> result = docRef.set(user, SetOptions.merge());
+
+        result.addListener(() -> {
+            try {
+                System.out.println("successfully updated at: " + result.get().getUpdateTime());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }, Runnable::run);
     }
 
 

@@ -297,4 +297,33 @@
     -fx-background-radius: 2;
 }
 
+.delete-ritual{
+    /*-fx-background-color: white;*/
+    -fx-padding: 20;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 12, 0.2, 0, 2);
+}
+
+.delete-ritual-message{
+    -fx-font-family: 'Inknut Antiqua Regular';
+    -fx-font-size: 24px;
+    -fx-text-fill: #472C01;
+
+}
+
+.delete-ritual-button, .create-ritual-button{
+    -fx-background-color: #472C01;
+    -fx-text-fill: #F8E5B2;
+    -fx-background-radius: 100;
+    -fx-font-size: 24px;
+    -fx-padding: -10 8 -10 8;
+}
+
+.delete-ritual-button:hover, .create-ritual-button:hover{
+    -fx-text-fill: #E5B515;
+
+}
+
+
+
 

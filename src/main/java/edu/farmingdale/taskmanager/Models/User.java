@@ -18,6 +18,7 @@ public class User {
     private String profileUrl;
     private int level;
     private int xp;
+    private Map<String, Boolean> weekStreak;
 
 
     public User() {
@@ -37,6 +38,7 @@ public class User {
         this.profileUrl = userBuilder.profileUrl;
         this.level = userBuilder.level;
         this.xp = userBuilder.xp;
+        this.weekStreak = userBuilder.weekStreak;
 
     }
 
@@ -147,6 +149,14 @@ public class User {
         this.id = id;
     }
 
+    public Map<String, Boolean> getWeekStreak() {
+        return weekStreak;
+    }
+
+    public void setWeekStreak(Map<String, Boolean> weekStreak) {
+        this.weekStreak = weekStreak;
+    }
+
 
     public static class UserBuilder {
         private String id;
@@ -163,6 +173,7 @@ public class User {
         private String profileUrl;
         private int level;
         private int xp;
+        private Map<String, Boolean> weekStreak;
 
         public UserBuilder() {
 
@@ -234,6 +245,10 @@ public class User {
         }
         public UserBuilder xp(int xp) {
             this.xp = xp;
+            return this;
+        }
+        public UserBuilder weekStreak( Map<String, Boolean> weekStreak){
+            this.weekStreak = weekStreak;
             return this;
         }
 

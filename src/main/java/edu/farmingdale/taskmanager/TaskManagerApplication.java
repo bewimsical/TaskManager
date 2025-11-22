@@ -5,6 +5,8 @@ import com.google.cloud.firestore.*;
 import com.google.firebase.auth.FirebaseAuth;
 import edu.farmingdale.taskmanager.Models.Boss;
 import edu.farmingdale.taskmanager.Models.Chore;
+import edu.farmingdale.taskmanager.Models.User;
+import edu.farmingdale.taskmanager.Repositories.FirebaseUserRepository;
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.DoubleBinding;
@@ -16,9 +18,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 
 public class TaskManagerApplication extends Application {
@@ -38,11 +38,26 @@ public class TaskManagerApplication extends Application {
 
 //
 //
+//        Map<String, Boolean> week = new HashMap<>();
+//        week.put("1", true);
+//        week.put("2", true);
+//        week.put("3", true);
+//        week.put("4", false);
+//        week.put("5", false);
+//        week.put("6", false);
+//        week.put("7", false);
+//
 //        User hazelTheNut = new User.UserBuilder()
+//                .id("user1")
 //                .username("HazelTheNut")
 //                .level(7)
 //                .xp(75)
+//                .weekStreak(week)
 //                .build();
+//
+//        System.out.println(hazelTheNut.getWeekStreak());
+//        FirebaseUserRepository repo = new FirebaseUserRepository();
+//        repo.updateUser(hazelTheNut);
 //
 //        //Add a user to the database
 //        FirestoreClient.setDocument(hazelTheNut, "users", "user1");
