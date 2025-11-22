@@ -67,4 +67,17 @@ public class FirebaseRitualRepository {
             }
         }, Runnable::run);
     }
+
+    public void updateRitual(Ritual ritual, User user){
+        DocumentReference docRef = TaskManagerApplication.fstore.collection("users").document(user.getId()).collection("rituals").document(ritual.getId());
+        ApiFuture<WriteResult> result = docRef.set(ritual, SetOptions.merge());
+
+        result.addListener(() -> {
+            try {
+                System.out.println("successfully updated at: " + result.get().getUpdateTime());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }, Runnable::run);
+    }
 }

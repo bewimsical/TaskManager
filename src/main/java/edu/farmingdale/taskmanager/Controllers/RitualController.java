@@ -102,6 +102,9 @@ public class RitualController implements Initializable {
         StackPane.setMargin(shine, new Insets(12, 0, 0, 10));
 
         date.textProperty().bind(vm.dateProperty());
+        streakCount.textProperty().bind(vm.streakProperty());
+        streakBonus.textProperty().bind(vm.xpBonusProperty());
+        xpBar.progressProperty().bind(vm.getXpPercentProperty());
         //bind streak
         //bind streak bonus
         //bind progress bar

@@ -4,6 +4,7 @@ import edu.farmingdale.taskmanager.Models.Chore;
 import edu.farmingdale.taskmanager.Models.Ritual;
 import edu.farmingdale.taskmanager.Models.User;
 import edu.farmingdale.taskmanager.Repositories.FirebaseRitualRepository;
+import edu.farmingdale.taskmanager.Repositories.FirebaseUserRepository;
 import edu.farmingdale.taskmanager.Session;
 import edu.farmingdale.taskmanager.TaskManagerApplication;
 import edu.farmingdale.taskmanager.cards.ChoreCard;
@@ -18,12 +19,15 @@ import java.time.format.TextStyle;
 import java.util.*;
 
 public class RitualViewModel {
-
+    //TODO - add functionality to remove rituals.
     private final FirebaseRitualRepository ritualRepo = new FirebaseRitualRepository();
+    private final FirebaseUserRepository userRepo = new FirebaseUserRepository();
+
     private final StringProperty date = new SimpleStringProperty();
     private final StringProperty streak = new SimpleStringProperty();
     private final StringProperty xpBonus = new SimpleStringProperty();
     private final DoubleProperty xpPercent = new SimpleDoubleProperty();
+
     private final ObservableList<Ritual> morningRituals = FXCollections.observableArrayList();
     private final ObservableList<Ritual> middayRituals = FXCollections.observableArrayList();
     private final ObservableList<Ritual> eveningRituals = FXCollections.observableArrayList();
@@ -34,7 +38,10 @@ public class RitualViewModel {
 
     private final Map<String, List<Ritual>> rituals;
     private final Map<String, Boolean> weekStreak;
+    private int totalXP;
+    private int completedXP;
     private final User user;
+
     public RitualViewModel() {
         Session session = Session.getInstance();
         user = session.getUser();
@@ -44,10 +51,25 @@ public class RitualViewModel {
         for (int i = 1; i <= 7; i++) {
             ObjectProperty<Image> property = new SimpleObjectProperty<>();
             dayImages.put(String.valueOf(i), property);
+
         }
-
-
         date.set(formatDate(LocalDate.now()));
+        streak.set(String.valueOf(user.getStreak()));
+        xpBonus.set(String.valueOf(user.getXpBonus()));
+
+        totalXP = rituals.values().stream()
+                .flatMap(List::stream)
+                .mapToInt(Ritual::getXp)
+                .sum();
+
+        completedXP = rituals.values().stream()
+                .flatMap(List::stream)
+                .filter(Ritual::isCompleted)
+                .mapToInt(Ritual::getXp)
+                .sum();
+
+        xpPercent.set((double)completedXP/totalXP);
+
     }
 
     public ObjectProperty<Image> imageProperty(String day) {
@@ -72,6 +94,20 @@ public class RitualViewModel {
     public StringProperty dateProperty(){
         return date;
     }
+
+    public StringProperty streakProperty(){
+        return streak;
+    }
+
+    public StringProperty xpBonusProperty(){
+        return xpBonus;
+    }
+
+    public DoubleProperty getXpPercentProperty(){
+        return xpPercent;
+    }
+
+
 
     private String formatDate(LocalDate date){
         String weekday = date.getDayOfWeek()
@@ -106,10 +142,22 @@ public class RitualViewModel {
         ritualRepo.setRitual(ritual, user);
         //add ritual to list
         switch (ritual.getTimeOfDay().toString()){
-            case "Morning" -> morningRituals.add(ritual);
-            case "Midday" -> middayRituals.add((ritual));
-            case "Evening" -> eveningRituals.add((ritual));
+            case "Morning" -> {
+                morningRituals.add(ritual);
+                rituals.get("Morning").add(ritual);
+            }
+            case "Midday" -> {
+                middayRituals.add((ritual));
+                rituals.get("Midday").add(ritual);
+            }
+            case "Evening" -> {
+                eveningRituals.add((ritual));
+                rituals.get("Evening").add(ritual);
+            }
         }
+        totalXP += ritual.getXp();
+        xpPercent.set((double)completedXP/totalXP);
+        //add ritual to map
     }
 
     public ObservableList<Ritual> getMorningRituals() {
@@ -125,8 +173,14 @@ public class RitualViewModel {
     public void completeChore(ChoreCard choreCard){
         Ritual ritual = (Ritual) choreCard.getData();
         ritual.setCompleted(true);
-        //move xp bar
+        ritual.setDateRecorded(LocalDate.now().toString());
+        ritual.getChore().setCompletedTime(LocalDate.now().toString());
+        ritualRepo.updateRitual(ritual, user);
 
+        //move xp bar
+        completedXP += ritual.getXp();
+        user.setXp(user.getXp() + ritual.getXp());
+        xpPercent.set((double)completedXP/totalXP);
         //check all chores
         boolean dayComplete = rituals.values().stream()
                         .flatMap(List::stream)
@@ -136,6 +190,17 @@ public class RitualViewModel {
             String day = String.valueOf(LocalDate.now().getDayOfWeek().getValue());
             weekStreak.put(day, true);
             updateDay(day);
+            user.setStreak(user.getStreak()+1);
+            //TODO how much xp bonus do we earn???
+            user.setXpBonus(user.getXpBonus()+0.25);
+            int xpGained = (int)((totalXP*user.getXpBonus()) - totalXP);
+            user.setXp(user.getXp()+xpGained);
+            //update view
+            streak.set(String.valueOf(user.getStreak()));
+            xpBonus.set(String.valueOf(user.getXpBonus()));
+            //update database
+            userRepo.updateUser(user);
+
         }
 
         choreCard.redraw();
