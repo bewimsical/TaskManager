@@ -1,11 +1,11 @@
 package edu.farmingdale.taskmanager.Models;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 public class User {
+    private String id;
     private String username;
     private String password;
     private String email;
@@ -13,10 +13,6 @@ public class User {
     private boolean adult;
     private int streak;
     private double xpBonus;
-    private List<String> parties;
-    private List<String> friends;
-
-    private Map<String, LinkedList<Bosses>> bosses;
     private int vanquishedBossCount;
     private int completedQuestCount;
     private String profileUrl;
@@ -28,6 +24,7 @@ public class User {
     }
 
     private User(UserBuilder userBuilder) {
+        this.id = userBuilder.id;
         this.username = userBuilder.username;
         this.password = userBuilder.password;
         this.email = userBuilder.email;
@@ -35,9 +32,6 @@ public class User {
         this.adult = userBuilder.adult;
         this.streak = userBuilder.streak;
         this.xpBonus = userBuilder.xpBonus;
-        this.parties = userBuilder.parties;
-        this.friends = userBuilder.friends;
-        this.bosses = userBuilder.bosses;
         this.vanquishedBossCount = userBuilder.vanquishedBossCount;
         this.completedQuestCount = userBuilder.completedQuestCount;
         this.profileUrl = userBuilder.profileUrl;
@@ -103,21 +97,7 @@ public class User {
         this.xpBonus = xpBonus;
     }
 
-    public List<String> getParties() {
-        return parties;
-    }
 
-    public void setParties(List<String> parties) {
-        this.parties = parties;
-    }
-
-    public List<String> getFriends() {
-        return friends;
-    }
-
-    public void setFriends(List<String> friends) {
-        this.friends = friends;
-    }
     public String getProfileUrl() {
         return profileUrl;
     }
@@ -134,13 +114,6 @@ public class User {
         this.level = level;
     }
 
-    public Map<String, LinkedList<Bosses>> getBosses() {
-        return bosses;
-    }
-
-    public void setBosses(Map<String, LinkedList<Bosses>> bosses) {
-        this.bosses = bosses;
-    }
 
     public int getVanquishedBossCount() {
         return vanquishedBossCount;
@@ -166,8 +139,17 @@ public class User {
         this.xp = xp;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
 
     public static class UserBuilder {
+        private String id;
         private String username;
         private String password;
         private String email;
@@ -175,10 +157,7 @@ public class User {
         private boolean adult;
         private int streak;
         private double xpBonus;
-        private List<String> parties;
         private List<String> friends;
-
-        private Map<String, LinkedList<Bosses>> bosses;
         private int vanquishedBossCount;
         private int completedQuestCount;
         private String profileUrl;
@@ -187,6 +166,11 @@ public class User {
 
         public UserBuilder() {
 
+        }
+
+        public UserBuilder id(String id) {
+            this.id = id;
+            return this;
         }
 
         public UserBuilder username(String username) {
@@ -224,21 +208,11 @@ public class User {
             return this;
         }
 
-        public UserBuilder parties(List<String> parties) {
-            this.parties = parties;
-            return this;
-        }
-
         public UserBuilder friends(List<String> friends) {
             this.friends = friends;
             return this;
         }
 
-
-        public UserBuilder bosses(Map<String, LinkedList<Bosses>> bosses) {
-            this.bosses = bosses;
-            return this;
-        }
 
         public UserBuilder vanquishedBossCount(int vanquishedBossCount) {
             this.vanquishedBossCount = vanquishedBossCount;

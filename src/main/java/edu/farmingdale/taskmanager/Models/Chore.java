@@ -1,13 +1,15 @@
 package edu.farmingdale.taskmanager.Models;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class Chore {
+
+
+    private String id;
     private String name;
-    private String choreXP;
+    private int choreXP;
     private List<String> rooms;
-    private LocalDateTime completedTime;
+    private String completedTime;
     private double frequency;
     private boolean completed;
     private List<String> timeOfDay;
@@ -17,7 +19,8 @@ public class Chore {
 
     }
 
-    public Chore(String name, String choreXP, List<String> rooms, LocalDateTime completedTime, double frequency, boolean completed, List<String> timeOfDay) {
+    public Chore(String id, String name, int choreXP, List<String> rooms, String completedTime, double frequency, boolean completed, List<String> timeOfDay) {
+        this.id = id;
         this.name = name;
         this.choreXP = choreXP;
         this.rooms = rooms;
@@ -25,7 +28,6 @@ public class Chore {
         this.frequency = frequency;
         this.completed = completed;
         this.timeOfDay = timeOfDay;
-
     }
 
 
@@ -37,11 +39,11 @@ public class Chore {
         this.name = name;
     }
 
-    public String getChoreXP() {
+    public int getChoreXP() {
         return choreXP;
     }
 
-    public void setChoreXP(String choreXP) {
+    public void setChoreXP(int choreXP) {
         this.choreXP = choreXP;
     }
 
@@ -53,11 +55,11 @@ public class Chore {
         this.rooms = rooms;
     }
 
-    public LocalDateTime getCompletedTime() {
+    public String getCompletedTime() {
         return completedTime;
     }
 
-    public void setCompletedTime(LocalDateTime completedTime) {
+    public void setCompletedTime(String completedTime) {
         this.completedTime = completedTime;
     }
 
@@ -84,4 +86,13 @@ public class Chore {
     public void setTimeOfDay(List<String> timeOfDay) {
         this.timeOfDay = timeOfDay;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
 }
