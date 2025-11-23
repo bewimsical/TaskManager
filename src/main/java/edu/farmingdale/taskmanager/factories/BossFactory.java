@@ -1,7 +1,8 @@
-package edu.farmingdale.taskmanager;
+package edu.farmingdale.taskmanager.factories;
 
 import edu.farmingdale.taskmanager.Models.Boss;
 import edu.farmingdale.taskmanager.Models.Chore;
+import edu.farmingdale.taskmanager.Session;
 
 import java.time.LocalDate;
 import java.util.*;

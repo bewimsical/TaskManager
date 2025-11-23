@@ -32,7 +32,7 @@ public class FirebaseRitualRepository {
             if (documents.isEmpty()){
                 throw new ResourceNotFoundException("No rituals found for user");
             }
-            System.out.println("Reading bosses from the database");
+            System.out.println("Reading rituals from the database");
             for(QueryDocumentSnapshot document: documents){
                 Ritual ritual = document.toObject(Ritual.class);
                 if (ritual.getDateRecorded() != null) {
