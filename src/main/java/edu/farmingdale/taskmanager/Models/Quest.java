@@ -7,7 +7,7 @@ public class Quest {
     private String id;
     private boolean isActive;
     private boolean isCompleted;
-    private double xp;
+    private int xp;
     private double totalCompleted;
     private double totalActive;
     private List<Chore> chores;
@@ -15,6 +15,9 @@ public class Quest {
     private String dateDefeated;
     private String mapImageUrl;
     private List <MapMark> mapMarks;
+    private int nextMarkIndex;
+
+    public Quest(){}
 
     public Quest(QuestBuilder questBuilder) {
         this.id = questBuilder.id;
@@ -29,6 +32,7 @@ public class Quest {
         this.dateDefeated = questBuilder.dateDefeated;
         this.mapImageUrl = questBuilder.mapImageUrl;
         this.mapMarks = questBuilder.mapMarks;
+        this.nextMarkIndex = questBuilder.nextMarkIndex;
     }
 
 
@@ -64,11 +68,11 @@ public class Quest {
         isCompleted = completed;
     }
 
-    public double getXp() {
+    public int getXp() {
         return xp;
     }
 
-    public void setXp(double xp) {
+    public void setXp(int xp) {
         this.xp = xp;
     }
 
@@ -128,12 +132,20 @@ public class Quest {
         this.mapMarks = mapMarks;
     }
 
+    public int getNextMarkIndex() {
+        return nextMarkIndex;
+    }
+
+    public void setNextMarkIndex(int nextMarkIndex) {
+        this.nextMarkIndex = nextMarkIndex;
+    }
+
     public static class QuestBuilder{
         private String name;
         private String id;
         private boolean isActive;
         private boolean isCompleted;
-        private double xp;
+        private int xp;
         private double totalCompleted;
         private double totalActive;
         private List<Chore> chores;
@@ -141,6 +153,7 @@ public class Quest {
         private String dateDefeated;
         private String mapImageUrl;
         private List <MapMark> mapMarks;
+        private int nextMarkIndex;
 
         public QuestBuilder(){}
 
@@ -155,17 +168,17 @@ public class Quest {
             return this;
         }
 
-        public QuestBuilder  active(boolean active) {
-            isActive = active;
+        public QuestBuilder isActive(boolean active) {
+            this.isActive = active;
             return this;
         }
 
-        public QuestBuilder  completed(boolean completed) {
-            isCompleted = completed;
+        public QuestBuilder isCompleted(boolean completed) {
+            this.isCompleted = completed;
             return this;
         }
 
-        public QuestBuilder  xp(double xp) {
+        public QuestBuilder  xp(int xp) {
             this.xp = xp;
             return this;
         }
@@ -202,6 +215,11 @@ public class Quest {
 
         public QuestBuilder  mapMarks(List<MapMark> mapMarks) {
             this.mapMarks = mapMarks;
+            return this;
+        }
+
+        public QuestBuilder  nextMarkIndex(int nextMarkIndex) {
+            this.nextMarkIndex = nextMarkIndex;
             return this;
         }
 

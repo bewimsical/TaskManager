@@ -2,10 +2,8 @@ package edu.farmingdale.taskmanager;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
-import edu.farmingdale.taskmanager.Models.Boss;
-import edu.farmingdale.taskmanager.Models.Chore;
-import edu.farmingdale.taskmanager.Models.Ritual;
-import edu.farmingdale.taskmanager.Models.User;
+import edu.farmingdale.taskmanager.Models.*;
+import edu.farmingdale.taskmanager.Repositories.FirebaseQuestRepository;
 import edu.farmingdale.taskmanager.Repositories.FirebaseRitualRepository;
 import edu.farmingdale.taskmanager.exceptions.ResourceNotFoundException;
 
@@ -109,12 +107,18 @@ public class FirestoreClient {
             System.out.println(e.getMessage());
         }
 
-
+        //Fix this later
+        FirebaseQuestRepository questRepository = new FirebaseQuestRepository();
+        Map<String, List<Quest>> quests = null;
+        try {
+            quests = questRepository.getQuests(Session.getInstance().getUser());
+            Session.getInstance().setQuests(quests);
+        } catch (ResourceNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
 
         //Fix this later
         Session.getInstance().setAssignedChoreIds(new HashSet<>());
-
-
 
     }
 

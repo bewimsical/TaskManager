@@ -25,7 +25,7 @@ public class FirebaseQuestRepository {
             List<QueryDocumentSnapshot> documents = future.get().getDocuments();
             Map<String, List<Quest>> quests = new HashMap<>();
             quests.put("Active", new ArrayList<>());
-            quests.put("Completed", new ArrayList<>());
+            quests.put("Complete", new ArrayList<>());
 
             if (documents.isEmpty()){
                 throw new ResourceNotFoundException("No quests found for user");
@@ -48,7 +48,7 @@ public class FirebaseQuestRepository {
                     quests.get("Active").add(quest);
                 }
                 if (quest.isCompleted()) {
-                   quests.get("Completed").add(quest);
+                   quests.get("Complete").add(quest);
                 }
 
             }

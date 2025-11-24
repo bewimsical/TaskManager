@@ -19,7 +19,6 @@ import java.time.format.TextStyle;
 import java.util.*;
 
 public class RitualViewModel {
-    //TODO - add functionality to remove rituals.
 
     //connect to firebase
     private final FirebaseRitualRepository ritualRepo = new FirebaseRitualRepository();
