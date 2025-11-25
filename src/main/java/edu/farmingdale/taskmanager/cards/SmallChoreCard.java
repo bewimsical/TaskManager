@@ -19,13 +19,11 @@ public abstract class SmallChoreCard<T> extends ChoreCard<T>{
 
     @Override
     protected void setCompletedImage(){
-        System.out.println("swapping image");
         image =  new Image(TaskManagerApplication.class.getResource("images/chore card - small - completed.png").toExternalForm());
     }
 
     @Override
     protected void setNotCompletedImage(){
-        System.out.println("swapping image");
         image =  new Image(TaskManagerApplication.class.getResource("images/chore card - small.png").toExternalForm());
     }
 }

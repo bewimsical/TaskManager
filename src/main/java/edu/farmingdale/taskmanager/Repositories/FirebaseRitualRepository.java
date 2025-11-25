@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
 
 public class FirebaseRitualRepository {
 
@@ -31,7 +32,7 @@ public class FirebaseRitualRepository {
             if (documents.isEmpty()){
                 throw new ResourceNotFoundException("No rituals found for user");
             }
-            System.out.println("Reading bosses from the database");
+            System.out.println("Reading rituals from the database");
             for(QueryDocumentSnapshot document: documents){
                 Ritual ritual = document.toObject(Ritual.class);
                 if (ritual.getDateRecorded() != null) {
@@ -66,5 +67,37 @@ public class FirebaseRitualRepository {
                 e.printStackTrace();
             }
         }, Runnable::run);
+    }
+
+    public void updateRitual(Ritual ritual, User user){
+        DocumentReference docRef = TaskManagerApplication.fstore.collection("users").document(user.getId()).collection("rituals").document(ritual.getId());
+        ApiFuture<WriteResult> result = docRef.set(ritual, SetOptions.merge());
+
+        result.addListener(() -> {
+            try {
+                System.out.println("successfully updated at: " + result.get().getUpdateTime());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }, Runnable::run);
+    }
+
+    public void deleteRitual(Ritual ritual, User user, Runnable onSuccess){
+        DocumentReference docRef = TaskManagerApplication.fstore.collection("users").document(user.getId()).collection("rituals").document(ritual.getId());
+        ApiFuture<WriteResult> future = docRef.delete();
+
+        future.addListener(() -> {
+            try {
+                WriteResult result = future.get();
+                System.out.println("Ritual successfully deleted at: " + result.getUpdateTime());
+
+                // Run the callback on the JavaFX Application Thread
+                if (onSuccess != null) {
+                    javafx.application.Platform.runLater(onSuccess);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }, java.util.concurrent.Executors.newSingleThreadExecutor());
     }
 }

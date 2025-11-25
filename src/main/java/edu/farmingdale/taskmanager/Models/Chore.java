@@ -95,4 +95,12 @@ public class Chore {
         this.id = id;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Chore)) return false;
+        Chore chore = (Chore) o;
+        return id.equals(chore.id);  // or whatever uniquely identifies a chore
+    }
+
 }

@@ -1,7 +1,8 @@
-package edu.farmingdale.taskmanager;
+package edu.farmingdale.taskmanager.factories;
 
 import edu.farmingdale.taskmanager.Models.Boss;
 import edu.farmingdale.taskmanager.Models.Chore;
+import edu.farmingdale.taskmanager.Session;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -38,9 +39,7 @@ public class BossFactory {
     };
     private static final Random random = new Random();
 
-   private BossFactory() {
-
-    }
+   private BossFactory() {}
 
     public static Boss generate(){
         String bossId = UUID.randomUUID().toString();
@@ -57,7 +56,7 @@ public class BossFactory {
                 .chores(chores)
                 .totalHealth(health)
                 .currentHealth(health)
-                .xp((int) ( health*1.5))
+                .xp((int) ( health*1.25))
                 .dateAdded(LocalDate.now().toString())
                 .bounties(true)
                 .build();
