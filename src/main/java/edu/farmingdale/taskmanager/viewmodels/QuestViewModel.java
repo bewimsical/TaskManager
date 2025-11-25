@@ -75,6 +75,12 @@ public class QuestViewModel {
     public ObjectProperty<Quest> selectedQuestProperty() { return selectedQuest; }
     public Quest getSelectedQuest() { return selectedQuest.get(); }
     public void setSelectedQuest(Quest quest) { selectedQuest.set(quest); }
+    public ChoreCard<Quest> getCurrentQuestCard() {
+        return currentQuestCard;
+    }
+    public void setCurrentQuestCard(ChoreCard<Quest> currentQuestCard) {
+        this.currentQuestCard = currentQuestCard;
+    }
 
     public void cardClick(ChoreCard<Quest> card){
         Quest quest = card.getData();
@@ -138,11 +144,5 @@ public class QuestViewModel {
     }
 
 
-    public ChoreCard<Quest> getCurrentQuestCard() {
-        return currentQuestCard;
-    }
 
-    public void setCurrentQuestCard(ChoreCard<Quest> currentQuestCard) {
-        this.currentQuestCard = currentQuestCard;
-    }
 }
