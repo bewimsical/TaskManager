@@ -3,6 +3,8 @@ package edu.farmingdale.taskmanager;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import edu.farmingdale.taskmanager.Models.*;
+import edu.farmingdale.taskmanager.Repositories.FirebaseBossRepository;
+import edu.farmingdale.taskmanager.Repositories.FirebaseChoreRepository;
 import edu.farmingdale.taskmanager.Repositories.FirebaseQuestRepository;
 import edu.farmingdale.taskmanager.Repositories.FirebaseRitualRepository;
 import edu.farmingdale.taskmanager.exceptions.ResourceNotFoundException;
@@ -56,46 +58,64 @@ public class FirestoreClient {
         }
         //Update this for bosses
         System.out.println("Trying to load bosses");
+//        try {
+//            List<QueryDocumentSnapshot> documents = futureBoss.get().getDocuments();
+//            Map<String, List<Boss>> bosses = new HashMap<>();
+//            bosses.put("Bounties", new ArrayList<>());
+//            bosses.put("Vanquished", new ArrayList<>());
+//            if (!documents.isEmpty()){
+//                System.out.println("Reading bosses from the database");
+//                for(QueryDocumentSnapshot document: documents){
+//                    Boss boss = document.toObject(Boss.class);
+//                    if (boss.isBounties()){
+//                        bosses.get("Bounties").add(boss);
+//                    }
+//                    if (boss.isVanquished()) {
+//                        bosses.get("Vanquished").add(boss);
+//                    }
+//                }
+//                Session.getInstance().setBosses(bosses);
+//
+//                System.out.println("bosses succssfully added to Session!");
+//            }
+//        } catch (InterruptedException | ExecutionException e) {
+//            System.out.println("No such document!");
+//        }
+        FirebaseBossRepository bossRepository = new FirebaseBossRepository();
+        Map<String, List<Boss>> bosses = null;
         try {
-            List<QueryDocumentSnapshot> documents = futureBoss.get().getDocuments();
-            Map<String, List<Boss>> bosses = new HashMap<>();
-            bosses.put("Bounties", new ArrayList<>());
-            bosses.put("Vanquished", new ArrayList<>());
-            if (!documents.isEmpty()){
-                System.out.println("Reading bosses from the database");
-                for(QueryDocumentSnapshot document: documents){
-                    Boss boss = document.toObject(Boss.class);
-                    if (boss.isBounties()){
-                        bosses.get("Bounties").add(boss);
-                    }
-                    if (boss.isVanquished()) {
-                        bosses.get("Vanquished").add(boss);
-                    }
-                }
-                Session.getInstance().setBosses(bosses);
-
-                System.out.println("bosses succssfully added to Session!");
-            }
-        } catch (InterruptedException | ExecutionException e) {
-            System.out.println("No such document!");
+            bosses = bossRepository.getBosses(Session.getInstance().getUser());
+            Session.getInstance().setBosses(bosses);
+        } catch (ResourceNotFoundException e) {
+            System.out.println(e.getMessage());
         }
+
         System.out.println("Trying to load chores");
+//        try {
+//            List<QueryDocumentSnapshot> documents = futureChore.get().getDocuments();
+//            List<Chore> chores = new ArrayList<>();
+//
+//            if (!documents.isEmpty()){
+//                System.out.println("Reading chores from the database");
+//                for(QueryDocumentSnapshot document: documents){
+//                    Chore chore = document.toObject(Chore.class);
+//                    chores.add(chore);
+//                }
+//                Session.getInstance().setChores(chores);
+//
+//                System.out.println("Chores succssfully added to Session!");
+//            }
+//        } catch (InterruptedException | ExecutionException e) {
+//            System.out.println("No such document!");
+//        }
+
+        FirebaseChoreRepository choreRepository = new FirebaseChoreRepository();
+        List<Chore> chores = null;
         try {
-            List<QueryDocumentSnapshot> documents = futureChore.get().getDocuments();
-            List<Chore> chores = new ArrayList<>();
-
-            if (!documents.isEmpty()){
-                System.out.println("Reading chores from the database");
-                for(QueryDocumentSnapshot document: documents){
-                    Chore chore = document.toObject(Chore.class);
-                    chores.add(chore);
-                }
-                Session.getInstance().setChores(chores);
-
-                System.out.println("Chores succssfully added to Session!");
-            }
-        } catch (InterruptedException | ExecutionException e) {
-            System.out.println("No such document!");
+            chores = choreRepository.getChores(Session.getInstance().getUser());
+            Session.getInstance().setChores(chores);
+        } catch (ResourceNotFoundException e) {
+            System.out.println(e.getMessage());
         }
         //Fix this later
         FirebaseRitualRepository ritualRepository = new FirebaseRitualRepository();

@@ -2,8 +2,8 @@ package edu.farmingdale.taskmanager.Repositories;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
+import edu.farmingdale.taskmanager.Models.Chore;
 import edu.farmingdale.taskmanager.Models.Quest;
-import edu.farmingdale.taskmanager.Models.Ritual;
 import edu.farmingdale.taskmanager.Models.User;
 import edu.farmingdale.taskmanager.TaskManagerApplication;
 import edu.farmingdale.taskmanager.exceptions.ResourceNotFoundException;
@@ -15,49 +15,32 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
-public class FirebaseQuestRepository {
-    public Map<String, List<Quest>> getQuests(User user) throws ResourceNotFoundException {
-        CollectionReference ref = TaskManagerApplication.fstore.collection("users").document(user.getId()).collection("quests");
+public class FirebaseChoreRepository {
+
+    public List<Chore> getChores(User user) throws ResourceNotFoundException {
+        CollectionReference ref = TaskManagerApplication.fstore.collection("users").document(user.getId()).collection("chores");
         ApiFuture<QuerySnapshot> future = ref.get();
         LocalDate today = LocalDate.now();
 
         try {
             List<QueryDocumentSnapshot> documents = future.get().getDocuments();
-            Map<String, List<Quest>> quests = new HashMap<>();
-            quests.put("Active", new ArrayList<>());
-            quests.put("Complete", new ArrayList<>());
+            List<Chore> chores = new ArrayList<>();
 
             if (documents.isEmpty()){
-                throw new ResourceNotFoundException("No quests found for user");
+                throw new ResourceNotFoundException("No chores found for user");
             }
-            System.out.println("Reading quests from the database");
+            System.out.println("Reading chores from the database");
             for(QueryDocumentSnapshot document: documents){
-                Quest quest = document.toObject(Quest.class);
-                if (quest.getDateAdded() != null) {
-                    LocalDate questDate = LocalDate.parse(quest.getDateAdded());
-                    if (today.equals(questDate.plusDays(8)) && !quest.isCompleted()) {
-                        deleteQuest(quest, user);
-                        // maybe set some flag to true? so I can:
-                        // generate quests
-                        // add them to db
-                        // add them to the map
-                        continue;
-                    }
-                }
-                if (quest.isActive()){
-                    quests.get("Active").add(quest);
-                }
-                if (quest.isCompleted()) {
-                   quests.get("Complete").add(quest);
-                }
+                Chore chore = document.toObject(Chore.class);
+                chores.add(chore);
 
             }
-            System.out.println("quests succssfully added to Session!");
-            return quests;
+            System.out.println("chores succssfully added to Session!");
+            return chores;
 
         } catch (InterruptedException | ExecutionException e) {
             System.out.println("No such document!");
-            throw new ResourceNotFoundException("No quests found for user");
+            throw new ResourceNotFoundException("No chores found for user");
 
         }
     }
@@ -121,4 +104,4 @@ public class FirebaseQuestRepository {
             }
         }, java.util.concurrent.Executors.newSingleThreadExecutor());
     }
-}
+}//end class
