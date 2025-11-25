@@ -1,10 +1,12 @@
 package edu.farmingdale.taskmanager.Controllers;
 
+import edu.farmingdale.taskmanager.Models.Quest;
 import edu.farmingdale.taskmanager.Models.User;
 import edu.farmingdale.taskmanager.Party;
 import edu.farmingdale.taskmanager.Session;
 import edu.farmingdale.taskmanager.cards.SmallFriendCard;
 import edu.farmingdale.taskmanager.cards.SmallPartyCard;
+import edu.farmingdale.taskmanager.factories.QuestFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
