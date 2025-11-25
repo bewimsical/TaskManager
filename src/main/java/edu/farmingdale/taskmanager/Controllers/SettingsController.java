@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import java.io.IOException;
 
@@ -16,6 +17,7 @@ public class SettingsController {
     public Button deactivateBtn;
     public Button securityBtn;
     public Button profileBtn;
+
     @FXML
     private StackPane contentArea;
 
@@ -62,6 +64,27 @@ public class SettingsController {
     @FXML
     private void logout() {
         System.out.println("Logging out...");
-
     }
+
+
+    @FXML
+    public void goBack(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/edu/farmingdale/taskmanager/profile-view.fxml")
+            );
+
+            Node root = loader.load();
+            ((Node) event.getSource()).getScene().setRoot((javafx.scene.Parent) root);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
 }
+
+
