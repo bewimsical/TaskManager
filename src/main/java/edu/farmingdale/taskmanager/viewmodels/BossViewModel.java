@@ -2,6 +2,7 @@ package edu.farmingdale.taskmanager.viewmodels;
 
 import edu.farmingdale.taskmanager.Models.*;
 import edu.farmingdale.taskmanager.Repositories.FirebaseBossRepository;
+import edu.farmingdale.taskmanager.Repositories.FirebaseChoreRepository;
 import edu.farmingdale.taskmanager.Repositories.FirebaseUserRepository;
 import edu.farmingdale.taskmanager.Session;
 import edu.farmingdale.taskmanager.TaskManagerApplication;
@@ -11,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +20,7 @@ public class BossViewModel {
     //connect to firebase
     private final FirebaseBossRepository bossRepo = new FirebaseBossRepository();
     private final FirebaseUserRepository userRepo = new FirebaseUserRepository();
+    private final FirebaseChoreRepository choreRepo = new FirebaseChoreRepository();
 
     //setup property bindings
     private final StringProperty name = new SimpleStringProperty();
@@ -88,7 +91,9 @@ public class BossViewModel {
     }
 
     public ObjectProperty<Boss> selectedQuestProperty() { return selectedBoss; }
+
     public Boss getSelectedBoss() { return selectedBoss.get(); }
+
     public void setSelectedBoss(Boss boss) { selectedBoss.set(boss); }
 
     public ChoreCard<Boss> getCurrentBossCard() {
@@ -155,8 +160,7 @@ public class BossViewModel {
         setCurrentBossCard(card);
         setupHealthBar();
 
-
-        //questRepo.setQuest(quest, user);
+        bossRepo.updateBoss(boss, user);
 
         //map image here
     }
@@ -179,6 +183,8 @@ public class BossViewModel {
         Chore chore = card.getData();
         Boss currentBoss = getSelectedBoss();
         chore.setCompleted(true);
+        chore.setCompletedTime(LocalDate.now().toString());
+        choreRepo.updateChore(chore, user);
 
         //set health bar things
         currentBoss.setCurrentHealth(currentBoss.getCurrentHealth() - chore.getChoreXP());
@@ -188,14 +194,12 @@ public class BossViewModel {
                 .allMatch(Chore::isCompleted);
 
         if(bossCompleted){
-            //currentBoss.setVanquished(true);
             vanquished.set(true);
             System.out.println("boss defeated??? "+currentBoss.isVanquished());
             bosses.get("Vanquished").add(currentBoss);
             getCurrentBossCard().redraw();
-
         }
-
+        bossRepo.updateBoss(currentBoss, user);
         card.redraw();
 
     }

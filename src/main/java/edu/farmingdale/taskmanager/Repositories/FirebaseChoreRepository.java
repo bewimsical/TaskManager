@@ -3,16 +3,13 @@ package edu.farmingdale.taskmanager.Repositories;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import edu.farmingdale.taskmanager.Models.Chore;
-import edu.farmingdale.taskmanager.Models.Quest;
 import edu.farmingdale.taskmanager.Models.User;
 import edu.farmingdale.taskmanager.TaskManagerApplication;
 import edu.farmingdale.taskmanager.exceptions.ResourceNotFoundException;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 public class FirebaseChoreRepository {
@@ -45,9 +42,9 @@ public class FirebaseChoreRepository {
         }
     }
 
-    public void setQuest(Quest quest, User user){
-        DocumentReference docRef = TaskManagerApplication.fstore.collection("users").document(user.getId()).collection("quests").document(quest.getId());
-        ApiFuture<WriteResult> result = docRef.set(quest);
+    public void setChore(Chore chore, User user){
+        DocumentReference docRef = TaskManagerApplication.fstore.collection("users").document(user.getId()).collection("chores").document(chore.getId());
+        ApiFuture<WriteResult> result = docRef.set(chore);
 
         result.addListener(() -> {
             try {
@@ -58,9 +55,9 @@ public class FirebaseChoreRepository {
         }, Runnable::run);
     }
 
-    public void updateQuest(Quest quest, User user){
-        DocumentReference docRef = TaskManagerApplication.fstore.collection("users").document(user.getId()).collection("quests").document(quest.getId());
-        ApiFuture<WriteResult> result = docRef.set(quest, SetOptions.merge());
+    public void updateChore(Chore chore, User user){
+        DocumentReference docRef = TaskManagerApplication.fstore.collection("users").document(user.getId()).collection("chores").document(chore.getId());
+        ApiFuture<WriteResult> result = docRef.set(chore, SetOptions.merge());
 
         result.addListener(() -> {
             try {
@@ -71,14 +68,14 @@ public class FirebaseChoreRepository {
         }, Runnable::run);
     }
 
-    public void deleteQuest(Quest quest, User user, Runnable onSuccess){
-        DocumentReference docRef = TaskManagerApplication.fstore.collection("users").document(user.getId()).collection("quests").document(quest.getId());
+    public void deleteChore(Chore chore, User user, Runnable onSuccess){
+        DocumentReference docRef = TaskManagerApplication.fstore.collection("users").document(user.getId()).collection("chores").document(chore.getId());
         ApiFuture<WriteResult> future = docRef.delete();
 
         future.addListener(() -> {
             try {
                 WriteResult result = future.get();
-                System.out.println("Quest successfully deleted at: " + result.getUpdateTime());
+                System.out.println("Chore successfully deleted at: " + result.getUpdateTime());
 
                 // Run the callback on the JavaFX Application Thread
                 if (onSuccess != null) {
@@ -90,14 +87,14 @@ public class FirebaseChoreRepository {
         }, java.util.concurrent.Executors.newSingleThreadExecutor());
     }
 
-    public void deleteQuest(Quest quest, User user){
-        DocumentReference docRef = TaskManagerApplication.fstore.collection("users").document(user.getId()).collection("quests").document(quest.getId());
+    public void deleteChore(Chore chore, User user){
+        DocumentReference docRef = TaskManagerApplication.fstore.collection("users").document(user.getId()).collection("chores").document(chore.getId());
         ApiFuture<WriteResult> future = docRef.delete();
 
         future.addListener(() -> {
             try {
                 WriteResult result = future.get();
-                System.out.println("Quest successfully deleted at: " + result.getUpdateTime());
+                System.out.println("Chore successfully deleted at: " + result.getUpdateTime());
 
             } catch (Exception e) {
                 e.printStackTrace();
