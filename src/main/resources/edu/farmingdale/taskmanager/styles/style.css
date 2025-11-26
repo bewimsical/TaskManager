@@ -307,7 +307,8 @@
     -fx-top: 169px;
 
     -fx-background: url('..images/broom2.png');
-    -fx-transform: matrix(-1, 0, 0, 1, 0, 0);
+    -fx-scale-x: -1;*/
+    /*-fx-transform: matrix(-1, 0, 0, 1, 0, 0);*/
 
 }
 
