@@ -8,6 +8,7 @@ import edu.farmingdale.taskmanager.Session;
 import edu.farmingdale.taskmanager.TaskManagerApplication;
 import edu.farmingdale.taskmanager.exceptions.ResourceNotFoundException;
 
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
@@ -16,11 +17,20 @@ public class FirebaseUserRepository {
     public User getUserById(String id) throws ResourceNotFoundException{
         DocumentReference docRef = TaskManagerApplication.fstore.collection("users").document(id);
         ApiFuture<DocumentSnapshot> future = docRef.get();
+        LocalDate today = LocalDate.now();
         try {
             DocumentSnapshot document = future.get();
             if (document.exists()){
                 Optional<User> opUser = Optional.ofNullable(document.toObject(User.class));
                 User user = opUser.orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
+                //work on this - check date in week streak
+//                if (ritual.getDateRecorded() != null) {
+//                    LocalDate ritualDate = LocalDate.parse(ritual.getDateRecorded());
+//                    if (!today.equals(ritualDate)) {
+//                        ritual.setCompleted(false);
+//
+//                    }
+//                }
                 System.out.printf("User %s Successfully logged in!\n", user.getUsername());
                 return user;
             }
@@ -74,6 +84,10 @@ public class FirebaseUserRepository {
                 e.printStackTrace();
             }
         }, Runnable::run);
+    }
+
+    private void checkStreak(){
+
     }
 
 

@@ -19,6 +19,8 @@ public class User {
     private int level;
     private int xp;
     private Map<String, Boolean> weekStreak;
+    private String weekStart;
+    private String today;
 
 
     public User() {
@@ -39,6 +41,9 @@ public class User {
         this.level = userBuilder.level;
         this.xp = userBuilder.xp;
         this.weekStreak = userBuilder.weekStreak;
+        this.weekStart = userBuilder.weekStart;
+        this.today = userBuilder.today;
+
 
     }
 
@@ -157,6 +162,22 @@ public class User {
         this.weekStreak = weekStreak;
     }
 
+    public String getWeekStart() {
+        return weekStart;
+    }
+
+    public void setWeekStart(String weekStart) {
+        this.weekStart = weekStart;
+    }
+
+    public String getToday() {
+        return today;
+    }
+
+    public void setToday(String today) {
+        this.today = today;
+    }
+
 
     public static class UserBuilder {
         private String id;
@@ -174,6 +195,9 @@ public class User {
         private int level;
         private int xp;
         private Map<String, Boolean> weekStreak;
+        private String weekStart;
+        private String today;
+
 
         public UserBuilder() {
 
@@ -249,6 +273,14 @@ public class User {
         }
         public UserBuilder weekStreak( Map<String, Boolean> weekStreak){
             this.weekStreak = weekStreak;
+            return this;
+        }
+        public UserBuilder weekStart(String weekStart) {
+            this.weekStart = weekStart;
+            return this;
+        }
+        public UserBuilder today(String today) {
+            this.today = today;
             return this;
         }
 
