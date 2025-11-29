@@ -3,22 +3,33 @@ package edu.farmingdale.taskmanager.Controllers;
 import edu.farmingdale.taskmanager.Models.Boss;
 import edu.farmingdale.taskmanager.Models.Party;
 import edu.farmingdale.taskmanager.Models.User;
+import edu.farmingdale.taskmanager.TaskManagerApplication;
 import edu.farmingdale.taskmanager.cards.*;
 import edu.farmingdale.taskmanager.viewmodels.PartyViewModel;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class PartyController implements Initializable {
+
+    @FXML
+    private StackPane root;
 
     @FXML
     private VBox friendContainer;
@@ -80,8 +91,7 @@ public class PartyController implements Initializable {
 
     }
 
-    public void AddParty(MouseEvent mouseEvent) {
-    }
+
 
     public void addFriend(SearchCard sc){
         User friend = sc.getData();
@@ -134,6 +144,27 @@ public class PartyController implements Initializable {
     @FXML
     void showFriends(MouseEvent event) {
         vm.showFriends();
+    }
+
+    public void AddParty(MouseEvent mouseEvent) {
+        Rectangle overlay = new Rectangle();
+        overlay.setWidth(root.getWidth());
+        overlay.setHeight(root.getHeight());
+        overlay.setFill(Color.rgb(255, 255, 255, .45));
+        overlay.setOnMouseClicked(e -> e.consume()); // block clicks behind
+
+        FXMLLoader loader = new FXMLLoader(TaskManagerApplication.class.getResource("party-popup-view.fxml"));
+        Parent popup = null;
+        try {
+            popup = loader.load();
+        } catch (IOException e) {
+            System.out.println("Error loading popup");
+            System.out.println(e.getMessage());
+        }
+
+        // Add overlay + popup to root
+        root.getChildren().addAll(overlay, popup);
+        StackPane.setAlignment(popup, Pos.CENTER);
     }
 
 

@@ -60,7 +60,9 @@ public class PartyViewModel {
         user.getFriends().add(friend.getId());
         //todo fix this? add to the observable list?
         friends.add(friend);
-        Session.getInstance().getFriends().add(friend);
+        //todo - do i show all friends when the friend is added?
+        visibleUsers.add(friend);
+        //Session.getInstance().getFriends().add(friend);
         userRepo.updateUser(user);
     }
 

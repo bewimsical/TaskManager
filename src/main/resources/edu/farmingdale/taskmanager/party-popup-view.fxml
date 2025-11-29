@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<StackPane alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="764.0" prefWidth="1092.0" styleClass="bg" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.PartyPopupController">
+    <children>
+      <HBox>
+         <StackPane.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </StackPane.margin>
+         <children>
+                    <StackPane>
+                        <children>
+                            <VBox maxHeight="744.0" maxWidth="531.0" prefHeight="744.0" prefWidth="531.0" styleClass="container">
+                                <children>
+                                    <StackPane alignment="TOP_LEFT" onMouseClicked="#displayFriends" prefHeight="18.0" prefWidth="436.0">
+                                        <children>
+                                            <Rectangle height="61.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="531.0">
+                                                <fill>
+                                                    <LinearGradient endX="1.0">
+                                                        <stops>
+                                                            <Stop>
+                                                                <color>
+                                                                    <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                                </color>
+                                                            </Stop>
+                                                            <Stop offset="0.006711409395973154">
+                                                                <color>
+                                                                    <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                                </color>
+                                                            </Stop>
+                                                            <Stop offset="1.0">
+                                                                <color>
+                                                                    <Color red="0.5199999809265137" green="0.3161599934101105" blue="0.010400000028312206" opacity="0.90439772605896" />
+                                                                </color>
+                                                            </Stop>
+                                                        </stops>
+                                                    </LinearGradient>
+                                                </fill>
+                                            </Rectangle>
+                                            <Label fx:id="AllFriends" alignment="CENTER" onMouseClicked="#showFriends" prefHeight="70.0" prefWidth="541.0" styleClass="username" text="Create a Party" textAlignment="CENTER">
+                                                <padding>
+                                                    <Insets left="5.0" top="-8.0" />
+                                                </padding>
+                                            </Label>
+                                        </children>
+                                        <VBox.margin>
+                                            <Insets top="10.0" />
+                                        </VBox.margin>
+                                    </StackPane>
+                        <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="531.0" minWidth="531.0" styleClass="create-party-section-label" text="Party Name" textAlignment="CENTER">
+                           <padding>
+                              <Insets bottom="-10.0" top="-10.0" />
+                           </padding>
+                        </Label>
+                        <TextField maxHeight="52.0" prefHeight="52.0" promptText="enter party name" styleClass="party-name-field">
+                           <VBox.margin>
+                              <Insets left="30.0" right="30.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="-10.0" left="20.0" top="-10.0" />
+                           </padding>
+                        </TextField>
+                        <Label alignment="CENTER" maxWidth="531.0" minWidth="531.0" styleClass="create-party-section-label" text="Party Type" textAlignment="CENTER">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="-10.0" top="-10.0" />
+                           </padding>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="76.0" prefWidth="531.0" spacing="20.0">
+                           <children>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Rectangle fx:id="guildBtn" arcHeight="10.0" arcWidth="10.0" fill="#0e2f63" height="61.0" stroke="TRANSPARENT" strokeType="INSIDE" width="200.0" />
+                                    <Label fx:id="guildLabel" alignment="CENTER" onMouseClicked="#toggleSelected" prefHeight="70.0" prefWidth="541.0" styleClass="username" text="Guild" textAlignment="CENTER">
+                                       <padding>
+                                          <Insets bottom="-5.0" left="5.0" top="-5.0" />
+                                       </padding>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <StackPane layoutX="176.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Rectangle fx:id="allianceBtn" arcHeight="10.0" arcWidth="10.0" fill="#6f090b" height="61.0" stroke="TRANSPARENT" strokeType="INSIDE" width="200.0" />
+                                    <Label fx:id="allianceLabel" alignment="CENTER" onMouseClicked="#toggleSelected" prefHeight="70.0" prefWidth="541.0" styleClass="username" text="Alliance" textAlignment="CENTER">
+                                       <padding>
+                                          <Insets bottom="-5.0" left="5.0" top="-5.0" />
+                                       </padding>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </HBox>
+                        <Text fx:id="typeDescription" lineSpacing="-10" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="type-description" text="A guild is for members in the same houshold. All chores are shared between guild members ." textAlignment="CENTER" wrappingWidth="500.0">
+                           <VBox.margin>
+                              <Insets left="15.0" top="5.0" />
+                           </VBox.margin>
+                        </Text>
+                        <StackPane>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                           <children>
+                              <Rectangle height="47.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="531.0">
+                                 <fill>
+                                    <LinearGradient endX="1.0">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="0.006711409395973154">
+                                             <color>
+                                                <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color red="0.5199999809265137" green="0.3161599934101105" blue="0.010400000028312206" opacity="0.90439772605896" />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </LinearGradient>
+                                 </fill>
+                              </Rectangle>
+                              <Label alignment="CENTER" maxWidth="531.0" prefWidth="531.0" styleClass="members" text="Members" textAlignment="CENTER" />
+                           </children>
+                        </StackPane>
+                                </children>
+                            </VBox>
+                            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="754.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="541.0" />
+                        </children>
+                    </StackPane>
+                    <StackPane>
+                        <children>
+                            <VBox alignment="TOP_CENTER" maxHeight="744.0" maxWidth="531.0" prefHeight="744.0" prefWidth="531.0" styleClass="container">
+                                <children>
+                                    <StackPane alignment="TOP_LEFT" prefHeight="49.0" prefWidth="436.0">
+                                        <children>
+                                            <Rectangle height="61.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="531.0">
+                                                <fill>
+                                                    <LinearGradient endX="1.0">
+                                                        <stops>
+                                                            <Stop>
+                                                                <color>
+                                                                    <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                                </color>
+                                                            </Stop>
+                                                            <Stop offset="0.006711409395973154">
+                                                                <color>
+                                                                    <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                                </color>
+                                                            </Stop>
+                                                            <Stop offset="1.0">
+                                                                <color>
+                                                                    <Color red="0.5199999809265137" green="0.3161599934101105" blue="0.010400000028312206" opacity="0.90439772605896" />
+                                                                </color>
+                                                            </Stop>
+                                                        </stops>
+                                                    </LinearGradient>
+                                                </fill>
+                                            </Rectangle>
+                                            <Label alignment="CENTER" prefHeight="70.0" prefWidth="531.0" styleClass="username" text="Add Friends" textAlignment="CENTER">
+                                                <padding>
+                                                    <Insets left="5.0" top="-8.0" />
+                                                </padding>
+                                            </Label>
+                                        </children>
+                                        <VBox.margin>
+                                            <Insets top="10.0" />
+                                        </VBox.margin>
+                                    </StackPane>
+                                    <StackPane alignment="CENTER_RIGHT" maxHeight="50.0" maxWidth="416.0" prefHeight="50.0" prefWidth="416.0">
+                                        <VBox.margin>
+                                            <Insets left="10.0" />
+                                        </VBox.margin>
+                                        <children>
+                                            <TextField fx:id="searchField" maxHeight="50.0" maxWidth="416.0" prefHeight="50.0" prefWidth="416.0" promptText="search" styleClass="search-field">
+                                                <padding>
+                                                    <Insets left="45.0" />
+                                                </padding>
+                                            </TextField>
+                                            <ImageView fitHeight="35.0" fitWidth="35.0" onMouseClicked="#search" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                    <Image url="@images/arrow-right.png" />
+                                                </image>
+                                                <StackPane.margin>
+                                                    <Insets right="12.0" />
+                                                </StackPane.margin>
+                                                <cursor>
+                                                    <Cursor fx:constant="HAND" />
+                                                </cursor>
+                                            </ImageView>
+                                        </children>
+                                    </StackPane>
+                                    <ScrollPane hbarPolicy="NEVER" prefHeight="598.0" prefWidth="531.0">
+                                        <content>
+                                            <VBox fx:id="searchContainer" alignment="TOP_CENTER" prefHeight="150.0" prefWidth="523.0" />
+                                        </content>
+                                        <VBox.margin>
+                                            <Insets top="10.0" />
+                                        </VBox.margin>
+                                        <padding>
+                                            <Insets left="5.0" />
+                                        </padding>
+                                    </ScrollPane>
+                                </children>
+                            </VBox>
+                            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="754.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="541.0" />
+                        </children>
+                    </StackPane>
+         </children>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+      </HBox>
+    </children>
+</StackPane>
