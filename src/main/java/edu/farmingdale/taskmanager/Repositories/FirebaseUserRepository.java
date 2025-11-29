@@ -7,8 +7,12 @@ import edu.farmingdale.taskmanager.Models.User;
 import edu.farmingdale.taskmanager.Session;
 import edu.farmingdale.taskmanager.TaskManagerApplication;
 import edu.farmingdale.taskmanager.exceptions.ResourceNotFoundException;
+import edu.farmingdale.taskmanager.factories.UserFactory;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
@@ -17,20 +21,13 @@ public class FirebaseUserRepository {
     public User getUserById(String id) throws ResourceNotFoundException{
         DocumentReference docRef = TaskManagerApplication.fstore.collection("users").document(id);
         ApiFuture<DocumentSnapshot> future = docRef.get();
-        LocalDate today = LocalDate.now();
+
+
         try {
             DocumentSnapshot document = future.get();
             if (document.exists()){
                 Optional<User> opUser = Optional.ofNullable(document.toObject(User.class));
                 User user = opUser.orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
-                //work on this - check date in week streak
-//                if (ritual.getDateRecorded() != null) {
-//                    LocalDate ritualDate = LocalDate.parse(ritual.getDateRecorded());
-//                    if (!today.equals(ritualDate)) {
-//                        ritual.setCompleted(false);
-//
-//                    }
-//                }
                 System.out.printf("User %s Successfully logged in!\n", user.getUsername());
                 return user;
             }
@@ -85,9 +82,48 @@ public class FirebaseUserRepository {
             }
         }, Runnable::run);
     }
+    //TODO move to sign in??
+    public void checkWeekStart(User user){
+        LocalDate today = LocalDate.now();
+        DayOfWeek weekStartDay;
+        LocalDate currentWeekStart;
 
-    private void checkStreak(){
+        if (user.getWeekStart() != null) {
+            weekStartDay = DayOfWeek.valueOf(user.getWeekStart());
+        }
+        else{
+            weekStartDay = DayOfWeek.valueOf("MONDAY");
+        }
+        currentWeekStart = UserFactory.computeWeekStart(weekStartDay);
+        System.out.println(user.getWeekStartDate());
+        System.out.println(currentWeekStart);
+        if (LocalDate.parse(user.getWeekStartDate()).isBefore(currentWeekStart)){
+            //reset week streak tracker
+            Map<String, Boolean> weekStreak = new HashMap<>();
+            for (int i = 1; i < 8; i++) {
+                String day = String.valueOf(i);
+                weekStreak.put(day, false);
+            }
+            user.setWeekStreak(weekStreak);
 
+            //TODO reset bosses
+
+            //TODO reset quests
+
+        }
+    }
+    //TODO move to sign in??
+    public void checkLastRitualDate(User user){
+        LocalDate today = LocalDate.now();
+        LocalDate last = LocalDate.parse(user.getLastRitualComplete());
+
+        if (last.equals(today) || last.equals(today.minusDays(1))) {
+            // Already counted today – do nothing
+        } else {
+            // Missed a day → reset streak
+            user.setStreak(0);
+            user.setXpBonus(1);
+        }
     }
 
 
