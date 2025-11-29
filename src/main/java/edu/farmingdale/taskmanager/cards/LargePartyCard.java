@@ -13,12 +13,18 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
+import java.util.function.Consumer;
+
 public class LargePartyCard extends ImageCard<Party>{
     String name;
+    protected Consumer<LargePartyCard> onClick;
 
-    public LargePartyCard(Party data) {
+    public LargePartyCard(Party data, Consumer<LargePartyCard> onClick) {
         super(data);
         this.name = data.getName();
+        this.onClick = onClick;
+        root.setCursor(Cursor.HAND);
+        root.setOnMouseClicked(e -> onClick.accept(this));
     }
 
 
@@ -61,7 +67,7 @@ public class LargePartyCard extends ImageCard<Party>{
         members.getStyleClass().add("large-friend-card-info");
         members.setPadding(new Insets(-15, 0, -10, 0));
 
-        Label memberCount = new Label(String.valueOf(data.getMembers()));
+        Label memberCount = new Label(String.valueOf(data.getMembers().size()));
         memberCount.getStyleClass().add("large-friend-card-info");
         memberCount.setPadding(new Insets(-15, 0, -10, 0));
 

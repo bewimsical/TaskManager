@@ -48,11 +48,37 @@ public class FirestoreClient {
 
 
         FirebaseUserRepository userRepository = new FirebaseUserRepository();
+        FirebasePartyRepository partyRepository = new FirebasePartyRepository();
         User user  = null;
         try {
             user = userRepository.getUserById(id);
             Session.getInstance().setUser(user);
             System.out.printf("User %s Successfully logged in!\n", user.getUsername());
+
+            //add friends to session
+            if (user.getFriends() == null){
+                user.setFriends(new ArrayList<>());
+            }
+            if (user.getParties() == null){
+                user.setParties(new ArrayList<>());
+            }
+
+            Session.getInstance().setFriends(new ArrayList<>());
+            Session.getInstance().setParties(new ArrayList<>());
+
+            for (String idString: user.getFriends()){
+                User friend = userRepository.getUserById(idString);
+                if (friend != null){
+                    Session.getInstance().getFriends().add(friend);
+                }
+            }
+
+            for (String idString: user.getParties()){
+                Party party = partyRepository.getParty(idString);
+                if (party != null){
+                    Session.getInstance().getParties().add(party);
+                }
+            }
         } catch (ResourceNotFoundException e) {
             System.out.println(e.getMessage());
         }

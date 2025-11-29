@@ -21,6 +21,7 @@ public class User {
     private String weekStart;
     private String weekStartDate;
     private String lastRitualComplete;
+    //TODO change to a set!
     private List<String> parties;
     private List<String> friends;
 
