@@ -136,6 +136,7 @@ public class QuestViewModel {
             currentQuest.setCompleted(true);
             quests.get("Complete").add(currentQuest);
             getCurrentQuestCard().redraw();
+            user.setCompletedQuestCount(user.getCompletedQuestCount()+1);
 
         }
 

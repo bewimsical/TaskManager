@@ -33,17 +33,7 @@ public class FirebaseQuestRepository {
             System.out.println("Reading quests from the database");
             for(QueryDocumentSnapshot document: documents){
                 Quest quest = document.toObject(Quest.class);
-                if (quest.getDateAdded() != null) {
-                    LocalDate questDate = LocalDate.parse(quest.getDateAdded());
-                    if (today.equals(questDate.plusDays(8)) && !quest.isCompleted()) {
-                        deleteQuest(quest, user);
-                        // maybe set some flag to true? so I can:
-                        // generate quests
-                        // add them to db
-                        // add them to the map
-                        continue;
-                    }
-                }
+
                 if (quest.isActive()){
                     quests.get("Active").add(quest);
                 }
