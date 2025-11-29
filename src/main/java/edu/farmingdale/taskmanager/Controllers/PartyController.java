@@ -1,12 +1,11 @@
 package edu.farmingdale.taskmanager.Controllers;
 
 import edu.farmingdale.taskmanager.Models.User;
-import edu.farmingdale.taskmanager.Party;
 import edu.farmingdale.taskmanager.cards.LargeFriendCard;
-import edu.farmingdale.taskmanager.cards.LargePartyCard;
+import edu.farmingdale.taskmanager.cards.SearchCard;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
@@ -23,6 +22,9 @@ public class PartyController implements Initializable {
 
     @FXML
     private VBox searchContainer;
+
+    @FXML
+    private ImageView addParty;
 
 
     @Override
@@ -41,11 +43,14 @@ public class PartyController implements Initializable {
 
         friendContainer.getChildren().addAll(card.createView(), card2.createView());
 
-        Party party1 = new Party("Party", "Guild", "2", "2", "2");
+//        Party party1 = new Party("Party", "Guild", "2", "2", "2");
+//
+//        LargePartyCard pc = new LargePartyCard(party1);
 
-        LargePartyCard pc = new LargePartyCard(party1);
+        //partyContainer.getChildren().addAll(pc.createView());
 
-        partyContainer.getChildren().addAll(pc.createView());
+        SearchCard sc = new SearchCard(testUser, this::addFriend);
+        searchContainer.getChildren().add(sc.createView());
 
     }
 
@@ -55,4 +60,10 @@ public class PartyController implements Initializable {
 
     }
 
+    public void AddParty(MouseEvent mouseEvent) {
+    }
+
+    public void addFriend(SearchCard sc){
+
+    }
 }

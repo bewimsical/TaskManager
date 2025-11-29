@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -83,6 +86,54 @@
                                                       <Insets top="10.0" />
                                                   </VBox.margin>
                                               </StackPane>
+                                              <StackPane alignment="TOP_LEFT" prefHeight="28.0" prefWidth="436.0">
+                                                  <children>
+                                                      <Rectangle height="38.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="436.0">
+                                                          <fill>
+                                                              <LinearGradient endX="1.0">
+                                                                  <stops>
+                                                                      <Stop>
+                                                                          <color>
+                                                                              <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                                          </color>
+                                                                      </Stop>
+                                                                      <Stop offset="0.006711409395973154">
+                                                                          <color>
+                                                                              <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                                          </color>
+                                                                      </Stop>
+                                                                      <Stop offset="1.0">
+                                                                          <color>
+                                                                              <Color red="0.5199999809265137" green="0.3161599934101105" blue="0.010400000028312206" opacity="0.90439772605896" />
+                                                                          </color>
+                                                                      </Stop>
+                                                                  </stops>
+                                                              </LinearGradient>
+                                                          </fill>
+                                                      </Rectangle>
+                                                      <Label alignment="CENTER" prefHeight="40.0" prefWidth="436.0" styleClass="new-party" text="Create New Party" textAlignment="CENTER">
+                                                          <padding>
+                                                              <Insets bottom="-8.0" left="10.0" top="-11.0" />
+                                                          </padding>
+                                                      </Label>
+                                                      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                                          <children>
+                                                              <ImageView fx:id="addParty" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#AddParty" pickOnBounds="true" preserveRatio="true">
+                                                                  <image>
+                                                                      <Image url="@images/add.png" />
+                                                                  </image>
+                                                                  <HBox.margin>
+                                                                      <Insets right="15.0" />
+                                                                  </HBox.margin>
+                                                                  <cursor>
+                                                                      <Cursor fx:constant="HAND" />
+                                                                  </cursor>
+                                                              </ImageView>
+                                                          </children>
+                                                      </HBox>
+                                                  </children>
+
+                                              </StackPane>
                                     <ScrollPane hbarPolicy="NEVER" prefHeight="523.0" prefWidth="436.0">
                                        <content>
                                           <VBox fx:id="partyContainer" prefHeight="200.0" prefWidth="100.0">
@@ -148,8 +199,14 @@
                                     </TextField>
                                     <ScrollPane hbarPolicy="NEVER">
                                        <content>
-                                          <VBox fx:id="searchContainer" prefHeight="200.0" prefWidth="100.0" />
+                                          <VBox fx:id="searchContainer" prefHeight="150.0" prefWidth="100.0" />
                                        </content>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets left="5.0" />
+                                       </padding>
                                     </ScrollPane>
                                  </children>
                               </VBox>

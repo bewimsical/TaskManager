@@ -35,7 +35,7 @@
     -fx-border-width: 5;
 }
 
-.menu-label{
+.menu-label, .search-level{
     -fx-font-size: 16px;
     -fx-text-fill: #472C01;
 
@@ -52,7 +52,7 @@
     -fx-font-size: 32px;
     -fx-text-fill: #472C01;
 }
-.attacks-label{
+.attacks-label, .search-name{
     -fx-font-size: 24px;
     -fx-text-fill: #472C01;
 }
@@ -66,6 +66,12 @@
     -fx-font-size: 30px;
     -fx-text-fill: #F8E5B2;
 }
+
+.new-party{
+    -fx-font-size: 20px;
+    -fx-text-fill: #F8E5B2;
+}
+
 .boss-categories{
     -fx-font-size: 24px;
     -fx-text-fill: #F8E5B2;
