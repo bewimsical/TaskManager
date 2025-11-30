@@ -41,4 +41,12 @@ public class SignupController implements Initializable {
 
     }
 
+    public void onSignupButtonClick() {
+
+    }
+
+    public void onGoBackButtonClick() {
+
+    }
+
 }
