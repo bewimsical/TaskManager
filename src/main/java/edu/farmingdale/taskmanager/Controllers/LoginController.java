@@ -8,7 +8,10 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginController {
+public class LoginController implements Initializable{
+
+
+
     @FXML
     private TextField emailTextField;
 
@@ -21,4 +24,8 @@ public class LoginController {
     @FXML
     private Button googleButton;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }
