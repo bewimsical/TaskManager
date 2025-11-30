@@ -1,16 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
 
-<StackPane alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024" prefWidth="1440" styleClass="bg" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.SignupController">
-   <children>
-      <ImageView fitHeight="1024.0" fitWidth="1440.0" pickOnBounds="true" preserveRatio="true">
-         <viewport>
-            <Rectangle2D />
-         </viewport>
-      </ImageView>
-      <Pane prefHeight="1000.0" prefWidth="800.0" />
-   </children>
+<StackPane alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024" prefWidth="1440" styleClass="bg" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.SignupController">
+<children>
+    <Pane prefHeight="800.0" prefWidth="1000.0" styleClass="container" stylesheets="@styles/style.css" StackPane.alignment="CENTER" />
+    <Pane blendMode="SOFT_LIGHT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="975.0" prefWidth="1200.0" style="-fx-border-color: #6D3535; -fx-border-radius: 20; -fx-border-width: 6;" translateY="-10.0" StackPane.alignment="CENTER">
+        <effect>
+            <Lighting bumpInput="$null" specularConstant="0.35" specularExponent="29.14">
+                <light>
+                    <!--<Light.Distant />-->
+                </light>
+            </Lighting>
+        </effect>
+    </Pane>
+    <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" stylesheets="@styles/style.css">
+        <children>
+            <TextFlow textAlignment="CENTER">
+                <Text text="&#10;" />
+            </TextFlow>
+
+        </children>
+    </VBox>
+    <VBox alignment="BOTTOM_CENTER" blendMode="SRC_ATOP" layoutY="500" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="850.0" prefWidth="600.0" style="-fx-background-color: rgba(245, 202, 137, 1.0); -fx-background-radius: 15; -fx-border-color: #2d1a05; -fx-border-radius: 15; -fx-border-width: 3.5;" translateY="-140.0" StackPane.alignment="CENTER">
+        <StackPane.margin>
+            <Insets top="250.0" />
+        </StackPane.margin>
+        <children>
+            <Text fill="#2d1a05" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 22px; -fx-font-family: 'Inknut Antiqua Regular';" text="Email" translateX="-230.0" translateY="-125.0">
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin>
+            </Text>
+            <TextField fx:id="emailTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="540.0" style="-fx-background-color: #F5EBE0; -fx-background-radius: 12;" translateX="-5.0" translateY="-125.0" />
+            <Text fill="#2d1a05" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 22px; -fx-font-family: 'Inknut Antiqua Regular';" text="Username" translateX="-200.0" translateY="-125.0" />
+            <TextField fx:id="usernameTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="540.0" style="-fx-background-color: #F5EBE0; -fx-background-radius: 12;" translateX="-5.0" translateY="-125.0" />
+            <Text fill="#2d1a05" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 22px; -fx-font-family: 'Inknut Antiqua Regular';" text="Password" translateX="-205.0" translateY="-125.0" />
+            <TextField fx:id="passwordTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="540.0" style="-fx-background-color: #F5EBE0; -fx-background-radius: 12;" translateY="-125.0" />
+            <Text fill="#2d1a05" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 22px; -fx-font-family: 'Inknut Antiqua Regular';" text="Confirm Password" translateX="-150.0" translateY="-125.0" />
+            <TextField fx:id="confirmPasswordTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="540.0" style="-fx-background-color: #F5EBE0; -fx-background-radius: 12;" translateY="-125.0" />
+            <Button fx:id="loginButton" mnemonicParsing="false" prefHeight="75.0" prefWidth="350.0" style="-fx-background-color: #2d1a05; -fx-font-size: 32px; -fx-text-fill: #F5EBE0; -fx-background-radius: 15; -fx-font-family: 'Inknut Antiqua Regular';" text="Signup" translateY="-65.0">
+                <effect>
+                    <DropShadow offsetX="5.0" offsetY="10.0">
+                        <color>
+                            <Color opacity="0.4163497984409332" />
+                        </color>
+                    </DropShadow>
+                </effect></Button>
+            <Button fx:id="googleButton" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="280.0" style="-fx-background-color: white; -fx-font-size: 18px; -fx-border-color: black; -fx-border-radius: 8; -fx-background-radius: 8; -fx-font-family: 'Inknut Antiqua Regular';" text="Go Back" translateY="-30.0" />
+        </children></VBox>
+</children>
 </StackPane>
