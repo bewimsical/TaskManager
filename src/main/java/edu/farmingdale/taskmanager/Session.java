@@ -14,6 +14,9 @@ public class Session {
     private Map<String, List<Quest>> quests;
     private Map<String, List<Ritual>> rituals;
     private List<Chore> chores;
+    private List<User> friends;
+    private List<Party> parties;
+
     private Set<String> assignedChoreIds;
 
 
@@ -108,5 +111,21 @@ public class Session {
 
     public void setQuests(Map<String, List<Quest>> quests) {
         this.quests = quests;
+    }
+
+    public List<User> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(List<User> friends) {
+        this.friends = friends;
+    }
+
+    public List<Party> getParties() {
+        return parties;
+    }
+
+    public void setParties(List<Party> parties) {
+        this.parties = parties;
     }
 }

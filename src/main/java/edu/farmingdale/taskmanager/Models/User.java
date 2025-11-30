@@ -1,6 +1,5 @@
 package edu.farmingdale.taskmanager.Models;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -11,14 +10,20 @@ public class User {
     private String email;
     private int age;
     private boolean adult;
-    private int streak;
-    private double xpBonus;
     private int vanquishedBossCount;
     private int completedQuestCount;
     private String profileUrl;
     private int level;
     private int xp;
     private Map<String, Boolean> weekStreak;
+    private int streak;
+    private double xpBonus;
+    private String weekStart;
+    private String weekStartDate;
+    private String lastRitualComplete;
+    //TODO change to a set!
+    private List<String> parties;
+    private List<String> friends;
 
 
     public User() {
@@ -39,6 +44,11 @@ public class User {
         this.level = userBuilder.level;
         this.xp = userBuilder.xp;
         this.weekStreak = userBuilder.weekStreak;
+        this.weekStart = userBuilder.weekStart;
+        this.lastRitualComplete = userBuilder.lastRitualComplete;
+        this.weekStartDate = userBuilder.weekStartDate;
+        this.friends = userBuilder.friends;
+        this.parties = userBuilder.parties;
 
     }
 
@@ -157,6 +167,46 @@ public class User {
         this.weekStreak = weekStreak;
     }
 
+    public String getWeekStart() {
+        return weekStart;
+    }
+
+    public void setWeekStart(String weekStart) {
+        this.weekStart = weekStart;
+    }
+
+    public String getLastRitualComplete() {
+        return lastRitualComplete;
+    }
+
+    public void setLastRitualComplete(String lastRitualComplete) {
+        this.lastRitualComplete = lastRitualComplete;
+    }
+
+    public String getWeekStartDate() {
+        return weekStartDate;
+    }
+
+    public void setWeekStartDate(String weekStartDate) {
+        this.weekStartDate = weekStartDate;
+    }
+
+    public List<String> getParties() {
+        return parties;
+    }
+
+    public void setParties(List<String> parties) {
+        this.parties = parties;
+    }
+
+    public List<String> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(List<String> friends) {
+        this.friends = friends;
+    }
+
 
     public static class UserBuilder {
         private String id;
@@ -168,12 +218,17 @@ public class User {
         private int streak;
         private double xpBonus;
         private List<String> friends;
+        private List<String> parties;
         private int vanquishedBossCount;
         private int completedQuestCount;
         private String profileUrl;
         private int level;
         private int xp;
         private Map<String, Boolean> weekStreak;
+        private String weekStart;
+        private String lastRitualComplete;
+        private String weekStartDate;
+
 
         public UserBuilder() {
 
@@ -224,6 +279,10 @@ public class User {
             return this;
         }
 
+        public UserBuilder parties(List<String> parties) {
+            this.parties = parties;
+            return this;
+        }
 
         public UserBuilder vanquishedBossCount(int vanquishedBossCount) {
             this.vanquishedBossCount = vanquishedBossCount;
@@ -249,6 +308,19 @@ public class User {
         }
         public UserBuilder weekStreak( Map<String, Boolean> weekStreak){
             this.weekStreak = weekStreak;
+            return this;
+        }
+        public UserBuilder weekStart(String weekStart) {
+            this.weekStart = weekStart;
+            return this;
+        }
+        public UserBuilder lastRitualComplete(String today) {
+            this.lastRitualComplete = today;
+            return this;
+        }
+
+        public UserBuilder weekStartDate(String weekStartDate) {
+            this.weekStartDate = weekStartDate;
             return this;
         }
 

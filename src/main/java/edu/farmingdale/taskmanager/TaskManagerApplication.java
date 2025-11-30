@@ -32,87 +32,9 @@ public class TaskManagerApplication extends Application {
         fauth = FirebaseAuth.getInstance();
 
 
-        //test user "login"
-        //create the user
-        //Map<String, LinkedList<Bosses>> bosses = new HashMap<>();
-
-//
-//
-//        Map<String, Boolean> week = new HashMap<>();
-//        week.put("1", true);
-//        week.put("2", true);
-//        week.put("3", true);
-//        week.put("4", false);
-//        week.put("5", false);
-//        week.put("6", false);
-//        week.put("7", false);
-//
-//        User hazelTheNut = new User.UserBuilder()
-//                .id("user1")
-//                .username("HazelTheNut")
-//                .level(7)
-//                .xp(75)
-//                .weekStreak(week)
-//                .build();
-//
-//        System.out.println(hazelTheNut.getWeekStreak());
-//        FirebaseUserRepository repo = new FirebaseUserRepository();
-//        repo.updateUser(hazelTheNut);
-//
-//        //Add a user to the database
-//        FirestoreClient.setDocument(hazelTheNut, "users", "user1");
-//
-        //add bosses subcollection
-
-
-        // add chores subcollection
-//        CollectionReference choreRef = TaskManagerApplication.fstore.collection("chores");
-//        ApiFuture<QuerySnapshot> futureChores = choreRef.get();
-//        try {
-//            List<QueryDocumentSnapshot> documents = futureChores.get().getDocuments();
-//            if (!documents.isEmpty()){
-//                System.out.println("Reading chores from the database");
-//                for(QueryDocumentSnapshot document: documents){
-//                    Chore chore = document.toObject(Chore.class);
-//                    String uuid = UUID.randomUUID().toString();
-//                    chore.setId(uuid);
-//
-//                    FirestoreClient.setDocument(chore, "users", "user1","chores", uuid);
-//                }
-//
-//
-//                System.out.println("bosses succssfully added to Session!");
-//            }
-//
-//
-//        } catch (InterruptedException | ExecutionException e) {
-//            System.out.println("No such document!");
-//        }
-
         //get user from the database and set the session
+//        FirestoreClient.getUser("users", "fc3a889d-bc3c-4f89-9e66-654fb3ec58a2");
         FirestoreClient.getUser("users", "user1");
-
-//        List<Boss> bosses = new ArrayList<>();
-////
-//        bosses.add(BossFactory.generate());
-//        bosses.add(BossFactory.generate());
-//        bosses.add(BossFactory.generate());
-//
-//        for (Boss boss: bosses) {
-//            DocumentReference docRef = TaskManagerApplication.fstore.collection("users")
-//                    .document("user1")
-//                    .collection("bosss")
-//                    .document(boss.getId());
-//            ApiFuture<WriteResult> result = docRef.set(boss);
-//
-//            result.addListener(() -> {
-//                try {
-//                    System.out.println("user" + "successfully updated at: " + result.get().getUpdateTime());
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }, Runnable::run);
-//        }
 
         FXMLLoader fxmlLoader = new FXMLLoader(TaskManagerApplication.class.getResource("profile-view.fxml"));
         Parent root = fxmlLoader.load();

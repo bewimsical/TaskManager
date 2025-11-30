@@ -1,7 +1,7 @@
 package edu.farmingdale.taskmanager.cards;
 
+import edu.farmingdale.taskmanager.Models.Party;
 import edu.farmingdale.taskmanager.Models.User;
-import edu.farmingdale.taskmanager.Party;
 import edu.farmingdale.taskmanager.TaskManagerApplication;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,12 +13,18 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
+import java.util.function.Consumer;
+
 public class LargePartyCard extends ImageCard<Party>{
     String name;
+    protected Consumer<LargePartyCard> onClick;
 
-    public LargePartyCard(Party data) {
+    public LargePartyCard(Party data, Consumer<LargePartyCard> onClick) {
         super(data);
         this.name = data.getName();
+        this.onClick = onClick;
+        root.setCursor(Cursor.HAND);
+        root.setOnMouseClicked(e -> onClick.accept(this));
     }
 
 
@@ -61,7 +67,7 @@ public class LargePartyCard extends ImageCard<Party>{
         members.getStyleClass().add("large-friend-card-info");
         members.setPadding(new Insets(-15, 0, -10, 0));
 
-        Label memberCount = new Label(String.valueOf(data.members()));
+        Label memberCount = new Label(String.valueOf(data.getMembers().size()));
         memberCount.getStyleClass().add("large-friend-card-info");
         memberCount.setPadding(new Insets(-15, 0, -10, 0));
 
@@ -72,7 +78,7 @@ public class LargePartyCard extends ImageCard<Party>{
         questLabel.getStyleClass().add("large-friend-card-info");
         questLabel.setPadding(new Insets(-20, 0, 0, 0));
         //TODO fix this
-        Label questsCompleted = new Label(String.valueOf(data.quests()));
+        Label questsCompleted = new Label(String.valueOf(data.getQuests()));
         questsCompleted.getStyleClass().add("large-friend-card-info");
         questsCompleted.setPadding(new Insets(-20, 0, 0, 5));
 
@@ -90,7 +96,7 @@ public class LargePartyCard extends ImageCard<Party>{
         bossLabel.getStyleClass().add("large-friend-card-info");
         bossLabel.setPadding(new Insets(-20, 0, 0, 0));
         //todo fix this
-        Label bossesSlain = new Label(String.valueOf(data.bosses()));
+        Label bossesSlain = new Label(String.valueOf(data.getBosses()));
         bossesSlain.getStyleClass().add("large-friend-card-info");
         bossesSlain.setPadding(new Insets(-20, 0, 0, 5));
 

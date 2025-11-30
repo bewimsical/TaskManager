@@ -42,6 +42,30 @@ public class FirebaseChoreRepository {
         }
     }
 
+    public List<Chore> getDefaultChores() throws ResourceNotFoundException {
+        CollectionReference ref = TaskManagerApplication.fstore.collection("chores");
+        ApiFuture<QuerySnapshot> future = ref.get();
+        try {
+            List<QueryDocumentSnapshot> documents = future.get().getDocuments();
+            List<Chore> chores = new ArrayList<>();
+
+            if (documents.isEmpty()){
+                throw new ResourceNotFoundException("No chores found");
+            }
+            System.out.println("Reading chores from the database");
+            for(QueryDocumentSnapshot document: documents){
+                Chore chore = document.toObject(Chore.class);
+                chores.add(chore);
+            }
+            System.out.println("chores succssfully added to Session!");
+            return chores;
+
+        } catch (InterruptedException | ExecutionException e) {
+            System.out.println("No such document!");
+            throw new ResourceNotFoundException("No chores found for user");
+        }
+    }
+
     public void setChore(Chore chore, User user){
         DocumentReference docRef = TaskManagerApplication.fstore.collection("users").document(user.getId()).collection("chores").document(chore.getId());
         ApiFuture<WriteResult> result = docRef.set(chore);
