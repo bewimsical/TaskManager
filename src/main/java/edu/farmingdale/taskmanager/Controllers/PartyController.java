@@ -165,6 +165,9 @@ public class PartyController implements Initializable {
         // Add overlay + popup to root
         root.getChildren().addAll(overlay, popup);
         StackPane.setAlignment(popup, Pos.CENTER);
+
+        PartyPopupController controller = loader.getController();
+        controller.setParentContainer(root);
     }
 
 

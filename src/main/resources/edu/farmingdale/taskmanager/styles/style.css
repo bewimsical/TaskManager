@@ -92,7 +92,7 @@
     -fx-text-fill: #472C01;
 }
 
-.button-label{
+.button-label, .party-btn-label{
     -fx-font-size: 24px;
     -fx-text-fill: #FFF;
 }
@@ -124,6 +124,18 @@
     -fx-border-style: solid;
 }
 .button-label.active{
+    -fx-text-fill: #E5B515;
+}
+
+.button-label:hover{
+    -fx-text-fill: #E5B515;
+}
+
+.username.active{
+    -fx-text-fill: #E5B515;
+}
+
+.party-popup:hover{
     -fx-text-fill: #E5B515;
 }
 
