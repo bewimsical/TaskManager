@@ -24,12 +24,12 @@
                               <Insets />
                            </StackPane.margin>
                         </Circle>
-                        <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/sword.png" />
+                              <Image url="@images/broom-gem.PNG" />
                            </image>
                            <StackPane.margin>
-                              <Insets />
+                              <Insets left="-10.0" top="-10.0" />
                            </StackPane.margin>
                         </ImageView>
                      </children>

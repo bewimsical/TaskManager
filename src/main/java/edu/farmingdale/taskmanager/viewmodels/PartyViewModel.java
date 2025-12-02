@@ -106,4 +106,8 @@ public class PartyViewModel {
     public ObservableList<Party> getVisibleParties() {
         return visibleParties;
     }
+
+    public List<User> getFriends() {
+        return friends;
+    }
 }

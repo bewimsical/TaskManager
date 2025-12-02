@@ -110,6 +110,8 @@ public class Party {
             this.bosses = bosses;
             return this;
         }
+
+
     }
 
 }

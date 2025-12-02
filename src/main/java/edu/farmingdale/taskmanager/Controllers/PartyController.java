@@ -104,6 +104,7 @@ public class PartyController implements Initializable {
     void search(MouseEvent event) {
         String username = searchField.getText();
         User user = vm.search(username);
+        searchContainer.getChildren().clear();
         if (user != null){
             SearchCard sc = new SearchCard(user, this::addFriend);
             searchContainer.getChildren().add(sc.createView());

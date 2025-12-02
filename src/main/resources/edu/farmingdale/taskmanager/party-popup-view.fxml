@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -161,6 +162,18 @@
                                     <Label alignment="CENTER" maxWidth="531.0" prefWidth="531.0" styleClass="members" text="Members" textAlignment="CENTER" />
                                  </children>
                               </StackPane>
+                              <ScrollPane hbarPolicy="NEVER" prefHeight="598.0" prefWidth="531.0">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                                 <content>
+                                    <FlowPane fx:id="memberContainer" hgap="5.0" prefHeight="200.0" prefWidth="513.0" vgap="5.0">
+                                       <padding>
+                                          <Insets left="5.0" />
+                                       </padding>
+                                    </FlowPane>
+                                 </content>
+                              </ScrollPane>
                                       </children>
                                   </VBox>
                                   <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="654.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="541.0" />
@@ -230,7 +243,10 @@
                                           </StackPane>
                                           <ScrollPane hbarPolicy="NEVER" prefHeight="598.0" prefWidth="531.0">
                                               <content>
-                                                  <VBox fx:id="searchContainer" alignment="TOP_CENTER" prefHeight="150.0" prefWidth="523.0" />
+                                                  <VBox fx:id="searchContainer" alignment="TOP_CENTER" prefHeight="150.0" prefWidth="512.0" spacing="5.0">
+                                       <padding>
+                                          <Insets left="10.0" top="10.0" />
+                                       </padding></VBox>
                                               </content>
                                               <VBox.margin>
                                                   <Insets top="10.0" />
