@@ -1,10 +1,12 @@
 package edu.farmingdale.taskmanager.Controllers;
 
+import edu.farmingdale.taskmanager.FirestoreClient;
+import edu.farmingdale.taskmanager.Models.Quest;
 import edu.farmingdale.taskmanager.Models.User;
-import edu.farmingdale.taskmanager.Party;
 import edu.farmingdale.taskmanager.Session;
 import edu.farmingdale.taskmanager.cards.SmallFriendCard;
 import edu.farmingdale.taskmanager.cards.SmallPartyCard;
+import edu.farmingdale.taskmanager.factories.QuestFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -96,14 +98,14 @@ public class ProfileController implements Initializable {
         xpBarContainer.getChildren().add(shine);
         StackPane.setMargin(shine, new Insets(8, 0, 0, 7));
 
-        //test out party cards
-        Party party1 = new Party("Party", "guild", "2", "2", "2");
-        Party party2 = new Party("Party2", "alliance", "2", "2", "2");
+//        //test out party cards
+//        Party party1 = new Party("Party", "guild", "2", "2", "2");
+//        Party party2 = new Party("Party2", "alliance", "2", "2", "2");
+//
+//        SmallPartyCard card1 = new SmallPartyCard(party1);
+//        SmallPartyCard card2 = new SmallPartyCard(party2);
 
-        SmallPartyCard card1 = new SmallPartyCard(party1);
-        SmallPartyCard card2 = new SmallPartyCard(party2);
-
-        partyCardContainer.getChildren().addAll(card2.createView(), card1.createView());
+        //partyCardContainer.getChildren().addAll(card2.createView(), card1.createView());
 
         String[] profilePics = {"rogue_cat.PNG","bard_dog.PNG","paladin_dog.PNG","wizard_bird.PNG","wizard_cat.PNG"};
 
@@ -125,6 +127,8 @@ public class ProfileController implements Initializable {
 
 
             friendCardContainer.getChildren().add(f.createView());
+
+
         if (current != null) {
             username.setText(current.getUsername());
             levelLabel.setText(String.valueOf(current.getLevel()));
@@ -134,9 +138,10 @@ public class ProfileController implements Initializable {
 
 
         }
-
-
-
+        //FirestoreClient.signUp("TeddySpaghetti", "treatsPlz", "spaghettiCat@meow.com", 5,"wizard_cat.PNG", "MONDAY");
+//        FirestoreClient.signUp("Chomper", "treatsPlz", "bigDawg@bark.com", 5,"bard_dog.PNG", "MONDAY");
+//        FirestoreClient.signUp("HolyCannoli", "treatsPlz", "holyCannoli@bark.com", 5,"paladin_dog.PNG", "MONDAY");
+//        FirestoreClient.signUp("Mr. Bird", "treatsPlz", "mistaBird@tweet.com", 5,"wizard_bird.PNG", "MONDAY");
 
 
 

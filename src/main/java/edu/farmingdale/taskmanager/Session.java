@@ -1,9 +1,6 @@
 package edu.farmingdale.taskmanager;
 
-import edu.farmingdale.taskmanager.Models.Boss;
-import edu.farmingdale.taskmanager.Models.Chore;
-import edu.farmingdale.taskmanager.Models.Ritual;
-import edu.farmingdale.taskmanager.Models.User;
+import edu.farmingdale.taskmanager.Models.*;
 
 import java.util.List;
 import java.util.Map;
@@ -14,8 +11,12 @@ public class Session {
     private static Session instance;
     private User currentUser;
     private Map<String, List<Boss>> bosses;
+    private Map<String, List<Quest>> quests;
     private Map<String, List<Ritual>> rituals;
     private List<Chore> chores;
+    private List<User> friends;
+    private List<Party> parties;
+
     private Set<String> assignedChoreIds;
 
 
@@ -65,6 +66,23 @@ public class Session {
                 .map(Ritual::getChore)
                 .toList();
 
+        System.out.println("\n Stream chore list");
+        for (Chore c : ritualChores){
+            System.out.println(c.getName());
+        }
+
+        System.out.println("\nChore Keys");
+        for (String key:rituals.keySet()){
+            System.out.println("Key: " + key);
+            for (Ritual r: rituals.get(key)){
+                System.out.println("     "+r.getChore().getName());
+            }
+        }
+
+//        for (Chore c : ritualChores){
+//            System.out.println(c.getName());
+//        }
+
         return chores.stream()
                 .filter(c -> !ritualChores.contains(c))
                 .filter(c -> !assignedChoreIds.contains(c.getId()))
@@ -85,5 +103,29 @@ public class Session {
 
     public void setRituals(Map<String, List<Ritual>> rituals) {
         this.rituals = rituals;
+    }
+
+    public Map<String, List<Quest>> getQuests() {
+        return quests;
+    }
+
+    public void setQuests(Map<String, List<Quest>> quests) {
+        this.quests = quests;
+    }
+
+    public List<User> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(List<User> friends) {
+        this.friends = friends;
+    }
+
+    public List<Party> getParties() {
+        return parties;
+    }
+
+    public void setParties(List<Party> parties) {
+        this.parties = parties;
     }
 }

@@ -1,6 +1,7 @@
 package edu.farmingdale.taskmanager.cards;
 
-import edu.farmingdale.taskmanager.Party;
+
+import edu.farmingdale.taskmanager.Models.Party;
 import edu.farmingdale.taskmanager.TaskManagerApplication;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

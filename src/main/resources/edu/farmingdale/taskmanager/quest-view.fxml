@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -188,51 +189,7 @@
                                     <children>
                                         <VBox maxHeight="836.0" maxWidth="436.0" prefHeight="836.0" prefWidth="436.0" styleClass="container">
                                             <children>
-                                                <VBox maxHeight="190.0" prefHeight="190.0">
-                                                    <VBox.margin>
-                                                        <Insets top="10.0" />
-                                                    </VBox.margin>
-                                                    <children>
-                                                        <StackPane alignment="TOP_LEFT" prefHeight="28.0" prefWidth="436.0">
-                                                            <children>
-                                                                <Rectangle height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="436.0">
-                                                                    <fill>
-                                                                        <LinearGradient endX="1.0">
-                                                                            <stops>
-                                                                                <Stop>
-                                                                                    <color>
-                                                                                        <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
-                                                                                    </color>
-                                                                                </Stop>
-                                                                                <Stop offset="0.006711409395973154">
-                                                                                    <color>
-                                                                                        <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
-                                                                                    </color>
-                                                                                </Stop>
-                                                                                <Stop offset="1.0">
-                                                                                    <color>
-                                                                                        <Color red="0.5199999809265137" green="0.3161599934101105" blue="0.010400000028312206" opacity="0.90439772605896" />
-                                                                                    </color>
-                                                                                </Stop>
-                                                                            </stops>
-                                                                        </LinearGradient>
-                                                                    </fill>
-                                                                </Rectangle>
-                                                                <Label prefHeight="40.0" prefWidth="436.0" styleClass="boss-categories" text="Tracked Quests" textAlignment="CENTER">
-                                                                    <padding>
-                                                                        <Insets bottom="-8.0" left="10.0" top="-11.0" />
-                                                                    </padding>
-                                                                </Label>
-                                                            </children>
-                                                        </StackPane>
-                                                        <VBox fx:id="trackedContainer" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
-                                                            <VBox.margin>
-                                                                <Insets top="10.0" />
-                                                            </VBox.margin>
-                                                        </VBox>
-                                                    </children>
-                                                </VBox>
-                                                <VBox maxHeight="256.0" prefHeight="256.0">
+                                                <VBox maxHeight="351.0" prefHeight="351.0">
                                                     <children>
                                                         <StackPane alignment="TOP_LEFT" prefHeight="28.0" prefWidth="436.0">
                                                             <children>
@@ -266,14 +223,14 @@
                                                                 </Label>
                                                             </children>
                                                         </StackPane>
-                                                        <VBox fx:id="mainContainer" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                                                        <VBox fx:id="mainContainer" alignment="TOP_CENTER" prefHeight="292.0" prefWidth="436.0">
                                                             <VBox.margin>
                                                                 <Insets top="10.0" />
                                                             </VBox.margin>
                                                         </VBox>
                                                     </children>
                                                 </VBox>
-                                    <VBox maxHeight="256.0" prefHeight="256.0">
+                                    <VBox maxHeight="351.0" prefHeight="351.0">
                                        <children>
                                           <StackPane alignment="TOP_LEFT" prefHeight="28.0" prefWidth="436.0">
                                              <children>
@@ -307,7 +264,7 @@
                                                 </Label>
                                              </children>
                                           </StackPane>
-                                          <VBox fx:id="miniBossesContainer1" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                                          <VBox fx:id="sideQuestsContainer" alignment="TOP_CENTER" prefHeight="292.0" prefWidth="436.0">
                                              <VBox.margin>
                                                 <Insets top="10.0" />
                                              </VBox.margin>
@@ -350,7 +307,7 @@
                                                         </StackPane>
                                                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                                                             <children>
-                                                                <ImageView fx:id="customBossCard" fitHeight="58.0" fitWidth="422.0" onMouseClicked="#createCustomQuest" pickOnBounds="true" preserveRatio="true">
+                                                                <ImageView fx:id="customQuestCard" fitHeight="58.0" fitWidth="422.0" onMouseClicked="#createCustomQuest" pickOnBounds="true" preserveRatio="true">
                                                                     <image>
                                                                         <Image url="@images/custom%20chore%20card.png" />
                                                                     </image>
@@ -381,7 +338,7 @@
                                     <children>
                                         <VBox alignment="TOP_CENTER" maxHeight="836.0" maxWidth="882.0" prefHeight="836.0" prefWidth="882.0" styleClass="container">
                                             <children>
-                                                <Label fx:id="bossName" alignment="CENTER" prefHeight="41.0" prefWidth="882.0" styleClass="boss-name" text="Quest Name" textAlignment="CENTER">
+                                                <Label fx:id="questName" alignment="CENTER" prefHeight="41.0" prefWidth="882.0" styleClass="boss-name" text="Quest Name" textAlignment="CENTER">
                                                     <padding>
                                                         <Insets bottom="-15.0" left="5.0" top="-15.0" />
                                                     </padding>
@@ -392,7 +349,8 @@
                                              <image>
                                                 <Image url="@images/MapBG.PNG" />
                                              </image></ImageView>
-                                                        <ImageView fitHeight="377.0" fitWidth="813.0" layoutX="234.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+                                          <AnchorPane fx:id="lineView" layoutX="45.0" layoutY="10.0" maxHeight="377.0" maxWidth="813.0" minHeight="377.0" minWidth="813.0" prefHeight="377.0" prefWidth="813.0" />
+                                          <AnchorPane fx:id="mapView" maxHeight="377.0" maxWidth="813.0" minHeight="377.0" minWidth="813.0" prefHeight="377.0" prefWidth="813.0" />
                                                     </children>
                                                     <VBox.margin>
                                                         <Insets top="15.0" />

@@ -3,6 +3,7 @@ package edu.farmingdale.taskmanager.cards;
 import edu.farmingdale.taskmanager.TaskManagerApplication;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -49,6 +50,7 @@ public abstract class ChoreCard<T> extends ImageCard<T>{
         xp.getStyleClass().add(cardType+"-xp");
 
         VBox container = new VBox(name, xp);
+        container.setMaxWidth(422);
         container.setPadding(new Insets(15, 0, 0, 70));
 
         root.getChildren().addAll(imageview, container);

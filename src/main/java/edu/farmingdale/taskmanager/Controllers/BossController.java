@@ -8,6 +8,9 @@ import edu.farmingdale.taskmanager.TaskManagerApplication;
 import edu.farmingdale.taskmanager.cards.AttackCard;
 import edu.farmingdale.taskmanager.cards.BossCard;
 import edu.farmingdale.taskmanager.cards.ChoreCard;
+import edu.farmingdale.taskmanager.viewmodels.BossViewModel;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -55,123 +58,27 @@ public class BossController implements Initializable {
 
     private Label[] buttons;
 
-    private double health;
-
-    User current = Session.getInstance().getUser();
-
-    Map<String, List<Boss>> bosses = Session.getInstance().getBosses();
-
-    Boss currentBoss;
-
-    BossCard currentBossCard;
-
-
+    private final BossViewModel vm = new BossViewModel();
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
 
         buttons = new Label[]{bountiesButton, vanquishedButton, failedButton};
 
-
-        healthBar.setProgress(1);
-
-
-        if(bosses != null) {
-            for (Boss b:bosses.get("Bounties")){
-                BossCard c = new BossCard(b, this::handleBossCardClick);
-                bossesContainer.getChildren().add(c.createView());
-                if (currentBossCard == null){
-                    currentBossCard = c;
-                }
-
-            }
-            currentBoss = bosses.get("Bounties").get(0);
-
-            bossName.setText(currentBoss.getName());
-            Image image;
-            if (currentBoss.isVanquished()){
-                image = new Image(TaskManagerApplication.class.getResource("images/monsters/" + currentBoss.getCleanImageUrl()).toExternalForm());
-            }else {
-                image = new Image(TaskManagerApplication.class.getResource("images/monsters/" + currentBoss.getDirtyImageUrl()).toExternalForm());
-            }
-            bossImageView.setImage(image);
-            health = currentBoss.getCurrentHealth();
-
-            for(Chore c: currentBoss.getChores() ){
-                AttackCard ac = new AttackCard(c, this::handleAttackCardClick);
-                attacksContainer.getChildren().add(ac.createView());
-            }
-        }
-
-
-
-//        Boss b1 = BossFactory.generate("Attack1");
-//        Boss b2 =BossFactory.generate("Attack2");
-//        Boss b3 =BossFactory.generate("Attack3");
-//        Boss b4 =BossFactory.generate("Attack4");
-//        AttackCard c1 = new AttackCard(b1, this::handleAttackCardClick);
-//        AttackCard c2 = new AttackCard(b2, this::handleAttackCardClick);
-//        AttackCard c3 = new AttackCard(b3, this::handleAttackCardClick);
-//        AttackCard c4 = new AttackCard(b4, this::handleAttackCardClick);
-
-        //loop through attack list here
-//        attacksContainer.getChildren().addAll(c1.createView(),c2.createView(),c3.createView(),c4.createView());
-
+        bossName.textProperty().bind(vm.nameProperty());
+        setUpLists(vm.getVisibleBosses(), bossesContainer);
+        setUpLists(vm.getVisibleChores(), attacksContainer);
+        healthBar.progressProperty().bind(vm.healthPercentProperty());
+        bossImageView.imageProperty().bind(vm.bossImageProperty());
+        vm.setUpView();
     }
 
     private void handleBossCardClick(ChoreCard<Boss> clickedBoss){
-        currentBossCard = (BossCard) clickedBoss;
-        currentBoss = clickedBoss.getData();
-        bossName.setText(currentBoss.getName());
-        health = currentBoss.getCurrentHealth();
-        healthBar.setProgress(currentBoss.getCurrentHealth()/currentBoss.getTotalHealth());
-        attacksContainer.getChildren().clear();
-        for(Chore c: currentBoss.getChores() ){
-            AttackCard ac = new AttackCard(c, this::handleAttackCardClick);
-            attacksContainer.getChildren().add(ac.createView());
-        }
-        Image image;
-        if (currentBoss.isVanquished()){
-            image = new Image(TaskManagerApplication.class.getResource("images/monsters/" + currentBoss.getCleanImageUrl()).toExternalForm());
-        }else {
-            image = new Image(TaskManagerApplication.class.getResource("images/monsters/" + currentBoss.getDirtyImageUrl()).toExternalForm());
-        }
-        bossImageView.setImage(image);
-
-
-
-
-
+        vm.cardClick(clickedBoss);
     }
 
     private void handleAttackCardClick(ChoreCard<Chore> clickedBoss){
-        clickedBoss.redraw();
-        Chore chore = clickedBoss.getData();
-        chore.setCompleted(true);
-        double damage = chore.getChoreXP();
-        currentBoss.setCurrentHealth(currentBoss.getCurrentHealth()-chore.getChoreXP());
-        double next = Math.max(healthBar.getProgress() - (damage/health), 0);
-        healthBar.setProgress(next);
-
-        boolean bossDefeated = currentBoss.getChores().stream()
-                        .allMatch(Chore::isCompleted);
-
-        if (bossDefeated){
-            currentBoss.setVanquished(true);
-            bosses.get("Vanquished").add(currentBoss);
-            currentBossCard.redraw();
-            Image image = new Image(TaskManagerApplication.class.getResource("images/monsters/" + currentBoss.getCleanImageUrl()).toExternalForm());
-            bossImageView.setImage(image);
-        }
-
-
-        System.out.printf("""
-                Health: %f
-                Damage: %f
-                Next: %f
-                Progress Bar: %f
-                """, health, damage, next, healthBar.getProgress());
-
+        vm.completeChore(clickedBoss);
     }
 
     @FXML
@@ -186,14 +93,34 @@ public class BossController implements Initializable {
         }
         Label button = (Label) e.getSource();
         button.getStyleClass().add("active");
+        vm.switchCategory(button.getText());
+    }
 
-        bossesContainer.getChildren().clear();
+    private void setUpLists(ObservableList<Boss> list, VBox container){
+        // reactively render lists:
+        list.addListener((ListChangeListener<Boss>) change -> {
+            container.getChildren().clear();
+            //TODO ?????
+            vm.setCurrentBossCard(null);
+            for (Boss q : list) {
+                ChoreCard<Boss> card = new BossCard(q, this::handleBossCardClick);
+                if (vm.getCurrentBossCard() == null){
+                    vm.setCurrentBossCard(card);
+                }
+                container.getChildren().add(card.createView());
+            }
+        });
+    }
 
-        for (Boss b:bosses.get(button.getText())){
-            BossCard c = new BossCard(b, this::handleBossCardClick);
-            bossesContainer.getChildren().add(c.createView());
-
-        }
+    private void setUpLists(ObservableList<Chore> list, FlowPane container){
+        // reactively render lists:
+        list.addListener((ListChangeListener<Chore>) change -> {
+            container.getChildren().clear();
+            for (Chore q : list) {
+                AttackCard card = new AttackCard(q, this::handleAttackCardClick);
+                container.getChildren().add(card.createView());
+            }
+        });
     }
 
 }

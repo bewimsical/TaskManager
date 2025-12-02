@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -12,7 +15,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 
-<StackPane alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" styleClass="bg" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.PartyController">
+<StackPane fx:id="root" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" styleClass="bg" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.PartyController">
     <children>
         <fx:include source="navbar-view.fxml" />
       <VBox>
@@ -73,7 +76,7 @@
                                                               </LinearGradient>
                                                           </fill>
                                                       </Rectangle>
-                                                      <Label alignment="CENTER" prefHeight="70.0" prefWidth="436.0" styleClass="username" text="All Friends" textAlignment="CENTER">
+                                                      <Label fx:id="AllFriends" alignment="CENTER" onMouseClicked="#showFriends" prefHeight="70.0" prefWidth="436.0" styleClass="username" text="All Friends" textAlignment="CENTER">
                                                           <padding>
                                                               <Insets left="5.0" top="-8.0" />
                                                           </padding>
@@ -83,9 +86,60 @@
                                                       <Insets top="10.0" />
                                                   </VBox.margin>
                                               </StackPane>
+                                              <StackPane alignment="TOP_LEFT" prefHeight="28.0" prefWidth="436.0">
+                                                  <children>
+                                                      <Rectangle height="38.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="436.0">
+                                                          <fill>
+                                                              <LinearGradient endX="1.0">
+                                                                  <stops>
+                                                                      <Stop>
+                                                                          <color>
+                                                                              <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                                          </color>
+                                                                      </Stop>
+                                                                      <Stop offset="0.006711409395973154">
+                                                                          <color>
+                                                                              <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                                          </color>
+                                                                      </Stop>
+                                                                      <Stop offset="1.0">
+                                                                          <color>
+                                                                              <Color red="0.5199999809265137" green="0.3161599934101105" blue="0.010400000028312206" opacity="0.90439772605896" />
+                                                                          </color>
+                                                                      </Stop>
+                                                                  </stops>
+                                                              </LinearGradient>
+                                                          </fill>
+                                                      </Rectangle>
+                                                      <Label alignment="CENTER" prefHeight="40.0" prefWidth="436.0" styleClass="new-party" text="Create New Party" textAlignment="CENTER">
+                                                          <padding>
+                                                              <Insets bottom="-8.0" left="10.0" top="-11.0" />
+                                                          </padding>
+                                                      </Label>
+                                                      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                                          <children>
+                                                              <ImageView fx:id="addParty" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#AddParty" pickOnBounds="true" preserveRatio="true">
+                                                                  <image>
+                                                                      <Image url="@images/add.png" />
+                                                                  </image>
+                                                                  <HBox.margin>
+                                                                      <Insets right="15.0" />
+                                                                  </HBox.margin>
+                                                                  <cursor>
+                                                                      <Cursor fx:constant="HAND" />
+                                                                  </cursor>
+                                                              </ImageView>
+                                                          </children>
+                                                      </HBox>
+                                                  </children>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" />
+                                       </VBox.margin>
+
+                                              </StackPane>
                                     <ScrollPane hbarPolicy="NEVER" prefHeight="523.0" prefWidth="436.0">
                                        <content>
-                                          <VBox fx:id="partyContainer" prefHeight="200.0" prefWidth="100.0">
+                                          <VBox fx:id="partyContainer" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding></VBox>
@@ -138,18 +192,39 @@
                                           <Insets top="10.0" />
                                        </VBox.margin>
                                     </StackPane>
-                                    <TextField maxHeight="50.0" maxWidth="416.0" prefHeight="50.0" prefWidth="416.0" promptText="search" styleClass="search-field">
+                                    <StackPane alignment="CENTER_RIGHT" maxHeight="50.0" maxWidth="416.0" prefHeight="50.0" prefWidth="416.0">
                                        <VBox.margin>
                                           <Insets left="10.0" />
                                        </VBox.margin>
-                                       <padding>
-                                          <Insets left="45.0" />
-                                       </padding>
-                                    </TextField>
+                                       <children>
+                                          <TextField fx:id="searchField" maxHeight="50.0" maxWidth="416.0" prefHeight="50.0" prefWidth="416.0" promptText="search" styleClass="search-field">
+                                             <padding>
+                                                <Insets left="45.0" />
+                                             </padding>
+                                          </TextField>
+                                          <ImageView fitHeight="35.0" fitWidth="35.0" onMouseClicked="#search" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@images/arrow-right.png" />
+                                             </image>
+                                             <StackPane.margin>
+                                                <Insets right="12.0" />
+                                             </StackPane.margin>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </ImageView>
+                                       </children>
+                                    </StackPane>
                                     <ScrollPane hbarPolicy="NEVER">
                                        <content>
-                                          <VBox fx:id="searchContainer" prefHeight="200.0" prefWidth="100.0" />
+                                          <VBox fx:id="searchContainer" prefHeight="150.0" prefWidth="100.0" />
                                        </content>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets left="5.0" />
+                                       </padding>
                                     </ScrollPane>
                                  </children>
                               </VBox>
@@ -167,7 +242,7 @@
                                   <children>
                                       <VBox maxHeight="931.0" maxWidth="882.0" prefHeight="931.0" prefWidth="882.0" styleClass="container">
                                           <children>
-                                                <Label alignment="CENTER" prefHeight="70.0" prefWidth="882.0" styleClass="party-title" text="Party Name" textAlignment="CENTER">
+                                                <Label fx:id="partyName" alignment="CENTER" prefHeight="70.0" prefWidth="882.0" styleClass="party-title" text="Party Name" textAlignment="CENTER">
                                                     <padding>
                                                         <Insets bottom="-15.0" left="5.0" top="-15.0" />
                                                     </padding>

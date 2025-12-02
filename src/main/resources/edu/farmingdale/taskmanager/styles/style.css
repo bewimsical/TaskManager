@@ -35,10 +35,15 @@
     -fx-border-width: 5;
 }
 
-.menu-label{
+.menu-label, .search-level{
     -fx-font-size: 16px;
     -fx-text-fill: #472C01;
 
+}
+
+.type-description{
+    -fx-font-size: 14px;
+    -fx-fill: #472C01;
 }
 .page-title{
     -fx-font-size: 48px;
@@ -52,7 +57,7 @@
     -fx-font-size: 32px;
     -fx-text-fill: #472C01;
 }
-.attacks-label{
+.attacks-label, .search-name, .create-party-section-label{
     -fx-font-size: 24px;
     -fx-text-fill: #472C01;
 }
@@ -66,7 +71,13 @@
     -fx-font-size: 30px;
     -fx-text-fill: #F8E5B2;
 }
-.boss-categories{
+
+.new-party{
+    -fx-font-size: 20px;
+    -fx-text-fill: #F8E5B2;
+}
+
+.boss-categories, .members{
     -fx-font-size: 24px;
     -fx-text-fill: #F8E5B2;
 }
@@ -81,7 +92,7 @@
     -fx-text-fill: #472C01;
 }
 
-.button-label{
+.button-label, .party-btn-label{
     -fx-font-size: 24px;
     -fx-text-fill: #FFF;
 }
@@ -103,10 +114,26 @@
     -fx-font-size: 16px;
     -fx-text-fill: #F8E5B2;
 }
+
+.xs-friend-card-name{
+    -fx-font-size: 14px;
+    -fx-text-fill: #F8E5B2;
+}
 .large-friend-card-name{
     -fx-font-size: 32px;
     -fx-text-fill: #F8E5B2;
 }
+
+.med-friend-card-name{
+    -fx-font-size: 20px;
+    -fx-text-fill: #F8E5B2;
+}
+
+.med-friend-card-info{
+    -fx-font-size: 16px;
+    -fx-text-fill: #472C01;
+}
+
 .large-party-card-name{
     -fx-border-color: black;
     -fx-border-width: 2px;
@@ -116,11 +143,30 @@
     -fx-text-fill: #E5B515;
 }
 
+.button-label:hover{
+    -fx-text-fill: #E5B515;
+}
+
+.username.active{
+    -fx-text-fill: #E5B515;
+}
+
+.party-popup:hover{
+    -fx-text-fill: #E5B515;
+}
+
 .search-field{
     -fx-background-color: #8F590245;
     -fx-background-image:url('../images/search.png');
     -fx-background-repeat: no-repeat;
     -fx-background-position: 10px center;
+    -fx-text-fill: #472C01;
+    -fx-prompt-text-fill: #472C0150;
+    -fx-font-family: 'Inknut Antiqua Regular';
+    -fx-font-size: 20px;
+}
+.party-name-field{
+    -fx-background-color: #8F590245;
     -fx-text-fill: #472C01;
     -fx-prompt-text-fill: #472C0150;
     -fx-font-family: 'Inknut Antiqua Regular';
@@ -296,6 +342,35 @@
 .combo-box-popup {
     -fx-background-radius: 2;
 }
+
+.delete-ritual{
+    /*-fx-background-color: white;*/
+    -fx-padding: 20;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 12, 0.2, 0, 2);
+}
+
+.delete-ritual-message{
+    -fx-font-family: 'Inknut Antiqua Regular';
+    -fx-font-size: 24px;
+    -fx-text-fill: #472C01;
+
+}
+
+.delete-ritual-button, .create-ritual-button{
+    -fx-background-color: #472C01;
+    -fx-text-fill: #F8E5B2;
+    -fx-background-radius: 100;
+    -fx-font-size: 24px;
+    -fx-padding: -10 8 -10 8;
+}
+
+.delete-ritual-button:hover, .create-ritual-button:hover{
+    -fx-text-fill: #E5B515;
+
+}
+
+
 
 .broom-left {
     /* be25bf8323ac01d6d9db995037b27b9c 3 */

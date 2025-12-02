@@ -13,6 +13,7 @@ module edu.farmingdale.taskmanager {
     requires com.google.api.apicommon;
     requires javafx.graphics;
     requires javafx.base;
+    requires org.checkerframework.checker.qual;
 
 
     opens edu.farmingdale.taskmanager to javafx.fxml;
@@ -23,4 +24,6 @@ module edu.farmingdale.taskmanager {
     opens edu.farmingdale.taskmanager.cards to javafx.fxml;
     exports edu.farmingdale.taskmanager.Models;
     opens edu.farmingdale.taskmanager.Models to google.cloud.firestore;
+    exports edu.farmingdale.taskmanager.factories;
+    opens edu.farmingdale.taskmanager.factories to javafx.fxml;
 }
