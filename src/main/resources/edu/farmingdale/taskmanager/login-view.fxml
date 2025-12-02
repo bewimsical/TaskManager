@@ -59,7 +59,7 @@
             <TextField fx:id="emailTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="460.0" style="-fx-background-color: #F5EBE0;" translateX="25.0" translateY="-260.0" />
             <Text fill="#2d1a05" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 22px; -fx-font-family: 'Inknut Antiqua';" text="Password" translateX="-140.0" translateY="-260.0" />
             <TextField fx:id="passwordTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="460.0" style="-fx-background-color: #F5EBE0;" translateX="25.0" translateY="-260.0" />
-            <Button fx:id="loginButton" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #2d1a05; -fx-font-size: 25px; -fx-text-fill: #F5EBE0; -fx-background-radius: 15; -fx-font-family: 'Inknut Antiqua';" text="Begin Quest" translateY="-225.0">
+            <Button fx:id="loginButton" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#loginOnClick" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #2d1a05; -fx-font-size: 25px; -fx-text-fill: #F5EBE0; -fx-background-radius: 15; -fx-font-family: 'Inknut Antiqua';" text="Begin Quest" translateY="-225.0">
                <effect>
                   <DropShadow offsetX="5.0" offsetY="10.0">
                      <color>

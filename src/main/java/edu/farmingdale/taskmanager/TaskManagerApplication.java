@@ -36,7 +36,7 @@ public class TaskManagerApplication extends Application {
 //        FirestoreClient.getUser("users", "fc3a889d-bc3c-4f89-9e66-654fb3ec58a2");
         FirestoreClient.getUser("users", "user1");
 
-        FXMLLoader fxmlLoader = new FXMLLoader(TaskManagerApplication.class.getResource("profile-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(TaskManagerApplication.class.getResource("signup-view.fxml"));
         Parent root = fxmlLoader.load();
 
         double baseWidth = 1440;
