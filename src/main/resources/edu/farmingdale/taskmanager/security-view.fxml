@@ -9,7 +9,7 @@
 <AnchorPane prefHeight="1024.0" prefWidth="1440.0" styleClass="container" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.SecurityController">
 
     <!-- Title -->
-    <Label layoutX="598.0" layoutY="65.0" prefHeight="74.0" prefWidth="363.0" style="-fx-font-size: 30.0;" styleClass="menu-label" text="Account Security" textFill="#6f4818">
+    <Label layoutX="474.0" layoutY="64.0" prefHeight="74.0" prefWidth="363.0" style="-fx-font-size: 30.0;" styleClass="menu-label" text="Account Security" textFill="#6f4818">
       <effect>
          <DropShadow radius="17.369999999999997" spread="0.15" width="50.48">
             <color>
@@ -21,14 +21,14 @@
          <Font name="System Bold" size="13.0" />
       </font></Label>
 
-    <!-- Buttons (free-movement in SceneBuilder!) -->
-    <Button fx:id="btnChangePassword" layoutX="843.0" layoutY="284.0" onAction="#openChangePassword" prefHeight="43.0" prefWidth="235.0" styleClass="security-item" text="🔑  Change Password" />
 
-    <Button fx:id="btnChangeEmail" layoutX="391.0" layoutY="284.0" onAction="#openChangeEmail" prefHeight="43.0" prefWidth="235.0" styleClass="security-item" text="📧  Change Email" />
+    <Button fx:id="btnChangePassword" layoutX="764.0" layoutY="284.0" onAction="#openChangePassword" prefHeight="43.0" prefWidth="235.0" styleClass="security-item" text="🔑  Change Password" />
 
-    <Button fx:id="btnTwoFactor" layoutX="391.0" layoutY="588.0" onAction="#openTwoFactor" styleClass="security-item" text="🛡️  Two-Factor Authentication" />
+    <Button fx:id="btnChangeEmail" layoutX="274.0" layoutY="284.0" onAction="#openChangeEmail" prefHeight="43.0" prefWidth="235.0" styleClass="security-item" text="📧  Change Email" />
 
-    <Button fx:id="btnDeviceSecurity" layoutX="837.0" layoutY="588.0" onAction="#openDeviceSecurity" prefHeight="34.0" prefWidth="246.0" styleClass="security-item" text="💻  Device Security" />
+    <Button fx:id="btnTwoFactor" layoutX="274.0" layoutY="536.0" onAction="#openTwoFactor" styleClass="security-item" text="🛡️  Two-Factor Authentication" />
+
+    <Button fx:id="btnDeviceSecurity" layoutX="764.0" layoutY="536.0" onAction="#openDeviceSecurity" prefHeight="34.0" prefWidth="246.0" styleClass="security-item" text="💻  Device Security" />
 
     <!-- Status message area -->
     <Label fx:id="statusLabel" layoutX="350.0" layoutY="360.0" style="-fx-text-fill: lightgreen;" />
