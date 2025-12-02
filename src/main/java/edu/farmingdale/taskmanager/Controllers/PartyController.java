@@ -57,25 +57,6 @@ public class PartyController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
-//        User testUser = new User();
-//
-//        testUser.setUsername("TestPlayer");
-//        testUser.setLevel(5);
-//        testUser.setStreak(3);
-//        testUser.setVanquishedBossCount(2);
-//        testUser.setCompletedQuestCount(4);
-//        testUser.setProfileUrl("wizard_cat.PNG");
-//
-//        LargeFriendCard card = new LargeFriendCard(testUser);
-//        LargeFriendCard card2 = new LargeFriendCard(testUser);
-//
-//        friendContainer.getChildren().addAll(card.createView(), card2.createView());
-
-//        Party party1 = new Party("Party", "Guild", "2", "2", "2");
-//
-//        LargePartyCard pc = new LargePartyCard(party1);
-
-        //partyContainer.getChildren().addAll(pc.createView());
 
         partyName.textProperty().bind(vm.nameProperty());
         setUpPartyList(vm.getVisibleParties(), partyContainer);
@@ -115,8 +96,6 @@ public class PartyController implements Initializable {
         // reactively render lists:
         list.addListener((ListChangeListener<User>) change -> {
             container.getChildren().clear();
-            //TODO ?????
-            //vm.setCurrentBossCard(null);
             for (User u : list) {
                 LargeFriendCard card = new LargeFriendCard(u);
                 container.getChildren().add(card.createView());
