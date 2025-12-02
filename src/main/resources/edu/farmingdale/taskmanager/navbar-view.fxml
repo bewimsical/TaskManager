@@ -26,7 +26,7 @@
                         </Circle>
                         <ImageView fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/broom-gem.PNG" />
+                              <Image url="@images/broom-gems_90.png" />
                            </image>
                            <StackPane.margin>
                               <Insets left="-10.0" top="-10.0" />

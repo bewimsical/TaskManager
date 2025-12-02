@@ -22,6 +22,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -64,19 +65,25 @@ public class PartyPopupController implements Initializable {
     private FlowPane memberContainer;
 
     @FXML
+    private TextField nameField;
+
+    @FXML
     private StackPane popupRoot;
 
     private Pane parent;
 
     private String type;
     private String name;
-    private List<String> members;
 
 
     private final ObservableList<User> visibleUsers = FXCollections.observableArrayList();
     private final ObservableList<User> visibleMembers = FXCollections.observableArrayList();
 
-    private final PartyViewModel vm = new PartyViewModel();
+    private final PartyViewModel vm;
+
+    public PartyPopupController(PartyViewModel vm) {
+        this.vm = vm;  // injected before initialize()
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -106,27 +113,21 @@ public class PartyPopupController implements Initializable {
     void createParty(MouseEvent event) {
         //only accept if name is filled in.
         //send info to vm to create a party and display it
+        if (!nameField.getText().trim().isEmpty()) {
+            String name = nameField.getText();
+            List<User> members = new ArrayList<>(visibleMembers);
 
-        // remove popup
-        parent.getChildren().remove(popupRoot);
-
-        // remove overlay (it’s now the last child)
-        parent.getChildren().remove(parent.getChildren().size() - 1);
-    }
-
-    @FXML
-    void displayFriends(MouseEvent event) {
-        //delete this
+            vm.createParty(name, type,members);
+            // remove popup
+            parent.getChildren().remove(popupRoot);
+            // remove overlay (it’s now the last child)
+            parent.getChildren().remove(parent.getChildren().size() - 1);
+        }
     }
 
     @FXML
     void search(MouseEvent event) {
         //this fill filter friends based on entered text
-    }
-
-    @FXML
-    void showFriends(MouseEvent event) {
-        //delete this
     }
 
     @FXML
@@ -153,8 +154,6 @@ public class PartyPopupController implements Initializable {
         // reactively render lists:
         list.addListener((ListChangeListener<User>) change -> {
             container.getChildren().clear();
-            //TODO ?????
-            //vm.setCurrentBossCard(null);
             for (User u : list) {
                 MediumFriendCard card = new MediumFriendCard(u, this::selectFriend);
                 container.getChildren().add(card.createView());
@@ -166,8 +165,6 @@ public class PartyPopupController implements Initializable {
         // reactively render lists:
         list.addListener((ListChangeListener<User>) change -> {
             container.getChildren().clear();
-            //TODO ?????
-            //vm.setCurrentBossCard(null);
             for (User u : list) {
                 ExtraSmallFriendCard card = new ExtraSmallFriendCard(u);
                 container.getChildren().add(card.createView());
@@ -181,7 +178,6 @@ public class PartyPopupController implements Initializable {
             visibleMembers.add(friend);
         }
     }
-
 
 }
 

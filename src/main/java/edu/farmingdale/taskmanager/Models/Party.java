@@ -7,8 +7,8 @@ public class Party {
     String name;
     String type;
     List<String> members;
-    String quests;
-    String bosses;
+    int quests;
+    int bosses;
 
     public Party() {
     }
@@ -45,19 +45,19 @@ public class Party {
         this.members = members;
     }
 
-    public String getQuests() {
+    public int getQuests() {
         return quests;
     }
 
-    public void setQuests(String quests) {
+    public void setQuests(int quests) {
         this.quests = quests;
     }
 
-    public String getBosses() {
+    public int getBosses() {
         return bosses;
     }
 
-    public void setBosses(String bosses) {
+    public void setBosses(int bosses) {
         this.bosses = bosses;
     }
 
@@ -69,13 +69,13 @@ public class Party {
         this.id = id;
     }
 
-    public class PartyBuilder{
+    public static class PartyBuilder{
         String id;
         String name;
         String type;
         List<String> members;
-        String quests;
-        String bosses;
+        int quests;
+        int bosses;
 
         public PartyBuilder() {
         }
@@ -101,14 +101,18 @@ public class Party {
             return this;
         }
 
-        public PartyBuilder quests(String quests) {
+        public PartyBuilder quests(int quests) {
             this.quests = quests;
             return this;
         }
 
-        public PartyBuilder bosses(String bosses) {
+        public PartyBuilder bosses(int bosses) {
             this.bosses = bosses;
             return this;
+        }
+
+        public Party build() {
+            return new Party(this);
         }
 
 

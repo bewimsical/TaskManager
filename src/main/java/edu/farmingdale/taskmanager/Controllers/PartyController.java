@@ -128,8 +128,6 @@ public class PartyController implements Initializable {
         // reactively render lists:
         list.addListener((ListChangeListener<Party>) change -> {
             container.getChildren().clear();
-            //TODO ?????
-            //vm.setCurrentBossCard(null);
             for (Party p : list) {
                 LargePartyCard card = new LargePartyCard(p, this::handlePartyClick);
                 container.getChildren().add(card.createView());
@@ -155,6 +153,7 @@ public class PartyController implements Initializable {
         overlay.setOnMouseClicked(e -> e.consume()); // block clicks behind
 
         FXMLLoader loader = new FXMLLoader(TaskManagerApplication.class.getResource("party-popup-view.fxml"));
+        loader.setControllerFactory(param -> new PartyPopupController(vm));
         Parent popup = null;
         try {
             popup = loader.load();
@@ -169,6 +168,7 @@ public class PartyController implements Initializable {
 
         PartyPopupController controller = loader.getController();
         controller.setParentContainer(root);
+
     }
 
 

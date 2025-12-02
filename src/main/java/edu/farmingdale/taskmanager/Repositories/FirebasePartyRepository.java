@@ -47,7 +47,7 @@ public class FirebasePartyRepository {
         throw new ResourceNotFoundException("party not found with id: " + id);
     }
 
-    public void setParty(Party party, User user){
+    public void setParty(Party party){
         DocumentReference docRef = TaskManagerApplication.fstore.collection("parties").document(party.getId());
         ApiFuture<WriteResult> result = docRef.set(party);
 
@@ -60,7 +60,7 @@ public class FirebasePartyRepository {
         }, Runnable::run);
     }
 
-    public void updateParty(Party party, User user){
+    public void updateParty(Party party){
         DocumentReference docRef = TaskManagerApplication.fstore.collection("parties").document(party.getId());
         ApiFuture<WriteResult> result = docRef.set(party, SetOptions.merge());
 
@@ -73,7 +73,7 @@ public class FirebasePartyRepository {
         }, Runnable::run);
     }
 
-    public void deleteParty(Party party, User user, Runnable onSuccess){
+    public void deleteParty(Party party, Runnable onSuccess){
         DocumentReference docRef = TaskManagerApplication.fstore.collection("parties").document(party.getId());
         ApiFuture<WriteResult> future = docRef.delete();
 
@@ -92,7 +92,7 @@ public class FirebasePartyRepository {
         }, java.util.concurrent.Executors.newSingleThreadExecutor());
     }
 
-    public void deleteChore(Party party, User user){
+    public void deleteChore(Party party){
         DocumentReference docRef = TaskManagerApplication.fstore.collection("parties").document(party.getId());
         ApiFuture<WriteResult> future = docRef.delete();
 

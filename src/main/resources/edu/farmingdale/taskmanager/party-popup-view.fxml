@@ -31,7 +31,7 @@
                               <children>
                                   <VBox maxHeight="644.0" maxWidth="531.0" prefHeight="644.0" prefWidth="531.0" styleClass="container">
                                       <children>
-                                          <StackPane alignment="TOP_LEFT" onMouseClicked="#displayFriends" prefHeight="18.0" prefWidth="436.0">
+                                          <StackPane alignment="TOP_LEFT" prefHeight="18.0" prefWidth="436.0">
                                               <children>
                                                   <Rectangle height="61.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="531.0">
                                                       <fill>
@@ -56,7 +56,7 @@
                                                           </LinearGradient>
                                                       </fill>
                                                   </Rectangle>
-                                                  <Label alignment="CENTER" onMouseClicked="#showFriends" prefHeight="70.0" prefWidth="541.0" styleClass="username" text="Create a Party" textAlignment="CENTER">
+                                                  <Label alignment="CENTER" prefHeight="70.0" prefWidth="541.0" styleClass="username" text="Create a Party" textAlignment="CENTER">
                                                       <padding>
                                                           <Insets left="5.0" top="-8.0" />
                                                       </padding>
@@ -71,7 +71,7 @@
                                     <Insets bottom="-10.0" top="-10.0" />
                                  </padding>
                               </Label>
-                              <TextField maxHeight="52.0" prefHeight="52.0" promptText="enter party name" styleClass="party-name-field">
+                              <TextField fx:id="nameField" maxHeight="52.0" minHeight="52.0" prefHeight="52.0" promptText="enter party name" styleClass="party-name-field">
                                  <VBox.margin>
                                     <Insets left="30.0" right="30.0" />
                                  </VBox.margin>

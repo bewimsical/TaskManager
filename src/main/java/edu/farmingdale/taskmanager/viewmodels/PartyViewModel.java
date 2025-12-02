@@ -14,6 +14,8 @@ import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class PartyViewModel {
     FirebaseUserRepository userRepo = new FirebaseUserRepository();
@@ -73,7 +75,9 @@ public class PartyViewModel {
             List<String> memberIds = party.getMembers();
             for (String id: memberIds){
                 try {
-                    members.add(userRepo.getUserById(id));
+                    if (!id.equals(user.getId())) {
+                        members.add(userRepo.getUserById(id));
+                    }
                 } catch (ResourceNotFoundException e) {
                     System.out.println(e.getMessage());
                 }
@@ -89,6 +93,33 @@ public class PartyViewModel {
         visibleUsers.clear();
         visibleUsers.addAll(friends);
         name.set("All Friends");
+    }
+
+    public void createParty(String name, String type, List<User> members){
+        String partyId = UUID.randomUUID().toString();
+        members.add(user);
+        for (User u:members){
+            if (u.getParties() == null){
+                u.setParties(new ArrayList<>());
+            }
+            u.getParties().add(partyId);
+            userRepo.updateUser(u);
+        }
+        List<String> memberIds = members.stream()
+                .map(User::getId)
+                .toList();
+        Party party = new Party.PartyBuilder()
+                .id(partyId)
+                .name(name)
+                .type(type)
+                .members(memberIds)
+                .bosses(0)
+                .quests(0)
+                .build();
+
+        visibleParties.add(party);
+        parties.add(party);
+        partyRepo.setParty(party);
     }
 
     public String getName() {
