@@ -50,6 +50,7 @@ public abstract class ChoreCard<T> extends ImageCard<T>{
         xp.getStyleClass().add(cardType+"-xp");
 
         VBox container = new VBox(name, xp);
+        container.setMaxWidth(422);
         container.setPadding(new Insets(15, 0, 0, 70));
 
         root.getChildren().addAll(imageview, container);

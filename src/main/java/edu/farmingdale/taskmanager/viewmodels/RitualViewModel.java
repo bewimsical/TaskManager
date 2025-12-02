@@ -12,8 +12,8 @@ import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
-import org.checkerframework.checker.units.qual.C;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.TextStyle;
 import java.util.*;
@@ -162,21 +162,21 @@ public class RitualViewModel {
     //logic for creating a ritual
     public void createRitual(Chore chore, String time){
         //check if chores are already completed today. if so undo c
-        if (allChoresComplete()){
-            String day = String.valueOf(LocalDate.now().getDayOfWeek().getValue());
-            weekStreak.put(day, false);
-            updateDay(day);
-            user.setStreak(user.getStreak()-1);
+        //if (allChoresComplete()){
+            //String day = String.valueOf(LocalDate.now().getDayOfWeek().getValue());
+            //weekStreak.put(day, false);
+            //updateDay(day);
+            //user.setStreak(user.getStreak()-1);
             //TODO how much xp bonus do we earn???
-            user.setXpBonus(user.getXpBonus()-0.25);
-            int xpGained = (int)((totalXP*user.getXpBonus()) - totalXP);
-            user.setXp(user.getXp()-xpGained);
+            //user.setXpBonus(user.getXpBonus()-0.25);
+            //int xpGained = (int)((totalXP*user.getXpBonus()) - totalXP);
+            //user.setXp(user.getXp()-xpGained);
             //update view
-            streak.set(String.valueOf(user.getStreak()));
-            xpBonus.set(String.valueOf(user.getXpBonus()));
+            //streak.set(String.valueOf(user.getStreak()));
+            //xpBonus.set(String.valueOf(user.getXpBonus()));
             //update database
-            userRepo.updateUser(user);
-        }
+            //userRepo.updateUser(user);
+        //}
 
         String ritualId = UUID.randomUUID().toString();
         Ritual ritual = new Ritual.RitualBuilder()
@@ -209,6 +209,8 @@ public class RitualViewModel {
     //logic for completing a ritual
     public void completeChore(ChoreCard choreCard){
         Ritual ritual = (Ritual) choreCard.getData();
+        LocalDate today = LocalDate.now();
+        LocalDate last = LocalDate.parse(user.getLastRitualComplete());
         if (!ritual.isCompleted()) {
             ritual.setCompleted(true);
             ritual.setDateRecorded(LocalDate.now().toString());
@@ -225,12 +227,13 @@ public class RitualViewModel {
                     .allMatch(Ritual::isCompleted);
 
             //TODO consider extracting this to a method
-            if (dayComplete) {
+            if (dayComplete && (!today.equals(last) )) {
                 //update database
-                String day = String.valueOf(LocalDate.now().getDayOfWeek().getValue());
+                String day = String.valueOf(today.getDayOfWeek().getValue());
                 weekStreak.put(day, true);
                 updateDay(day);
                 int xpGained = (int) (totalXP * user.getXpBonus());
+                user.setLastRitualComplete(today.toString());
                 user.setXp(user.getXp() + xpGained);
                 user.setStreak(user.getStreak() + 1);
                 //TODO how much xp bonus do we earn???
@@ -294,10 +297,12 @@ public class RitualViewModel {
         boolean dayComplete = allChoresComplete();
         if (dayComplete && !dayCompleBefore) {
             //update database
+            LocalDate today = LocalDate.now();
             String day = String.valueOf(LocalDate.now().getDayOfWeek().getValue());
             weekStreak.put(day, true);
             updateDay(day);
             int xpGained = (int) (totalXP * user.getXpBonus());
+            user.setLastRitualComplete(today.toString());
             user.setXp(user.getXp() + xpGained);
             user.setStreak(user.getStreak() + 1);
             //TODO how much xp bonus do we earn???

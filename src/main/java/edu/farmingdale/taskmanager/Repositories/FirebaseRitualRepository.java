@@ -39,6 +39,7 @@ public class FirebaseRitualRepository {
                     LocalDate ritualDate = LocalDate.parse(ritual.getDateRecorded());
                     if (!today.equals(ritualDate)) {
                         ritual.setCompleted(false);
+
                     }
                 }
                 rituals.get(ritual.getTimeOfDay().toString()).add(ritual);
