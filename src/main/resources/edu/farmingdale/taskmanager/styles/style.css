@@ -92,7 +92,7 @@
     -fx-text-fill: #472C01;
 }
 
-.button-label{
+.button-label, .party-btn-label{
     -fx-font-size: 24px;
     -fx-text-fill: #FFF;
 }
@@ -114,16 +114,44 @@
     -fx-font-size: 16px;
     -fx-text-fill: #F8E5B2;
 }
+
+.xs-friend-card-name{
+    -fx-font-size: 14px;
+    -fx-text-fill: #F8E5B2;
+}
 .large-friend-card-name{
     -fx-font-size: 32px;
     -fx-text-fill: #F8E5B2;
 }
+
+.med-friend-card-name{
+    -fx-font-size: 20px;
+    -fx-text-fill: #F8E5B2;
+}
+
+.med-friend-card-info{
+    -fx-font-size: 16px;
+    -fx-text-fill: #472C01;
+}
+
 .large-party-card-name{
     -fx-border-color: black;
     -fx-border-width: 2px;
     -fx-border-style: solid;
 }
 .button-label.active{
+    -fx-text-fill: #E5B515;
+}
+
+.button-label:hover{
+    -fx-text-fill: #E5B515;
+}
+
+.username.active{
+    -fx-text-fill: #E5B515;
+}
+
+.party-popup:hover{
     -fx-text-fill: #E5B515;
 }
 

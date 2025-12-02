@@ -113,6 +113,7 @@ public class QuestController implements Initializable {
         });
 
         vm.setUpView();
+        drawPathLines(vm.getChoreMarks());
 
     }
 

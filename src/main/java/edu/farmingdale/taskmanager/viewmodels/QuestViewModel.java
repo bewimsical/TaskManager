@@ -43,7 +43,6 @@ public class QuestViewModel {
         Session session = Session.getInstance();
         user = session.getUser();
         quests = session.getQuests();
-
     }
 
     public void setUpView(){
@@ -55,7 +54,6 @@ public class QuestViewModel {
             visibleChores.addAll(getSelectedQuest().getChores());
             nextCompletionIndex.set(getSelectedQuest().getNextMarkIndex());
         }
-
     }
 
     public StringProperty nameProperty() {
@@ -137,8 +135,9 @@ public class QuestViewModel {
             quests.get("Complete").add(currentQuest);
             getCurrentQuestCard().redraw();
             user.setCompletedQuestCount(user.getCompletedQuestCount()+1);
-
+            userRepo.updateUser(user);
         }
+        questRepo.updateQuest(currentQuest,user);
 
         card.redraw();
 

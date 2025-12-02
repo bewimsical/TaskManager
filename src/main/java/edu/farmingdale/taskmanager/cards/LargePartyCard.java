@@ -35,6 +35,7 @@ public class LargePartyCard extends ImageCard<Party>{
 
     @Override
     public Pane createView() {
+        System.out.println("drawing party card");
         Image image;
         image = new Image(TaskManagerApplication.class.getResource("images/Party Card.png").toExternalForm());
 
