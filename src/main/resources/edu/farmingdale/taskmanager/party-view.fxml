@@ -132,11 +132,14 @@
                                                           </children>
                                                       </HBox>
                                                   </children>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" />
+                                       </VBox.margin>
 
                                               </StackPane>
                                     <ScrollPane hbarPolicy="NEVER" prefHeight="523.0" prefWidth="436.0">
                                        <content>
-                                          <VBox fx:id="partyContainer" prefHeight="200.0" prefWidth="100.0">
+                                          <VBox fx:id="partyContainer" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding></VBox>

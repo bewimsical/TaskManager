@@ -92,7 +92,7 @@
     -fx-text-fill: #472C01;
 }
 
-.button-label{
+.button-label, .party-btn-label{
     -fx-font-size: 24px;
     -fx-text-fill: #FFF;
 }
@@ -114,16 +114,44 @@
     -fx-font-size: 16px;
     -fx-text-fill: #F8E5B2;
 }
+
+.xs-friend-card-name{
+    -fx-font-size: 14px;
+    -fx-text-fill: #F8E5B2;
+}
 .large-friend-card-name{
     -fx-font-size: 32px;
     -fx-text-fill: #F8E5B2;
 }
+
+.med-friend-card-name{
+    -fx-font-size: 20px;
+    -fx-text-fill: #F8E5B2;
+}
+
+.med-friend-card-info{
+    -fx-font-size: 16px;
+    -fx-text-fill: #472C01;
+}
+
 .large-party-card-name{
     -fx-border-color: black;
     -fx-border-width: 2px;
     -fx-border-style: solid;
 }
 .button-label.active{
+    -fx-text-fill: #E5B515;
+}
+
+.button-label:hover{
+    -fx-text-fill: #E5B515;
+}
+
+.username.active{
+    -fx-text-fill: #E5B515;
+}
+
+.party-popup:hover{
     -fx-text-fill: #E5B515;
 }
 
@@ -343,6 +371,25 @@
 }
 
 
+
+.broom-left {
+    /* be25bf8323ac01d6d9db995037b27b9c 3 */
+
+    -fx-position: absolute;
+    -fx-width: 740px;
+    -fx-height: 881px;
+    -fx-left: 464px;
+    -fx-top: 169px;
+
+    -fx-background: url('..images/broom2.png');
+    -fx-scale-x: -1;
+    /*-fx-transform: matrix(-1, 0, 0, 1, 0, 0);*/
+
+}
+
+.transparent-textarea {
+    -fx-background-color: transparent;
+}
 
 
 .security-item {

@@ -199,8 +199,10 @@ public class BossViewModel {
             bosses.get("Vanquished").add(currentBoss);
             getCurrentBossCard().redraw();
             user.setVanquishedBossCount(user.getVanquishedBossCount()+1);
+            userRepo.updateUser(user);
         }
         bossRepo.updateBoss(currentBoss, user);
+
         card.redraw();
 
     }
