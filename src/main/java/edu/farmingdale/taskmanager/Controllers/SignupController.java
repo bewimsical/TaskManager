@@ -23,6 +23,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -46,10 +47,10 @@ public class SignupController implements Initializable {
     private TextField usernameTextField;
 
     @FXML
-    private TextField passwordTextField;
+    private PasswordField passwordTextField;
 
     @FXML
-    private TextField confirmPasswordTextField;
+    private PasswordField confirmPasswordTextField;
 
     @FXML
     private Button signupButton;
