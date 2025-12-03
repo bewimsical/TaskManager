@@ -233,7 +233,10 @@
                               </StackPane>
                               <ScrollPane hbarPolicy="NEVER" maxHeight="238.0" maxWidth="589.0" prefHeight="238.0" prefWidth="589.0">
                                  <content>
-                                    <FlowPane fx:id="friendCardContainer" hgap="10.0" maxWidth="586.0" prefHeight="230.0" prefWidth="586.0" prefWrapLength="586.0" vgap="10.0" />
+                                    <FlowPane fx:id="friendCardContainer" hgap="10.0" maxWidth="586.0" prefHeight="230.0" prefWidth="579.0" prefWrapLength="586.0" vgap="10.0">
+                                       <padding>
+                                          <Insets left="5.0" />
+                                       </padding></FlowPane>
                                  </content>
                               </ScrollPane>
                            </children>

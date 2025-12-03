@@ -1,16 +1,16 @@
 package edu.farmingdale.taskmanager.Controllers;
 
-import edu.farmingdale.taskmanager.FirestoreClient;
-import edu.farmingdale.taskmanager.Models.Quest;
+import edu.farmingdale.taskmanager.Models.Party;
 import edu.farmingdale.taskmanager.Models.User;
 import edu.farmingdale.taskmanager.Session;
 import edu.farmingdale.taskmanager.cards.SmallFriendCard;
 import edu.farmingdale.taskmanager.cards.SmallPartyCard;
-import edu.farmingdale.taskmanager.factories.QuestFactory;
+import edu.farmingdale.taskmanager.viewmodels.ProfileViewModel;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
@@ -80,6 +80,7 @@ public class ProfileController implements Initializable {
     private Label[] buttons;
 
     User current = Session.getInstance().getUser();
+    private final ProfileViewModel vm = new ProfileViewModel();
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
@@ -98,50 +99,24 @@ public class ProfileController implements Initializable {
         xpBarContainer.getChildren().add(shine);
         StackPane.setMargin(shine, new Insets(8, 0, 0, 7));
 
-//        //test out party cards
-//        Party party1 = new Party("Party", "guild", "2", "2", "2");
-//        Party party2 = new Party("Party2", "alliance", "2", "2", "2");
-//
-//        SmallPartyCard card1 = new SmallPartyCard(party1);
-//        SmallPartyCard card2 = new SmallPartyCard(party2);
-
-        //partyCardContainer.getChildren().addAll(card2.createView(), card1.createView());
-
-        String[] profilePics = {"rogue_cat.PNG","bard_dog.PNG","paladin_dog.PNG","wizard_bird.PNG","wizard_cat.PNG"};
-
-        //test out friend cards
-        User user1 = new User();
-        User user2 = new User();
-        User user3 = new User();
-        User user4 = new User();
-        User user5 = new User();
-
-        User[] users = {user1, user2, user3, user4, user5};
-        SmallFriendCard[] friends = new SmallFriendCard[5];
-
-        for (int i = 0; i < 5; i++) {
-            users[i].setUsername("User"+i);
-            users[i].setProfileUrl(profilePics[i]);
-
-            SmallFriendCard f = new SmallFriendCard(users[i]);
-
-
-            friendCardContainer.getChildren().add(f.createView());
-
-
-        if (current != null) {
-            username.setText(current.getUsername());
-            levelLabel.setText(String.valueOf(current.getLevel()));
-            currentXp.setText(String.valueOf(current.getXp()));
-        }
-
-
-
-        }
         //FirestoreClient.signUp("TeddySpaghetti", "treatsPlz", "spaghettiCat@meow.com", 5,"wizard_cat.PNG", "MONDAY");
 //        FirestoreClient.signUp("Chomper", "treatsPlz", "bigDawg@bark.com", 5,"bard_dog.PNG", "MONDAY");
 //        FirestoreClient.signUp("HolyCannoli", "treatsPlz", "holyCannoli@bark.com", 5,"paladin_dog.PNG", "MONDAY");
 //        FirestoreClient.signUp("Mr. Bird", "treatsPlz", "mistaBird@tweet.com", 5,"wizard_bird.PNG", "MONDAY");
+
+        username.textProperty().bind(vm.nameProperty());
+        profilePic.setImage(vm.getProfilePic());
+        levelLabel.textProperty().bind(vm.levelProperty());
+        currentXp.textProperty().bind(vm.xpProperty());
+        levelXp.textProperty().bind(vm.levelXpProperty());
+        xpBar.progressProperty().bind(vm.xpPercentProperty());
+
+        setUpFriendList(vm.getVisibleFriends(), friendCardContainer);
+        setUpPartyList(vm.getVisibleParties(), partyCardContainer);
+
+        vm.setUpView();
+
+
 
 
 
@@ -150,17 +125,11 @@ public class ProfileController implements Initializable {
     @FXML
     void showAll(MouseEvent event) {
         setActiveButton(allLabel);
-        double current = xpBar.getProgress();
-        double next = Math.min(current + 0.1, 1.0); // cap at 1.0
-        xpBar.setProgress(next);
     }
 
     @FXML
     void showBosses(MouseEvent event) {
         setActiveButton(bossesLabel);
-        double current = xpBar.getProgress();
-        double next = Math.max(current - 0.1, 0); // cap at 1.0
-        xpBar.setProgress(next);
     }
 
     @FXML
@@ -179,6 +148,28 @@ public class ProfileController implements Initializable {
         }
 
         button.getStyleClass().add("active");
+    }
+
+    private void setUpPartyList(ObservableList<Party> list, VBox container){
+        // reactively render lists:
+        list.addListener((ListChangeListener<Party>) change -> {
+            container.getChildren().clear();
+            for (Party p : list) {
+                SmallPartyCard card = new SmallPartyCard(p);
+                container.getChildren().add(card.createView());
+            }
+        });
+    }
+
+    private void setUpFriendList(ObservableList<User> list, FlowPane container){
+        // reactively render lists:
+        list.addListener((ListChangeListener<User>) change -> {
+            container.getChildren().clear();
+            for (User u : list) {
+                SmallFriendCard card = new SmallFriendCard(u);
+                container.getChildren().add(card.createView());
+            }
+        });
     }
 
 }

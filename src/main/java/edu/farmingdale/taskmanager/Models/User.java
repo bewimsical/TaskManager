@@ -339,4 +339,21 @@ public class User {
         User user = (User) o;
         return id.equals(user.id);  // or whatever uniquely identifies a chore
     }
+
+    public int levelXp(){
+        return (int) Math.round(500 * Math.pow(level, 1.25));
+    }
+
+    public void addXP(int xp) {
+        this.xp += xp;
+
+        // Check for level ups
+        while (this.xp >= levelXp()) {
+            this.xp -= levelXp();
+            level++;
+            System.out.println("Level up! Now level " + level);
+        }
+    }
+
+
 }
