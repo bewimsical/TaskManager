@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+
+<fx:root fx:id="root" maxHeight="200.0" maxWidth="706.0" minHeight="200.0" minWidth="706.0" spacing="5.0" styleClass="stat-container" type="VBox" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <StackPane prefHeight="53.0" prefWidth="706.0">
+            <children>
+                <Rectangle height="53.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="706.0">
+                    <fill>
+                        <LinearGradient endX="1.0">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.5607843399047852" green="0.3490196168422699" blue="0.007843137718737125" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="0.9700000286102295" green="0.8930466771125793" blue="0.6984000205993652" opacity="0.0" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </LinearGradient>
+                    </fill>
+                </Rectangle>
+                <Label fx:id="statTitle" prefWidth="706.0" styleClass="stat-label" text="Label">
+                    <padding>
+                        <Insets bottom="-16.0" left="10.0" top="-16.0" />
+                    </padding>
+                </Label>
+            </children>
+        </StackPane>
+        <HBox layoutX="10.0" layoutY="63.0" prefHeight="12.0" prefWidth="706.0">
+            <children>
+                <Label fx:id="statLabel" minWidth="340.0" styleClass="stat-data" text="This Week:">
+                    <padding>
+                        <Insets bottom="-9.0" top="-9.0" />
+                    </padding>
+                </Label>
+                <Label fx:id="stat" layoutX="20.0" layoutY="10.0" minWidth="340.0" styleClass="stat-data" text="0">
+                    <padding>
+                        <Insets bottom="-9.0" top="-9.0" />
+                    </padding>
+                </Label>
+            </children>
+            <padding>
+                <Insets left="10.0" />
+            </padding>
+        </HBox>
+        <HBox fx:id="weekContainer" prefHeight="12.0" prefWidth="706.0">
+            <children>
+                <Label minWidth="340.0" styleClass="stat-data" text="This Week:">
+                    <padding>
+                        <Insets bottom="-9.0" top="-9.0" />
+                    </padding>
+                </Label>
+            </children>
+            <padding>
+                <Insets left="10.0" />
+            </padding>
+        </HBox>
+    </children>
+</fx:root>

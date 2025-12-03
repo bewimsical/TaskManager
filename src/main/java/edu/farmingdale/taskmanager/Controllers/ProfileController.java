@@ -3,6 +3,7 @@ package edu.farmingdale.taskmanager.Controllers;
 import edu.farmingdale.taskmanager.Models.Party;
 import edu.farmingdale.taskmanager.Models.User;
 import edu.farmingdale.taskmanager.Session;
+import edu.farmingdale.taskmanager.cards.RitualStatCard;
 import edu.farmingdale.taskmanager.cards.SmallFriendCard;
 import edu.farmingdale.taskmanager.cards.SmallPartyCard;
 import edu.farmingdale.taskmanager.viewmodels.ProfileViewModel;
@@ -77,6 +78,9 @@ public class ProfileController implements Initializable {
     @FXML
     private FlowPane friendCardContainer;
 
+    @FXML
+    private VBox statContainer;
+
     private Label[] buttons;
 
     User current = Session.getInstance().getUser();
@@ -115,6 +119,10 @@ public class ProfileController implements Initializable {
         setUpPartyList(vm.getVisibleParties(), partyCardContainer);
 
         vm.setUpView();
+
+        statContainer.getChildren().add(new RitualStatCard(vm.getUser()));
+
+
 
 
 

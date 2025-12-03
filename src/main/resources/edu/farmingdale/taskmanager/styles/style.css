@@ -22,6 +22,9 @@
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
 }
+.stat-container{
+    -fx-background-color: transparent;
+}
 
 .logo-container{
 
@@ -101,7 +104,7 @@
     -fx-font-size: 20px;
     -fx-text-fill: #472C01;
 }
-.small-party-card-name, .large-friend-card-info{
+.small-party-card-name, .large-friend-card-info, .stat-data{
     -fx-font-size: 24px;
     -fx-text-fill: #472C01;
 }
@@ -130,6 +133,10 @@
 
 .med-friend-card-name{
     -fx-font-size: 20px;
+    -fx-text-fill: #F8E5B2;
+}
+.stat-label{
+    -fx-font-size: 32px;
     -fx-text-fill: #F8E5B2;
 }
 
