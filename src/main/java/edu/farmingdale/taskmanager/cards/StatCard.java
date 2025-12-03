@@ -26,8 +26,6 @@ public abstract class StatCard extends VBox {
     @FXML
     protected Label statTitle;
 
-    @FXML
-    protected HBox weekContainer;
 
     User user;
 

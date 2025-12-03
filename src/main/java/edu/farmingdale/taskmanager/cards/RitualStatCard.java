@@ -2,9 +2,12 @@ package edu.farmingdale.taskmanager.cards;
 
 import edu.farmingdale.taskmanager.Models.User;
 import edu.farmingdale.taskmanager.TaskManagerApplication;
+import javafx.geometry.Insets;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import java.util.Map;
 
@@ -15,12 +18,18 @@ public class RitualStatCard extends StatCard{
         statTitle.setText("Rituals");
         statLabel.setText("Current Streak:");
         stat.setText(String.valueOf(user.getStreak()));
-
-        weekContainer.getChildren().add(setupStreak());
+        root.getChildren().add(setupStreak());
 
     }
 
     private HBox setupStreak(){
+        //TODO: fix this - need to add the this week label and put it all in a hbox wrapper.
+        //TODO: set min and max width on label to 340
+        Label label = new Label("This Week:");
+        label.setMinWidth(340);
+        label.setMaxWidth(340);
+        label.getStyleClass().add("stat-data");
+        label.setPadding(new Insets(-9,0, -9,0));
         HBox streakContainer = new HBox();
         streakContainer.setSpacing(3);
         Map<String, Boolean> weekStreak = user.getWeekStreak();
@@ -33,7 +42,9 @@ public class RitualStatCard extends StatCard{
             streakContainer.getChildren().add(iv);
         }
 
+        HBox weekContainer = new HBox(label, streakContainer);
+        weekContainer.setPadding(new Insets(0,0,0,10));
 
-        return streakContainer;
+        return weekContainer;
     }
 }
