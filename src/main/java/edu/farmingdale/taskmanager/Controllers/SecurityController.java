@@ -9,20 +9,27 @@ public class SecurityController {
 
     public StackPane securityContentArea;
     public Label statusLabel;
-    public Button btnChangePassword;
-    public Button btnChangeEmail;
-    public Button btnTwoFactor;
-    public Button btnDeviceSecurity;
+    public Accordion securityAccordion;
 
-    public void openChangePassword(ActionEvent actionEvent) {
+    public PasswordField currentPasswordField;
+    public PasswordField newPasswordField;
+    public PasswordField confirmPasswordField;
+    public Label currentEmailLabel;
+    public TextField newEmailField;
+    public CheckBox twoFactorToggle;
+
+    public void updatePassword(ActionEvent actionEvent) {
     }
 
-    public void openChangeEmail(ActionEvent actionEvent) {
+    public void updateEmail(ActionEvent actionEvent) {
     }
 
-    public void openDeviceSecurity(ActionEvent actionEvent) {
+    public void signOutEverywhere(ActionEvent actionEvent) {
     }
 
-    public void openTwoFactor(ActionEvent actionEvent) {
+    public void toggleTwoFactor(ActionEvent actionEvent) {
+
     }
 }
+
+    
