@@ -31,6 +31,9 @@ class QuestViewModelTest {
     void newSetupTest() {
         user = session.getUser();
         quests = session.getQuests();
+        //quests.get("Complete").add(currentQuest);
+        visibleQuests.addAll();
+        visibleChores.addAll();
     }
 
 
@@ -50,5 +53,11 @@ class QuestViewModelTest {
     void nameLoadsOnStartup() {
         var quest = new QuestViewModel();
         assertNotNull(quest.nameProperty().getName());
+        //assertNotNull(quests.keySet());
+    }
+
+    @Test
+    void getSelectedQuest() {
+        //assertNotNull(quests.keySet());
     }
 }
