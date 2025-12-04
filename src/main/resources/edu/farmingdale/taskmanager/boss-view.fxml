@@ -276,6 +276,9 @@
                                                    <VBox.margin>
                                                       <Insets top="10.0" />
                                                    </VBox.margin>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
                                                 </ImageView>
                                              </children>
                                           </VBox>
