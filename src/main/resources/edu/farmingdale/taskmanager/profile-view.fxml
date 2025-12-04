@@ -233,7 +233,10 @@
                               </StackPane>
                               <ScrollPane hbarPolicy="NEVER" maxHeight="238.0" maxWidth="589.0" prefHeight="238.0" prefWidth="589.0">
                                  <content>
-                                    <FlowPane fx:id="friendCardContainer" hgap="10.0" maxWidth="586.0" prefHeight="230.0" prefWidth="586.0" prefWrapLength="586.0" vgap="10.0" />
+                                    <FlowPane fx:id="friendCardContainer" hgap="10.0" maxWidth="586.0" prefHeight="230.0" prefWidth="579.0" prefWrapLength="586.0" vgap="10.0">
+                                       <padding>
+                                          <Insets left="5.0" />
+                                       </padding></FlowPane>
                                  </content>
                               </ScrollPane>
                            </children>
@@ -471,9 +474,13 @@
                                     <Insets top="10.0" />
                                  </VBox.margin>
                               </StackPane>
+                              <VBox fx:id="statContainer" prefWidth="100.0" spacing="15.0">
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding></VBox>
                            </children>
                         </VBox>
-                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="901.0" mouseTransparent="true" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="739.0" />
+                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="901.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="739.0" />
                      </children>
                   </StackPane>
                </children>

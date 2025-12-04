@@ -160,7 +160,7 @@ public class BossViewModel {
         setCurrentBossCard(card);
         setupHealthBar();
 
-        bossRepo.updateBoss(boss, user);
+        //bossRepo.updateBoss(boss, user);
 
         //map image here
     }
@@ -185,6 +185,7 @@ public class BossViewModel {
         chore.setCompleted(true);
         chore.setCompletedTime(LocalDate.now().toString());
         choreRepo.updateChore(chore, user);
+        user.addXP(chore.getChoreXP());
 
         //set health bar things
         currentBoss.setCurrentHealth(currentBoss.getCurrentHealth() - chore.getChoreXP());
@@ -199,9 +200,11 @@ public class BossViewModel {
             bosses.get("Vanquished").add(currentBoss);
             getCurrentBossCard().redraw();
             user.setVanquishedBossCount(user.getVanquishedBossCount()+1);
-            userRepo.updateUser(user);
+            user.addXP((int)(currentBoss.getXp()-currentBoss.getTotalHealth()));
+
         }
         bossRepo.updateBoss(currentBoss, user);
+        userRepo.updateUser(user);
 
         card.redraw();
 

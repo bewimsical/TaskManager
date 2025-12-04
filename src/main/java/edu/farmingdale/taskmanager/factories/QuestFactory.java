@@ -33,16 +33,16 @@ public class QuestFactory {
             "The Orderkeeper’s Oath",
             "The Champion of Cleanliness",
             "The Guardian of the Hearth",
-            "The Quest of the Organized Warrior",
+            "The Quest of the Organized",
             "The Vanguard of Daily Duty",
             "The Command of the Homefront",
             "The Path of the Taskbearer",
-            "The Challenge of the Ordered Realm",
-            "The Hero of the Homebound Frontier",
+            "The Challenge of the Ordered",
+            "The Hero of the Hearth",
             "The Great Tidying Quest",
             "The Quest for the Clear Path",
             "The Gleamwarden Mission",
-            "The Sparkling Order Assignment",
+            "The Sparkling Order Trial",
             "The Dustfall Expedition",
             "The Clarity Crest Trial",
             "The Shining Chore Circuit",
@@ -83,8 +83,9 @@ public class QuestFactory {
         Set<String> assignedChores = Session.getInstance().getAssignedChoreIds();
 
         Collections.shuffle(chores);
+        int num = new Random().nextInt(3,5);
 
-        List<Chore> questChores = chores.subList(0, Math.min(4, chores.size()));
+        List<Chore> questChores = chores.subList(0, Math.min(num, chores.size()));
         for (Chore c: questChores){
             c.setCompleted(false);
             c.setChoreXP(random.nextInt(300,500));

@@ -219,7 +219,7 @@ public class RitualViewModel {
 
             //move xp bar
             completedXP += ritual.getXp();
-            user.setXp(user.getXp() + ritual.getXp());
+            user.addXP(ritual.getXp());
             xpPercent.set((double) completedXP / totalXP);
             //check all chores
             boolean dayComplete = rituals.values().stream()
@@ -234,7 +234,7 @@ public class RitualViewModel {
                 updateDay(day);
                 int xpGained = (int) (totalXP * user.getXpBonus());
                 user.setLastRitualComplete(today.toString());
-                user.setXp(user.getXp() + xpGained);
+                user.addXP(xpGained);
                 user.setStreak(user.getStreak() + 1);
                 //TODO how much xp bonus do we earn???
                 user.setXpBonus(getStreakMultiplier(user.getStreak()));
@@ -303,7 +303,7 @@ public class RitualViewModel {
             updateDay(day);
             int xpGained = (int) (totalXP * user.getXpBonus());
             user.setLastRitualComplete(today.toString());
-            user.setXp(user.getXp() + xpGained);
+            user.addXP(xpGained);
             user.setStreak(user.getStreak() + 1);
             //TODO how much xp bonus do we earn???
             user.setXpBonus(getStreakMultiplier(user.getStreak()));

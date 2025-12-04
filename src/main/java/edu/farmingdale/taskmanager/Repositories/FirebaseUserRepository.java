@@ -2,16 +2,21 @@ package edu.farmingdale.taskmanager.Repositories;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
+import edu.farmingdale.taskmanager.Models.Boss;
+import edu.farmingdale.taskmanager.Models.Quest;
 import edu.farmingdale.taskmanager.Models.Ritual;
 import edu.farmingdale.taskmanager.Models.User;
 import edu.farmingdale.taskmanager.Session;
 import edu.farmingdale.taskmanager.TaskManagerApplication;
 import edu.farmingdale.taskmanager.exceptions.ResourceNotFoundException;
+import edu.farmingdale.taskmanager.factories.BossFactory;
+import edu.farmingdale.taskmanager.factories.QuestFactory;
 import edu.farmingdale.taskmanager.factories.UserFactory;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
@@ -83,10 +88,13 @@ public class FirebaseUserRepository {
         }, Runnable::run);
     }
     //TODO move to sign in??
-    public void checkWeekStart(User user){
+    public void checkWeekStart(User user, Map<String, List<Boss>> bosses, Map<String, List<Quest>> quests){
         LocalDate today = LocalDate.now();
         DayOfWeek weekStartDay;
         LocalDate currentWeekStart;
+
+        FirebaseBossRepository bossRepo = new FirebaseBossRepository();
+        FirebaseQuestRepository questRepo = new FirebaseQuestRepository();
 
         if (user.getWeekStart() != null) {
             weekStartDay = DayOfWeek.valueOf(user.getWeekStart());
@@ -105,11 +113,41 @@ public class FirebaseUserRepository {
                 weekStreak.put(day, false);
             }
             user.setWeekStreak(weekStreak);
+            user.setWeekStartDate(currentWeekStart.toString());
 
             //TODO reset bosses
+            for(Boss b : bosses.get("Bounties")){
+                if (b.isBounties() && !b.isVanquished()){
+                    bossRepo.deleteBoss(b,user);
+                }
+            }
+            bosses.get("Bounties").removeIf(b -> b.isBounties() && !b.isVanquished());
 
             //TODO reset quests
+            for(Quest q : quests.get("Active")){
+                if (q.isActive() && !q.isCompleted()){
+                    questRepo.deleteQuest(q,user);
+                }
+            }
+            quests.get("Active").removeIf(q -> q.isActive() && !q.isCompleted());
 
+            //generate new bosses
+            for (int i = 0; i < 4; i++) {
+                Boss b = BossFactory.generate();
+                bossRepo.setBoss(b, user);
+                bosses.get("Bounties").add(b);
+            }
+            //generate new quests
+            for (int i = 0; i < 4; i++) {
+                Quest q = QuestFactory.generate();
+                questRepo.setQuest(q, user);
+                quests.get("Active").add(q);
+            }
+
+            Session.getInstance().setBosses(bosses);
+            Session.getInstance().setQuests(quests);
+
+            updateUser(user);
         }
     }
     //TODO move to sign in??
@@ -125,6 +163,4 @@ public class FirebaseUserRepository {
             user.setXpBonus(1);
         }
     }
-
-
 }

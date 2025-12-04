@@ -39,9 +39,6 @@ public class QuestController implements Initializable {
     private ImageView customQuestCard;
 
     @FXML
-    private Label failedButton;
-
-    @FXML
     private VBox mainContainer;
 
     @FXML
@@ -73,7 +70,7 @@ public class QuestController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        buttons = new Label[]{activeButton, completeButton, failedButton};
+        buttons = new Label[]{activeButton, completeButton};
 
         doneImage  = new Image(TaskManagerApplication.class.getResource("images/quest-gem-complete.png").toExternalForm());
         emptyImage = new Image(TaskManagerApplication.class.getResource("images/quest-gem-empty.png").toExternalForm());
@@ -221,6 +218,7 @@ public class QuestController implements Initializable {
         // reactively render lists:
         list.addListener((ListChangeListener<Quest>) change -> {
             container.getChildren().clear();
+            sideQuestsContainer.getChildren().clear();
             //TODO ?????
             vm.setCurrentQuestCard(null);
             for (Quest q : list) {
@@ -228,7 +226,11 @@ public class QuestController implements Initializable {
                 if (vm.getCurrentQuestCard() == null){
                     vm.setCurrentQuestCard(card);
                 }
-                container.getChildren().add(card.createView());
+                if (q.getChores().size() < 4){
+                    sideQuestsContainer.getChildren().add(card.createView());
+                }else {
+                    container.getChildren().add(card.createView());
+                }
             }
         });
     }
