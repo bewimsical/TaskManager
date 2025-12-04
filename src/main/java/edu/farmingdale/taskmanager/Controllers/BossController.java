@@ -45,9 +45,6 @@ public class BossController implements Initializable {
     private ImageView customBossCard;
 
     @FXML
-    private Label failedButton;
-
-    @FXML
     private ProgressBar healthBar;
 
     @FXML
@@ -63,7 +60,7 @@ public class BossController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources){
 
-        buttons = new Label[]{bountiesButton, vanquishedButton, failedButton};
+        buttons = new Label[]{bountiesButton, vanquishedButton};
 
         bossName.textProperty().bind(vm.nameProperty());
         setUpLists(vm.getVisibleBosses(), bossesContainer);
@@ -100,6 +97,7 @@ public class BossController implements Initializable {
         // reactively render lists:
         list.addListener((ListChangeListener<Boss>) change -> {
             container.getChildren().clear();
+            miniBossesContainer.getChildren().clear();
             //TODO ?????
             vm.setCurrentBossCard(null);
             for (Boss q : list) {
@@ -107,7 +105,11 @@ public class BossController implements Initializable {
                 if (vm.getCurrentBossCard() == null){
                     vm.setCurrentBossCard(card);
                 }
-                container.getChildren().add(card.createView());
+                if(q.getChores().size() < 4){
+                    miniBossesContainer.getChildren().add(card.createView());
+                }else {
+                    container.getChildren().add(card.createView());
+                }
             }
         });
     }

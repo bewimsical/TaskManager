@@ -35,33 +35,28 @@ public class LargePartyCard extends ImageCard<Party>{
 
     @Override
     public Pane createView() {
-        System.out.println("drawing party card");
+        String partyType = data.getType();
         Image image;
-        image = new Image(TaskManagerApplication.class.getResource("images/Party Card.png").toExternalForm());
+        if (partyType.equals("guild") || partyType.equals("Guild")) {
+            image = new Image(TaskManagerApplication.class.getResource("images/large party guild card.png").toExternalForm());
+        } else {
+            image = new Image(TaskManagerApplication.class.getResource("images/large party alliance card.png").toExternalForm());
+        }
 
         ImageView imageview = new ImageView();
         imageview.setFitWidth(416);
-        imageview.setFitHeight(166);
+        imageview.setFitHeight(153);
         imageview.setImage(image);
 
         Label name = new Label(this.name);
-        name.getStyleClass().add("large-friend-card-name");
+        name.getStyleClass().add("large-party-card-name");
         //name.getStyleClass().add("large-party-card-name");
-        name.setPadding(new Insets(-15, 0, -20, 0));
+        name.setPadding(new Insets(-5, 0, -8, 15));
         name.setMinWidth(396);
         name.setMaxWidth(396);
-        name.setAlignment(Pos.CENTER);
 
         HBox header = new HBox(name);
         //header.setPadding(new Insets(0,0,0,50));
-
-        Label type = new Label(data.getType());
-        type.getStyleClass().add("large-friend-card-info");
-
-        type.setPadding(new Insets(-15, 0, -15, 0));
-        type.setMinWidth(396);
-        type.setMaxWidth(396);
-        type.setAlignment(Pos.CENTER_LEFT);
 
 
         Label members = new Label("Members: ");
@@ -73,7 +68,8 @@ public class LargePartyCard extends ImageCard<Party>{
         memberCount.setPadding(new Insets(-15, 0, -10, 0));
 
         HBox member = new HBox(members, memberCount);
-        VBox.setMargin(member, new Insets(0,0,0,10));
+        VBox.setMargin(member, new Insets(15,0,0,0));
+        member.setAlignment(Pos.CENTER);
 
         Label questLabel = new Label(" Quests");
         questLabel.getStyleClass().add("large-friend-card-info");
@@ -113,12 +109,13 @@ public class LargePartyCard extends ImageCard<Party>{
 
         HBox dataContainer = new HBox(quest, boss);
         dataContainer.setSpacing(20);
-        VBox.setMargin(dataContainer, new Insets(0,0,0,10));
+        VBox.setMargin(dataContainer, new Insets(0,0,0,0));
+        dataContainer.setAlignment(Pos.CENTER);
 
 
 
         root.setAlignment(Pos.TOP_LEFT);
-        VBox container = new VBox(header, type, member, dataContainer);
+        VBox container = new VBox(header, member, dataContainer);
         container.setAlignment(Pos.TOP_CENTER);
         //VBox.setMargin(body, new Insets(-7,0,0,50));
         root.getChildren().addAll(imageview, container);

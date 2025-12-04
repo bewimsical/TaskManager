@@ -65,13 +65,19 @@ public class BossFactory {
 
     private static List<Chore> generateChoreList(){
         List<Chore> chores = Session.getInstance().getAvailableChores();
+        chores = chores.stream()
+                .filter(c -> !c.getRooms().isEmpty())
+                .toList();
         String[] rooms = {"Kitchen", "Bathroom", "Living Room","Dining Room"};
-        String room = rooms[random.nextInt(rooms.length)];
         Set<String> assignedChores = Session.getInstance().getAssignedChoreIds();
+        List<Chore> filtered = new ArrayList<>();
 
-        List<Chore> filtered = chores.stream()
-                .filter(chore -> chore.getRooms().contains(room))
-                .collect(Collectors.toList());
+        while (filtered.isEmpty() && !chores.isEmpty()) {
+            String room = rooms[random.nextInt(rooms.length)];
+            filtered = chores.stream()
+                    .filter(chore -> chore.getRooms().contains(room))
+                    .collect(Collectors.toList());
+        }
 
         Collections.shuffle(filtered);
 
@@ -91,7 +97,7 @@ public class BossFactory {
     }
 
     private static String image(){
-        String[] images = {"BogFrog.PNG"};
+        String[] images = {"BogFrog.PNG", "Dust Bunny.PNG", "Sea Serpent.PNG"};
         int index = random.nextInt(images.length);
 
         return images[index];

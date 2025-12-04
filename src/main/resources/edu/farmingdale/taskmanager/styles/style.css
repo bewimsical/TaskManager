@@ -22,6 +22,9 @@
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
 }
+.stat-container{
+    -fx-background-color: transparent;
+}
 
 .logo-container{
 
@@ -92,18 +95,27 @@
     -fx-text-fill: #472C01;
 }
 
+.day-label{
+    -fx-font-size: 16px;
+    -fx-text-fill: #472C01;
+}
+
 .button-label, .party-btn-label{
     -fx-font-size: 24px;
     -fx-text-fill: #FFF;
 }
 
-.chore-card-name{
+.chore-card-name, .stat-data-small{
     -fx-font-size: 20px;
     -fx-text-fill: #472C01;
 }
-.small-party-card-name, .large-friend-card-info{
+.small-party-card-name, .large-friend-card-info, .stat-data{
     -fx-font-size: 24px;
     -fx-text-fill: #472C01;
+}
+.large-party-card-name{
+    -fx-font-size: 24px;
+    -fx-text-fill: #F8E5B2;
 }
 .chore-card-xp{
     -fx-font-size: 16px;
@@ -128,17 +140,16 @@
     -fx-font-size: 20px;
     -fx-text-fill: #F8E5B2;
 }
+.stat-label{
+    -fx-font-size: 32px;
+    -fx-text-fill: #F8E5B2;
+}
 
 .med-friend-card-info{
     -fx-font-size: 16px;
     -fx-text-fill: #472C01;
 }
 
-.large-party-card-name{
-    -fx-border-color: black;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
-}
 .button-label.active{
     -fx-text-fill: #E5B515;
 }
@@ -367,6 +378,19 @@
 
 .delete-ritual-button:hover, .create-ritual-button:hover{
     -fx-text-fill: #E5B515;
+
+}
+
+.label-test{
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+}
+
+.container-test{
+    -fx-border-color: red;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
 
 }
 

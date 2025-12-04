@@ -111,6 +111,7 @@ public class QuestViewModel {
         Chore chore = card.getData();
         Quest currentQuest = getSelectedQuest();
         chore.setCompleted(true);
+        user.addXP(chore.getChoreXP());
         //set image to completed via chore mark vm
 
         MapMarkViewModel mvm = getChoreMarks().get(chore.getId());
@@ -135,9 +136,10 @@ public class QuestViewModel {
             quests.get("Complete").add(currentQuest);
             getCurrentQuestCard().redraw();
             user.setCompletedQuestCount(user.getCompletedQuestCount()+1);
-            userRepo.updateUser(user);
+            
         }
         questRepo.updateQuest(currentQuest,user);
+        userRepo.updateUser(user);
 
         card.redraw();
 
