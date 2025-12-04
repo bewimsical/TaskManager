@@ -10,7 +10,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 
-<fx:root fx:id="root" maxHeight="200.0" maxWidth="706.0" minHeight="200.0" minWidth="706.0" spacing="5.0" styleClass="stat-container" type="VBox" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="root" maxWidth="706.0" minHeight="200.0" minWidth="706.0" spacing="5.0" styleClass="stat-container" type="VBox" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <StackPane prefHeight="53.0" prefWidth="706.0">
             <children>
@@ -41,7 +41,7 @@
         </StackPane>
         <HBox layoutX="10.0" layoutY="63.0" prefHeight="12.0" prefWidth="706.0">
             <children>
-                <Label fx:id="statLabel" minWidth="340.0" styleClass="stat-data" text="This Week:">
+                <Label fx:id="statLabel" maxWidth="400.0" minWidth="400.0" styleClass="stat-data" text="This Week:">
                     <padding>
                         <Insets bottom="-9.0" top="-9.0" />
                     </padding>

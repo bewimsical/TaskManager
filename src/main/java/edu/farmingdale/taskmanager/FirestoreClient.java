@@ -192,7 +192,7 @@ public class FirestoreClient {
         Session.getInstance().setAssignedChoreIds(new HashSet<>());
 
         //these methods will be moved into sign in VM
-        userRepository.checkWeekStart(user);
+        userRepository.checkWeekStart(user, bosses, quests);
         userRepository.checkLastRitualDate(user);
 
     }

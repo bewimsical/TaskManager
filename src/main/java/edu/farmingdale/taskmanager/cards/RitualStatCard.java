@@ -3,6 +3,7 @@ package edu.farmingdale.taskmanager.cards;
 import edu.farmingdale.taskmanager.Models.User;
 import edu.farmingdale.taskmanager.TaskManagerApplication;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,12 +26,9 @@ public class RitualStatCard extends StatCard{
     private HBox setupStreak(){
         //TODO: fix this - need to add the this week label and put it all in a hbox wrapper.
         //TODO: set min and max width on label to 340
-        Label label = new Label("This Week:");
-        label.setMinWidth(340);
-        label.setMaxWidth(340);
-        label.getStyleClass().add("stat-data");
-        label.setPadding(new Insets(-9,0, -9,0));
+        Label label = makeLabel("This Week:");
         HBox streakContainer = new HBox();
+        streakContainer.setAlignment(Pos.CENTER_LEFT);
         streakContainer.setSpacing(3);
         Map<String, Boolean> weekStreak = user.getWeekStreak();
         Image doneImage  = new Image(TaskManagerApplication.class.getResource("images/stat-done-streak.png").toExternalForm());
@@ -44,7 +42,7 @@ public class RitualStatCard extends StatCard{
 
         HBox weekContainer = new HBox(label, streakContainer);
         weekContainer.setPadding(new Insets(0,0,0,10));
-
+        weekContainer.setAlignment(Pos.CENTER_LEFT);
         return weekContainer;
     }
 }

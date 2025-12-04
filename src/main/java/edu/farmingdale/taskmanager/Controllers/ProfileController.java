@@ -1,11 +1,15 @@
 package edu.farmingdale.taskmanager.Controllers;
 
+import edu.farmingdale.taskmanager.Models.Boss;
 import edu.farmingdale.taskmanager.Models.Party;
+import edu.farmingdale.taskmanager.Models.Quest;
 import edu.farmingdale.taskmanager.Models.User;
+import edu.farmingdale.taskmanager.Repositories.FirebaseBossRepository;
+import edu.farmingdale.taskmanager.Repositories.FirebaseQuestRepository;
 import edu.farmingdale.taskmanager.Session;
-import edu.farmingdale.taskmanager.cards.RitualStatCard;
-import edu.farmingdale.taskmanager.cards.SmallFriendCard;
-import edu.farmingdale.taskmanager.cards.SmallPartyCard;
+import edu.farmingdale.taskmanager.cards.*;
+import edu.farmingdale.taskmanager.factories.BossFactory;
+import edu.farmingdale.taskmanager.factories.QuestFactory;
 import edu.farmingdale.taskmanager.viewmodels.ProfileViewModel;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -121,6 +125,8 @@ public class ProfileController implements Initializable {
         vm.setUpView();
 
         statContainer.getChildren().add(new RitualStatCard(vm.getUser()));
+        statContainer.getChildren().add(new QuestStatCard(vm.getUser(), vm.getActiveQuests()));
+        statContainer.getChildren().add(new BossStatCard(vm.getUser(), vm.getBossBounties()));
 
 
 

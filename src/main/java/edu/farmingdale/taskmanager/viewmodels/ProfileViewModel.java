@@ -1,6 +1,8 @@
 package edu.farmingdale.taskmanager.viewmodels;
 
+import edu.farmingdale.taskmanager.Models.Boss;
 import edu.farmingdale.taskmanager.Models.Party;
+import edu.farmingdale.taskmanager.Models.Quest;
 import edu.farmingdale.taskmanager.Models.User;
 import edu.farmingdale.taskmanager.Repositories.FirebaseUserRepository;
 import edu.farmingdale.taskmanager.Session;
@@ -30,6 +32,8 @@ public class ProfileViewModel {
     private final User user;
     private final List<User> friends;
     private final List<Party> parties;
+    private final List<Quest> activeQuests;
+    private final List<Boss> bossBounties;
 
     private Image profilePic;
 
@@ -38,6 +42,8 @@ public class ProfileViewModel {
         user = session.getUser();
         friends = session.getFriends();
         parties = session.getParties();
+        activeQuests = session.getQuests().get("Active");
+        bossBounties = session.getBosses().get("Bounties");
         nameProperty().set(user.getUsername());
         profilePic = new Image(TaskManagerApplication.class.getResource("images/"+user.getProfileUrl()).toExternalForm());
         levelProperty().set(String.valueOf(user.getLevel()));
@@ -121,5 +127,13 @@ public class ProfileViewModel {
         xpProperty().set(String.valueOf(user.getXp()));
         levelXpProperty().set(String.valueOf(user.levelXp()));
         xpPercent.set((double) user.getXp()/user.levelXp());
+    }
+
+    public List<Quest> getActiveQuests() {
+        return activeQuests;
+    }
+
+    public List<Boss> getBossBounties() {
+        return bossBounties;
     }
 }

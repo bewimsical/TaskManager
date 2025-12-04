@@ -160,7 +160,7 @@ public class BossViewModel {
         setCurrentBossCard(card);
         setupHealthBar();
 
-        bossRepo.updateBoss(boss, user);
+        //bossRepo.updateBoss(boss, user);
 
         //map image here
     }

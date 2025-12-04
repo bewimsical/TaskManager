@@ -95,12 +95,17 @@
     -fx-text-fill: #472C01;
 }
 
+.day-label{
+    -fx-font-size: 16px;
+    -fx-text-fill: #472C01;
+}
+
 .button-label, .party-btn-label{
     -fx-font-size: 24px;
     -fx-text-fill: #FFF;
 }
 
-.chore-card-name{
+.chore-card-name, .stat-data-small{
     -fx-font-size: 20px;
     -fx-text-fill: #472C01;
 }
@@ -373,6 +378,19 @@
 
 .delete-ritual-button:hover, .create-ritual-button:hover{
     -fx-text-fill: #E5B515;
+
+}
+
+.label-test{
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+}
+
+.container-test{
+    -fx-border-color: red;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
 
 }
 

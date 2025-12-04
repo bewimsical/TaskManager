@@ -4,6 +4,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -61,7 +62,7 @@
                                  </StackPane.margin></ProgressBar>
                                         </children>
                                     </StackPane>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                        <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
                            <children>
                               <ImageView fx:id="streak1" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -117,6 +118,72 @@
                                  </HBox.margin>
                               </ImageView>
                            </children>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="144.0" prefHeight="30.0" prefWidth="200.0">
+                           <children>
+                              <Label fx:id="day1" alignment="CENTER" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" styleClass="day-label" text="M">
+                                 <padding>
+                                    <Insets bottom="-5.0" top="-5.0" />
+                                 </padding>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="day2" alignment="CENTER" layoutX="647.0" layoutY="10.0" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" styleClass="day-label" text="T">
+                                 <padding>
+                                    <Insets bottom="-5.0" top="-5.0" />
+                                 </padding>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="day3" alignment="CENTER" layoutX="682.0" layoutY="10.0" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" styleClass="day-label" text="W">
+                                 <padding>
+                                    <Insets bottom="-5.0" top="-5.0" />
+                                 </padding>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="day4" alignment="CENTER" layoutX="717.0" layoutY="10.0" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" styleClass="day-label" text="Th">
+                                 <padding>
+                                    <Insets bottom="-5.0" top="-5.0" />
+                                 </padding>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="day5" alignment="CENTER" layoutX="752.0" layoutY="10.0" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" styleClass="day-label" text="F">
+                                 <padding>
+                                    <Insets bottom="-5.0" top="-5.0" />
+                                 </padding>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="day6" alignment="CENTER" layoutX="787.0" layoutY="10.0" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" styleClass="day-label" text="S">
+                                 <padding>
+                                    <Insets bottom="-5.0" top="-5.0" />
+                                 </padding>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="day7" alignment="CENTER" layoutX="822.0" layoutY="10.0" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" styleClass="day-label" text="Su">
+                                 <padding>
+                                    <Insets bottom="-5.0" top="-5.0" />
+                                 </padding>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="3.0" />
+                           </VBox.margin>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                            <children>
@@ -283,11 +350,14 @@
                                           <Insets top="10.0" />
                                        </VBox.margin>
                                                   </StackPane>
-                                                  <VBox fx:id="morningContainer" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
-                                                      <VBox.margin>
-                                                          <Insets top="10.0" />
-                                                      </VBox.margin>
-                                                  </VBox>
+                                    <ScrollPane>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                       <content>
+                                                        <VBox fx:id="morningContainer" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" />
+                                       </content>
+                                    </ScrollPane>
                                             </children>
                                         </VBox>
                                         <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="574.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="446.0" />
@@ -360,11 +430,14 @@
                                           <Insets top="10.0" />
                                        </VBox.margin>
                                     </StackPane>
-                                    <VBox fx:id="middayContainer" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                                    <ScrollPane>
                                        <VBox.margin>
                                           <Insets top="10.0" />
                                        </VBox.margin>
-                                    </VBox>
+                                       <content>
+                                          <VBox fx:id="middayContainer" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" />
+                                       </content>
+                                    </ScrollPane>
                                  </children>
                               </VBox>
                               <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="574.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="446.0" />
@@ -434,11 +507,14 @@
                                           <Insets top="10.0" />
                                        </VBox.margin>
                                     </StackPane>
-                                    <VBox fx:id="eveningContainer" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                                    <ScrollPane>
                                        <VBox.margin>
                                           <Insets top="10.0" />
                                        </VBox.margin>
-                                    </VBox>
+                                       <content>
+                                          <VBox fx:id="eveningContainer" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" />
+                                       </content>
+                                    </ScrollPane>
                                  </children>
                               </VBox>
                               <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="574.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="446.0" />
