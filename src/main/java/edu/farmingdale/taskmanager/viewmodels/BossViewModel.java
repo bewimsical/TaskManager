@@ -182,31 +182,34 @@ public class BossViewModel {
     public void completeChore(ChoreCard<Chore> card){
         Chore chore = card.getData();
         Boss currentBoss = getSelectedBoss();
-        chore.setCompleted(true);
-        chore.setCompletedTime(LocalDate.now().toString());
-        choreRepo.updateChore(chore, user);
-        user.addXP(chore.getChoreXP());
 
-        //set health bar things
-        currentBoss.setCurrentHealth(currentBoss.getCurrentHealth() - chore.getChoreXP());
-        setupHealthBar();
+        if (!chore.isCompleted()) {
+            chore.setCompleted(true);
+            chore.setCompletedTime(LocalDate.now().toString());
+            choreRepo.updateChore(chore, user);
+            user.addXP(chore.getChoreXP());
 
-        boolean bossCompleted = currentBoss.getChores().stream()
-                .allMatch(Chore::isCompleted);
+            //set health bar things
+            currentBoss.setCurrentHealth(currentBoss.getCurrentHealth() - chore.getChoreXP());
+            setupHealthBar();
 
-        if(bossCompleted){
-            vanquished.set(true);
-            System.out.println("boss defeated??? "+currentBoss.isVanquished());
-            bosses.get("Vanquished").add(currentBoss);
-            getCurrentBossCard().redraw();
-            user.setVanquishedBossCount(user.getVanquishedBossCount()+1);
-            user.addXP((int)(currentBoss.getXp()-currentBoss.getTotalHealth()));
+            boolean bossCompleted = currentBoss.getChores().stream()
+                    .allMatch(Chore::isCompleted);
 
+            if (bossCompleted) {
+                vanquished.set(true);
+                System.out.println("boss defeated??? " + currentBoss.isVanquished());
+                bosses.get("Vanquished").add(currentBoss);
+                getCurrentBossCard().redraw();
+                user.setVanquishedBossCount(user.getVanquishedBossCount() + 1);
+                user.addXP((int) (currentBoss.getXp() - currentBoss.getTotalHealth()));
+
+            }
+            bossRepo.updateBoss(currentBoss, user);
+            userRepo.updateUser(user);
+
+            card.redraw();
         }
-        bossRepo.updateBoss(currentBoss, user);
-        userRepo.updateUser(user);
-
-        card.redraw();
 
     }
 }
