@@ -209,4 +209,10 @@ public class BossViewModel {
         card.redraw();
 
     }
+
+    public void addCustomBoss(Boss b) {
+        visibleBosses.add(b);
+        bosses.get("Bounties").add(b);
+        bossRepo.setBoss(b, user);
+    }
 }

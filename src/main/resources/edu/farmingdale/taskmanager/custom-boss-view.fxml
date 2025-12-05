@@ -2,13 +2,11 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleButton?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -17,7 +15,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 
-<StackPane fx:id="popupRoot" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="764.0" prefWidth="1092.0" styleClass="bg" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.PartyPopupController">
+<StackPane fx:id="popupRoot" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="764.0" prefWidth="1092.0" styleClass="bg" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.CustomBossController">
     <children>
         <VBox>
             <StackPane.margin>
@@ -74,21 +72,12 @@
                                                 <Insets top="10.0" />
                                             </VBox.margin>
                                         </StackPane>
-                              <HBox alignment="CENTER">
-                                 <children>
-                                              <Label fx:id="nameTypeLabel" alignment="CENTER" contentDisplay="CENTER" styleClass="create-party-section-label" text="Boss" textAlignment="CENTER">
-                                                  <padding>
-                                                      <Insets bottom="-10.0" top="-10.0" />
-                                                  </padding>
-                                              </Label>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" maxWidth="531.0" minWidth="100.0" prefHeight="43.0" prefWidth="100.0" styleClass="create-party-section-label" text="Name" textAlignment="CENTER">
-                                       <padding>
-                                          <Insets bottom="-10.0" top="-10.0" />
-                                       </padding>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                                        <TextField fx:id="nameField" maxHeight="52.0" minHeight="52.0" prefHeight="52.0" promptText="enter name" styleClass="party-name-field">
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="531.0" minWidth="100.0" prefHeight="43.0" prefWidth="100.0" styleClass="create-party-section-label" text="Boss Name" textAlignment="CENTER">
+                                 <padding>
+                                    <Insets bottom="-10.0" top="-10.0" />
+                                 </padding>
+                              </Label>
+                                        <TextField fx:id="nameField" maxHeight="52.0" minHeight="52.0" prefHeight="52.0" promptText="enter boss name" styleClass="party-name-field">
                                             <VBox.margin>
                                                 <Insets left="30.0" right="30.0" />
                                             </VBox.margin>
@@ -132,7 +121,7 @@
                                                 <Insets left="5.0" />
                                             </padding>
                                  <content>
-                                    <VBox fx:id="choreContainer" prefHeight="200.0" prefWidth="508.0" />
+                                    <VBox fx:id="choreContainer" prefHeight="200.0" prefWidth="508.0" spacing="10.0" />
                                  </content>
                                         </ScrollPane>
                                     </children>
@@ -179,39 +168,36 @@
                                                 <Insets top="10.0" />
                                             </VBox.margin>
                                         </StackPane>
-                              <ToggleButton mnemonicParsing="false" text="ToggleButton">
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" top="10.0" />
-                                 </VBox.margin>
-                              </ToggleButton>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="531.0" minWidth="100.0" prefHeight="43.0" prefWidth="100.0" styleClass="create-party-section-label" text="Select Chore" textAlignment="CENTER">
+                                 <padding>
+                                    <Insets bottom="-10.0" top="-10.0" />
+                                 </padding>
+                              </Label>
                                           <ComboBox fx:id="choreSelector" prefHeight="60.0" prefWidth="470.0" visibleRowCount="5">
                                               <opaqueInsets>
                                                   <Insets />
                                               </opaqueInsets>
                               </ComboBox>
-                                        <StackPane alignment="CENTER_RIGHT" maxHeight="50.0" maxWidth="470.0" prefHeight="50.0" prefWidth="470.0">
-                                            <VBox.margin>
-                                                <Insets />
-                                            </VBox.margin>
-                                            <children>
-                                                <TextField fx:id="customChoreName" maxHeight="52.0" maxWidth="470.0" prefHeight="52.0" prefWidth="470.0" promptText="search" styleClass="search-field">
-                                                    <padding>
-                                                        <Insets left="45.0" />
-                                                    </padding>
-                                                </TextField>
-                                                <ImageView fitHeight="35.0" fitWidth="35.0" onMouseClicked="#search" pickOnBounds="true" preserveRatio="true">
-                                                    <image>
-                                                        <Image url="@images/arrow-right.png" />
-                                                    </image>
-                                                    <StackPane.margin>
-                                                        <Insets right="12.0" />
-                                                    </StackPane.margin>
-                                                    <cursor>
-                                                        <Cursor fx:constant="HAND" />
-                                                    </cursor>
-                                                </ImageView>
-                                            </children>
-                                        </StackPane>
+                              <Button layoutX="190.0" layoutY="308.0" mnemonicParsing="false" onAction="#addDefaultChore" prefHeight="47.0" prefWidth="141.0" styleClass="add-chore-button" text="Add Chore">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" top="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="531.0" minWidth="100.0" prefHeight="43.0" prefWidth="100.0" styleClass="create-party-section-label" text="Create New Chore" textAlignment="CENTER">
+                                 <padding>
+                                    <Insets bottom="-10.0" top="-10.0" />
+                                 </padding>
+                              </Label>
+                                          <TextField fx:id="customChoreName" maxHeight="52.0" maxWidth="470.0" prefHeight="52.0" prefWidth="470.0" promptText="enter chore name" styleClass="chore-field">
+                                              <padding>
+                                                  <Insets left="20.0" />
+                                              </padding>
+                                          </TextField>
+                              <Button mnemonicParsing="false" onAction="#addCustomChore" prefHeight="47.0" prefWidth="141.0" styleClass="add-chore-button" text="Add Chore">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" top="20.0" />
+                                 </VBox.margin>
+                              </Button>
                                     </children>
                                 </VBox>
                                 <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="654.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="541.0" />
@@ -226,9 +212,9 @@
                     <children>
                         <HBox alignment="CENTER" maxHeight="90.0" maxWidth="1072.0" prefHeight="90.0" prefWidth="1072.0" spacing="20.0" styleClass="container" StackPane.alignment="CENTER">
                             <children>
-                                <StackPane onMouseClicked="#createParty" prefHeight="43.0" prefWidth="169.0">
+                                <StackPane onMouseClicked="#createBoss" prefHeight="43.0" prefWidth="169.0">
                                     <children>
-                                        <Rectangle fx:id="createBtn" arcHeight="5.0" arcWidth="5.0" fill="#5d3a01" height="75.0" onMouseClicked="#createParty" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="169.0" />
+                                        <Rectangle fx:id="createBtn" arcHeight="5.0" arcWidth="5.0" fill="#5d3a01" height="75.0" onMouseClicked="#createBoss" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="169.0" />
                                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f5902" height="65.0" mouseTransparent="true" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="159.0" />
                                         <Rectangle arcHeight="5.0" arcWidth="5.0" height="55.0" mouseTransparent="true" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="149.0">
                                             <fill>
