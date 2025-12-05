@@ -151,13 +151,13 @@ public class BossViewModel {
         bossImage.set(vanquished.get() ? deadImage : aliveImage);
     }
 
-    public void cardClick(ChoreCard<Boss> card){
-        Boss boss = card.getData();
+    public void cardClick(Boss boss){
+        //Boss boss = card.getData();
         setSelectedBoss(boss);
         name.set(boss.getName());
         visibleChores.clear();
         visibleChores.addAll(boss.getChores());
-        setCurrentBossCard(card);
+        //setCurrentBossCard(card);
         setupHealthBar();
 
         //bossRepo.updateBoss(boss, user);
