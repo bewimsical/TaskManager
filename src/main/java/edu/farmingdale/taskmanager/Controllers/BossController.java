@@ -71,7 +71,9 @@ public class BossController implements Initializable {
     }
 
     private void handleBossCardClick(ChoreCard<Boss> clickedBoss){
-        vm.cardClick(clickedBoss);
+        Boss boss = clickedBoss.getData();
+        vm.cardClick(boss);
+        vm.setCurrentBossCard(clickedBoss);
     }
 
     private void handleAttackCardClick(ChoreCard<Chore> clickedBoss){

@@ -121,7 +121,7 @@ public class FirebaseUserRepository {
                     bossRepo.deleteBoss(b,user);
                 }
             }
-            bosses.get("Bounties").removeIf(b -> b.isBounties() && !b.isVanquished());
+            bosses.get("Bounties").clear();
 
             //TODO reset quests
             for(Quest q : quests.get("Active")){
@@ -129,7 +129,7 @@ public class FirebaseUserRepository {
                     questRepo.deleteQuest(q,user);
                 }
             }
-            quests.get("Active").removeIf(q -> q.isActive() && !q.isCompleted());
+            quests.get("Active").clear();
 
             //generate new bosses
             for (int i = 0; i < 4; i++) {
