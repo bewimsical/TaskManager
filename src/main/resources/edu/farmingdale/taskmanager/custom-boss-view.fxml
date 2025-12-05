@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+
+<StackPane fx:id="popupRoot" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="764.0" prefWidth="1092.0" styleClass="bg" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.CustomBossController">
+    <children>
+        <VBox>
+            <StackPane.margin>
+                <Insets bottom="5.0" top="5.0" />
+            </StackPane.margin>
+            <children>
+                <HBox>
+                    <children>
+                        <StackPane>
+                            <children>
+                                <VBox maxHeight="644.0" maxWidth="531.0" prefHeight="644.0" prefWidth="531.0" styleClass="container">
+                                    <children>
+                                        <StackPane alignment="TOP_LEFT" prefHeight="18.0" prefWidth="436.0">
+                                            <children>
+                                                <Rectangle height="61.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="531.0">
+                                                    <fill>
+                                                        <LinearGradient endX="1.0">
+                                                            <stops>
+                                                                <Stop>
+                                                                    <color>
+                                                                        <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                                    </color>
+                                                                </Stop>
+                                                                <Stop offset="0.006711409395973154">
+                                                                    <color>
+                                                                        <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                                    </color>
+                                                                </Stop>
+                                                                <Stop offset="1.0">
+                                                                    <color>
+                                                                        <Color red="0.5199999809265137" green="0.3161599934101105" blue="0.010400000028312206" opacity="0.90439772605896" />
+                                                                    </color>
+                                                                </Stop>
+                                                            </stops>
+                                                        </LinearGradient>
+                                                    </fill>
+                                                </Rectangle>
+                                    <HBox alignment="CENTER">
+                                       <children>
+                                                      <Label alignment="CENTER" prefHeight="70.0" prefWidth="269.0" styleClass="username" text="Create Custom" textAlignment="CENTER">
+                                                          <padding>
+                                                              <Insets left="5.0" top="-8.0" />
+                                                          </padding>
+                                                      </Label>
+                                          <Label fx:id="typeLabel" alignment="CENTER" layoutX="10.0" layoutY="10.0" styleClass="username" text="Boss">
+                                             <padding>
+                                                <Insets left="5.0" top="-8.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets top="10.0" />
+                                            </VBox.margin>
+                                        </StackPane>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="531.0" minWidth="100.0" prefHeight="43.0" prefWidth="100.0" styleClass="create-party-section-label" text="Boss Name" textAlignment="CENTER">
+                                 <padding>
+                                    <Insets bottom="-10.0" top="-10.0" />
+                                 </padding>
+                              </Label>
+                                        <TextField fx:id="nameField" maxHeight="52.0" minHeight="52.0" prefHeight="52.0" promptText="enter boss name" styleClass="party-name-field">
+                                            <VBox.margin>
+                                                <Insets left="30.0" right="30.0" />
+                                            </VBox.margin>
+                                            <padding>
+                                                <Insets bottom="-10.0" left="20.0" top="-10.0" />
+                                            </padding>
+                                        </TextField>
+                                        <StackPane>
+                                            <VBox.margin>
+                                                <Insets top="15.0" />
+                                            </VBox.margin>
+                                            <children>
+                                                <Rectangle height="47.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="531.0">
+                                                    <fill>
+                                                        <LinearGradient endX="1.0">
+                                                            <stops>
+                                                                <Stop>
+                                                                    <color>
+                                                                        <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                                    </color>
+                                                                </Stop>
+                                                                <Stop offset="0.006711409395973154">
+                                                                    <color>
+                                                                        <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                                    </color>
+                                                                </Stop>
+                                                                <Stop offset="1.0">
+                                                                    <color>
+                                                                        <Color red="0.5199999809265137" green="0.3161599934101105" blue="0.010400000028312206" opacity="0.90439772605896" />
+                                                                    </color>
+                                                                </Stop>
+                                                            </stops>
+                                                        </LinearGradient>
+                                                    </fill>
+                                                </Rectangle>
+                                                <Label fx:id="choreTypeLabel" alignment="CENTER" maxWidth="531.0" prefWidth="531.0" styleClass="members" text="Attacks" textAlignment="CENTER" />
+                                            </children>
+                                        </StackPane>
+                                        <ScrollPane hbarPolicy="NEVER" prefHeight="598.0" prefWidth="531.0">
+                                            <padding>
+                                                <Insets left="5.0" />
+                                            </padding>
+                                 <content>
+                                    <VBox fx:id="choreContainer" prefHeight="200.0" prefWidth="508.0" spacing="10.0" />
+                                 </content>
+                                        </ScrollPane>
+                                    </children>
+                                </VBox>
+                                <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="654.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="541.0" />
+                            </children>
+                        </StackPane>
+                        <StackPane>
+                            <children>
+                                <VBox alignment="TOP_CENTER" maxHeight="644.0" maxWidth="531.0" prefHeight="544.0" prefWidth="531.0" styleClass="container">
+                                    <children>
+                                        <StackPane alignment="TOP_LEFT" prefHeight="49.0" prefWidth="436.0">
+                                            <children>
+                                                <Rectangle height="61.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="531.0">
+                                                    <fill>
+                                                        <LinearGradient endX="1.0">
+                                                            <stops>
+                                                                <Stop>
+                                                                    <color>
+                                                                        <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                                    </color>
+                                                                </Stop>
+                                                                <Stop offset="0.006711409395973154">
+                                                                    <color>
+                                                                        <Color red="0.20000000298023224" green="0.12333333492279053" opacity="0.9005736112594604" />
+                                                                    </color>
+                                                                </Stop>
+                                                                <Stop offset="1.0">
+                                                                    <color>
+                                                                        <Color red="0.5199999809265137" green="0.3161599934101105" blue="0.010400000028312206" opacity="0.90439772605896" />
+                                                                    </color>
+                                                                </Stop>
+                                                            </stops>
+                                                        </LinearGradient>
+                                                    </fill>
+                                                </Rectangle>
+                                                <Label alignment="CENTER" prefHeight="70.0" prefWidth="531.0" styleClass="username" text="Add Chores" textAlignment="CENTER">
+                                                    <padding>
+                                                        <Insets left="5.0" top="-8.0" />
+                                                    </padding>
+                                                </Label>
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets top="10.0" />
+                                            </VBox.margin>
+                                        </StackPane>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="531.0" minWidth="100.0" prefHeight="43.0" prefWidth="100.0" styleClass="create-party-section-label" text="Select Chore" textAlignment="CENTER">
+                                 <padding>
+                                    <Insets bottom="-10.0" top="-10.0" />
+                                 </padding>
+                              </Label>
+                                          <ComboBox fx:id="choreSelector" prefHeight="60.0" prefWidth="470.0" visibleRowCount="5">
+                                              <opaqueInsets>
+                                                  <Insets />
+                                              </opaqueInsets>
+                              </ComboBox>
+                              <Button layoutX="190.0" layoutY="308.0" mnemonicParsing="false" onAction="#addDefaultChore" prefHeight="47.0" prefWidth="141.0" styleClass="add-chore-button" text="Add Chore">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" top="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="531.0" minWidth="100.0" prefHeight="43.0" prefWidth="100.0" styleClass="create-party-section-label" text="Create New Chore" textAlignment="CENTER">
+                                 <padding>
+                                    <Insets bottom="-10.0" top="-10.0" />
+                                 </padding>
+                              </Label>
+                                          <TextField fx:id="customChoreName" maxHeight="52.0" maxWidth="470.0" prefHeight="52.0" prefWidth="470.0" promptText="enter chore name" styleClass="chore-field">
+                                              <padding>
+                                                  <Insets left="20.0" />
+                                              </padding>
+                                          </TextField>
+                              <Button mnemonicParsing="false" onAction="#addCustomChore" prefHeight="47.0" prefWidth="141.0" styleClass="add-chore-button" text="Add Chore">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" top="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                                    </children>
+                                </VBox>
+                                <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="654.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="541.0" />
+                            </children>
+                        </StackPane>
+                    </children>
+                    <padding>
+                        <Insets left="5.0" />
+                    </padding>
+                </HBox>
+                <StackPane>
+                    <children>
+                        <HBox alignment="CENTER" maxHeight="90.0" maxWidth="1072.0" prefHeight="90.0" prefWidth="1072.0" spacing="20.0" styleClass="container" StackPane.alignment="CENTER">
+                            <children>
+                                <StackPane onMouseClicked="#createBoss" prefHeight="43.0" prefWidth="169.0">
+                                    <children>
+                                        <Rectangle fx:id="createBtn" arcHeight="5.0" arcWidth="5.0" fill="#5d3a01" height="75.0" onMouseClicked="#createBoss" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="169.0" />
+                                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f5902" height="65.0" mouseTransparent="true" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="159.0" />
+                                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="55.0" mouseTransparent="true" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="149.0">
+                                            <fill>
+                                                <LinearGradient endX="1.0">
+                                                    <stops>
+                                                        <Stop>
+                                                            <color>
+                                                                <Color />
+                                                            </color>
+                                                        </Stop>
+                                                        <Stop offset="0.006711409395973154">
+                                                            <color>
+                                                                <Color red="0.019607843831181526" green="0.21960784494876862" blue="0.10980392247438431" />
+                                                            </color>
+                                                        </Stop>
+                                                        <Stop offset="0.5004910787362907">
+                                                            <color>
+                                                                <Color red="0.03921568766236305" green="0.3450980484485626" blue="0.1764705926179886" />
+                                                            </color>
+                                                        </Stop>
+                                                        <Stop offset="1.0">
+                                                            <color>
+                                                                <Color red="0.019607843831181526" green="0.21960784494876862" blue="0.10980392247438431" />
+                                                            </color>
+                                                        </Stop>
+                                                    </stops>
+                                                </LinearGradient>
+                                            </fill>
+                                        </Rectangle>
+                                        <Label fx:id="createLabel" alignment="CENTER" prefHeight="65.0" prefWidth="149.0" styleClass="button-label" text="Create " />
+                                    </children>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </StackPane>
+                                <StackPane onMouseClicked="#cancel" prefHeight="43.0" prefWidth="169.0">
+                                    <children>
+                                        <Rectangle fx:id="cancelBtn" arcHeight="5.0" arcWidth="5.0" fill="#5d3a01" height="75.0" onMouseClicked="#cancel" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="169.0" />
+                                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8f5902" height="65.0" mouseTransparent="true" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="159.0" />
+                                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="55.0" mouseTransparent="true" stroke="#472c01" strokeType="INSIDE" strokeWidth="2.0" width="149.0">
+                                            <fill>
+                                                <LinearGradient endX="1.0">
+                                                    <stops>
+                                                        <Stop>
+                                                            <color>
+                                                                <Color />
+                                                            </color>
+                                                        </Stop>
+                                                        <Stop offset="0.006711409395973154">
+                                                            <color>
+                                                                <Color red="0.019607843831181526" green="0.21960784494876862" blue="0.10980392247438431" />
+                                                            </color>
+                                                        </Stop>
+                                                        <Stop offset="0.5004910787362907">
+                                                            <color>
+                                                                <Color red="0.03921568766236305" green="0.3450980484485626" blue="0.1764705926179886" />
+                                                            </color>
+                                                        </Stop>
+                                                        <Stop offset="1.0">
+                                                            <color>
+                                                                <Color red="0.019607843831181526" green="0.21960784494876862" blue="0.10980392247438431" />
+                                                            </color>
+                                                        </Stop>
+                                                    </stops>
+                                                </LinearGradient>
+                                            </fill>
+                                        </Rectangle>
+                                        <Label fx:id="cancelLabel" alignment="CENTER" prefHeight="65.0" prefWidth="149.0" styleClass="button-label" text="Cancel" />
+                                    </children>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </StackPane>
+                            </children></HBox>
+                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="100.0" mouseTransparent="true" stroke="#281902" strokeType="INSIDE" strokeWidth="5.0" width="1082.0" />
+                    </children>
+                </StackPane>
+            </children>
+        </VBox>
+    </children>
+</StackPane>

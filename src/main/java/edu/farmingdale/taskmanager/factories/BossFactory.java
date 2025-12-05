@@ -39,6 +39,8 @@ public class BossFactory {
     };
     private static final Random random = new Random();
 
+    private static final Set<String> assignedChores = Session.getInstance().getAssignedChoreIds();
+
    private BossFactory() {}
 
     public static Boss generate(){
@@ -63,13 +65,33 @@ public class BossFactory {
         return boss;
     }
 
+    public static Boss generate(String name, List<Chore> chores){
+        String bossId = UUID.randomUUID().toString();
+        String baseUrl = image();
+        setupChores(chores);
+        int health = getBossHP(chores);
+
+        Boss boss = new Boss.BossesBuilder()
+                .id(bossId)
+                .dirtyImageUrl("Dirty"+baseUrl)
+                .cleanImageUrl("Clean"+baseUrl)
+                .name(name)
+                .chores(chores)
+                .totalHealth(health)
+                .currentHealth(health)
+                .xp((int) ( health*1.25))
+                .dateAdded(LocalDate.now().toString())
+                .bounties(true)
+                .build();
+        return boss;
+    }
+
     private static List<Chore> generateChoreList(){
         List<Chore> chores = Session.getInstance().getAvailableChores();
         chores = chores.stream()
                 .filter(c -> !c.getRooms().isEmpty())
                 .toList();
         String[] rooms = {"Kitchen", "Bathroom", "Living Room","Dining Room"};
-        Set<String> assignedChores = Session.getInstance().getAssignedChoreIds();
         List<Chore> filtered = new ArrayList<>();
 
         while (filtered.isEmpty() && !chores.isEmpty()) {
@@ -82,12 +104,16 @@ public class BossFactory {
         Collections.shuffle(filtered);
 
         List<Chore> bossChores = filtered.subList(0, Math.min(4, filtered.size()));
+        setupChores(bossChores);
+        return bossChores;
+    }
+
+    private static void setupChores(List<Chore> bossChores){
         for (Chore c: bossChores){
             c.setCompleted(false);
             c.setChoreXP(random.nextInt(300,500));
             assignedChores.add(c.getId());
         }
-        return bossChores;
     }
 
     private static int getBossHP(List<Chore> chores){

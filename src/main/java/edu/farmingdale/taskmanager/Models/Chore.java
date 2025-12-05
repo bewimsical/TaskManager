@@ -30,6 +30,11 @@ public class Chore {
         this.timeOfDay = timeOfDay;
     }
 
+    public Chore(String id, String name){
+        this.name = name;
+        this.id = id;
+    }
+
 
     public String getName() {
         return name;

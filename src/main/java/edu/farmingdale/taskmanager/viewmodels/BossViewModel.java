@@ -212,4 +212,10 @@ public class BossViewModel {
         }
 
     }
+
+    public void addCustomBoss(Boss b) {
+        visibleBosses.add(b);
+        bosses.get("Bounties").add(b);
+        bossRepo.setBoss(b, user);
+    }
 }

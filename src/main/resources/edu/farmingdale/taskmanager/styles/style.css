@@ -176,7 +176,9 @@
     -fx-font-family: 'Inknut Antiqua Regular';
     -fx-font-size: 20px;
 }
-.party-name-field{
+
+
+.party-name-field, .chore-field{
     -fx-background-color: #8F590245;
     -fx-text-fill: #472C01;
     -fx-prompt-text-fill: #472C0150;
@@ -376,7 +378,15 @@
     -fx-padding: -10 8 -10 8;
 }
 
-.delete-ritual-button:hover, .create-ritual-button:hover{
+.add-chore-button{
+    -fx-background-color: #472C01;
+    -fx-text-fill: #F8E5B2;
+    -fx-background-radius: 100;
+    -fx-font-size: 16px;
+    -fx-padding: -10 8 -10 8;
+}
+
+.delete-ritual-button:hover, .create-ritual-button:hover, .add-chore-button:hover{
     -fx-text-fill: #E5B515;
 
 }
