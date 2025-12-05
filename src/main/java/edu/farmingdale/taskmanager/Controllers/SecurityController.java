@@ -10,8 +10,6 @@ import edu.farmingdale.taskmanager.Session;
 import edu.farmingdale.taskmanager.Models.User;
 import edu.farmingdale.taskmanager.TaskManagerApplication;
 
-
-
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
@@ -35,6 +33,7 @@ public class SecurityController {
     public void initialize() {
         currentUser = Session.getInstance().getUser();
         if (currentUser == null) {
+            showStatus("Error: No logged in user found", true);
 
         }
         loadCurrentEmail();
@@ -45,33 +44,58 @@ public class SecurityController {
         try {
             UserRecord record = FirebaseAuth.getInstance().getUser(currentUser.getId());
             currentEmailLabel.setText(record.getEmail());
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
+            showStatus("Failed to load current email", true);
 
         }
     }
 
+    //change password
+    @FXML
+    public void updatePassword(ActionEvent event) {
 
-        public void updatePassword (ActionEvent actionEvent){
+        if (currentUser == null) return;
 
+        String newPass = newPasswordField.getText();
 
+        if (newPass.isEmpty()) {
+            showStatus("Please enter a new password.", true);
+            return;
         }
 
-        public void updateEmail (ActionEvent actionEvent){
+        try {
+            FirebaseAuth.getInstance().updateUser(
+                    new UserRecord.UpdateRequest(currentUser.getId()).setPassword(newPass)
+            );
+            showStatus("Password updated successfully!", false);
+            newPasswordField.clear();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            showStatus("Error updating password.", true);
         }
 
-        public void signOutEverywhere (ActionEvent actionEvent){
-        }
+    }
 
-        public void toggleTwoFactor (ActionEvent actionEvent){
+    public void updateEmail(ActionEvent actionEvent) {
+    }
 
-        }
-        private void showStatus(String msg, boolean error){
+    public void signOutEverywhere(ActionEvent actionEvent) {
+    }
+
+    public void toggleTwoFactor(ActionEvent actionEvent) {
+
+    }
+
+    private void showStatus(String msg, boolean error) {
         statusLabel.setText(msg);
 
-        }
-
-
     }
+}
+
+
+
+
 
     
