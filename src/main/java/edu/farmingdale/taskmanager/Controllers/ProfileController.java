@@ -162,6 +162,20 @@ public class ProfileController implements Initializable {
         }
 
         button.getStyleClass().add("active");
+
+        String section = button.getText();
+        statContainer.getChildren().clear();
+        if (section.equals("All")){
+            statContainer.getChildren().add(new RitualStatCard(vm.getUser()));
+            statContainer.getChildren().add(new QuestStatCard(vm.getUser(), vm.getActiveQuests()));
+            statContainer.getChildren().add(new BossStatCard(vm.getUser(), vm.getBossBounties()));
+        } else if (section.equals("Rituals")) {
+            statContainer.getChildren().add(new RitualStatCard(vm.getUser()));
+        }else if (section.equals("Quests")){
+            statContainer.getChildren().add(new QuestStatCard(vm.getUser(), vm.getActiveQuests()));
+        }else {
+            statContainer.getChildren().add(new BossStatCard(vm.getUser(), vm.getBossBounties()));
+        }
     }
 
     private void setUpPartyList(ObservableList<Party> list, VBox container){
