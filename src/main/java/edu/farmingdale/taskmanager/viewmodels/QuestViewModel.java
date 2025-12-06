@@ -146,5 +146,9 @@ public class QuestViewModel {
     }
 
 
-
+    public void addCustomQuest(Quest q) {
+        visibleQuests.add(q);
+        quests.get("Active").add(q);
+        questRepo.setQuest(q, user);
+    }
 }

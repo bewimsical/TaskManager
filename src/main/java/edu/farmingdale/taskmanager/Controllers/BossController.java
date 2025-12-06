@@ -154,8 +154,6 @@ public class BossController implements Initializable {
         root.getChildren().addAll(overlay, popup);
         StackPane.setAlignment(popup, Pos.CENTER);
 
-//        PartyPopupController controller = loader.getController();
-//        controller.setParentContainer(root);
     }
 
 
