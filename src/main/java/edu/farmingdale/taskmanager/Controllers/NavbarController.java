@@ -179,7 +179,8 @@ public class NavbarController implements Initializable {
 
     @FXML
     void logout(MouseEvent event) {
-
+        Session.getInstance().clearSession();
+        switchScene(event.getSource(),"login-view.fxml");
     }
     @FXML
     private void handleSettingsClick() throws IOException {
