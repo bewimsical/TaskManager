@@ -51,6 +51,7 @@ public class QuestFactory {
             "The Evertidy Trial"
     };
     private static final Random random = new Random();
+    private static final Set<String> assignedChores = Session.getInstance().getAssignedChoreIds();
 
     private QuestFactory(){}
 
@@ -73,6 +74,24 @@ public class QuestFactory {
                 .build();
         return quest;
     }
+    public static Quest generate(String name, List<Chore> chores) {
+        String questId = UUID.randomUUID().toString();
+        setupChores(chores);
+        int xp = getQuestXp(chores);
+        List<MapMark> marks = generateMapMarks(chores);
+        //need to add map image
+        Quest quest = new Quest.QuestBuilder()
+                .id(questId)
+                .name(name)
+                .chores(chores)
+                .dateAdded(LocalDate.now().toString())
+                .isActive(true)
+                .xp(xp)
+                .mapMarks(marks)
+                .nextMarkIndex(0)
+                .build();
+        return quest;
+    }
 
     public static String generateName() {
         return QUEST_NAMES[new Random().nextInt(QUEST_NAMES.length)];
@@ -80,18 +99,22 @@ public class QuestFactory {
 
     private static List<Chore> generateChoreList(){
         List<Chore> chores = Session.getInstance().getAvailableChores();
-        Set<String> assignedChores = Session.getInstance().getAssignedChoreIds();
+
 
         Collections.shuffle(chores);
         int num = new Random().nextInt(3,5);
 
         List<Chore> questChores = chores.subList(0, Math.min(num, chores.size()));
+        setupChores(questChores);
+        return questChores;
+    }
+
+    private static void setupChores(List<Chore> questChores){
         for (Chore c: questChores){
             c.setCompleted(false);
             c.setChoreXP(random.nextInt(300,500));
             assignedChores.add(c.getId());
         }
-        return questChores;
     }
 
     private static int getQuestXp(List<Chore> chores){
@@ -157,9 +180,6 @@ public class QuestFactory {
         }
         return true;
     }
-
-
-
 
 
 

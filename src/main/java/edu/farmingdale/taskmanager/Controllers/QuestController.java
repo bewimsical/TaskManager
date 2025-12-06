@@ -13,21 +13,30 @@ import javafx.beans.binding.Bindings;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
 public class QuestController implements Initializable {
+
+    @FXML
+    private StackPane root;
 
     @FXML
     private Label activeButton;
@@ -200,11 +209,6 @@ public class QuestController implements Initializable {
     }
 
     @FXML
-    void createCustomQuest(MouseEvent event) {
-
-    }
-
-    @FXML
     void toggleActive(MouseEvent e) {
         for(Label label:buttons){
             label.getStyleClass().remove("active");
@@ -254,6 +258,29 @@ public class QuestController implements Initializable {
     private void completeChore(ChoreCard<Chore> card){
         vm.completeChore(card);
         drawPathLines(vm.getChoreMarks());
+    }
+
+    @FXML
+    void createCustomQuest(MouseEvent event) {
+        Rectangle overlay = new Rectangle();
+        overlay.setWidth(root.getWidth());
+        overlay.setHeight(root.getHeight());
+        overlay.setFill(Color.rgb(255, 255, 255, .45));
+        overlay.setOnMouseClicked(e -> e.consume()); // block clicks behind
+
+        FXMLLoader loader = new FXMLLoader(TaskManagerApplication.class.getResource("custom-quest-view.fxml"));
+        loader.setControllerFactory(param -> new CustomQuestController(vm, root));
+        Parent popup = null;
+        try {
+            popup = loader.load();
+        } catch (IOException e) {
+            System.out.println("Error loading popup");
+            System.out.println(e.getMessage());
+        }
+
+        // Add overlay + popup to root
+        root.getChildren().addAll(overlay, popup);
+        StackPane.setAlignment(popup, Pos.CENTER);
     }
 
 }
