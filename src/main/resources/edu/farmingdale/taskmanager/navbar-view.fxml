@@ -13,9 +13,9 @@
 
 <StackPane fx:id="navContainer" maxHeight="1014.0" maxWidth="102.0" minHeight="1014.0" minWidth="102.0" prefHeight="1014.0" prefWidth="102.0" styleClass="bg" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.NavbarController">
    <children>
-      <VBox fx:id="navVbox" maxHeight="880.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1004.0" prefWidth="92.0" styleClass="container" stylesheets="@styles/style.css">
+      <VBox fx:id="navVbox" maxHeight="880.0" maxWidth="92.0" minHeight="-Infinity" minWidth="92.0" prefHeight="1004.0" prefWidth="92.0" styleClass="container" stylesheets="@styles/style.css">
          <children>
-            <HBox fx:id="navLogoContainer" maxWidth="92.0" prefHeight="132.0" prefWidth="92.0" styleClass="logo-container">
+            <HBox fx:id="navLogoContainer" minWidth="92.0" prefHeight="132.0" prefWidth="92.0" styleClass="logo-container">
                <children>
                   <StackPane alignment="CENTER_LEFT" maxHeight="132.0" minHeight="132.0" prefHeight="132.0" stylesheets="@styles/style.css">
                      <children>
@@ -39,14 +39,14 @@
                   </StackPane>
                   <VBox fx:id="navUserInfo" alignment="CENTER_LEFT" fillWidth="false" managed="false" prefHeight="90.0" prefWidth="92.0" visible="false">
                      <children>
-                        <Label prefWidth="215.0" styleClass="menu-label" text="Username">
+                        <Label fx:id="usernameLabel" maxWidth="185.0" minWidth="185.0" styleClass="menu-label" text="Username">
                            <VBox.margin>
                               <Insets left="15.0" />
                            </VBox.margin>
                         </Label>
                         <HBox>
                            <children>
-                              <Label maxWidth="62.0" prefHeight="41.0" prefWidth="62.0" styleClass="menu-label" text="Level: " />
+                              <Label maxWidth="62.0" minWidth="62.0" prefHeight="41.0" prefWidth="62.0" styleClass="menu-label" text="Level: " />
                               <Label fx:id="level" layoutX="10.0" layoutY="10.0" prefWidth="215.0" styleClass="menu-label" text="1" />
                            </children>
                            <VBox.margin>

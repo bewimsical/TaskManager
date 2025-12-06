@@ -1,8 +1,13 @@
 package edu.farmingdale.taskmanager.Controllers;
 
+import edu.farmingdale.taskmanager.Session;
 import edu.farmingdale.taskmanager.TaskManagerApplication;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,10 +19,13 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class NavbarController {
+public class NavbarController implements Initializable {
 
     @FXML
     private Label level;
@@ -58,6 +66,23 @@ public class NavbarController {
     @FXML
     private VBox navVbox;
 
+    @FXML
+    private Label usernameLabel;
+
+    boolean expanded;
+    Label[] labels;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        Session session = Session.getInstance();
+        usernameLabel.setText(session.getUser().getUsername());
+        level.setText(String.valueOf(session.getUser().getLevel()));
+        labels = new Label[] {navHome, navParty, navRituals,navQuests, navBosses, navSettings, navLogout};
+        expanded = false;
+        //toggleMenu();
+
+    }
+
     private static void switchScene(Object source, String fxmlFile) {
         try {
             Parent root = FXMLLoader.load(TaskManagerApplication.class.getResource(fxmlFile));
@@ -75,8 +100,50 @@ public class NavbarController {
     }
 
     @FXML
-    void toggleMenu(MouseEvent event) {
+    void toggleMenu() {
+        double targetContainerWidth = expanded ? 102 : 300;
+        double targetWidth = expanded ? 92 : 290;
 
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.millis(250),
+                        new KeyValue(navContainer.prefWidthProperty(), targetContainerWidth),
+                        new KeyValue(navContainer.maxWidthProperty(), targetContainerWidth),
+                        new KeyValue(navLogoContainer.prefWidthProperty(), targetWidth),
+                        new KeyValue(navLogoContainer.maxWidthProperty(), targetWidth),
+                        new KeyValue(navVbox.prefWidthProperty(), targetWidth),
+                        new KeyValue(navVbox.maxWidthProperty(), targetWidth),
+                        new KeyValue(navBorder.widthProperty(), targetContainerWidth)
+
+                )
+        );
+
+        timeline.play();
+
+        if (!expanded) {
+            // We are expanding → show labels AFTER animation finishes
+            timeline.setOnFinished(e -> {
+                for (Label label : labels) {
+                    label.setVisible(true);
+                }
+                navUserInfo.setVisible(true);
+                navUserInfo.setManaged(true);
+//                navLogoContainer.setPrefWidth(290);
+//                navVbox.setPrefWidth(290);
+                navBorder.setWidth(300);
+            });
+        } else {
+            // We are collapsing → hide labels immediately
+            for (Label label : labels) {
+                label.setVisible(false);
+            }
+            navUserInfo.setVisible(false);
+            navUserInfo.setManaged(false);
+//            navLogoContainer.setPrefWidth(92);
+//            navVbox.setPrefWidth(92);
+            navBorder.setWidth(102);
+        }
+
+        expanded = !expanded;
     }
 
     @FXML
@@ -121,6 +188,7 @@ public class NavbarController {
 
 
     }
+
 
 
 }
