@@ -35,16 +35,19 @@
             <TitledPane text="📧 Change Email">
                 <AnchorPane>
                     <VBox layoutX="15" layoutY="15" spacing="10">
+
                         <Label text="Current Email:" />
-                        <Label fx:id="currentEmailLabel" />
+                        <TextField fx:id="currentEmail" />
 
                         <Label text="New Email:" />
                         <TextField fx:id="newEmailField" />
 
                         <Button onAction="#updateEmail" text="Update Email" />
+
                     </VBox>
                 </AnchorPane>
             </TitledPane>
+
 
             <!-- 🛡️ Two-Factor Authentication -->
             <TitledPane text="🛡️ Two-Factor Authentication">

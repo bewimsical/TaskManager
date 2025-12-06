@@ -77,6 +77,9 @@ public class SecurityController {
         }
 
     }
+    @FXML
+    public TextField currentEmail;
+
 
     public void updateEmail(ActionEvent actionEvent) {
     }
