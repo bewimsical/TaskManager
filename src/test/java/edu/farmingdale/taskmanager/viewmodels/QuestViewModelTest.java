@@ -17,6 +17,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 class QuestViewModelTest {
     final FirebaseQuestRepository questRepo = new FirebaseQuestRepository();
     final FirebaseUserRepository userRepo = new FirebaseUserRepository();
@@ -24,11 +25,13 @@ class QuestViewModelTest {
     private final ObservableList<Chore> visibleChores = FXCollections.observableArrayList();
     Session session = Session.getInstance();
     User user;
+    User user1;
     Map<String, List<Quest>> quests;
 
 
     @BeforeEach
     void newSetupTest() {
+
         user = session.getUser();
         quests = session.getQuests();
         //quests.get("Complete").add(currentQuest);

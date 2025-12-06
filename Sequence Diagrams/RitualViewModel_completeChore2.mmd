@@ -1,0 +1,141 @@
+sequenceDiagram
+actor User
+User ->> RitualViewModel : completeChore
+activate RitualViewModel
+RitualViewModel ->> Card : getData
+activate Card
+Card -->> RitualViewModel : #32; 
+deactivate Card
+RitualViewModel ->> User : getLastRitualComplete
+activate User
+User -->> RitualViewModel : #32; 
+deactivate User
+RitualViewModel ->> Ritual : isCompleted
+activate Ritual
+Ritual -->> RitualViewModel : #32; 
+deactivate Ritual
+RitualViewModel ->> Ritual : setCompleted
+activate Ritual
+Ritual -->> RitualViewModel : #32; 
+deactivate Ritual
+RitualViewModel ->> Ritual : setDateRecorded
+activate Ritual
+Ritual -->> RitualViewModel : #32; 
+deactivate Ritual
+RitualViewModel ->> Ritual : getChore
+activate Ritual
+Ritual -->> RitualViewModel : #32; 
+deactivate Ritual
+RitualViewModel ->> Chore : setCompletedTime
+activate Chore
+Chore -->> RitualViewModel : #32; 
+deactivate Chore
+RitualViewModel ->> FirebaseRitualRepository : updateRitual
+activate FirebaseRitualRepository
+FirebaseRitualRepository ->> User : getId
+activate User
+User -->> FirebaseRitualRepository : #32; 
+deactivate User
+FirebaseRitualRepository ->> Ritual : getId
+activate Ritual
+Ritual ->> FirebaseRitualRepository : () -&gt;
+activate FirebaseRitualRepository
+FirebaseRitualRepository -->> Ritual : #32; 
+deactivate FirebaseRitualRepository
+Ritual -->> FirebaseRitualRepository : #32; 
+deactivate Ritual
+FirebaseRitualRepository -->> RitualViewModel : #32; 
+deactivate FirebaseRitualRepository
+RitualViewModel ->> Ritual : Runnable::run
+activate Ritual
+Ritual -->> RitualViewModel : #32; 
+deactivate Ritual
+RitualViewModel ->> User : setXp
+activate User
+User -->> RitualViewModel : #32; 
+deactivate User
+RitualViewModel ->> User : getXp
+activate User
+User -->> RitualViewModel : #32; 
+deactivate User
+RitualViewModel ->> Ritual : getXp
+activate Ritual
+Ritual ->> Ritual : Ritual::isCompleted
+activate Ritual
+Ritual -->> Ritual : #32; 
+deactivate Ritual
+Ritual -->> RitualViewModel : #32; 
+deactivate Ritual
+RitualViewModel ->> RitualViewModel : List::stream
+activate RitualViewModel
+RitualViewModel -->> RitualViewModel : #32; 
+deactivate RitualViewModel
+RitualViewModel ->> User : getXpBonus
+activate User
+User -->> RitualViewModel : #32; 
+deactivate User
+RitualViewModel ->> User : setLastRitualComplete
+activate User
+User -->> RitualViewModel : #32; 
+deactivate User
+RitualViewModel ->> User : setXp
+activate User
+User -->> RitualViewModel : #32; 
+deactivate User
+RitualViewModel ->> User : getXp
+activate User
+User -->> RitualViewModel : #32; 
+deactivate User
+RitualViewModel ->> User : setStreak
+activate User
+User -->> RitualViewModel : #32; 
+deactivate User
+RitualViewModel ->> User : getStreak
+activate User
+User -->> RitualViewModel : #32; 
+deactivate User
+RitualViewModel ->> User : getStreak
+activate User
+User -->> RitualViewModel : #32; 
+deactivate User
+RitualViewModel ->> RitualViewModel : getStreakMultiplier
+activate RitualViewModel
+RitualViewModel -->> RitualViewModel : #32; 
+deactivate RitualViewModel
+RitualViewModel ->> User : setXpBonus
+activate User
+User -->> RitualViewModel : #32; 
+deactivate User
+RitualViewModel ->> User : getStreak
+activate User
+User -->> RitualViewModel : #32; 
+deactivate User
+RitualViewModel ->> User : getXpBonus
+activate User
+User -->> RitualViewModel : #32; 
+deactivate User
+RitualViewModel ->> FirebaseUserRepository : updateUser
+activate FirebaseUserRepository
+FirebaseUserRepository ->> User : getId
+activate User
+User ->> FirebaseUserRepository : () -&gt;
+activate FirebaseUserRepository
+FirebaseUserRepository -->> User : #32; 
+deactivate FirebaseUserRepository
+User -->> FirebaseUserRepository : #32; 
+deactivate User
+FirebaseUserRepository -->> RitualViewModel : #32; 
+deactivate FirebaseUserRepository
+RitualViewModel ->> ChoreCard : Runnable::run
+activate ChoreCard
+ChoreCard ->> ChoreCard : setCompletedImage
+activate ChoreCard
+ChoreCard ->> SmallChoreCard : setCompletedImage
+activate SmallChoreCard
+SmallChoreCard -->> ChoreCard : #32; 
+deactivate SmallChoreCard
+ChoreCard -->> ChoreCard : #32; 
+deactivate ChoreCard
+ChoreCard -->> RitualViewModel : #32; 
+deactivate ChoreCard
+deactivate RitualViewModel
