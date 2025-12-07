@@ -51,7 +51,7 @@ public class SettingsController {
     }
 
     @FXML
-    private void logout() {
+    private void logout() { loadPage("login-view.fxml");
         System.out.println("Logging out...");
 
     }
