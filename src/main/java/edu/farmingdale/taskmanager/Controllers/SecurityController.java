@@ -14,20 +14,28 @@ import javafx.scene.layout.AnchorPane;
 
 public class SecurityController {
 
-    @FXML public AnchorPane securityContentArea;
-    @FXML public Label statusLabel;
+    @FXML
+    public AnchorPane securityContentArea;
+    @FXML
+    public Label statusLabel;
 
     // PASSWORD FIELDS
-    @FXML public PasswordField currentPasswordField;
-    @FXML public PasswordField newPasswordField;
-    @FXML public PasswordField confirmPasswordField;
+    @FXML
+    public PasswordField currentPasswordField;
+    @FXML
+    public PasswordField newPasswordField;
+    @FXML
+    public PasswordField confirmPasswordField;
 
     // EMAIL FIELDS
-    @FXML public TextField currentEmail;
-    @FXML public TextField newEmailField;
+    @FXML
+    public TextField currentEmail;
+    @FXML
+    public TextField newEmailField;
 
     // 2FA
-    @FXML public CheckBox twoFactorToggle;
+    @FXML
+    public CheckBox twoFactorToggle;
 
     private User currentUser;
 
@@ -36,13 +44,13 @@ public class SecurityController {
 
         currentUser = Session.getInstance().getUser();
 
-        if (currentUser.getAge()<18){
+        if (currentUser.getAge() < 18) {
             currentUser.setParentalControls(true);
         }
-        if (currentUser.isParentalControls()){
+        if (currentUser.isParentalControls()) {
             disableSecurityFields();
         }
-        if (currentUser.getAge()>=18){
+        if (currentUser.getAge() >= 18) {
             currentUser.setParentalControls(false);
 
             //update firestore
@@ -192,7 +200,16 @@ public class SecurityController {
             showStatus("Error updating email.", true);
         }
     }
-    @FXML public void signOutEverywhere(ActionEvent actionEvent) { }
+
+    @FXML
+    public void signOutEverywhere(ActionEvent actionEvent) {
+        if (currentUser == null) {
+            showStatus("No logged-in user found.", true);
+
+        }
+    }
+
+
     @FXML public void toggleTwoFactor(ActionEvent actionEvent) { }
 
     private void showStatus(String msg, boolean error) {
@@ -200,6 +217,8 @@ public class SecurityController {
         statusLabel.setStyle(error ? "-fx-text-fill: red;" : "-fx-text-fill: #50280d;");
     }
 }
+
+        
 
 
 
