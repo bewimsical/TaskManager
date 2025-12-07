@@ -9,6 +9,7 @@ import edu.farmingdale.taskmanager.cards.AttackCard;
 import edu.farmingdale.taskmanager.cards.BossCard;
 import edu.farmingdale.taskmanager.cards.ChoreCard;
 import edu.farmingdale.taskmanager.viewmodels.BossViewModel;
+import javafx.beans.binding.Bindings;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -76,7 +77,16 @@ public class BossController implements Initializable {
         setUpLists(vm.getVisibleBosses(), bossesContainer);
         setUpLists(vm.getVisibleChores(), attacksContainer);
         healthBar.progressProperty().bind(vm.healthPercentProperty());
-        bossImageView.imageProperty().bind(vm.bossImageProperty());
+
+        //bossImageView.imageProperty().bind(vm.bossImageProperty());
+
+        bossImageView.imageProperty().bind(
+                Bindings.createObjectBinding(() ->
+                                new Image(vm.bossImageProperty().get()),
+                        vm.bossImageProperty()
+                )
+        );
+
         vm.setUpView();
     }
 
