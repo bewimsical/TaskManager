@@ -66,23 +66,6 @@ public class Session {
                 .map(Ritual::getChore)
                 .toList();
 
-        System.out.println("\n Stream chore list");
-        for (Chore c : ritualChores){
-            System.out.println(c.getName());
-        }
-
-        System.out.println("\nChore Keys");
-        for (String key:rituals.keySet()){
-            System.out.println("Key: " + key);
-            for (Ritual r: rituals.get(key)){
-                System.out.println("     "+r.getChore().getName());
-            }
-        }
-
-//        for (Chore c : ritualChores){
-//            System.out.println(c.getName());
-//        }
-
         return chores.stream()
                 .filter(c -> !ritualChores.contains(c))
                 .filter(c -> !assignedChoreIds.contains(c.getId()))

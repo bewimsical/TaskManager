@@ -69,6 +69,11 @@ public class LoginController implements Initializable{
         }
     }
 
+    @FXML
+    void signUpClick(MouseEvent event) {
+        switchScene(event.getSource(), "signup-view.fxml");
+    }
+
 
     private static void switchScene(Object source, String fxmlFile) {
         try {

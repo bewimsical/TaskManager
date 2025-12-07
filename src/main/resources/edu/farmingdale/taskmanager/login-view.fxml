@@ -8,6 +8,7 @@
 <?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -15,7 +16,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<StackPane alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024" prefWidth="1440" styleClass="bg" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.LoginController">
+<StackPane alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024" prefWidth="1440" styleClass="bg" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.LoginController">
     <children>
         <Pane prefHeight="800.0" prefWidth="1000.0" styleClass="container" stylesheets="@styles/style.css" StackPane.alignment="CENTER">
          <children>
@@ -46,7 +47,7 @@
 
          </children>
       </VBox>
-      <VBox alignment="BOTTOM_CENTER" blendMode="SRC_ATOP" layoutY="500" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="625.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 3.5;" StackPane.alignment="CENTER">
+      <VBox alignment="BOTTOM_CENTER" blendMode="SRC_ATOP" layoutY="500.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="376.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 3.5;" StackPane.alignment="CENTER">
          <StackPane.margin>
             <Insets top="250.0" />
          </StackPane.margin>
@@ -59,7 +60,11 @@
             <TextField fx:id="emailTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="460.0" style="-fx-background-color: #F5EBE0; -fx-background-radius: 8;" translateX="25.0" translateY="-290.0" />
             <Text fill="#2d1a05" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 22px; -fx-font-family: 'Inknut Antiqua';" text="Password" translateX="-140.0" translateY="-280.0" />
             <TextField fx:id="passwordTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="460.0" style="-fx-background-color: #F5EBE0; -fx-background-radius: 8;" translateX="25.0" translateY="-280.0" />
-            <Button fx:id="loginButton" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#loginOnClick" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #2d1a05; -fx-font-size: 25px; -fx-text-fill: #F5EBE0; -fx-background-radius: 15; -fx-font-family: 'Inknut Antiqua';" text="Begin Quest" translateY="-240.0">
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <Button fx:id="loginButton" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#loginOnClick" prefHeight="40.0" prefWidth="205.0" style="-fx-background-color: #2d1a05; -fx-font-size: 25px; -fx-text-fill: #F5EBE0; -fx-background-radius: 15; -fx-font-family: 'Inknut Antiqua';" text="Begin Quest">
                <effect>
                   <DropShadow offsetX="5.0" offsetY="10.0">
                      <color>
@@ -68,6 +73,19 @@
                   </DropShadow>
                </effect>
             </Button>
-         </children></VBox>
+            <Button fx:id="loginButton1" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#signUpClick" prefHeight="40.0" prefWidth="205.0" style="-fx-background-color: #2d1a05; -fx-font-size: 25px; -fx-text-fill: #F5EBE0; -fx-background-radius: 15; -fx-font-family: 'Inknut Antiqua';" text="Sign Up">
+               <effect>
+                  <DropShadow offsetX="5.0" offsetY="10.0">
+                     <color>
+                        <Color opacity="0.4163497984409332" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Button>
+         </children>
+         <StackPane.margin>
+            <Insets left="55.0" top="250.0" />
+         </StackPane.margin>
+      </HBox>
     </children>
 </StackPane>

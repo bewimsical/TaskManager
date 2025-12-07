@@ -11,6 +11,7 @@ import edu.farmingdale.taskmanager.Repositories.FirebaseBossRepository;
 import edu.farmingdale.taskmanager.Repositories.FirebaseChoreRepository;
 import edu.farmingdale.taskmanager.Repositories.FirebaseQuestRepository;
 import edu.farmingdale.taskmanager.Repositories.FirebaseUserRepository;
+import edu.farmingdale.taskmanager.Session;
 import edu.farmingdale.taskmanager.TaskManagerApplication;
 import edu.farmingdale.taskmanager.exceptions.ResourceNotFoundException;
 import edu.farmingdale.taskmanager.factories.BossFactory;
@@ -32,9 +33,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.UUID;
+import java.util.*;
 
 
 public class SignupController implements Initializable {
@@ -117,26 +116,38 @@ public class SignupController implements Initializable {
         User user = UserFactory.generate(userId, username,password,email,age,profileImage, weekStart);
         userRepository.setUser(user);
 
+        Session session = Session.getInstance();
+        session.setRituals(new HashMap<>());
+        session.setBosses(new HashMap<>());
+        session.setQuests(new HashMap<>());
+        session.setAssignedChoreIds(new HashSet<>());
+
         //generate user chores
         try {
+            System.out.println("Creating New User's Chores");
             List<Chore> chores = choreRepository.getDefaultChores();
             for (Chore chore: chores){
                 String uuid = UUID.randomUUID().toString();
                 chore.setId(uuid);
                 choreRepository.setChore(chore, user);
             }
+            Session.getInstance().setChores(chores);
         } catch (ResourceNotFoundException e) {
             System.out.println(e.getMessage());;
         }
         //generate bosses
+        System.out.println("Creating New User's Bosses");
         for (int i = 0; i < 4; i++) {
             Boss b = BossFactory.generate();
             bossRepository.setBoss(b, user);
+            System.out.println("Boss Created!");
         }
         //generate quests
+        System.out.println("Creating New User's Quests");
         for (int i = 0; i < 4; i++) {
             Quest q = QuestFactory.generate();
             questRepository.setQuest(q, user);
+            System.out.println("Creating New User's Quest Created");
         }
 
     }
