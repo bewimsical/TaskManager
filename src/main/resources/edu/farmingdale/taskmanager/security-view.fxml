@@ -6,7 +6,7 @@
 <AnchorPane prefHeight="1024.0" prefWidth="1440.0" styleClass="container" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.SecurityController">
 
     <!-- Page Title -->
-    <Label layoutX="497.0" layoutY="14.0" styleClass="boss-name" text="Account Security" textFill="#6f4818" />
+    <Label layoutX="479.0" layoutY="14.0" styleClass="boss-name" text="Account Security" textFill="#6f4818" />
 
     <!-- Accordion Container -->
     <Accordion fx:id="securityAccordion" layoutX="350" layoutY="100" prefHeight="700" prefWidth="600">
@@ -15,7 +15,7 @@
 
             <!-- 🔑 Change Password -->
             <TitledPane text="🔑 Change Password">
-                <AnchorPane>
+                <AnchorPane prefHeight="619.0" prefWidth="604.0">
                     <VBox layoutX="15" layoutY="15" spacing="10">
                         <Label text="Current Password:" />
                         <PasswordField fx:id="currentPasswordField" />

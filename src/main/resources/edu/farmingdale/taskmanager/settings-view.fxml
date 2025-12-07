@@ -15,9 +15,7 @@
             <children>
                   <Button fx:id="profileBtn" onAction="#openProfile" text="Profile" textFill="#72490b" />
                   <Button fx:id="gameBtn" onAction="#openGameSettings" text="Game Settings" textFill="#72490b" />
-                  <Button fx:id="soundBtn" onAction="#openSoundSettings" text="Sound Settings" textFill="#72490b" />
                   <Button fx:id="securityBtn" onAction="#openSecurity" text="Account Security" textFill="#72490b" />
-                  <Button fx:id="deactivateBtn" onAction="#openDeactivate" text="Deactivate Account" textFill="#72490b" />
                   <Button fx:id="parentalBtn" onAction="#openParental" text="Parental Controls" textFill="#72490b" />
                   <Button fx:id="logoutBtn" onAction="#logout" text="Logout" textFill="#72490b" />
 

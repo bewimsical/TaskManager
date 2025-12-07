@@ -12,7 +12,6 @@ public class SettingsController {
 
     public Button logoutBtn;
     public Button parentalBtn;
-    public Button soundBtn;
     public Button gameBtn;
     public Button deactivateBtn;
     public Button securityBtn;
@@ -42,18 +41,8 @@ public class SettingsController {
     }
 
     @FXML
-    private void openSoundSettings() {
-        loadPage("sound-view.fxml");
-    }
-
-    @FXML
     private void openSecurity() {
         loadPage("security-view.fxml");
-    }
-
-    @FXML
-    private void openDeactivate() {
-        loadPage("deactivate-view.fxml");
     }
 
     @FXML
@@ -64,6 +53,7 @@ public class SettingsController {
     @FXML
     private void logout() {
         System.out.println("Logging out...");
+
     }
 
 

@@ -7,53 +7,103 @@ import edu.farmingdale.taskmanager.Models.User;
 import edu.farmingdale.taskmanager.TaskManagerApplication;
 
 import javafx.fxml.FXML;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
 public class SecurityController {
 
-    public AnchorPane securityContentArea;
-    public Label statusLabel;
-    public Accordion securityAccordion;
+    @FXML public AnchorPane securityContentArea;
+    @FXML public Label statusLabel;
 
-    //PASSWORD FIELDS
-    public PasswordField currentPasswordField;
-    public PasswordField newPasswordField;
-    public PasswordField confirmPasswordField;
+    // PASSWORD FIELDS
+    @FXML public PasswordField currentPasswordField;
+    @FXML public PasswordField newPasswordField;
+    @FXML public PasswordField confirmPasswordField;
 
-    //EMAIL FIELDS
-    public TextField currentEmail;     // USER TYPES current email
-    public TextField newEmailField;    // USER TYPES new email
+    // EMAIL FIELDS
+    @FXML public TextField currentEmail;
+    @FXML public TextField newEmailField;
 
-    public CheckBox twoFactorToggle;
+    // 2FA
+    @FXML public CheckBox twoFactorToggle;
+
     private User currentUser;
 
     @FXML
     public void initialize() {
+
         currentUser = Session.getInstance().getUser();
+
+        if (currentUser.getAge()<18){
+            currentUser.setParentalControls(true);
+        }
+        if (currentUser.isParentalControls()){
+            disableSecurityFields();
+        }
+        if (currentUser.getAge()>=18){
+            currentUser.setParentalControls(false);
+
+            //update firestore
+            TaskManagerApplication.fstore
+                    .collection("users")
+                    .document(currentUser.getId())
+                    .update("parentalControls", false);
+
+        }
 
         if (currentUser == null) {
             showStatus("Error: No logged-in user found", true);
             return;
         }
+
+        // Load email
         loadCurrentEmail();
 
+        // Disable UI AFTER FXML loads (important!)
+        Platform.runLater(() -> {
+            if (currentUser.isParentalControls()) {
+                disableSecurityFields();
+            }
+        });
     }
 
+    private void disableSecurityFields() {
+
+        // Disable password fields
+        if (currentPasswordField != null) currentPasswordField.setDisable(true);
+        if (newPasswordField != null) newPasswordField.setDisable(true);
+        if (confirmPasswordField != null) confirmPasswordField.setDisable(true);
+
+        // Disable email fields
+        if (currentEmail != null) currentEmail.setDisable(true);
+        if (newEmailField != null) newEmailField.setDisable(true);
+
+        // Disable 2FA toggle
+        if (twoFactorToggle != null) twoFactorToggle.setDisable(true);
+
+        // Show status
+        statusLabel.setText("Parental Controls Enabled — Editing Disabled");
+        statusLabel.setStyle("-fx-text-fill: #c0392b;");
+    }
 
     private void loadCurrentEmail() {
         try {
-            UserRecord record = FirebaseAuth.getInstance().getUser(currentUser.getId());
+            FirebaseAuth.getInstance().getUser(currentUser.getId());
         } catch (Exception e) {
             e.printStackTrace();
-            showStatus("Failed to load current email", true);
+            showStatus("Failed to load current email.", true);
         }
     }
 
-    // CHANGE PASSWORD
     @FXML
     public void updatePassword(ActionEvent event) {
+
+        if (currentUser.isParentalControls()) {
+            showStatus("Password changes are disabled under Parental Controls.", true);
+            return;
+        }
 
         if (currentUser == null) return;
 
@@ -71,18 +121,15 @@ public class SecurityController {
         }
 
         try {
-            // Update Firestore password
             TaskManagerApplication.fstore
                     .collection("users")
                     .document(currentUser.getId())
                     .update("password", newPass)
                     .addListener(() -> showStatus("Password updated!", false), Runnable::run);
 
-            // Update session object
             currentUser.setPassword(newPass);
             Session.getInstance().getUser().setPassword(newPass);
 
-            // Clear UI fields
             newPasswordField.clear();
             confirmPasswordField.clear();
             currentPasswordField.clear();
@@ -93,9 +140,13 @@ public class SecurityController {
         }
     }
 
-    //CHANGE EMAIL
     @FXML
     public void updateEmail(ActionEvent actionEvent) {
+
+        if (currentUser.isParentalControls()) {
+            showStatus("Email changes are disabled under Parental Controls.", true);
+            return;
+        }
 
         if (currentUser == null) return;
 
@@ -103,7 +154,6 @@ public class SecurityController {
         String newEmail = newEmailField.getText();
         String actualCurrentEmail = currentUser.getEmail();
 
-        // Validate current email
         if (enteredCurrentEmail.isEmpty()) {
             showStatus("Please enter your current email.", true);
             return;
@@ -114,7 +164,6 @@ public class SecurityController {
             return;
         }
 
-        // Validate new email
         if (newEmail.isEmpty()) {
             showStatus("Please enter a new email.", true);
             return;
@@ -126,18 +175,15 @@ public class SecurityController {
         }
 
         try {
-            // Update Firestore
             TaskManagerApplication.fstore
                     .collection("users")
                     .document(currentUser.getId())
                     .update("email", newEmail)
                     .addListener(() -> showStatus("Email updated!", false), Runnable::run);
 
-            // Update session
             currentUser.setEmail(newEmail);
             Session.getInstance().getUser().setEmail(newEmail);
 
-            // Clear fields
             newEmailField.clear();
             currentEmail.clear();
 
@@ -146,19 +192,12 @@ public class SecurityController {
             showStatus("Error updating email.", true);
         }
     }
+    @FXML public void signOutEverywhere(ActionEvent actionEvent) { }
+    @FXML public void toggleTwoFactor(ActionEvent actionEvent) { }
 
-    // SIGN OUT EVERYWHERE (add later)
-    @FXML
-    public void signOutEverywhere(ActionEvent actionEvent) { }
-
-    // 2FA TOGGLE (will add later)
-    @FXML
-    public void toggleTwoFactor(ActionEvent actionEvent) { }
-
-    // STATUS MESSAGE
     private void showStatus(String msg, boolean error) {
         statusLabel.setText(msg);
-        statusLabel.setStyle(error ? "-fx-text-fill: red;" : "-fx-text-fill: green;");
+        statusLabel.setStyle(error ? "-fx-text-fill: red;" : "-fx-text-fill: #50280d;");
     }
 }
 
