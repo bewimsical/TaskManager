@@ -29,14 +29,16 @@ public class BossViewModel {
     private final BooleanProperty vanquished = new SimpleBooleanProperty();
     private final ObservableList<Boss> visibleBosses = FXCollections.observableArrayList();
     private final ObservableList<Chore> visibleChores = FXCollections.observableArrayList();
-    private final ObjectProperty<Image> bossImage = new SimpleObjectProperty<>();
+
+    private final StringProperty bossImage = new SimpleStringProperty();
 
     //do I make this  a simple object property
     private ChoreCard<Boss> currentBossCard;
     private double totalHealth;
     private double currentHealth;
-    private Image aliveImage;
-    private Image deadImage;
+
+    private String aliveImage;
+    private String deadImage;
 
     //store data from database
     private final Map<String, List<Boss>> bosses;
@@ -64,9 +66,11 @@ public class BossViewModel {
             }
             updateImage();
         });
+        setUpView();
     }
 
     public void setUpView(){
+        visibleBosses.clear();
         visibleBosses.addAll(bosses.get("Bounties"));
         if (!visibleBosses.isEmpty()) {
             selectedBoss.set(visibleBosses.get(0));
@@ -120,17 +124,17 @@ public class BossViewModel {
         return vanquished;
     }
 
-    public Image getBossImage() {
+    public String getBossImage() {
         return bossImage.get();
     }
 
-    public ObjectProperty<Image> bossImageProperty() {
+    public StringProperty bossImageProperty() {
         return bossImage;
     }
 
     public void setUpImages(Boss b){
-        aliveImage = new Image(TaskManagerApplication.class.getResource("images/monsters/" + b.getDirtyImageUrl()).toExternalForm());
-        deadImage = new Image(TaskManagerApplication.class.getResource("images/monsters/" + b.getCleanImageUrl()).toExternalForm());
+        aliveImage = TaskManagerApplication.class.getResource("images/monsters/" + b.getDirtyImageUrl()).toExternalForm();
+        deadImage = TaskManagerApplication.class.getResource("images/monsters/" + b.getCleanImageUrl()).toExternalForm();
     }
 
     private void setupHealthBar(){
@@ -217,5 +221,9 @@ public class BossViewModel {
         visibleBosses.add(b);
         bosses.get("Bounties").add(b);
         bossRepo.setBoss(b, user);
+    }
+
+    public String getName() {
+        return name.get();
     }
 }

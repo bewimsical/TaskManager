@@ -151,4 +151,6 @@ public class QuestViewModel {
         quests.get("Active").add(q);
         questRepo.setQuest(q, user);
     }
+
+
 }

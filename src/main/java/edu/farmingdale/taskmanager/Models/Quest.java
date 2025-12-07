@@ -227,4 +227,12 @@ public class Quest {
             return new Quest(this);
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Quest)) return false;
+        Quest quest = (Quest) o;
+        return id.equals(quest.id);  // or whatever uniquely identifies a chore
+    }
 }
