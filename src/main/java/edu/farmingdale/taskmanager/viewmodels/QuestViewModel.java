@@ -80,6 +80,8 @@ public class QuestViewModel {
         this.currentQuestCard = currentQuestCard;
     }
 
+    public Map<String, List<Quest>> getQuests() { return quests; }
+
     public void cardClick(ChoreCard<Quest> card){
         Quest quest = card.getData();
         setSelectedQuest(quest);

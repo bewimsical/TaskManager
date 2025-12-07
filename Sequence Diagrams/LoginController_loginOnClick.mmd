@@ -1,0 +1,453 @@
+sequenceDiagram
+actor User
+User ->> LoginController : loginOnClick
+activate LoginController
+LoginController ->> FirebaseUserRepository : getUserById
+activate FirebaseUserRepository
+FirebaseUserRepository ->> FirebaseUserRepository : () -&gt;
+activate FirebaseUserRepository
+FirebaseUserRepository ->> ResourceNotFoundException : new
+activate ResourceNotFoundException
+ResourceNotFoundException -->> FirebaseUserRepository : #32; 
+deactivate ResourceNotFoundException
+FirebaseUserRepository -->> FirebaseUserRepository : #32; 
+deactivate FirebaseUserRepository
+FirebaseUserRepository ->> User : getUsername
+activate User
+User -->> FirebaseUserRepository : #32; 
+deactivate User
+FirebaseUserRepository ->> ResourceNotFoundException : new
+activate ResourceNotFoundException
+ResourceNotFoundException -->> FirebaseUserRepository : #32; 
+deactivate ResourceNotFoundException
+FirebaseUserRepository ->> ResourceNotFoundException : new
+activate ResourceNotFoundException
+ResourceNotFoundException -->> FirebaseUserRepository : #32; 
+deactivate ResourceNotFoundException
+FirebaseUserRepository -->> LoginController : #32; 
+deactivate FirebaseUserRepository
+LoginController ->> User : getPassword
+activate User
+User -->> LoginController : #32; 
+deactivate User
+LoginController ->> User : getId
+activate User
+User -->> LoginController : #32; 
+deactivate User
+LoginController ->> FirestoreClient : getUser
+activate FirestoreClient
+FirestoreClient ->> FirebaseUserRepository : getUserById
+activate FirebaseUserRepository
+FirebaseUserRepository ->> FirebaseUserRepository : () -&gt;
+activate FirebaseUserRepository
+FirebaseUserRepository ->> ResourceNotFoundException : new
+activate ResourceNotFoundException
+ResourceNotFoundException -->> FirebaseUserRepository : #32; 
+deactivate ResourceNotFoundException
+FirebaseUserRepository -->> FirebaseUserRepository : #32; 
+deactivate FirebaseUserRepository
+FirebaseUserRepository ->> User : getUsername
+activate User
+User -->> FirebaseUserRepository : #32; 
+deactivate User
+FirebaseUserRepository ->> ResourceNotFoundException : new
+activate ResourceNotFoundException
+ResourceNotFoundException -->> FirebaseUserRepository : #32; 
+deactivate ResourceNotFoundException
+FirebaseUserRepository ->> ResourceNotFoundException : new
+activate ResourceNotFoundException
+ResourceNotFoundException -->> FirebaseUserRepository : #32; 
+deactivate ResourceNotFoundException
+FirebaseUserRepository -->> FirestoreClient : #32; 
+deactivate FirebaseUserRepository
+FirestoreClient ->> Session : getInstance
+activate Session
+Session ->> Session : new
+activate Session
+Session -->> Session : #32; 
+deactivate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> Session : setUser
+activate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> User : getUsername
+activate User
+User -->> FirestoreClient : #32; 
+deactivate User
+FirestoreClient ->> User : getFriends
+activate User
+User -->> FirestoreClient : #32; 
+deactivate User
+FirestoreClient ->> User : setFriends
+activate User
+User -->> FirestoreClient : #32; 
+deactivate User
+FirestoreClient ->> User : getParties
+activate User
+User -->> FirestoreClient : #32; 
+deactivate User
+FirestoreClient ->> User : setParties
+activate User
+User -->> FirestoreClient : #32; 
+deactivate User
+FirestoreClient ->> Session : getInstance
+activate Session
+Session ->> Session : new
+activate Session
+Session -->> Session : #32; 
+deactivate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> Session : setFriends
+activate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> Session : getInstance
+activate Session
+Session ->> Session : new
+activate Session
+Session -->> Session : #32; 
+deactivate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> Session : setParties
+activate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> User : getFriends
+activate User
+User -->> FirestoreClient : #32; 
+deactivate User
+FirestoreClient ->> FirebaseUserRepository : getUserById
+activate FirebaseUserRepository
+FirebaseUserRepository ->> FirebaseUserRepository : () -&gt;
+activate FirebaseUserRepository
+FirebaseUserRepository ->> ResourceNotFoundException : new
+activate ResourceNotFoundException
+ResourceNotFoundException -->> FirebaseUserRepository : #32; 
+deactivate ResourceNotFoundException
+FirebaseUserRepository -->> FirebaseUserRepository : #32; 
+deactivate FirebaseUserRepository
+FirebaseUserRepository ->> User : getUsername
+activate User
+User -->> FirebaseUserRepository : #32; 
+deactivate User
+FirebaseUserRepository ->> ResourceNotFoundException : new
+activate ResourceNotFoundException
+ResourceNotFoundException -->> FirebaseUserRepository : #32; 
+deactivate ResourceNotFoundException
+FirebaseUserRepository ->> ResourceNotFoundException : new
+activate ResourceNotFoundException
+ResourceNotFoundException -->> FirebaseUserRepository : #32; 
+deactivate ResourceNotFoundException
+FirebaseUserRepository -->> FirestoreClient : #32; 
+deactivate FirebaseUserRepository
+FirestoreClient ->> Session : getInstance
+activate Session
+Session ->> Session : new
+activate Session
+Session -->> Session : #32; 
+deactivate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> Session : getFriends
+activate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> User : getParties
+activate User
+User -->> FirestoreClient : #32; 
+deactivate User
+FirestoreClient ->> FirebasePartyRepository : getParty
+activate FirebasePartyRepository
+FirebasePartyRepository ->> FirebasePartyRepository : () -&gt;
+activate FirebasePartyRepository
+FirebasePartyRepository ->> ResourceNotFoundException : new
+activate ResourceNotFoundException
+ResourceNotFoundException -->> FirebasePartyRepository : #32; 
+deactivate ResourceNotFoundException
+FirebasePartyRepository -->> FirebasePartyRepository : #32; 
+deactivate FirebasePartyRepository
+FirebasePartyRepository ->> ResourceNotFoundException : new
+activate ResourceNotFoundException
+ResourceNotFoundException -->> FirebasePartyRepository : #32; 
+deactivate ResourceNotFoundException
+FirebasePartyRepository ->> ResourceNotFoundException : new
+activate ResourceNotFoundException
+ResourceNotFoundException -->> FirebasePartyRepository : #32; 
+deactivate ResourceNotFoundException
+FirebasePartyRepository -->> FirestoreClient : #32; 
+deactivate FirebasePartyRepository
+FirestoreClient ->> Session : getInstance
+activate Session
+Session ->> Session : new
+activate Session
+Session -->> Session : #32; 
+deactivate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> Session : getParties
+activate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> Session : getInstance
+activate Session
+Session ->> Session : new
+activate Session
+Session -->> Session : #32; 
+deactivate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> Session : getUser
+activate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> FirebaseBossRepository : getBosses
+activate FirebaseBossRepository
+FirebaseBossRepository ->> User : getId
+activate User
+User -->> FirebaseBossRepository : #32; 
+deactivate User
+FirebaseBossRepository ->> ResourceNotFoundException : new
+activate ResourceNotFoundException
+ResourceNotFoundException -->> FirebaseBossRepository : #32; 
+deactivate ResourceNotFoundException
+FirebaseBossRepository ->> Boss : isBounties
+activate Boss
+Boss -->> FirebaseBossRepository : #32; 
+deactivate Boss
+FirebaseBossRepository ->> Boss : isVanquished
+activate Boss
+Boss -->> FirebaseBossRepository : #32; 
+deactivate Boss
+FirebaseBossRepository ->> ResourceNotFoundException : new
+activate ResourceNotFoundException
+ResourceNotFoundException -->> FirebaseBossRepository : #32; 
+deactivate ResourceNotFoundException
+FirebaseBossRepository -->> FirestoreClient : #32; 
+deactivate FirebaseBossRepository
+FirestoreClient ->> Session : getInstance
+activate Session
+Session ->> Session : new
+activate Session
+Session -->> Session : #32; 
+deactivate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> Session : setBosses
+activate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> Session : getInstance
+activate Session
+Session ->> Session : new
+activate Session
+Session -->> Session : #32; 
+deactivate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> Session : getUser
+activate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> FirebaseChoreRepository : getChores
+activate FirebaseChoreRepository
+FirebaseChoreRepository ->> User : getId
+activate User
+User -->> FirebaseChoreRepository : #32; 
+deactivate User
+FirebaseChoreRepository ->> ResourceNotFoundException : new
+activate ResourceNotFoundException
+ResourceNotFoundException -->> FirebaseChoreRepository : #32; 
+deactivate ResourceNotFoundException
+FirebaseChoreRepository ->> ResourceNotFoundException : new
+activate ResourceNotFoundException
+ResourceNotFoundException -->> FirebaseChoreRepository : #32; 
+deactivate ResourceNotFoundException
+FirebaseChoreRepository -->> FirestoreClient : #32; 
+deactivate FirebaseChoreRepository
+FirestoreClient ->> Session : getInstance
+activate Session
+Session ->> Session : new
+activate Session
+Session -->> Session : #32; 
+deactivate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> Session : setChores
+activate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> Session : getInstance
+activate Session
+Session ->> Session : new
+activate Session
+Session -->> Session : #32; 
+deactivate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> Session : getUser
+activate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> FirebaseRitualRepository : getRituals
+activate FirebaseRitualRepository
+FirebaseRitualRepository ->> User : getId
+activate User
+User -->> FirebaseRitualRepository : #32; 
+deactivate User
+FirebaseRitualRepository ->> ResourceNotFoundException : new
+activate ResourceNotFoundException
+ResourceNotFoundException -->> FirebaseRitualRepository : #32; 
+deactivate ResourceNotFoundException
+FirebaseRitualRepository ->> Ritual : getDateRecorded
+activate Ritual
+Ritual -->> FirebaseRitualRepository : #32; 
+deactivate Ritual
+FirebaseRitualRepository ->> Ritual : getDateRecorded
+activate Ritual
+Ritual -->> FirebaseRitualRepository : #32; 
+deactivate Ritual
+FirebaseRitualRepository ->> Ritual : setCompleted
+activate Ritual
+Ritual -->> FirebaseRitualRepository : #32; 
+deactivate Ritual
+FirebaseRitualRepository ->> Ritual : getTimeOfDay
+activate Ritual
+Ritual -->> FirebaseRitualRepository : #32; 
+deactivate Ritual
+FirebaseRitualRepository ->> ResourceNotFoundException : new
+activate ResourceNotFoundException
+ResourceNotFoundException -->> FirebaseRitualRepository : #32; 
+deactivate ResourceNotFoundException
+FirebaseRitualRepository -->> FirestoreClient : #32; 
+deactivate FirebaseRitualRepository
+FirestoreClient ->> Session : getInstance
+activate Session
+Session ->> Session : new
+activate Session
+Session -->> Session : #32; 
+deactivate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> Session : setRituals
+activate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> Session : getInstance
+activate Session
+Session ->> Session : new
+activate Session
+Session -->> Session : #32; 
+deactivate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> Session : getUser
+activate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> FirebaseQuestRepository : getQuests
+activate FirebaseQuestRepository
+FirebaseQuestRepository ->> User : getId
+activate User
+User -->> FirebaseQuestRepository : #32; 
+deactivate User
+FirebaseQuestRepository ->> ResourceNotFoundException : new
+activate ResourceNotFoundException
+ResourceNotFoundException -->> FirebaseQuestRepository : #32; 
+deactivate ResourceNotFoundException
+FirebaseQuestRepository ->> Quest : isActive
+activate Quest
+Quest -->> FirebaseQuestRepository : #32; 
+deactivate Quest
+FirebaseQuestRepository ->> Quest : isCompleted
+activate Quest
+Quest -->> FirebaseQuestRepository : #32; 
+deactivate Quest
+FirebaseQuestRepository ->> ResourceNotFoundException : new
+activate ResourceNotFoundException
+ResourceNotFoundException -->> FirebaseQuestRepository : #32; 
+deactivate ResourceNotFoundException
+FirebaseQuestRepository -->> FirestoreClient : #32; 
+deactivate FirebaseQuestRepository
+FirestoreClient ->> Session : getInstance
+activate Session
+Session ->> Session : new
+activate Session
+Session -->> Session : #32; 
+deactivate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> Session : setQuests
+activate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> Session : getInstance
+activate Session
+Session ->> Session : new
+activate Session
+Session -->> Session : #32; 
+deactivate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> Session : setAssignedChoreIds
+activate Session
+Session -->> FirestoreClient : #32; 
+deactivate Session
+FirestoreClient ->> FirebaseUserRepository : checkWeekStart
+activate FirebaseUserRepository
+FirebaseUserRepository ->> User : getWeekStart
+activate User
+User -->> FirebaseUserRepository : #32; 
+deactivate User
+FirebaseUserRepository ->> User : getWeekStart
+activate User
+User -->> FirebaseUserRepository : #32; 
+deactivate User
+FirebaseUserRepository ->> UserFactory : computeWeekStart
+activate UserFactory
+UserFactory -->> FirebaseUserRepository : #32; 
+deactivate UserFactory
+FirebaseUserRepository ->> User : getWeekStartDate
+activate User
+User -->> FirebaseUserRepository : #32; 
+deactivate User
+FirebaseUserRepository ->> User : getWeekStartDate
+activate User
+User -->> FirebaseUserRepository : #32; 
+deactivate User
+FirebaseUserRepository ->> User : setWeekStreak
+activate User
+User -->> FirebaseUserRepository : #32; 
+deactivate User
+FirebaseUserRepository -->> FirestoreClient : #32; 
+deactivate FirebaseUserRepository
+FirestoreClient ->> FirebaseUserRepository : checkLastRitualDate
+activate FirebaseUserRepository
+FirebaseUserRepository ->> User : getLastRitualComplete
+activate User
+User -->> FirebaseUserRepository : #32; 
+deactivate User
+FirebaseUserRepository ->> User : setStreak
+activate User
+User -->> FirebaseUserRepository : #32; 
+deactivate User
+FirebaseUserRepository ->> User : setXpBonus
+activate User
+User -->> FirebaseUserRepository : #32; 
+deactivate User
+FirebaseUserRepository -->> FirestoreClient : #32; 
+deactivate FirebaseUserRepository
+FirestoreClient -->> LoginController : #32; 
+deactivate FirestoreClient
+LoginController ->> LoginController : switchScene
+activate LoginController
+LoginController ->> TaskManagerApplication : setup
+activate TaskManagerApplication
+TaskManagerApplication -->> LoginController : #32; 
+deactivate TaskManagerApplication
+LoginController -->> LoginController : #32; 
+deactivate LoginController
+deactivate LoginController
