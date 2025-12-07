@@ -33,7 +33,7 @@ public class TaskManagerApplication extends Application {
 
 
         //get user from the database and set the session
-        //FirestoreClient.getUser("users", "3b597b86-4e4e-4bb3-a4b9-285a48fe01f1");
+        //FirestoreClient.getUser("users", "X0ekriM3bVNKVtzRlOWFgAbZZvh1");
         //FirestoreClient.getUser("users", "user1");
 
         FXMLLoader fxmlLoader = new FXMLLoader(TaskManagerApplication.class.getResource("login-view.fxml"));

@@ -59,13 +59,15 @@ public class PartyViewModel {
         if (user.getFriends() == null) {
             user.setFriends(new ArrayList<>());
         }
-        user.getFriends().add(friend.getId());
-        //todo fix this? add to the observable list?
-        friends.add(friend);
-        //todo - do i show all friends when the friend is added?
-        visibleUsers.add(friend);
-        //Session.getInstance().getFriends().add(friend);
-        userRepo.updateUser(user);
+        if (!user.getFriends().contains(friend.getId())) {
+            user.getFriends().add(friend.getId());
+            //todo fix this? add to the observable list?
+            friends.add(friend);
+            //todo - do i show all friends when the friend is added?
+            visibleUsers.add(friend);
+            //Session.getInstance().getFriends().add(friend);
+            userRepo.updateUser(user);
+        }
     }
 
     public void showParty(Party party) {
