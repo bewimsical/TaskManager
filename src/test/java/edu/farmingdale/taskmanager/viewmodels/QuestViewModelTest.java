@@ -1,6 +1,7 @@
 package edu.farmingdale.taskmanager.viewmodels;
 
 import com.google.api.client.util.Maps;
+import edu.farmingdale.taskmanager.Models.Boss;
 import edu.farmingdale.taskmanager.Models.Chore;
 import edu.farmingdale.taskmanager.Models.Quest;
 import edu.farmingdale.taskmanager.Models.User;
@@ -10,10 +11,13 @@ import edu.farmingdale.taskmanager.Session;
 import edu.farmingdale.taskmanager.factories.QuestFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,95 +26,68 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class QuestViewModelTest {
 
-    final FirebaseQuestRepository questRepo = new FirebaseQuestRepository();
-    final FirebaseUserRepository userRepo = new FirebaseUserRepository();
-    private final ObservableList<Quest> visibleQuests = FXCollections.observableArrayList();
-    private final ObservableList<Chore> visibleChores = FXCollections.observableArrayList();
-    QuestViewModel vm = new QuestViewModel();
-    Session session = Session.getInstance();
-    User user;
-    User user1;
-    Map<String, List<Quest>> quests;
-    //Quest quests1;
-    //quests = session.getQuests();
+    @Test
+    void switchCategory(){
+        List<Quest> active = new ArrayList<>();
+        List<Quest> completed = new ArrayList<>();
 
+        for (int i = 0; i < 2; i++) {
+            Quest q = new Quest.QuestBuilder()
+                    .id("quest"+i)
+                    .name("q"+i)
+                    .isActive(true)
+                    .chores(new ArrayList<>())
+                    .build();
+            active.add(q);
+        }
 
-    //QuestViewModel vm = new QuestViewModel();
-    //Quest q1 = QuestFactory.generate();
-    //Quest q2 = QuestFactory.generate();
-    //Quest q3 = QuestFactory.generate();
-    //Quest q4 = QuestFactory.generate();
-    //List<Quest> activeQuests = List.of(q1, q2);
-    //List<Quest> inactiveQuests = List.of(q3, q4);
+        for (int i = 2; i < 4; i++) {
+            Quest q = new Quest.QuestBuilder()
+                    .id("quest"+i)
+                    .name("q"+i)
+                    .isCompleted(true)
+                    .chores(new ArrayList<>())
+                    .build();
+            completed.add(q);
+        }
 
-    /*
-    Map<String, List<Quest>> questMap = Maps.newHashMap();
-    questMap.put("Active", activeQuests);
-    questMap.put("Completed", inactiveQuests);
+        Session.getInstance().setQuests(new HashMap<>());
+        Map<String, List<Quest>> questsMap = Session.getInstance().getQuests();
+        questsMap.put("Active", active);
+        questsMap.put("Completed", completed);
 
-    questMap =  vm.getQuests();
-
-     */
-
-
-
-    @BeforeEach
-    void newSetupTest() {
-
-        user = session.getUser();
-        //quests1.setName("new quest");
-        //quests1.setActive(true);
-        //quests.
-        //quests.get("Complete").add(currentQuest);
-        visibleQuests.addAll();
-        visibleChores.addAll();
-
-        /*
         QuestViewModel vm = new QuestViewModel();
-        Quest q1 = QuestFactory.generate();
-        Quest q2 = QuestFactory.generate();
-        Quest q3 = QuestFactory.generate();
-        Quest q4 = QuestFactory.generate();
-        List<Quest> activeQuests = List.of(q1, q2);
-        List<Quest> inactiveQuests = List.of(q3, q4);
 
-        Map<String, List<Quest>> quests = Maps.newHashMap();
-        quests.put("Active", activeQuests);
-        quests.put("Completed", inactiveQuests);
+        vm.switchCategory("Active");
 
-        quests =  vm.getQuests();
-        */
-    }
+        ObservableList<Quest> visibleQuests = vm.getVisibleQuests();
 
+        boolean same = visibleQuests.equals(active);
 
-    @Test
-    void choresNotEmptyTest() {
-        var quest = new QuestViewModel();
-        assertEquals(!quest.getVisibleChores().isEmpty(), !quest.getVisibleQuests().isEmpty());
+        Assertions.assertTrue(same);
+
     }
 
     @Test
-    void namesNotEmptyTest() {
-        var quest = new QuestViewModel();
-        assertNotNull(quest.nameProperty().isEmpty());
+    void cardClick(){
+        Boss b = new Boss.BossesBuilder()
+                .id("boss1")
+                .name("Boss")
+                .currentHealth(100)
+                .totalHealth(100)
+                .cleanImageUrl("CleanBogFrog.PNG")
+                .dirtyImageUrl("DirtyBogFrog.PNG")
+                .chores(new ArrayList<>())
+                .build();
+
+        Session.getInstance().setBosses(new HashMap<>());
+        Session.getInstance().getBosses().put("Bounties", new ArrayList<>());
+        BossViewModel vm = new BossViewModel();
+
+        vm.cardClick(b);
+
+        assertEquals(b.getName(), vm.getName());
+
+
     }
-
-    /*
-    @Test
-    void switchCategory() {
-        var quest = new QuestViewModel();
-        //Map<String, List<Quest>> quests = Maps.newHashMap();
-        //quests.put("Active", activeQuests);
-        //quests.put("Completed", inactiveQuests);
-        //visibleQuests.
-
-        //quests =  vm.getQuests();
-        //quest.setUpView();
-
-        assertEquals(quests.get("Active"), visibleQuests);
-
-
-    }
-
-     */
 }
