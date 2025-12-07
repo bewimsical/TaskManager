@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="1024.0" prefWidth="1440.0" styleClass="container" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.SecurityController">
+
+    <!-- Page Title -->
+    <Label layoutX="479.0" layoutY="14.0" styleClass="boss-name" text="Account Security" textFill="#6f4818" />
+
+    <!-- Accordion Container -->
+    <Accordion fx:id="securityAccordion" layoutX="350" layoutY="100" prefHeight="700" prefWidth="600">
+
+        <panes>
+
+            <!-- 🔑 Change Password -->
+            <TitledPane text="🔑 Change Password">
+                <AnchorPane prefHeight="619.0" prefWidth="604.0">
+                    <VBox layoutX="15" layoutY="15" spacing="10">
+                        <Label text="Current Password:" />
+                        <PasswordField fx:id="currentPasswordField" />
+
+                        <Label text="New Password:" />
+                        <PasswordField fx:id="newPasswordField" />
+
+                        <Label text="Confirm Password:" />
+                        <PasswordField fx:id="confirmPasswordField" />
+
+                        <Button onAction="#updatePassword" text="Update Password" />
+                    </VBox>
+                </AnchorPane>
+            </TitledPane>
+
+            <!-- 📧 Change Email -->
+            <TitledPane text="📧 Change Email">
+                <AnchorPane>
+                    <VBox layoutX="15" layoutY="15" spacing="10">
+
+                        <Label text="Current Email:" />
+                        <TextField fx:id="currentEmail" />
+
+                        <Label text="New Email:" />
+                        <TextField fx:id="newEmailField" />
+
+                        <Button onAction="#updateEmail" text="Update Email" />
+
+                    </VBox>
+                </AnchorPane>
+            </TitledPane>
+
+
+            <!-- 🛡️ Two-Factor Authentication -->
+            <TitledPane text="🛡️ Two-Factor Authentication">
+                <AnchorPane>
+                    <VBox layoutX="15" layoutY="15" spacing="10">
+                        <Label text="Add an extra step to secure your account." />
+                        <CheckBox fx:id="twoFactorToggle" onAction="#toggleTwoFactor" text="Enable Two-Factor Authentication" />
+                    </VBox>
+                </AnchorPane>
+            </TitledPane>
+
+            <!-- 💻 Device Security -->
+            <TitledPane text="💻 Device Security">
+                <AnchorPane>
+                    <VBox layoutX="15" layoutY="15" spacing="10">
+                        <Label text="Sign out all other active sessions." />
+                        <Button onAction="#signOutEverywhere" text="Sign Out Everywhere" />
+                    </VBox>
+                </AnchorPane>
+            </TitledPane>
+
+        </panes>
+
+    </Accordion>
+
+    <!-- Status message -->
+    <Label fx:id="statusLabel" layoutX="350" layoutY="820" style="-fx-text-fill: lightgreen;" />
+
+</AnchorPane>

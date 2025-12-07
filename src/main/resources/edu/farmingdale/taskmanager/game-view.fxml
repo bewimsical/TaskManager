@@ -3,24 +3,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600" prefWidth="900" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.GameSettingController">
+<AnchorPane prefHeight="1024" prefWidth="1440" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.farmingdale.taskmanager.Controllers.GameSettingController">
 
 
-<Label text="Game Settings" layoutX="230" layoutY="18" styleClass="menu-label"/>
+<Label layoutX="614.0" layoutY="38.0" prefHeight="82.0" prefWidth="256.0" style="-fx-font-size: 30" styleClass="label-test" text="Game Settings" />
 
 
-    <VBox spacing="15" layoutX="160" layoutY="70">
-        <CheckBox fx:id="tutorialsCheck" text="Show Tutorials"/>
-        <CheckBox fx:id="animationsCheck" text="Enable Animations"/>
-        <CheckBox fx:id="notificationsCheck" text="Enable Notifications"/>
-        <CheckBox fx:id="gameModeCheck" text="Enable Game Mode"/>
+    <VBox layoutX="508.0" layoutY="199.0" prefHeight="408.0" prefWidth="507.0" spacing="15" styleClass="combo-box">
+        <CheckBox fx:id="tutorialsCheck" text="Show Tutorials" />
+        <CheckBox fx:id="animationsCheck" text="Enable Animations" />
+        <CheckBox fx:id="notificationsCheck" text="Enable Notifications" />
+        <CheckBox fx:id="gameModeCheck" text="Enable Game Mode" />
     </VBox>
 
 
-    <Button text="Save Changes" layoutX="235" layoutY="270" onAction="#openGameSetting"/>
+    <Button layoutX="684.0" layoutY="671.0" onAction="#openGameSetting" text="Save Changes" />
 
 
-    <Label fx:id="statusLabel" layoutX="250" layoutY="320" style="-fx-text-fill: lightgreen;"/>
+    <Label fx:id="statusLabel" layoutX="250" layoutY="320" style="-fx-text-fill: lightgreen;" />
 
 </AnchorPane>
-

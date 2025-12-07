@@ -24,6 +24,8 @@ public class User {
     //TODO change to a set!
     private List<String> parties;
     private List<String> friends;
+    private boolean parentalControls = false;
+
 
 
     public User() {
@@ -49,6 +51,9 @@ public class User {
         this.weekStartDate = userBuilder.weekStartDate;
         this.friends = userBuilder.friends;
         this.parties = userBuilder.parties;
+
+        this.parentalControls = userBuilder.parentalControls;
+
 
     }
 
@@ -207,6 +212,16 @@ public class User {
         this.friends = friends;
     }
 
+    public boolean isParentalControls() {
+        return parentalControls;
+    }
+
+    public void setParentalControls(boolean parentalControls) {
+        this.parentalControls = parentalControls;
+    }
+
+
+
 
     public static class UserBuilder {
         private String id;
@@ -228,6 +243,9 @@ public class User {
         private String weekStart;
         private String lastRitualComplete;
         private String weekStartDate;
+
+        private boolean parentalControls = false;
+
 
 
         public UserBuilder() {
@@ -323,7 +341,10 @@ public class User {
             this.weekStartDate = weekStartDate;
             return this;
         }
-
+        public UserBuilder parentalControls(boolean parentalControls) {
+            this.parentalControls = parentalControls;
+            return this;
+        }
 
         public User build() {
             return new User(this);
