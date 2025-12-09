@@ -180,6 +180,9 @@
                                                                     </padding>
                                                                 </Label>
                                                             </children>
+                                             <padding>
+                                                <Insets top="10.0" />
+                                             </padding>
                                                         </StackPane>
                                                         <VBox fx:id="mainContainer" alignment="TOP_CENTER" prefHeight="292.0" prefWidth="436.0" spacing="5.0">
                                                             <VBox.margin>
