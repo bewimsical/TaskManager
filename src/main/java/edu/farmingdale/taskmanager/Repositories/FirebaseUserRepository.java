@@ -119,6 +119,8 @@ public class FirebaseUserRepository {
             for(Boss b : bosses.get("Bounties")){
                 if (b.isBounties() && !b.isVanquished()){
                     bossRepo.deleteBoss(b,user);
+                }else{
+                    b.setBounties(false);
                 }
             }
             bosses.get("Bounties").clear();
@@ -127,6 +129,8 @@ public class FirebaseUserRepository {
             for(Quest q : quests.get("Active")){
                 if (q.isActive() && !q.isCompleted()){
                     questRepo.deleteQuest(q,user);
+                }else{
+                    q.setActive(false);
                 }
             }
             quests.get("Active").clear();

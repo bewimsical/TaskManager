@@ -216,6 +216,7 @@ public class QuestController implements Initializable {
         Label button = (Label) e.getSource();
         button.getStyleClass().add("active");
         vm.switchCategory(button.getText());
+        drawPathLines(vm.getChoreMarks());
     }
 
     private void setUpLists(ObservableList<Quest> list, VBox container){
