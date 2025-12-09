@@ -92,11 +92,11 @@ See Chore Quest in action:
 *Demonstrates completing a daily Ritual chore, tracking streaks, and earning XP.*
 
 ### Creating a Custom Quest
-![Creating a Custom Quest](path/to/custom-quest.gif)  
+![Creating a Custom Quest](https://github.com/user-attachments/assets/b93f9e19-459a-4f54-ba8d-6621c38c78d2)  
 *Shows how users can create a one-off quest, add custom chores, and save it to their task list.*
 
 ### Defeating a Boss
-![Defeating a Boss](path/to/boss.gif)  
+![Defeating a Boss](https://github.com/user-attachments/assets/d7135f3a-fec8-400e-9fe4-f31246062bf0)  
 *Highlights a multi-task Boss session, with the health bar decreasing as chores are completed and XP rewards upon completion.*
 
 
