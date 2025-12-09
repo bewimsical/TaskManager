@@ -52,7 +52,7 @@ Chore Quest is designed for a broad range of users who want to stay organized an
 ## How it Works
 
 
-Here’s a look at Chore Quest in action:
+Here’s a look at Chore Quest:
 
 ### Dashboard
 ![Dashboard Screenshot](https://github.com/user-attachments/assets/ef4780b4-b8b5-4988-b309-8383b93f0e40)  
@@ -87,10 +87,8 @@ Here’s a look at Chore Quest in action:
 
 See Chore Quest in action: 
 
-*Coming Soon*
-
 ### Completing a Ritual
-![Completing a Ritual](path/to/ritual.gif)  
+![Completing a Ritual](https://github.com/user-attachments/assets/ea074cdd-a709-422e-9c72-0ee89335b1c8)  
 *Demonstrates completing a daily Ritual chore, tracking streaks, and earning XP.*
 
 ### Creating a Custom Quest
